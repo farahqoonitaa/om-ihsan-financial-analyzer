@@ -1,0 +1,199 @@
+{
+  "totalAnalysesRun": 24,
+  "currentSessionId": "SES-20261006-001",
+  "sessionCount": 3,
+  "analysesInCurrentSession": 15,
+  "standardSequencing": [
+    {
+      "step": 1,
+      "name": "Entitas Pengendali (PT EPS & Subsidiary I)",
+      "status": "Completed",
+      "icon": "🏢"
+    },
+    {
+      "step": 2,
+      "name": "Entitas Non-Pengendali (PT POJ)",
+      "status": "Completed",
+      "icon": "🤝"
+    },
+    {
+      "step": 3,
+      "name": "Investasi Portofolio (PT Daaz & PT Pegadaian)",
+      "status": "Completed",
+      "icon": "📈"
+    },
+    {
+      "step": 4,
+      "name": "Konsolidasi Akhir Grup (IFRS 10 & POJK)",
+      "status": "Completed",
+      "icon": "🏛️"
+    }
+  ],
+  "history": [
+    {
+      "id": "LOG-1791293059700",
+      "timestamp": "2026-10-06T13:24:19.700Z",
+      "sessionId": "SES-20261006-001",
+      "entity": "PT Pegadaian",
+      "functionType": "Investasi",
+      "action": "Perhitungan 33 Rasio & Modified Z-Score",
+      "role": "reviewer",
+      "outcome": "Modified Z: NaN | Altman Z: NaN",
+      "sequencingStep": 3
+    },
+    {
+      "id": "LOG-1791293059044",
+      "timestamp": "2026-10-06T13:24:19.044Z",
+      "sessionId": "SES-20261006-001",
+      "entity": "PT Pegadaian",
+      "functionType": "Investasi",
+      "action": "Perhitungan 33 Rasio & Modified Z-Score",
+      "role": "reviewer",
+      "outcome": "Modified Z: NaN | Altman Z: NaN",
+      "sequencingStep": 3
+    },
+    {
+      "id": "LOG-1791293042729",
+      "timestamp": "2026-10-06T13:24:02.729Z",
+      "sessionId": "SES-20261006-001",
+      "entity": "Farah pengendali .pdf",
+      "functionType": "File Ingestion",
+      "action": "Parsing File & Ekstraksi Canonical Data Model",
+      "role": "Analis Keuangan (PIC)",
+      "outcome": "Berhasil Diekstrak & Siap Dianalisis",
+      "sequencingStep": 1
+    },
+    {
+      "id": "LOG-1791293031051",
+      "timestamp": "2026-10-06T13:23:51.051Z",
+      "sessionId": "SES-20261006-001",
+      "entity": "PT Era Permata Sejahtera (PT EPS)",
+      "functionType": "Review Status Update",
+      "action": "Keputusan temuan F-EPS-04 diubah menjadi: Approved",
+      "role": "Reviewer Hasil",
+      "outcome": "Tercatat",
+      "sequencingStep": 1
+    },
+    {
+      "id": "LOG-1791293029823",
+      "timestamp": "2026-10-06T13:23:49.823Z",
+      "sessionId": "SES-20261006-001",
+      "entity": "PT Era Permata Sejahtera (PT EPS)",
+      "functionType": "Review Status Update",
+      "action": "Keputusan temuan F-EPS-04 diubah menjadi: Audit Finding",
+      "role": "Reviewer Hasil",
+      "outcome": "Tercatat",
+      "sequencingStep": 1
+    },
+    {
+      "id": "LOG-1791293000870",
+      "timestamp": "2026-10-06T13:23:20.870Z",
+      "sessionId": "SES-20261006-001",
+      "entity": "Konsolidasi Grup Yayasan (6 Entitas)",
+      "functionType": "Konsolidasi Akhir",
+      "action": "Agregasi, Eliminasi & IFRS 10 Attribution",
+      "role": "reviewer",
+      "outcome": "DER: 0.96x (POJK Safe), 3 Anomali Forensik",
+      "sequencingStep": 4
+    },
+    {
+      "id": "LOG-1791293000866",
+      "timestamp": "2026-10-06T13:23:20.866Z",
+      "sessionId": "SES-20261006-001",
+      "entity": "PT Daaz Bara Lestari Tbk",
+      "functionType": "Investasi",
+      "action": "Perhitungan 33 Rasio & Modified Z-Score",
+      "role": "reviewer",
+      "outcome": "Modified Z: 2.542 | Altman Z: 1.76",
+      "sequencingStep": 3
+    },
+    {
+      "id": "LOG-1791293000862",
+      "timestamp": "2026-10-06T13:23:20.862Z",
+      "sessionId": "SES-20261006-001",
+      "entity": "PT Pesonna Optima Jasa (PT POJ)",
+      "functionType": "Entitas Non-Pengendali",
+      "action": "Evaluasi Hak Minoritas & Tiering",
+      "role": "reviewer",
+      "outcome": "Selesai (3 Temuan Merah, 2 Kuning, 2 Hijau)",
+      "sequencingStep": 2
+    },
+    {
+      "id": "LOG-1791293000857",
+      "timestamp": "2026-10-06T13:23:20.857Z",
+      "sessionId": "SES-20261006-001",
+      "entity": "PT Era Permata Sejahtera (PT EPS)",
+      "functionType": "Entitas Pengendali",
+      "action": "Analisis Vertikal-Horizontal & Footing",
+      "role": "reviewer",
+      "outcome": "Selesai (6 Temuan)",
+      "sequencingStep": 1
+    },
+    {
+      "id": "LOG-1791290910486",
+      "timestamp": "2026-10-06T12:48:30.487Z",
+      "sessionId": "SES-20261006-001",
+      "entity": "Sistem Inisialisasi",
+      "functionType": "Platform",
+      "action": "Pemuatan Master Parameter & Data Awal Agenda",
+      "role": "Sistem",
+      "outcome": "Siap Digunakan",
+      "sequencingStep": 0
+    },
+    {
+      "id": "LOG-101",
+      "timestamp": "2026-10-06T08:15:20+07:00",
+      "sessionId": "SES-20261006-001",
+      "entity": "PT Era Permata Sejahtera",
+      "functionType": "Pengendali",
+      "action": "Verifikasi Laporan Manajemen & Footing CALK",
+      "role": "Analis Keuangan (PIC)",
+      "outcome": "6 Temuan Terdeteksi (Defisit NWC -Rp40,49 M & Opex Gap)",
+      "sequencingStep": 1
+    },
+    {
+      "id": "LOG-102",
+      "timestamp": "2026-10-06T08:45:10+07:00",
+      "sessionId": "SES-20261006-001",
+      "entity": "PT Pesonna Optima Jasa",
+      "functionType": "Non-Pengendali",
+      "action": "Monitoring Investasi & Penentuan Tiering",
+      "role": "Analis Keuangan (PIC)",
+      "outcome": "Tier Merah: Likuiditas CR 0,52x, Piutang 301,2% RKAP, Utang Dividen Rp110,27 M",
+      "sequencingStep": 2
+    },
+    {
+      "id": "LOG-103",
+      "timestamp": "2026-10-06T09:12:44+07:00",
+      "sessionId": "SES-20261006-001",
+      "entity": "PT Daaz Bara Lestari Tbk",
+      "functionType": "Investasi",
+      "action": "Perhitungan 33 Rasio & Modified Z-Score",
+      "role": "Analis Keuangan (PIC)",
+      "outcome": "Modified Z-Score 2,54 (Aman) | RTC Omzet 98,45%",
+      "sequencingStep": 3
+    },
+    {
+      "id": "LOG-104",
+      "timestamp": "2026-10-06T09:30:15+07:00",
+      "sessionId": "SES-20261006-001",
+      "entity": "PT Pegadaian",
+      "functionType": "Investasi",
+      "action": "Stress Testing Risk Overlay September 2026",
+      "role": "Reviewer (Konsultan / Advisor)",
+      "outcome": "Status Yellow Enhanced Monitoring (Exposure Agunan Rp20 T, Stress Loss Rp2 T)",
+      "sequencingStep": 3
+    },
+    {
+      "id": "LOG-105",
+      "timestamp": "2026-10-06T10:05:00+07:00",
+      "sessionId": "SES-20261006-001",
+      "entity": "Konsolidasi Grup Yayasan (6 Entitas)",
+      "functionType": "Konsolidasi Akhir",
+      "action": "Agregasi, Eliminasi & NCI Disparity Check",
+      "role": "Reviewer (Konsultan / Advisor)",
+      "outcome": "DER 0,96x (POJK Safe) | Disparitas NCI Sub II +34,1% (Critical Flag)",
+      "sequencingStep": 4
+    }
+  ]
+}
