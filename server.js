@@ -344,11 +344,15 @@ const server = http.createServer(async (req, res) => {
       if (pathname === "/api/copilot/chat" && method === "POST") {
         const body = await parseBody(req);
         const userQuery = body.query || "Berikan ringkasan temuan kritis hari ini.";
-        const activeContext = body.context || {};
+        const activeContext = body.context || body.metrics || {};
         const customApiKey = body.geminiApiKey || null;
+        const preferredModel = body.model || body.preferredModel || null;
 
-        const response = await geminiClient.askCopilot(userQuery, activeContext, customApiKey);
-        return sendJson(res, 200, response);
+        const result = await geminiClient.askCopilot(userQuery, activeContext, customApiKey, preferredModel);
+        return sendJson(res, 200, {
+          ...result,
+          response: result.answer
+        });
       }
 
       // 12. File Upload Ingestion (Action Item 6)

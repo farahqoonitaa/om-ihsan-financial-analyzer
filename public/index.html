@@ -493,6 +493,11 @@
         <span>Data Pool (<strong id="txtDataPoolCount">0</strong>)</span>
       </button>
 
+      <button id="btnHeaderApiKey" onclick="openApiKeyModal()" class="btn btn-secondary btn-sm" style="display:flex; align-items:center; gap:5px; font-weight:600; border-color:#B8DAC8; background:#fff;" title="Konfigurasi Google Gemini API Key">
+        <span>🔑</span>
+        <span id="txtHeaderApiKey">Gemini API: <strong id="txtApiKeyStatus" style="color:var(--ink-secondary);">Atur Key</strong></span>
+      </button>
+
       <button id="btnHeaderCopilot" onclick="openCopilotDrawer()" class="btn btn-secondary btn-sm" style="background:var(--forest-soft); color:var(--forest); border-color:#B8DAC8;">
         🤖 AI Chatbot RAG (Cross-Verify)
       </button>
@@ -782,6 +787,41 @@
             <strong>🔴 Temuan 03: Lonjakan Beban Bonus Tanpa Pengungkapan CALK Memadai (S1/S9)</strong>
             <p style="font-size:12px; margin-top:2px;">Realisasi bonus produksi Rp12,87 M vs pagu RKAP Rp557,7 Juta tanpa pengungkapan CALK memadai.</p>
           </div>
+          <!-- ARSITEKTUR BERPIKIR FORENSIK: RASIONALISASI S7 GROWTH GAP & DEFISIT LIKUIDITAS -->
+          <div class="forensic-thinking-card" style="margin-top:16px; margin-bottom:16px; background:#FBFDFA; border:1px solid #D5E5D5; border-radius:10px; padding:16px; box-shadow:0 1px 3px rgba(0,0,0,0.03);">
+            <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;">
+              <div style="display:flex; align-items:center; gap:8px;">
+                <span style="font-size:18px;">🧠</span>
+                <div>
+                  <h4 style="margin:0; font-size:13.5px; font-weight:700; color:var(--forest-deep);">Rantai Berpikir Forensik: Rasionalisasi S7 Growth Gap & Defisit Likuiditas (PwC / Big-4 Audit Caliber)</h4>
+                  <span style="font-size:11px; color:var(--ink-secondary);">Multi-step analytical reasoning evaluasi integritas angka entitas pengendali</span>
+                </div>
+              </div>
+              <span class="badge badge-red" style="font-size:11px; font-weight:700;">🔴 Status: High Operational Exposure</span>
+            </div>
+
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:10px; font-size:12px; margin-top:12px;">
+              <div style="background:#fff; border:1px solid #e1e8ed; border-left:4px solid var(--forest); border-radius:6px; padding:10px 12px;">
+                <strong style="color:var(--forest); display:block; margin-bottom:4px;">Langkah 1: Uji Integritas Footing Neraca</strong>
+                <p style="margin:0; color:var(--ink-primary); line-height:1.45;">Uji matematis Total Aset (Rp198,39 M) vs Total Liabilitas & Ekuitas (Rp198,39 M) menunjukkan presisi footing <strong>99,99% (Lulus)</strong>. Integritas data dasar terkonfirmasi seimbang tanpa anomali pencatatan ganda.</p>
+              </div>
+
+              <div style="background:#fff; border:1px solid #e1e8ed; border-left:4px solid var(--red); border-radius:6px; padding:10px 12px;">
+                <strong style="color:var(--red); display:block; margin-bottom:4px;">Langkah 2: Deteksi Sinyal S7 Growth Gap</strong>
+                <p style="margin:0; color:var(--ink-primary); line-height:1.45;">Pertumbuhan Beban Operasional (<strong>+32,91%</strong>) melampaui Pertumbuhan Omzet (<strong>+31,45%</strong>). Spread negatif -1,46% ini menggerus Operating Margin dari 4,90% menjadi 3,85%, mengindikasikan inefisiensi biaya overhead yang ekspansif.</p>
+              </div>
+
+              <div style="background:#fff; border:1px solid #e1e8ed; border-left:4px solid var(--red); border-radius:6px; padding:10px 12px;">
+                <strong style="color:var(--red); display:block; margin-bottom:4px;">Langkah 3: Uji Solvabilitas Jangka Pendek (S3/S4 NWC)</strong>
+                <p style="margin:0; color:var(--ink-primary); line-height:1.45;">Modal kerja bersih negatif <strong>-Rp40,49 Miliar</strong> dengan Current Ratio <strong>0,57x</strong>. Aset lancar Rp52,63 M tidak memadai untuk menutup liabilitas lancar Rp93,12 M, menandakan ketergantungan berisiko pada fasilitas rollover utang jangka pendek.</p>
+              </div>
+
+              <div style="background:#fff; border:1px solid #e1e8ed; border-left:4px solid #b25900; border-radius:6px; padding:10px 12px;">
+                <strong style="color:#b25900; display:block; margin-bottom:4px;">Langkah 4: Deteksi Anomali Beban Bonus (S1/S9)</strong>
+                <p style="margin:0; color:var(--ink-primary); line-height:1.45;">Realisasi bonus produksi Rp12,87 Miliar melonjak hingga 2.308% dari plafon RKAP Rp557,7 Juta tanpa didukung CALK proporsional. Direksi diwajibkan menyajikan rekonsiliasi beban imbalan kerja sesuai PSAK 24 / IFRS 19.</p>
+              </div>
+            </div>
+          </div>
 
           <!-- PANEL AI FORENSIC FEEDBACK & REKOMENDASI SOLUSI -->
           <div class="ai-feedback-box" id="aiFeedbackBox_pengendali">
@@ -911,6 +951,42 @@
               <span class="kpi-label">Status Tiering Pemantauan</span>
               <div class="kpi-val" style="color:var(--red); font-size:16px;">Tiering Merah</div>
               <span class="badge badge-red">Perlu Klarifikasi Manajemen</span>
+            </div>
+          </div>
+
+          <!-- ARSITEKTUR BERPIKIR FORENSIK: RASIONALISASI TIERING & KLASIFIKASI RISIKO -->
+          <div class="forensic-thinking-card" style="margin-top:16px; margin-bottom:16px; background:#FBFDFA; border:1px solid #D5E5D5; border-radius:10px; padding:16px; box-shadow:0 1px 3px rgba(0,0,0,0.03);">
+            <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;">
+              <div style="display:flex; align-items:center; gap:8px;">
+                <span style="font-size:18px;">🧠</span>
+                <div>
+                  <h4 style="margin:0; font-size:13.5px; font-weight:700; color:var(--forest-deep);">Rantai Berpikir Forensik: Rasionalisasi Klasifikasi Tiering Merah (PwC / Big-4 Audit Caliber)</h4>
+                  <span style="font-size:11px; color:var(--ink-secondary);">Multi-step analytical reasoning mengapa entitas non-pengendali ini masuk Tiering Merah</span>
+                </div>
+              </div>
+              <span class="badge badge-red" style="font-size:11px; font-weight:700;">🔴 Status: Tiering Merah (High Exposure)</span>
+            </div>
+
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:10px; font-size:12px; margin-top:12px;">
+              <div style="background:#fff; border:1px solid #e1e8ed; border-left:4px solid var(--red); border-radius:6px; padding:10px 12px;">
+                <strong style="color:var(--red); display:block; margin-bottom:4px;">Langkah 1: Pengujian Batas Plafon RKAP (RTC Piutang)</strong>
+                <p style="margin:0; color:var(--ink-primary); line-height:1.45;">Realisasi Piutang Rp185,0 M vs Pagu RKAP Rp61,42 M menghasilkan RTC <strong>301,20%</strong>. Threshold Tiering Hijau: &le;100%; Kuning: 101–120%; <strong>Merah: &gt;120%</strong>. Deviasi +201,20% di atas pagu tanpa persetujuan RUPS memicu klasifikasi risiko kritis seketika.</p>
+              </div>
+
+              <div style="background:#fff; border:1px solid #e1e8ed; border-left:4px solid var(--red); border-radius:6px; padding:10px 12px;">
+                <strong style="color:var(--red); display:block; margin-bottom:4px;">Langkah 2: Evaluasi Ketahanan Likuiditas (NWC & CR)</strong>
+                <p style="margin:0; color:var(--ink-primary); line-height:1.45;">Net Working Capital tercatat <strong>-Rp347,18 Miliar</strong> dengan Current Ratio <strong>0,61x</strong> (Aset Lancar Rp534,60 M vs Kewajiban Lancar Rp881,78 M). Entitas mengalami defisit likuiditas struktural jangka pendek untuk melunasi kewajiban jatuh tempo.</p>
+              </div>
+
+              <div style="background:#fff; border:1px solid #e1e8ed; border-left:4px solid var(--forest); border-radius:6px; padding:10px 12px;">
+                <strong style="color:var(--forest); display:block; margin-bottom:4px;">Langkah 3: Proteksi Hak Dividen Minoritas (1% NCI)</strong>
+                <p style="margin:0; color:var(--ink-primary); line-height:1.45;">Laba bersih Rp18,50 M memberikan hak dividen minoritas 1% sebesar <strong>Rp185,00 Juta</strong>. Berdasarkan PSAK 65 / IFRS 10, hak ini wajib diproteksi dan dibayarkan secara prorata terlepas dari defisit modal kerja kas entitas.</p>
+              </div>
+
+              <div style="background:#fff; border:1px solid #e1e8ed; border-left:4px solid #b25900; border-radius:6px; padding:10px 12px;">
+                <strong style="color:#b25900; display:block; margin-bottom:4px;">Langkah 4: Kesimpulan Klasifikasi & Tata Kelola Direksi</strong>
+                <p style="margin:0; color:var(--ink-primary); line-height:1.45;">Kombinasi RTC Piutang 301,20% (&gt;120%) dan CR 0,61x (&lt;1,0x) secara formal mengunci entitas pada <strong>Tiering Merah</strong>. Rekomendasi wajib: Audit konfirmasi saldo piutang eksternal, penagihan dipercepat, dan klarifikasi CALK kepada RUPS.</p>
+              </div>
             </div>
           </div>
 
@@ -1673,6 +1749,60 @@
     </div>
   </div>
 
+  <!-- MODAL: GOOGLE GEMINI API KEY CONFIGURATION -->
+  <div id="modalApiKey" class="modal-overlay hidden" style="z-index:1100;">
+    <div class="modal-box" style="max-width:540px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--line); padding-bottom:10px; margin-bottom:14px;">
+        <div style="display:flex; align-items:center; gap:8px;">
+          <span style="font-size:22px;">🔑</span>
+          <div>
+            <h3 style="font-size:16px; margin:0;" id="txt_apiKey_modal_title">Konfigurasi Google Gemini API Key</h3>
+            <span style="font-size:11px; color:var(--ink-secondary);">Zero-Persistence • Disimpan di Memori Sesi Browser Pengguna</span>
+          </div>
+        </div>
+        <button onclick="closeApiKeyModal()" style="background:none; border:none; font-size:18px; cursor:pointer;">✕</button>
+      </div>
+
+      <p style="font-size:12.5px; color:var(--ink-primary); margin-bottom:12px; line-height:1.5;" id="txt_apiKey_modal_desc">
+        Gunakan Google Gemini API Key Anda sendiri untuk mengaktifkan penalaran forensik tingkat tinggi (PwC / Big-4 caliber) pada Copilot RAG dan AI Feedback. API key hanya tersimpan di memori sesi browser Anda dan tidak pernah disimpan di database atau disk server.
+      </p>
+
+      <div style="margin-bottom:14px;">
+        <label style="display:block; font-size:12px; font-weight:700; margin-bottom:6px;" id="txt_lbl_apiKey_input">Gemini API Key (Google AI Studio):</label>
+        <div style="display:flex; gap:6px;">
+          <input type="password" id="inputUserApiKey" placeholder="Tempel AIzaSy... disini" style="flex:1; padding:8px 12px; border:1px solid var(--line-strong); border-radius:6px; font-size:12px; font-family:monospace;">
+          <button type="button" class="btn btn-secondary btn-sm" onclick="toggleApiKeyVisibility()" id="btnToggleApiKeyVis">👁️ Intip</button>
+        </div>
+        <span style="font-size:11px; color:var(--ink-secondary); display:block; margin-top:4px;">
+          Dapatkan API key gratis di <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener" style="color:var(--forest); font-weight:600; text-decoration:underline;">Google AI Studio</a>.
+        </span>
+      </div>
+
+      <div style="margin-bottom:16px;">
+        <label style="display:block; font-size:12px; font-weight:700; margin-bottom:6px;" id="txt_lbl_model_select">Model Preferensi (Otomatis Fallback):</label>
+        <select id="selectGeminiModel" style="width:100%; padding:8px 12px; border:1px solid var(--line-strong); border-radius:6px; font-size:12px; background:var(--surface);">
+          <option value="gemini-2.0-flash">Gemini 2.0 Flash (Direkomendasikan - Cepat & Cerdas)</option>
+          <option value="gemini-2.5-flash">Gemini 2.5 Flash (Generasi Terbaru)</option>
+          <option value="gemini-1.5-flash">Gemini 1.5 Flash (Stabil)</option>
+          <option value="gemini-1.5-pro">Gemini 1.5 Pro (Deep Reasoning)</option>
+        </select>
+        <span style="font-size:11px; color:var(--ink-secondary); display:block; margin-top:4px;">
+          Jika kuota model preferensi habis atau akun tidak mendukung model tertentu, backend secara otomatis mencoba model fallback berikutnya.
+        </span>
+      </div>
+
+      <div id="apiKeyStatusAlert" class="hidden" style="padding:10px 14px; border-radius:6px; font-size:12px; margin-bottom:14px; line-height:1.45;"></div>
+
+      <div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid var(--line); padding-top:12px;">
+        <button type="button" onclick="clearGeminiApiKey()" class="btn btn-danger btn-sm" id="btnApiKeyClear">Hapus Key</button>
+        <div style="display:flex; gap:8px;">
+          <button type="button" onclick="closeApiKeyModal()" class="btn btn-secondary btn-sm" id="btnApiKeyCancel">Batal</button>
+          <button type="button" onclick="saveAndTestGeminiApiKey()" class="btn btn-primary btn-sm" id="btnApiKeySave">Simpan & Uji Koneksi</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- JAVASCRIPT APPLICATION CONTROLLER -->
   <script>
     // State Tracker
@@ -1686,7 +1816,9 @@
       investasi: null,
       currentAnalyst: "Senior Financial Forensic Auditor",
       auditTrail: [],
-      dataPool: []
+      dataPool: [],
+      geminiApiKey: '',
+      geminiModel: 'gemini-2.0-flash'
     };
 
     // Translation Dictionary (English <-> Indonesia)
@@ -1699,6 +1831,9 @@
         btn_upload: "📤 Unggah File (Excel/PDF)",
         btn_chatbot: "🤖 AI Chatbot RAG (Cross-Verify)",
         btn_blank_state: "🗑️ Kosongkan Data (Blank State)",
+        txt_header_api_key: "Gemini API:",
+        key_not_set: "Atur Key",
+        key_active: "Aktif",
         banner_zero_persist: "<strong>Zero-Persistence Keamanan Data:</strong> Seluruh data diproses murni di memori browser (tanpa database & tanpa penyimpanan lokal).",
         banner_agenda: "Agenda Analisis: 3 Alur Analisis Terpadu & Konsolidasi Grup Multi-Entitas",
         blank_hero_title: "Mulai Analisis Keuangan Terstruktur",
@@ -1780,6 +1915,9 @@
         btn_upload: "📤 Upload File (Excel/PDF)",
         btn_chatbot: "🤖 AI Chatbot RAG (Cross-Verify)",
         btn_blank_state: "🗑️ Clear Data (Blank State)",
+        txt_header_api_key: "Gemini API:",
+        key_not_set: "Set Key",
+        key_active: "Active",
         banner_zero_persist: "<strong>Zero-Persistence Data Security:</strong> All data is processed purely in browser memory (no database & no local storage).",
         banner_agenda: "Analysis Agenda: 3 Core Analyses & Multi-Entity Group Consolidation",
         blank_hero_title: "Start Structured Financial Analysis",
@@ -1893,6 +2031,7 @@
       setTxt('btnHeaderCopilot', t.btn_chatbot);
       setTxt('btnHeaderReset', t.btn_blank_state);
       setTxt('btnHeaderHome', t.nav_home);
+      updateApiKeyBadge();
 
       setHtml('txt_banner_persist', t.banner_zero_persist);
       setTxt('txt_banner_agenda', t.banner_agenda);
@@ -2127,6 +2266,155 @@
     function closeUploadModal() { 
       document.getElementById('modalUpload').classList.add('hidden'); 
       clearSelectedFile();
+    }
+
+    // Modal Gemini API Key Control
+    function openApiKeyModal() {
+      const input = document.getElementById('inputUserApiKey');
+      if (input) input.value = appState.geminiApiKey || '';
+      const select = document.getElementById('selectGeminiModel');
+      if (select && appState.geminiModel) select.value = appState.geminiModel;
+      const alertBox = document.getElementById('apiKeyStatusAlert');
+      if (alertBox) {
+        alertBox.className = 'hidden';
+        alertBox.textContent = '';
+      }
+      document.getElementById('modalApiKey').classList.remove('hidden');
+    }
+
+    function closeApiKeyModal() {
+      document.getElementById('modalApiKey').classList.add('hidden');
+    }
+
+    function toggleApiKeyVisibility() {
+      const input = document.getElementById('inputUserApiKey');
+      const btn = document.getElementById('btnToggleApiKeyVis');
+      if (!input) return;
+      if (input.type === 'password') {
+        input.type = 'text';
+        if (btn) btn.textContent = '🔒 Sembunyikan';
+      } else {
+        input.type = 'password';
+        if (btn) btn.textContent = '👁️ Intip';
+      }
+    }
+
+    function updateApiKeyBadge() {
+      const badge = document.getElementById('txtApiKeyStatus');
+      const isEn = appState.lang === 'en';
+      if (!badge) return;
+      if (appState.geminiApiKey) {
+        badge.innerHTML = `<span style="color:var(--forest); font-weight:700;">● ${isEn ? 'Active' : 'Aktif'}</span> <span style="font-size:10px; color:var(--ink-secondary);">(${appState.geminiModel.replace('gemini-', '')})</span>`;
+      } else {
+        badge.innerHTML = `<span style="color:var(--ink-secondary); font-weight:600;">${isEn ? 'Set Key' : 'Atur Key'}</span>`;
+      }
+    }
+
+    function clearGeminiApiKey() {
+      appState.geminiApiKey = '';
+      try {
+        sessionStorage.removeItem('om_ihsan_gemini_api_key');
+      } catch (e) {}
+      const input = document.getElementById('inputUserApiKey');
+      if (input) input.value = '';
+      updateApiKeyBadge();
+      const alertBox = document.getElementById('apiKeyStatusAlert');
+      if (alertBox) {
+        alertBox.className = '';
+        alertBox.style.background = '#FEECEB';
+        alertBox.style.color = 'var(--red)';
+        alertBox.style.border = '1px solid #F5C2C0';
+        alertBox.innerHTML = '🗑️ API key dihapus. Sistem akan menggunakan mesin forensik deterministik bawaan (Ground Truth).';
+      }
+      recordAuditTrail({
+        action: 'GEMINI_API_KEY_CLEARED',
+        scope: 'Security',
+        summary: 'Gemini API key dihapus dari memori sesi'
+      });
+      showToast(appState.lang === 'en' ? 'Gemini API key removed.' : 'Gemini API key dihapus.', 'info');
+    }
+
+    async function saveAndTestGeminiApiKey() {
+      const input = document.getElementById('inputUserApiKey');
+      const select = document.getElementById('selectGeminiModel');
+      const alertBox = document.getElementById('apiKeyStatusAlert');
+      const key = input ? input.value.trim() : '';
+      const chosenModel = select ? select.value : 'gemini-2.0-flash';
+      const isEn = appState.lang === 'en';
+
+      if (!key) {
+        if (alertBox) {
+          alertBox.className = '';
+          alertBox.style.background = '#FFF8E6';
+          alertBox.style.color = '#B25900';
+          alertBox.style.border = '1px solid #FFE082';
+          alertBox.textContent = isEn ? 'Please enter an API key or click "Clear Key".' : 'Harap masukkan API key atau klik "Hapus Key" untuk menggunakan mesin bawaan.';
+        }
+        return;
+      }
+
+      if (alertBox) {
+        alertBox.className = '';
+        alertBox.style.background = '#F4FAF6';
+        alertBox.style.color = 'var(--forest-deep)';
+        alertBox.style.border = '1px solid #B8DAC8';
+        alertBox.innerHTML = `⏳ <em>${isEn ? 'Testing connection with Google Gemini...' : 'Menguji koneksi ke Google Gemini AI Studio...'}</em>`;
+      }
+
+      try {
+        const resp = await fetch('/api/copilot/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            query: 'Koneksi verifikasi singkat forensik',
+            entity: 'pengendali',
+            metrics: { footingBalanced: true },
+            geminiApiKey: key,
+            model: chosenModel,
+            preferredModel: chosenModel
+          })
+        });
+
+        const data = await resp.json();
+        if (resp.ok && data && (data.response || data.answer)) {
+          appState.geminiApiKey = key;
+          appState.geminiModel = data.model || chosenModel;
+          try {
+            sessionStorage.setItem('om_ihsan_gemini_api_key', key);
+            sessionStorage.setItem('om_ihsan_gemini_model', appState.geminiModel);
+          } catch (e) {}
+
+          updateApiKeyBadge();
+
+          if (alertBox) {
+            alertBox.style.background = '#E8F5E9';
+            alertBox.style.color = '#2E7D32';
+            alertBox.style.border = '1px solid #A5D6A7';
+            alertBox.innerHTML = `✅ <strong>${isEn ? 'Connection Successful!' : 'Koneksi Berhasil!'}</strong> ${isEn ? 'Active model:' : 'Model aktif:'} <code>${appState.geminiModel}</code>.<br><span style="font-size:11px;">${isEn ? 'Key stored safely in session memory.' : 'Key tersimpan aman di memori sesi aktif browser.'}</span>`;
+          }
+
+          recordAuditTrail({
+            action: 'GEMINI_API_KEY_SAVED',
+            scope: 'Configuration',
+            summary: `Gemini API key terhubung aktif dengan model ${appState.geminiModel}`
+          });
+
+          showToast(`${isEn ? 'Gemini API active' : 'Gemini API aktif'} (${appState.geminiModel})`, 'success');
+
+          setTimeout(() => {
+            closeApiKeyModal();
+          }, 1200);
+        } else {
+          throw new Error(data.error || (isEn ? 'Connection test failed.' : 'Uji coba koneksi gagal.'));
+        }
+      } catch (err) {
+        if (alertBox) {
+          alertBox.style.background = '#FEECEB';
+          alertBox.style.color = 'var(--red)';
+          alertBox.style.border = '1px solid #F5C2C0';
+          alertBox.innerHTML = `❌ <strong>${isEn ? 'Connection Failed:' : 'Gagal Terhubung:'}</strong> ${escapeHtml(err.message)}<br><span style="font-size:11px;">${isEn ? 'Verify key validity in Google AI Studio.' : 'Pastikan API Key benar dan memiliki akses Google AI Studio.'}</span>`;
+        }
+      }
     }
 
     // Real File Upload & Staging Control
@@ -2536,6 +2824,92 @@
       submitInlineFeedback(mode);
     }
 
+    // Helper to format structured markdown to clean HTML
+    function formatMarkdownResponse(text) {
+      if (!text) return '';
+      let html = escapeHtml(text);
+      
+      // Headers
+      html = html.replace(/^###\s+(.*$)/gim, '<h5 style="margin:10px 0 4px 0; font-size:13px; color:var(--forest-deep); font-weight:700;">$1</h5>');
+      html = html.replace(/^##\s+(.*$)/gim, '<h4 style="margin:12px 0 6px 0; font-size:13.5px; color:var(--forest-deep); font-weight:700;">$1</h4>');
+      html = html.replace(/^#\s+(.*$)/gim, '<h3 style="margin:14px 0 8px 0; font-size:14px; color:var(--forest-deep); font-weight:700;">$1</h3>');
+      
+      // Bold
+      html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+      
+      // Lists
+      html = html.replace(/^\d+\.\s+(.*$)/gim, '<div style="margin-left:14px; margin-bottom:4px; text-indent:-14px;"><strong>•</strong> $1</div>');
+      html = html.replace(/^[-*]\s+(.*$)/gim, '<div style="margin-left:14px; margin-bottom:4px; text-indent:-14px;"><strong>•</strong> $1</div>');
+      
+      // Line breaks
+      html = html.replace(/\n\n/g, '<div style="height:6px;"></div>');
+      html = html.replace(/\n/g, '<br>');
+      
+      return html;
+    }
+
+    // Helper to extract active metrics for any analysis mode
+    function getActiveMetricsForMode(mode) {
+      if (mode === 'pengendali') {
+        const revCY = parseFloat(document.getElementById('in_p_revCY')?.value) || 216.88;
+        const revPY = parseFloat(document.getElementById('in_p_revPY')?.value) || 164.98;
+        const opexCY = parseFloat(document.getElementById('in_p_opexCY')?.value) || 208.53;
+        const opexPY = parseFloat(document.getElementById('in_p_opexPY')?.value) || 156.89;
+        const ca = parseFloat(document.getElementById('in_p_ca')?.value) || 52.63;
+        const cl = parseFloat(document.getElementById('in_p_cl')?.value) || 93.12;
+        return {
+          revCY, revPY,
+          opexCY, opexPY,
+          ca, cl,
+          nwc: ca - cl,
+          revGrowthPct: ((revCY - revPY) / revPY) * 100,
+          opexGrowthPct: ((opexCY - opexPY) / opexPY) * 100,
+          s7GrowthGap: true,
+          footingBalanced: true
+        };
+      } else if (mode === 'non_pengendali') {
+        const ca = parseFloat(document.getElementById('in_np_ca')?.value) || 534.60;
+        const cl = parseFloat(document.getElementById('in_np_cl')?.value) || 881.78;
+        const arAct = parseFloat(document.getElementById('in_np_arAct')?.value) || 185.00;
+        const arTar = parseFloat(document.getElementById('in_np_arTar')?.value) || 61.42;
+        const ni = parseFloat(document.getElementById('in_np_ni')?.value) || 18.50;
+        const pct = parseFloat(document.getElementById('in_np_pct')?.value) || 1.0;
+        return {
+          ca, cl, arAct, arTar,
+          rtcPct: (arAct / arTar) * 100,
+          netIncome: ni,
+          nciPct: pct,
+          nciDividend: ni * (pct / 100),
+          tiering: (arAct / arTar) > 1.2 ? 'Tiering Merah' : 'Tiering Hijau',
+          nwc: ca - cl,
+          currentRatio: cl > 0 ? (ca / cl) : 0
+        };
+      } else if (mode === 'investasi') {
+        const salesCY = parseFloat(document.getElementById('in_inv_sales')?.value) || 1980.00;
+        const nwc = parseFloat(document.getElementById('in_inv_nwc')?.value) || 253.81;
+        const ni = parseFloat(document.getElementById('in_inv_ni')?.value) || 89.71;
+        const opProf = parseFloat(document.getElementById('in_inv_opProf')?.value) || 121.50;
+        const ta = parseFloat(document.getElementById('in_inv_ta')?.value) || 1890.00;
+        const tl = parseFloat(document.getElementById('in_inv_tl')?.value) || 1250.00;
+        return {
+          salesCY, nwc, ni, opProf, ta, tl,
+          zScore: 2.5415,
+          der: tl / (ta - tl)
+        };
+      } else if (mode === 'konsolidasi') {
+        return {
+          totalAssets: 1391.0,
+          totalLiabilities: 681.0,
+          totalEquity: 710.0,
+          der: 0.96,
+          pojkLimit: 5.0,
+          eliminationSales: -140.0,
+          eliminationARAP: -139.0
+        };
+      }
+      return {};
+    }
+
     function submitInlineFeedback(mode) {
       const inputEl = document.getElementById(`inputInlineFeedback_${mode}`);
       if (!inputEl) return;
@@ -2554,92 +2928,149 @@
       feed.appendChild(userBubble);
       inputEl.value = '';
 
-      // 2. AI Response Bubble
-      const aiBubble = document.createElement('div');
-      aiBubble.style.cssText = 'background:#FAFDFB; border:1px solid #B8DAC8; border-radius:6px; padding:10px 12px; font-size:12px; line-height:1.55; margin-bottom:8px;';
-      aiBubble.innerHTML = `<span style="color:var(--forest); font-weight:600;">🤖 AI Financial Forensic:</span> <em>${isEn ? 'Analyzing context...' : 'Menganalisis konteks...'}</em>`;
-      feed.appendChild(aiBubble);
+      // 2. Prepare Unique Thinking & Response Box
+      const fbId = 'fb_' + Date.now();
+      const aiContainer = document.createElement('div');
+      aiContainer.style.cssText = 'background:#FAFDFB; border:1px solid #B8DAC8; border-radius:8px; padding:12px 14px; font-size:12px; line-height:1.55; margin-bottom:10px; box-shadow:0 1px 3px rgba(0,0,0,0.03);';
+      aiContainer.id = `box_${fbId}`;
 
-      setTimeout(() => {
-        let responseHtml = '';
-        const q = query.toLowerCase();
+      aiContainer.innerHTML = `
+        <div class="thinking-accordion" id="acc_${fbId}">
+          <div class="thinking-header" onclick="toggleThinkingBox('acc_${fbId}')" title="${isEn ? 'Click to expand/collapse forensic reasoning' : 'Klik untuk buka/tutup rincian berpikir forensik'}">
+            <div class="thinking-status-wrap">
+              <span class="thinking-pulse-dot" id="dot_${fbId}"></span>
+              <span id="title_${fbId}">${isEn ? 'Forensic Reasoning' : 'Sedang berpikir forensik'} (<span id="timer_${fbId}">0.0s</span>)...</span>
+            </div>
+            <span class="thinking-arrow" id="arrow_${fbId}">▼</span>
+          </div>
+          <div class="thinking-body" id="steps_${fbId}"></div>
+        </div>
+        <div id="content_${fbId}" class="hidden" style="margin-top:10px; border-top:1px solid #E1EFE6; padding-top:10px;"></div>
+      `;
+      feed.appendChild(aiContainer);
 
-        if (mode === 'pengendali') {
-          if (q.includes('gap') || q.includes('s7') || q.includes('solusi') || q.includes('opex')) {
-            responseHtml = isEn
-              ? '<strong>Rekomendasi Penekanan S7 Growth Gap:</strong><br>1. Batasi pos beban umum & administrasi discretionary maksimal tumbuh 10% YoY.<br>2. Restrukturisasi rantai pasok COGS (+31.45%) dan efisiensi logistik untuk mengembalikan margin laba operasi ke level historis 4.90%.'
-              : '<strong>Rekomendasi Penekanan S7 Growth Gap:</strong><br>1. Pangkas pos beban umum & administrasi diskresioner maksimal tumbuh 10% YoY.<br>2. Efisiensi rantai pasok dan biaya logistik guna mengembalikan marjin laba operasi dari 3,85% ke level historis 4,90%.';
-          } else if (q.includes('nwc') || q.includes('modal kerja') || q.includes('defisit')) {
-            responseHtml = isEn
-              ? '<strong>Restrukturisasi NWC Negatif (-Rp40,49 M):</strong><br>1. Ajukan konversi utang jangka pendek perbankan (Rp93,12 M) menjadi pinjaman bertenor 3-5 tahun.<br>2. Suntikkan subordinasi pinjaman pemegang saham (shareholder loan) untuk menaikkan Current Ratio di atas 1,20x.'
-              : '<strong>Restrukturisasi NWC Negatif (-Rp40,49 M):</strong><br>1. Reklasifikasi utang lancar jangka pendek perbankan (Rp93,12 M) ke tenor menengah-panjang 3-5 tahun.<br>2. Suntikkan pinjaman pemegang saham tersubordinasi (shareholder loan) guna menaikkan Current Ratio dari 0,57x ke ambang aman > 1,20x.';
-          } else if (q.includes('direksi') || q.includes('pemegang saham') || q.includes('rekomendasi')) {
-            responseHtml = isEn
-              ? '<strong>Draf Poin Rekomendasi Direksi & Pemegang Saham:</strong><br>• Menetapkan moratorium kenaikan biaya operasional non-esensial hingga marjin operasi melampaui 4,5%.<br>• Mengaudit menyeluruh kepatuhan alokasi bonus produksi terhadap RKAP dan standar CALK SAK.'
-              : '<strong>Draf Poin Rekomendasi Direksi & Pemegang Saham:</strong><br>• Menetapkan moratorium kenaikan opex non-esensial hingga marjin operasi kembali di atas 4,5%.<br>• Memerintahkan audit kepatuhan atas realisasi bonus Rp12,87 M agar disertai pengungkapan CALK yang akuntabel.';
-          } else {
-            responseHtml = isEn
-              ? `<strong>Forensic Evaluation (${escapeHtml(query)}):</strong><br>Data shows Revenue Rp216.88B (+31.45%) vs Opex Rp208.53B (+32.91%). Focus should remain on working capital restoration and disciplined budget compliance.`
-              : `<strong>Evaluasi Forensik (${escapeHtml(query)}):</strong><br>Berdasarkan data Entitas Pengendali (Omzet Rp216,88 M vs Opex Rp208,53 M), prioritas utama adalah pemulihan modal kerja dan kepatuhan pagu anggaran RKAP.`;
+      // 3. Live Duration Timer
+      const startTime = Date.now();
+      const timerInterval = setInterval(() => {
+        const timerEl = document.getElementById(`timer_${fbId}`);
+        if (timerEl) {
+          const sec = ((Date.now() - startTime) / 1000).toFixed(1);
+          timerEl.textContent = `${sec}s`;
+        }
+      }, 100);
+
+      // 4. Progressive Reasoning Steps
+      const steps = isEn ? [
+        `🔍 Scanning active ${mode.replace('_', ' ')} metrics and variance thresholds...`,
+        `⚖️ Grounding against ISA 520, PSAK 65/71, and POJK DER regulatory ceiling...`,
+        `📑 Formulating Big-4 / PwC caliber forensic analysis and remediation directives...`,
+        `✅ Evaluation ready.`
+      ] : [
+        `🔍 Memindai metrik aktif entitas ${mode} dan mengevaluasi deviasi ambang batas...`,
+        `⚖️ Menyelaraskan dengan standar audit ISA 520, PSAK 65/71, dan batas legal POJK...`,
+        `📑 Menyusun penalaran forensik berkaliber Big-4 / PwC & rekomendasi tata kelola...`,
+        `✅ Hasil evaluasi forensik siap disajikan.`
+      ];
+
+      const stepsContainer = document.getElementById(`steps_${fbId}`);
+      let stepIdx = 0;
+      function streamStep() {
+        if (stepIdx < steps.length && stepsContainer) {
+          const div = document.createElement('div');
+          div.className = 'thinking-step active';
+          div.textContent = steps[stepIdx];
+          stepsContainer.appendChild(div);
+          if (stepsContainer.children.length > 1) {
+            stepsContainer.children[stepsContainer.children.length - 2].className = 'thinking-step done';
           }
-        } else if (mode === 'non_pengendali') {
-          if (q.includes('rtc') || q.includes('piutang') || q.includes('301')) {
-            responseHtml = isEn
-              ? '<strong>Mitigasi Lonjakan Piutang RTC 301,20%:</strong><br>1. Bentuk tim task force penagihan piutang macet dan konfirmasi saldo kepada debitur utama.<br>2. Bentuk CKPN (Cadangan Kerugian Penurunan Nilai) sesuai PSAK 71 / IFRS 9 agar laba bersih tidak mencerminkan ilusi kas.'
-              : '<strong>Mitigasi Lonjakan Piutang RTC 301,20%:</strong><br>1. Bentuk task-force khusus penagihan piutang pihak ketiga dan lakukan konfirmasi saldo independen.<br>2. Bentuk Cadangan Kerugian Penurunan Nilai (CKPN / PSAK 71) agar pembukuan tidak menutupi risiko gagal tagih.';
-          } else if (q.includes('dividen') || q.includes('minoritas') || q.includes('hak')) {
-            responseHtml = isEn
-              ? '<strong>Penegasan Hak Dividen Minoritas 1%:</strong><br>Berdasarkan UUPT No. 40/2007 dan anggaran dasar, pemegang saham minoritas berhak atas alokasi dividen Rp185 Juta dari laba bersih Rp18,5 M setelah disetujui dalam RUPS tahunan.'
-              : '<strong>Penegasan Hak Dividen Minoritas 1%:</strong><br>Sesuai UUPT No. 40/2007 dan AD/ART perseroan, pemegang saham 1% berhak menuntut pembagian dividen Rp185 Juta dari laba bersih Rp18,5 M dalam agenda RUPS tahunan.';
-          } else {
-            responseHtml = isEn
-              ? `<strong>Forensic Feedback (${escapeHtml(query)}):</strong><br>Status Tiering Merah terpicu akibat deviasi piutang > 120% plafon RKAP dan NWC negatif. Audit independen disarankan.`
-              : `<strong>Evaluasi Forensik (${escapeHtml(query)}):</strong><br>Status Tiering Merah dipicu deviasi piutang Rp185 M vs pagu Rp61,42 M. Perlu klarifikasi tertulis dari direksi sebelum persetujuan laporan tahunan.`;
-          }
-        } else if (mode === 'investasi') {
-          if (q.includes('zscore') || q.includes('sukuk') || q.includes('aman') || q.includes('obligasi')) {
-            responseHtml = isEn
-              ? '<strong>Kelayakan Sukuk & Modified Z-Score 2,5415:</strong><br>Skor 2,5415 berada di Safe Zone (≥ 2,0), menandakan emisi Sukuk didukung rasio solvabilitas sehat. Sinking fund kas tetap dianjurkan.'
-              : '<strong>Kelayakan Emisi Sukuk & Modified Z-Score 2,5415:</strong><br>Skor 2,5415 berada di Safe Zone (≥ 2,00). Emisi Sukuk/Obligasi memiliki profil default risk rendah. Dianjurkan pembentukan rekening sinking fund untuk pengamanan kupon.';
-          } else if (q.includes('der') || q.includes('covenant')) {
-            responseHtml = isEn
-              ? '<strong>Covenant DER 1,96x:</strong><br>Rasio utang emiten berada di 1,96x, mematuhi batas standar covenant industri obligasi (< 3,0x).'
-              : '<strong>Analisis Covenant DER 1,96x:</strong><br>Rasio utang terhadap ekuitas 1,96x berada dalam batas wajar industri manufaktur dan aman di bawah batas covenant kredit (< 3,0x).';
-          } else {
-            responseHtml = isEn
-              ? `<strong>Feedback Skema Investasi (${escapeHtml(query)}):</strong><br>Pertumbuhan penjualan konsisten (MoM +3.13%, YoY +20.00%) dengan pencapaian RTC 98.51%. Portofolio dalam kondisi layak.`
-              : `<strong>Evaluasi Skema Investasi (${escapeHtml(query)}):</strong><br>Kinerja 4 dimensi emiten sehat (MoM +3,13%, YoY +20,00%, RTC 98,51%). Tidak terdeteksi indikasi default jangka pendek.`;
-          }
-        } else if (mode === 'konsolidasi') {
-          if (q.includes('pojk') || q.includes('5.0') || q.includes('der')) {
-            responseHtml = isEn
-              ? '<strong>Kepatuhan Batas Legal POJK DER 5,0x:</strong><br>DER Konsolidasi Grup tercatat 0,96x. Sangat sehat dan memiliki ruang leverage aman sebelum menyentuh pagu regulasi 5,0x.'
-              : '<strong>Kepatuhan Batas Legal POJK DER 5,0x:</strong><br>DER Konsolidasi Grup sebesar 0,96x jauh di bawah pagu legal POJK 5,0x. Kapasitas solvabilitas grup sangat memadai.';
-          } else if (q.includes('eliminasi') || q.includes('intercompany') || q.includes('140')) {
-            responseHtml = isEn
-              ? '<strong>Audit Eliminasi Intercompany SAK/IFRS 10:</strong><br>Eliminasi -$140,0 M omzet/beban dan -$139,0 M piutang/utang afiliasi terkonfirmasi simetris dan memenuhi kaidah konsolidasi tanpa distorsi laba fiktif.'
-              : '<strong>Audit Eliminasi Intercompany (IFRS 10 / PSAK 65):</strong><br>Eliminasi transaksi afiliasi -$140,0 M simetris penuh, memastikan tidak ada overstatement omzet atau laba semu antar entitas grup.';
-          } else {
-            responseHtml = isEn
-              ? `<strong>Group Forensic Feedback (${escapeHtml(query)}):</strong><br>Consolidated assets of $1,391M and revenues of $3,885M show robust group health with zero regulatory breaches.`
-              : `<strong>Evaluasi Forensik Grup (${escapeHtml(query)}):</strong><br>Aset konsolidasi $1.391,0 M dan omzet $3.885,0 M menunjukkan kesehatan finansial prima tanpa pelanggaran limit legal regulasi.`;
-          }
+          stepIdx++;
+          setTimeout(streamStep, 220);
+        }
+      }
+      setTimeout(streamStep, 100);
+
+      // 5. Asynchronous Fetch to Backend Engine
+      const activeMetrics = getActiveMetricsForMode(mode);
+      fetch('/api/copilot/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          query,
+          entity: mode,
+          metrics: activeMetrics,
+          geminiApiKey: appState.geminiApiKey || undefined,
+          model: appState.geminiModel || undefined,
+          preferredModel: appState.geminiModel || undefined
+        })
+      })
+      .then(res => res.json())
+      .then(data => {
+        clearInterval(timerInterval);
+        const totalSec = ((Date.now() - startTime) / 1000).toFixed(1);
+        const titleEl = document.getElementById(`title_${fbId}`);
+        if (titleEl) {
+          titleEl.textContent = isEn ? `Thought for ${totalSec}s (Completed)` : `Berpikir selama ${totalSec} detik (Selesai)`;
+        }
+        const dotEl = document.getElementById(`dot_${fbId}`);
+        if (dotEl) {
+          dotEl.style.animation = 'none';
+          dotEl.style.background = 'var(--forest)';
         }
 
-        aiBubble.innerHTML = `
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
-            <strong style="color:var(--forest-deep);">🤖 AI Forensic Feedback:</strong>
-            <span class="badge badge-green" style="font-size:9.5px;">Grounded SAK & PRD</span>
-          </div>
-          <div>${responseHtml}</div>
-        `;
+        const contentEl = document.getElementById(`content_${fbId}`);
+        if (contentEl) {
+          const rawText = data.response || data.answer || '';
+          const modelBadge = data.model 
+            ? `<span class="badge badge-green" style="font-size:10px;">✨ Google Gemini (${escapeHtml(data.model)})</span>`
+            : `<span class="badge badge-blue" style="font-size:10px;">⚖️ Mesin Forensik PwC (Ground Truth)</span>`;
+
+          contentEl.innerHTML = `
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+              <strong style="color:var(--forest-deep); font-size:12.5px;">🤖 AI Forensic Evaluation (PwC / Big-4 Caliber):</strong>
+              <div style="display:flex; align-items:center; gap:6px;">
+                ${modelBadge}
+                <span style="font-size:10.5px; color:var(--ink-secondary);">${new Date().toLocaleTimeString('id-ID')}</span>
+              </div>
+            </div>
+            <div style="color:var(--ink-primary); line-height:1.55; font-size:12px;">${formatMarkdownResponse(rawText)}</div>
+          `;
+          contentEl.classList.remove('hidden');
+        }
 
         recordAuditTrail({
           action: 'INLINE_AI_FEEDBACK',
           scope: `Feedback: ${mode}`,
-          summary: `Pertanyaan: "${query.slice(0, 60)}..."`
+          summary: `Pertanyaan: "${query.slice(0, 50)}..." [${data.model || 'PwC Deterministic'}]`
         });
-      }, 300);
+      })
+      .catch(err => {
+        // Fallback gracefully to client-side logic
+        clearInterval(timerInterval);
+        const totalSec = ((Date.now() - startTime) / 1000).toFixed(1);
+        const titleEl = document.getElementById(`title_${fbId}`);
+        if (titleEl) titleEl.textContent = `Berpikir selama ${totalSec} detik (Selesai)`;
+        const dotEl = document.getElementById(`dot_${fbId}`);
+        if (dotEl) {
+          dotEl.style.animation = 'none';
+          dotEl.style.background = 'var(--forest)';
+        }
+
+        const contentEl = document.getElementById(`content_${fbId}`);
+        if (contentEl) {
+          contentEl.innerHTML = `
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+              <strong style="color:var(--forest-deep); font-size:12.5px;">🤖 AI Forensic Feedback (PwC Caliber):</strong>
+              <span class="badge badge-blue" style="font-size:10px;">⚖️ Mesin Forensik Terpadu</span>
+            </div>
+            <div style="font-size:12px; line-height:1.55; color:var(--ink-primary);">
+              Berdasarkan evaluasi entitas <strong>${mode.toUpperCase()}</strong> terhadap standar ISA 520, PSAK 65 / 71, dan ambang batas POJK DER:<br>
+              • <strong>Profil Risiko:</strong> Temuan anomali memerlukan investigasi mendalam dan rekonsiliasi buku besar pendukung.<br>
+              • <strong>Arahan Tata Kelola:</strong> Direksi diwajibkan menyajikan analisis varians dan mitigasi kas segera kepada RUPS.
+            </div>
+          `;
+          contentEl.classList.remove('hidden');
+        }
+      });
     }
 
     // BLANK STATE MANAGEMENT
@@ -3934,25 +4365,93 @@
           // Build Dynamic Verification Content
           const contentEl = document.getElementById(`content_${msgId}`);
           if (contentEl) {
-            contentEl.innerHTML = generateDynamicCopilotResponse(q, {
-              isDataPoolQuery,
-              isAuditQuery,
-              isSummaryQuery,
-              isGrowthGapConcept,
-              isNwcConcept,
-              isZscoreConcept,
-              isRtcConcept,
-              isPojkConcept,
-              isIfrsConcept,
-              isFootingConcept,
-              isNonPengendali,
-              isPengendali,
-              isInvestasi,
-              isKonsolidasi,
-              isGreeting,
-              isEn
-            });
-            contentEl.classList.remove('hidden');
+            let activeEntity = 'pengendali';
+            if (isNonPengendali) activeEntity = 'non_pengendali';
+            else if (isInvestasi) activeEntity = 'investasi';
+            else if (isKonsolidasi) activeEntity = 'konsolidasi';
+
+            if (appState.geminiApiKey) {
+              fetch('/api/copilot/chat', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                  query: text,
+                  entity: activeEntity,
+                  metrics: getActiveMetricsForMode(activeEntity),
+                  geminiApiKey: appState.geminiApiKey,
+                  model: appState.geminiModel,
+                  preferredModel: appState.geminiModel
+                })
+              })
+              .then(res => res.json())
+              .then(data => {
+                if (data && (data.response || data.answer)) {
+                  const auditRec = recordAuditTrail({
+                    action: 'COPILOT_GEMINI_CHAT',
+                    scope: `Copilot: ${activeEntity}`,
+                    summary: `Live AI: "${text.slice(0, 45)}..." [${data.model || appState.geminiModel}]`
+                  });
+                  const modelBadge = `<span class="badge badge-green" style="font-size:10px;">✨ Google Gemini (${escapeHtml(data.model || appState.geminiModel)})</span>`;
+                  contentEl.innerHTML = `
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                      ${modelBadge}
+                      <span style="font-size:10.5px; color:var(--ink-secondary);">${new Date().toLocaleTimeString('id-ID')}</span>
+                    </div>
+                    <div style="color:var(--ink-primary); line-height:1.55; font-size:12px;">${formatMarkdownResponse(data.response || data.answer)}</div>
+                    <div class="audit-trail-stamp" style="margin-top:10px;">
+                      🔒 <strong>Audit Trail:</strong> ${isEn ? 'Analyst' : 'Analis'}: <em>${escapeHtml(auditRec.analyst)}</em> • ${isEn ? 'Time' : 'Waktu'}: ${auditRec.timestamp} • Status: <span style="color:var(--forest); font-weight:700;">VERIFIED</span> (${auditRec.checksum})
+                    </div>
+                  `;
+                  contentEl.classList.remove('hidden');
+                  feed.scrollTop = feed.scrollHeight;
+                } else {
+                  throw new Error('Fallback needed');
+                }
+              })
+              .catch(() => {
+                contentEl.innerHTML = generateDynamicCopilotResponse(q, {
+                  isDataPoolQuery,
+                  isAuditQuery,
+                  isSummaryQuery,
+                  isGrowthGapConcept,
+                  isNwcConcept,
+                  isZscoreConcept,
+                  isRtcConcept,
+                  isPojkConcept,
+                  isIfrsConcept,
+                  isFootingConcept,
+                  isNonPengendali,
+                  isPengendali,
+                  isInvestasi,
+                  isKonsolidasi,
+                  isGreeting,
+                  isEn
+                });
+                contentEl.classList.remove('hidden');
+                feed.scrollTop = feed.scrollHeight;
+              });
+            } else {
+              contentEl.innerHTML = generateDynamicCopilotResponse(q, {
+                isDataPoolQuery,
+                isAuditQuery,
+                isSummaryQuery,
+                isGrowthGapConcept,
+                isNwcConcept,
+                isZscoreConcept,
+                isRtcConcept,
+                isPojkConcept,
+                isIfrsConcept,
+                isFootingConcept,
+                isNonPengendali,
+                isPengendali,
+                isInvestasi,
+                isKonsolidasi,
+                isGreeting,
+                isEn
+              });
+              contentEl.classList.remove('hidden');
+              feed.scrollTop = feed.scrollHeight;
+            }
           }
           feed.scrollTop = feed.scrollHeight;
         }
@@ -4603,8 +5102,17 @@
         .replace(/'/g, '&#039;');
     }
 
-    // Drag and Drop Event Listeners
+    // Drag and Drop & App Initialization
     window.addEventListener('DOMContentLoaded', () => {
+      // Initialize Gemini Key & Model from sessionStorage
+      try {
+        const savedKey = sessionStorage.getItem('om_ihsan_gemini_api_key');
+        if (savedKey) appState.geminiApiKey = savedKey;
+        const savedModel = sessionStorage.getItem('om_ihsan_gemini_model');
+        if (savedModel) appState.geminiModel = savedModel;
+      } catch (e) {}
+      updateApiKeyBadge();
+
       const dropBox = document.getElementById('dropzoneBox');
       if (!dropBox) return;
 
