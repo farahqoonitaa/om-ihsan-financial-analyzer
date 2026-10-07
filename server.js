@@ -343,8 +343,14 @@ const server = http.createServer(async (req, res) => {
       // 11. AI Forensic Copilot Chat with Gemini API & Local RAG
       if (pathname === "/api/copilot/chat" && method === "POST") {
         const body = await parseBody(req);
+        const activeContext = {
+          ...(typeof body.context === 'object' ? body.context : {}),
+          ...(typeof body.metrics === 'object' ? body.metrics : {}),
+          mode: body.entity || (body.context && body.context.mode) || "",
+          entity: body.entity || (body.context && body.context.entity) || "",
+          entityName: body.entityName || (body.entity === 'non_pengendali' ? 'PT POJ (Non-Pengendali)' : (body.entity === 'pengendali' ? 'PT EPS (Pengendali)' : 'Portofolio Entitas YKPP'))
+        };
         const userQuery = body.query || "Berikan ringkasan temuan kritis hari ini.";
-        const activeContext = body.context || body.metrics || {};
         const customApiKey = body.geminiApiKey || null;
         const preferredModel = body.model || body.preferredModel || null;
 

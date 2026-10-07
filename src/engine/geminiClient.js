@@ -137,9 +137,23 @@ Berikan analisis terstruktur berstandar PwC:
     });
   }
 
-  generateDeterministicResponse(query, ctx) {
-    const q = query.toLowerCase();
-    const mode = ctx.mode || ctx.targetView || "";
+  generateDeterministicResponse(query, contextArg) {
+    const q = (query || "").toLowerCase();
+    const ctx = (typeof contextArg === 'string') ? { mode: contextArg } : (contextArg || {});
+    const mode = ctx.mode || ctx.entity || ctx.targetView || "";
+
+    // Normalize metric values from any caller format
+    const arAct = Number(ctx.arAct !== undefined ? ctx.arAct : 185.00);
+    const arTar = Number(ctx.arTar !== undefined ? ctx.arTar : 61.42);
+    const rtc = Number(ctx.rtc !== undefined ? ctx.rtc : (ctx.rtcPct !== undefined ? ctx.rtcPct : ((arAct / arTar) * 100)));
+    const nwc = Number(ctx.nwc !== undefined ? ctx.nwc : -347.18);
+    const cr = Number(ctx.cr !== undefined ? ctx.cr : (ctx.currentRatio !== undefined ? ctx.currentRatio : 0.61));
+    const ni = Number(ctx.ni !== undefined ? ctx.ni : (ctx.netIncome !== undefined ? ctx.netIncome : 18.50));
+    const div = Number(ctx.div !== undefined ? ctx.div : (ctx.nciDividend !== undefined ? ctx.nciDividend : (ni * 0.01)));
+    const revGrowth = Number(ctx.revGrowth !== undefined ? ctx.revGrowth : (ctx.revGrowthPct !== undefined ? ctx.revGrowthPct : 31.45));
+    const opexGrowth = Number(ctx.opexGrowth !== undefined ? ctx.opexGrowth : (ctx.opexGrowthPct !== undefined ? ctx.opexGrowthPct : 32.91));
+    const gap = Number(ctx.growthGap !== undefined ? ctx.growthGap : (opexGrowth - revGrowth));
+    const z = Number(ctx.z !== undefined ? ctx.z : (ctx.zScore !== undefined ? ctx.zScore : 2.5415));
 
     // PWC-LEVEL FORENSIC INQUIRY / METHODOLOGY
     if (q.includes("pwc") || q.includes("selevel pwc") || q.includes("big 4") || q.includes("big-4") || q.includes("audit forensik") || q.includes("metodologi")) {
@@ -151,15 +165,15 @@ Berikan analisis terstruktur berstandar PwC:
 
 #### 1. Executive Summary & Klasifikasi Risiko
 Berdasarkan pengujian analitis substantif berstandar Big-4, sistem mengonfirmasi temuan material:
-${ctx.rtc ? `• **Deviasi Anggaran Ekstrem (RTC Piutang):** Realisasi piutang pihak ketiga tercatat **Rp${Number(ctx.arAct||185).toFixed(2)} Miliar** vs pagu RKAP **Rp${Number(ctx.arTar||61.42).toFixed(2)} Miliar** (RTC **${Number(ctx.rtc||301.2).toFixed(2)}%**). Ambang toleransi audit PwC (> 120%) terlampaui signifikan, menempatkan entitas pada **TIERING MERAH**.` : ''}
-${ctx.growthGap ? `• **Sinyal S7 Growth Gap:** Pertumbuhan Opex (+${Number(ctx.opexGrowth||32.91).toFixed(2)}%) melampaui pertumbuhan Omzet (+${Number(ctx.revGrowth||31.45).toFixed(2)}%), mengikis marjin operasi sebesar -${Number(ctx.growthGap||1.46).toFixed(2)}% (dari 4,90% ke 3,85%).` : ''}
-${ctx.nwc ? `• **Tekanan Likuiditas & Defisit Modal Kerja:** Net Working Capital tercatat negatif **${Number(ctx.nwc) < 0 ? '-' : '+'}Rp${Math.abs(Number(ctx.nwc)).toFixed(2)} Miliar** dengan Current Ratio **${Number(ctx.cr||0.61).toFixed(2)}x**, mengindikasikan ketergantungan utang jangka pendek perbankan.` : ''}
+${rtc ? `• **Deviasi Anggaran Ekstrem (RTC Piutang):** Realisasi piutang pihak ketiga tercatat **Rp${arAct.toFixed(2)} Miliar** vs pagu RKAP **Rp${arTar.toFixed(2)} Miliar** (RTC **${rtc.toFixed(2)}%**). Ambang toleransi audit PwC (> 120%) terlampaui signifikan, menempatkan entitas pada **TIERING MERAH**.` : ''}
+${gap ? `• **Sinyal S7 Growth Gap:** Pertumbuhan Opex (+${opexGrowth.toFixed(2)}%) melampaui pertumbuhan Omzet (+${revGrowth.toFixed(2)}%), mengikis marjin operasi sebesar -${gap.toFixed(2)}% (dari 4,90% ke 3,85%).` : ''}
+• **Tekanan Likuiditas & Defisit Modal Kerja:** Net Working Capital tercatat negatif **${nwc < 0 ? '-' : '+'}Rp${Math.abs(nwc).toFixed(2)} Miliar** dengan Current Ratio **${cr.toFixed(2)}x**, mengindikasikan ketergantungan utang jangka pendek perbankan.
 
 ---
 
 #### 2. Rantai Berpikir Forensik (Chain-of-Thought / Auditor's Reasoning)
 1. **Identifikasi Anomali Substantif:** Piutang usaha yang membengkak 3x lipat di atas anggaran menciptakan risiko *revenue uncollectibility* dan distorsi arus kas operasi (*Operating Cash Flow drag*).
-2. **Evaluasi Proteksi Hak Minoritas (IFRS 10 / PSAK 65):** Hak dividen minoritas 1% (Rp${Number(ctx.div||0.185)*1000} Juta) berada dalam ancaman gagal bayar dividen tunai akibat kas terikat pada saldo piutang tak tertagih.
+2. **Evaluasi Proteksi Hak Minoritas (IFRS 10 / PSAK 65):** Hak dividen minoritas 1% (Rp${(div * 1000).toFixed(0)} Juta) berada dalam ancaman gagal bayar dividen tunai akibat kas terikat pada saldo piutang tak tertagih.
 3. **Uji Pengendalian Internal:** Deviasi 301,20% mengindikasikan lemahnya *credit approval limit* dan pengawasan manajemen risiko kredit korporasi.
 
 ---
@@ -168,6 +182,73 @@ ${ctx.nwc ? `• **Tekanan Likuiditas & Defisit Modal Kerja:** Net Working Capit
 1. **Konfirmasi Saldo Eksternal (SA 505):** Lakukan sirkularisasi konfirmasi saldo independen 100% terhadap seluruh debitur piutang di atas Rp5 Miliar.
 2. **Cadangan Kerugian Penurunan Nilai (CKPN - PSAK 71 / IFRS 9):** Bentuk CKPN berbasis *Expected Credit Loss (ECL)* agar laba bersih tidak mencerminkan ilusi akuntansi.
 3. **Restrukturisasi Modal Kerja:** Wajibkan konversi utang jangka pendek perbankan menjadi fasilitas subordinasi pemegang saham untuk mengembalikan Current Ratio > 1,20x.`;
+    }
+
+    // INQUIRIES ABOUT SPECIFIC FINDINGS / ANOMALIES ("emang temuannya apa?", "apa temuannya?", typos like "temenuan")
+    if (q.includes("temuannya apa") || q.includes("apa temuan") || q.includes("temuan apa") || q.includes("apa saja temuan") || q.includes("rincikan temuan") || q.includes("anomali apa") || q.includes("apa anomalinya") || q.includes("temenuan") || (q.includes("temuan") && (q.includes("apa") || q.includes("mana") || q.includes("apaan") || q.includes("jelaskan") || q.includes("rincian")))) {
+      if (mode === 'non_pengendali' || rtc > 120 || arAct > 0) {
+        return `### 🔍 Rincian 3 Temuan Anomali Kritis pada Entitas Non-Pengendali (PT POJ):
+Menjawab pertanyaan Anda, audit forensik berbasis ISA 520 mengonfirmasi **3 temuan anomali kuantitatif riil**:
+
+1. **🔴 Temuan 01: Lonjakan Piutang Ekstrem Melampaui Plafon RKAP (RTC ${rtc.toFixed(2)}%)**
+   • **Fakta Angka:** Realisasi piutang pihak ketiga melonjak ke **Rp${arAct.toFixed(2)} Miliar** vs Pagu RKAP **Rp${arTar.toFixed(2)} Miliar** (deviasi **+${(rtc - 100).toFixed(2)}%**).
+   • **Implikasi Forensik:** Melampaui batas toleransi 120%, secara otomatis mengunci entitas pada **Tiering Merah**. Kas operasional tersandera di debitur eksternal.
+
+2. **🔴 Temuan 02: Defisit Modal Kerja Bersih Struktural (Net Working Capital -Rp${Math.abs(nwc).toFixed(2)} Miliar)**
+   • **Fakta Angka:** Aset Lancar (**Rp${Number(ctx.ca||534.6).toFixed(2)} M**) tidak menutup Kewajiban Lancar (**Rp${Number(ctx.cl||881.78).toFixed(2)} M**), dengan **Current Ratio hanya ${cr.toFixed(2)}x** (ambang aman sehat ≥ 1,20x).
+   • **Implikasi Forensik:** Entitas mengalami tekanan likuiditas akut dan rentan gagal bayar kewajiban operasional rutin tanpa fasilitas pinjaman baru.
+
+3. **🟢 Temuan 03: Keterancaman Pembayaran Hak Dividen Minoritas 1% (Rp${(div * 1000).toFixed(0)} Juta)**
+   • **Fakta Angka:** Dari laba bersih dibukukan **Rp${ni.toFixed(2)} Miliar**, hak dividen pemegang saham minoritas 1% YKPP adalah **Rp${(div * 1000).toFixed(0)} Juta**.
+   • **Implikasi Forensik:** Di bawah PSAK 65 / IFRS 10 dan UUPT No. 40/2007, hak dividen ini wajib diproteksi. Namun karena kas riil tertahan di piutang macet, pembagian dividen tunai terancam tertunda.`;
+      } else if (mode === 'pengendali' || gap !== 0) {
+        return `### 🔍 Rincian 3 Temuan Forensik Kritis pada Entitas Pengendali (PT EPS):
+1. **🔵 Temuan 01: Sinyal S7 Growth Gap (Pertumbuhan Beban Melampaui Omzet)**
+   • Opex melonjak **+${opexGrowth.toFixed(2)}%**, melampaui pertumbuhan Omzet **+${revGrowth.toFixed(2)}%** (gap negatif **-${gap.toFixed(2)}%**), menggerus marjin laba operasi dari 4,90% ke 3,85%.
+2. **🔴 Temuan 02: Defisit Modal Kerja Bersih (NWC -Rp${Math.abs(nwc).toFixed(2)} Miliar)**
+   • Aset lancar Rp${Number(ctx.ca||52.63).toFixed(2)} M vs liabilitas lancar Rp${Number(ctx.cl||93.12).toFixed(2)} M (Current Ratio rentan **${cr.toFixed(2)}x**).
+3. **🔴 Temuan 03: Lonjakan Beban Bonus Jasa Produksi S1/S9 (2.308% Pagu RKAP)**
+   • Realisasi insentif jasa produksi melonjak hingga Rp12,87 Miliar vs pagu RKAP Rp557,7 Juta tanpa transparansi CALK memadai.`;
+      }
+    }
+
+    // WHY RED TIER INQUIRY
+    if (q.includes("kenapa merah") || q.includes("mengapa merah") || q.includes("alasan merah") || q.includes("tiering merah") || q.includes("kenapa masuk tiering") || q.includes("kenapa bisa merah")) {
+      return `### 🔴 Mengapa Entitas Masuk Klasifikasi "Tiering Merah"?
+Berdasarkan Pedoman Tata Kelola Risiko Finansial YKPP & Standar Pengawasan Forensik:
+
+1. **Pelanggaran Pagu RKAP Piutang (Kriteria Utama):**
+   • Ambang Hijau (Aman): RTC ≤ 105%
+   • Ambang Kuning (Waspada): 105% < RTC ≤ 120%
+   • **Ambang Merah (Kritis): RTC > 120%**
+   • *Realisasi Piutang tercatat Rp${arAct.toFixed(2)} Miliar vs Pagu RKAP Rp${arTar.toFixed(2)} Miliar = **RTC ${rtc.toFixed(2)}%** (melonjak +${(rtc - 100).toFixed(2)}% di atas plafon anggaran).*
+
+2. **Dua Faktor Pemicu Tambahan (Compounding Drivers):**
+   • **Defisit Likuiditas Kas:** Current Ratio **${cr.toFixed(2)}x** (< 1,00x) dengan modal kerja negatif **${nwc < 0 ? '-' : '+'}Rp${Math.abs(nwc).toFixed(2)} Miliar**.
+   • **Risiko Pembagian Dividen:** Kas entitas tidak cukup likuid untuk membayarkan dividen minoritas 1% (Rp${(div * 1000).toFixed(0)} Juta) secara tunai.
+
+3. **Status Audit:** Klasifikasi ini mengharuskan pembentukan gugus tugas penagihan piutang dan konfirmasi saldo independen ke debitur.`;
+    }
+
+    // REMEDIATION & SOLUTIONS INQUIRY
+    if (q.includes("solusi") || q.includes("mitigasi") || q.includes("rekomendasi") || q.includes("bagaimana cara") || q.includes("langkah konkrit") || q.includes("action plan") || q.includes("gimana caranya")) {
+      return `### 🛠️ Rencana Aksi Remediasi Strategis (Rekomendasi Berstandar PwC):
+1. **Pembentukan Gugus Tugas Penagihan Piutang Khusus (Task Force):**
+   • Kirimkan surat konfirmasi saldo independen (*circularization letter* sesuai SA 505) kepada debitur utama dengan saldo > Rp5 Miliar.
+   • Lakukan moratorium fasilitas kredit bagi debitur yang menunggak lebih dari 60 hari.
+2. **Pencadangan Kerugian Piutang (CKPN / PSAK 71):**
+   • Bentuk cadangan kerugian penurunan nilai berbasis *Expected Credit Loss (ECL)* agar laba bersih Rp${ni.toFixed(2)} Miliar tidak mencerminkan laba semu.
+3. **Restrukturisasi Modal Kerja & Likuiditas:**
+   • Negosiasi perpanjangan tenor utang lancar perbankan menjadi pinjaman jangka menengah (3-5 tahun) untuk mendongkrak Current Ratio ke atas 1,20x.
+   • Amankan alokasi hak dividen tunai 1% (Rp${(div * 1000).toFixed(0)} Juta) melalui rekening penampung khusus (*escrow account*).`;
+    }
+
+    // DIVIDENDS & MINORITY INQUIRY
+    if (q.includes("dividen") || q.includes("minoritas") || q.includes("1%")) {
+      return `### 💵 Hak Dividen Pemegang Saham Minoritas 1% (Rp${(div * 1000).toFixed(0)} Juta):
+• **Kewajiban Hukum:** Berdasarkan Pasal 71 UUPT No. 40/2007 dan standar PSAK 65 / IFRS 10, hak pemegang saham minoritas sebesar 1% atas laba bersih Rp${ni.toFixed(2)} Miliar adalah **Rp${(div * 1000).toFixed(0)} Juta**.
+• **Titik Kritis Forensik:** Laba bersih ada di atas kertas, namun kas riil belum masuk ke rekening perseroan karena tersandera di saldo piutang Rp${arAct.toFixed(2)} Miliar.
+• **Hak Pemegang Saham:** YKPP sebagai pemegang saham minoritas berhak menolak pembagian dividen dalam bentuk saham (*scrip*) dan berhak meminta kepastian jadwal pembayaran tunai dalam agenda RUPS tahunan.`;
     }
 
     if (q.includes("nci") || q.includes("disparitas") || q.includes("subsidiary ii")) {
@@ -188,9 +269,6 @@ Di bawah **IFRS 10 / PSAK 65**, kelebihan alokasi NCI ini berisiko:
     }
 
     if (q.includes("rtc") || q.includes("piutang") || q.includes("rkap") || q.includes("cita-cita") || q.includes("target")) {
-      const arAct = ctx.arAct || 185.00;
-      const arTar = ctx.arTar || 61.42;
-      const rtc = ctx.rtc || ((arAct / arTar) * 100);
       return `### 1. Evaluasi Rasio RTC Piutang terhadap Plafon RKAP
 - **Formula Baku:** RTC = (Realisasi Aktual Rp${arAct.toFixed(2)} M / Pagu RKAP Rp${arTar.toFixed(2)} M) × 100% = **${rtc.toFixed(2)}%**
 - **Ambang Batas Tiering Pengawasan:**
@@ -199,7 +277,7 @@ Di bawah **IFRS 10 / PSAK 65**, kelebihan alokasi NCI ini berisiko:
   * **Merah (Lonjakan Kritis):** RTC > 120% ➔ **Kondisi Entitas Saat Ini (${rtc.toFixed(2)}%)**
 
 ### 2. Implikasi Terhadap Hak Pemegang Saham Minoritas (1% NCI)
-Meskipun Laba Bersih tercatat Rp${Number(ctx.ni||18.5).toFixed(2)} Miliar (Hak Dividen 1% = Rp${Number(ctx.div||0.185)*1000} Juta), lonjakan piutang Rp${arAct.toFixed(2)} Miliar menyebabkan kas riil tersandera, meningkatkan risiko *capital call* dan penundaan pembagian dividen.
+Meskipun Laba Bersih tercatat Rp${ni.toFixed(2)} Miliar (Hak Dividen 1% = Rp${(div * 1000).toFixed(0)} Juta), lonjakan piutang Rp${arAct.toFixed(2)} Miliar menyebabkan kas riil tersandera, meningkatkan risiko *capital call* dan penundaan pembagian dividen.
 
 ### 3. Rekomendasi Forensik
 1. Pembentukan Gugus Tugas Penagihan Piutang Khusus.
