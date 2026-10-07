@@ -154,6 +154,84 @@ Berikan analisis terstruktur berstandar PwC:
     const opexGrowth = Number(ctx.opexGrowth !== undefined ? ctx.opexGrowth : (ctx.opexGrowthPct !== undefined ? ctx.opexGrowthPct : 32.91));
     const gap = Number(ctx.growthGap !== undefined ? ctx.growthGap : (opexGrowth - revGrowth));
     const z = Number(ctx.z !== undefined ? ctx.z : (ctx.zScore !== undefined ? ctx.zScore : 2.5415));
+    const divMinoritas = (ni * 0.01) * 1000;
+
+    // 0. WHAT-IF & SIMULATION SCENARIO ENGINE (e.g. "kalo rtc 70% gmn", "jika piutang 50 miliar", "kalo nwc positif")
+    const rtcSimMatch = q.match(/(?:rtc|piutang)\s*(?:nya)?\s*(?:menjadi|turun|naik|jadi|sebesar|=|adalah|ke)?\s*(\d+(?:[.,]\d+)?)\s*%/i)
+                     || q.match(/kalo\s+rtc\s+(\d+(?:[.,]\d+)?)/i)
+                     || q.match(/kalau\s+rtc\s+(\d+(?:[.,]\d+)?)/i)
+                     || q.match(/jika\s+rtc\s+(\d+(?:[.,]\d+)?)/i)
+                     || q.match(/misal(?:kan)?\s+rtc\s+(\d+(?:[.,]\d+)?)/i)
+                     || q.match(/what\s+if\s+rtc\s+(?:is\s+)?(\d+(?:[.,]\d+)?)/i);
+
+    if (rtcSimMatch) {
+      const simRtc = parseFloat(rtcSimMatch[1].replace(',', '.'));
+      const simArAct = (arTar * simRtc) / 100;
+      const arDelta = arAct - simArAct;
+      const simNwc = nwc + arDelta;
+
+      let tier = "";
+      let tierColor = "";
+      let tierDesc = "";
+      if (simRtc <= 105) {
+        tier = "Tiering Hijau (Zona Aman / Terkendali)";
+        tierColor = "🟢";
+        tierDesc = "Realisasi piutang berada di bawah atau sangat disiplin dalam batas toleransi pagu RKAP (≤ 105%).";
+      } else if (simRtc <= 120) {
+        tier = "Tiering Kuning (Waspada / Enhanced Monitoring)";
+        tierColor = "🟡";
+        tierDesc = "Realisasi piutang melampaui plafon RKAP namun masih berada dalam ambang toleransi moderat (105% - 120%).";
+      } else {
+        tier = "Tiering Merah (Kritis / High Risk Exposure)";
+        tierColor = "🔴";
+        tierDesc = "Lonjakan piutang melampaui ambang batas toleransi kritis 120%, menyandera likuiditas kas operasional.";
+      }
+
+      return `### 🧪 Simulasi Skenario Forensik: Jika RTC Piutang = ${simRtc}%
+Menjawab simulasi skenario Anda, berikut adalah analisis komputasional dampak jika rasio RTC piutang menjadi **${simRtc}%**:
+
+#### 1. Perubahan Status Tiering Risiko:
+• **Status Sebelumnya:** 🔴 **Tiering Merah** (RTC ${rtc.toFixed(1)}% > 120% Plafon)
+• **Status Skenario Baru:** ${tierColor} **${tier}**
+• **Evaluasi Regulasi:** ${tierDesc}
+
+#### 2. Dampak Finansial & Likuiditas Kas Riil:
+• **Plafon RKAP Piutang:** Rp${arTar.toFixed(2)} Miliar
+• **Realisasi Piutang Baru:** ${simRtc}% × Rp${arTar.toFixed(2)} M = **Rp${simArAct.toFixed(2)} Miliar**
+• **Kas Tertagih / Pengurangan Saldo Piutang:** Rp${arAct.toFixed(2)} M - Rp${simArAct.toFixed(2)} M = **+Rp${arDelta.toFixed(2)} Miliar**
+• **Perbaikan Modal Kerja Bersih (NWC):** Aliran kas masuk dari pelunasan debitur memangkas defisit modal kerja dari **${nwc < 0 ? '-' : '+'}Rp${Math.abs(nwc).toFixed(2)} M** menjadi **${simNwc < 0 ? '-' : '+'}Rp${Math.abs(simNwc).toFixed(2)} M** (${Math.round((arDelta/Math.abs(nwc))*100)}% pemulihan defisit).
+
+#### 3. Dampak Terhadap Hak Dividen Minoritas 1% (Rp${divMinoritas.toFixed(0)} Juta):
+${simRtc <= 105 
+  ? `• **Status Dividen:** 🟢 **Sangat Aman & Likuid**. Kas riil tidak lagi tersandera di debitur macet. Hak dividen minoritas 1% YKPP sebesar **Rp${divMinoritas.toFixed(0)} Juta** dijamin 100% aman dan likuid untuk disetorkan tunai ke kas yayasan tepat waktu.`
+  : (simRtc <= 120
+    ? `• **Status Dividen:** 🟡 **Moderately Secure**. Pembagian dividen Rp${divMinoritas.toFixed(0)} Juta dapat dipenuhi dengan monitoring berkala atas penagihan piutang mingguan.`
+    : `• **Status Dividen:** 🔴 **Berisiko Tertunda**. Kas masih tersandera di atas batas toleransi 120%, sehingga pembagian dividen tunai tetap berisiko terhambat.`
+)}
+
+#### 4. Implikasi Tata Kelola & Prosedur Audit:
+${simRtc <= 105 
+  ? `• Mandat pembentukan Gugus Tugas Penagihan Darurat dapat dicabut.\n• Entitas memenuhi tata kelola anggaran RKAP dengan predikat **Disiplin Anggaran Sangat Baik** (Good Corporate Governance).`
+  : `• Tetap lakukan konfirmasi saldo independen (SA 505) dan pemantauan berkala debitur utama.`
+}`;
+    }
+
+    const arNomMatch = q.match(/(?:kalo|kalau|jika|bagaimana jika|misal)\s+piutang(?:nya)?\s*(?:menjadi|turun|naik|jadi|sebesar|=|ke)?\s*(\d+(?:[.,]\d+)?)\s*(?:m|miliar|jt|juta)?/i);
+    if (arNomMatch && (q.includes("m") || q.includes("miliar") || q.includes("gmn") || q.includes("gimana") || q.includes("bagaimana"))) {
+      const nominal = parseFloat(arNomMatch[1].replace(',', '.'));
+      const calcRtc = ((nominal / arTar) * 100).toFixed(1);
+      const arDelta = arAct - nominal;
+      const simNwc = nwc + arDelta;
+      const tier = nominal <= (arTar * 1.05) ? '🟢 Tiering Hijau (Aman)' : (nominal <= (arTar * 1.20) ? '🟡 Tiering Kuning (Waspada)' : '🔴 Tiering Merah (Kritis)');
+
+      return `### 🧪 Simulasi Skenario Forensik: Jika Realisasi Piutang = Rp${nominal.toFixed(2)} Miliar
+
+Jika saldo piutang berubah menjadi **Rp${nominal.toFixed(2)} Miliar** (terhadap Plafon RKAP Rp${arTar.toFixed(2)} Miliar):
+• **Rasio RTC Terhitung:** **${calcRtc}%** (Klasifikasi: **${tier}**)
+• **Kas Tertagih Masuk ke Kas Perseroan:** **+Rp${arDelta.toFixed(2)} Miliar**
+• **Posisi Modal Kerja Baru:** Defisit NWC berkurang menjadi **${simNwc < 0 ? '-' : '+'}Rp${Math.abs(simNwc).toFixed(2)} Miliar**
+• **Kepastian Hak Dividen 1% (Rp${divMinoritas.toFixed(0)} Juta):** ${nominal <= (arTar * 1.05) ? '🟢 Dijamin likuid dan dapat dibagikan tunai segera tanpa hambatan kas.' : '🟡 Memerlukan penjadwalan kas prioritas.'}`;
+    }
 
     // PWC-LEVEL FORENSIC INQUIRY / METHODOLOGY
     if (q.includes("pwc") || q.includes("selevel pwc") || q.includes("big 4") || q.includes("big-4") || q.includes("audit forensik") || q.includes("metodologi")) {

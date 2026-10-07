@@ -2313,7 +2313,10 @@
     function clearGeminiApiKey() {
       appState.geminiApiKey = '';
       try {
+        localStorage.removeItem('om_ihsan_gemini_api_key');
+        localStorage.removeItem('om_ihsan_gemini_model');
         sessionStorage.removeItem('om_ihsan_gemini_api_key');
+        sessionStorage.removeItem('om_ihsan_gemini_model');
       } catch (e) {}
       const input = document.getElementById('inputUserApiKey');
       if (input) input.value = '';
@@ -2329,7 +2332,7 @@
       recordAuditTrail({
         action: 'GEMINI_API_KEY_CLEARED',
         scope: 'Security',
-        summary: 'Gemini API key dihapus dari memori sesi'
+        summary: 'Gemini API key dihapus dari memori lokal dan sesi'
       });
       showToast(appState.lang === 'en' ? 'Gemini API key removed.' : 'Gemini API key dihapus.', 'info');
     }
@@ -2358,55 +2361,77 @@
         alertBox.style.background = '#F4FAF6';
         alertBox.style.color = 'var(--forest-deep)';
         alertBox.style.border = '1px solid #B8DAC8';
-        alertBox.innerHTML = `⏳ <em>${isEn ? 'Testing connection with Google Gemini...' : 'Menguji koneksi ke Google Gemini AI Studio...'}</em>`;
+        alertBox.innerHTML = `⏳ <em>${isEn ? 'Testing direct connection to Google Gemini API...' : 'Menguji koneksi langsung ke Google Gemini API...'}</em>`;
       }
 
       try {
-        const resp = await fetch('/api/copilot/chat', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            query: 'Koneksi verifikasi singkat forensik',
-            entity: 'pengendali',
-            metrics: { footingBalanced: true },
-            geminiApiKey: key,
-            model: chosenModel,
-            preferredModel: chosenModel
-          })
+        let activeModel = chosenModel;
+        try {
+          // Tier 1: Direct Browser Verification (CORS Native to generativelanguage.googleapis.com)
+          const directRes = await callGeminiApiFromBrowser(
+            key,
+            'Tes verifikasi koneksi Google Gemini API untuk analisis forensik keuangan YKPP',
+            'pengendali',
+            { footingBalanced: true },
+            [],
+            chosenModel
+          );
+          if (directRes && directRes.text) {
+            activeModel = directRes.model || chosenModel;
+          }
+        } catch (browserErr) {
+          console.warn('Direct browser test error, trying server fallback:', browserErr);
+          const isFileProtocol = window.location.protocol === 'file:' || !window.location.host;
+          const serverUrl = isFileProtocol ? 'http://localhost:3005/api/copilot/chat' : '/api/copilot/chat';
+          const resp = await fetch(serverUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              query: 'Koneksi verifikasi singkat forensik',
+              entity: 'pengendali',
+              metrics: { footingBalanced: true },
+              geminiApiKey: key,
+              model: chosenModel,
+              preferredModel: chosenModel
+            })
+          });
+          const data = await resp.json();
+          if (resp.ok && data && (data.response || data.answer)) {
+            activeModel = data.model || chosenModel;
+          } else {
+            throw browserErr;
+          }
+        }
+
+        appState.geminiApiKey = key;
+        appState.geminiModel = activeModel;
+        try {
+          localStorage.setItem('om_ihsan_gemini_api_key', key);
+          localStorage.setItem('om_ihsan_gemini_model', activeModel);
+          sessionStorage.setItem('om_ihsan_gemini_api_key', key);
+          sessionStorage.setItem('om_ihsan_gemini_model', activeModel);
+        } catch (e) {}
+
+        updateApiKeyBadge();
+
+        if (alertBox) {
+          alertBox.style.background = '#E8F5E9';
+          alertBox.style.color = '#2E7D32';
+          alertBox.style.border = '1px solid #A5D6A7';
+          alertBox.innerHTML = `✅ <strong>${isEn ? 'Connection Successful!' : 'Koneksi Berhasil!'}</strong> ${isEn ? 'Active model:' : 'Model aktif:'} <code>${appState.geminiModel}</code>.<br><span style="font-size:11px;">${isEn ? 'Key stored safely in browser memory.' : 'Key tersimpan aman di browser & siap digunakan untuk interaksi tak terbatas.'}</span>`;
+        }
+
+        recordAuditTrail({
+          action: 'GEMINI_API_KEY_SAVED',
+          scope: 'Configuration',
+          summary: `Gemini API key terhubung aktif dengan model ${appState.geminiModel}`
         });
 
-        const data = await resp.json();
-        if (resp.ok && data && (data.response || data.answer)) {
-          appState.geminiApiKey = key;
-          appState.geminiModel = data.model || chosenModel;
-          try {
-            sessionStorage.setItem('om_ihsan_gemini_api_key', key);
-            sessionStorage.setItem('om_ihsan_gemini_model', appState.geminiModel);
-          } catch (e) {}
+        showToast(`${isEn ? 'Gemini API active' : 'Gemini API aktif'} (${appState.geminiModel})`, 'success');
 
-          updateApiKeyBadge();
-
-          if (alertBox) {
-            alertBox.style.background = '#E8F5E9';
-            alertBox.style.color = '#2E7D32';
-            alertBox.style.border = '1px solid #A5D6A7';
-            alertBox.innerHTML = `✅ <strong>${isEn ? 'Connection Successful!' : 'Koneksi Berhasil!'}</strong> ${isEn ? 'Active model:' : 'Model aktif:'} <code>${appState.geminiModel}</code>.<br><span style="font-size:11px;">${isEn ? 'Key stored safely in session memory.' : 'Key tersimpan aman di memori sesi aktif browser.'}</span>`;
-          }
-
-          recordAuditTrail({
-            action: 'GEMINI_API_KEY_SAVED',
-            scope: 'Configuration',
-            summary: `Gemini API key terhubung aktif dengan model ${appState.geminiModel}`
-          });
-
-          showToast(`${isEn ? 'Gemini API active' : 'Gemini API aktif'} (${appState.geminiModel})`, 'success');
-
-          setTimeout(() => {
-            closeApiKeyModal();
-          }, 1200);
-        } else {
-          throw new Error(data.error || (isEn ? 'Connection test failed.' : 'Uji coba koneksi gagal.'));
-        }
+        setTimeout(() => {
+          closeApiKeyModal();
+        }, 1200);
       } catch (err) {
         if (alertBox) {
           alertBox.style.background = '#FEECEB';
@@ -2414,6 +2439,30 @@
           alertBox.style.border = '1px solid #F5C2C0';
           alertBox.innerHTML = `❌ <strong>${isEn ? 'Connection Failed:' : 'Gagal Terhubung:'}</strong> ${escapeHtml(err.message)}<br><span style="font-size:11px;">${isEn ? 'Verify key validity in Google AI Studio.' : 'Pastikan API Key benar dan memiliki akses Google AI Studio.'}</span>`;
         }
+      }
+    }
+
+    function saveQuickApiKey(inputId, mode) {
+      const el = document.getElementById(inputId);
+      if (!el || !el.value.trim()) {
+        showToast('Harap tempel Gemini API Key Anda', 'warning');
+        return;
+      }
+      const key = el.value.trim();
+      appState.geminiApiKey = key;
+      try {
+        localStorage.setItem('om_ihsan_gemini_api_key', key);
+        sessionStorage.setItem('om_ihsan_gemini_api_key', key);
+      } catch (e) {}
+      updateApiKeyBadge();
+      showToast('✨ Google Gemini API Key aktif!', 'success');
+      
+      // Auto-submit current feedback query
+      const feedInput = document.getElementById(`inputInlineFeedback_${mode}`);
+      if (feedInput && feedInput.value.trim()) {
+        submitInlineFeedback(mode);
+      } else {
+        askInlineAiFeedback(mode, 'Jelaskan ringkasan temuan dan rekomendasi mitigasi untuk entitas ini');
       }
     }
 
@@ -2980,6 +3029,102 @@ ${JSON.stringify(metrics, null, 2)}`;
       const q = query.toLowerCase().trim();
       const isEn = appState.lang === 'en';
 
+      // 0. WHAT-IF & SIMULATION SCENARIO ENGINE (e.g. "kalo rtc 70% gmn", "jika piutang 50 miliar", "kalo nwc positif")
+      const rtcSimMatch = q.match(/(?:rtc|piutang)\s*(?:nya)?\s*(?:menjadi|turun|naik|jadi|sebesar|=|adalah|ke)?\s*(\d+(?:[.,]\d+)?)\s*%/i)
+                       || q.match(/kalo\s+rtc\s+(\d+(?:[.,]\d+)?)/i)
+                       || q.match(/kalau\s+rtc\s+(\d+(?:[.,]\d+)?)/i)
+                       || q.match(/jika\s+rtc\s+(\d+(?:[.,]\d+)?)/i)
+                       || q.match(/misal(?:kan)?\s+rtc\s+(\d+(?:[.,]\d+)?)/i)
+                       || q.match(/what\s+if\s+rtc\s+(?:is\s+)?(\d+(?:[.,]\d+)?)/i);
+
+      if (rtcSimMatch) {
+        const simRtc = parseFloat(rtcSimMatch[1].replace(',', '.'));
+        const arTar = metrics.arTar || 61.42;
+        const curArAct = metrics.arAct || 185.00;
+        const curNwc = metrics.nwc || -347.18;
+        const curNi = metrics.netIncome || 18.50;
+        const simArAct = (arTar * simRtc) / 100;
+        const arDelta = curArAct - simArAct;
+        const simNwc = curNwc + arDelta;
+        const divMinoritas = (curNi * 0.01) * 1000;
+
+        let tier = "";
+        let tierColor = "";
+        let tierDesc = "";
+        if (simRtc <= 105) {
+          tier = isEn ? "Tiering Green (Safe Zone / Controlled)" : "Tiering Hijau (Zona Aman / Terkendali)";
+          tierColor = "🟢";
+          tierDesc = isEn 
+            ? "Trade receivables realization is strictly within the RKAP budget tolerance ceiling (≤ 105%)."
+            : "Realisasi piutang berada di bawah atau sangat disiplin dalam batas toleransi pagu RKAP (≤ 105%).";
+        } else if (simRtc <= 120) {
+          tier = isEn ? "Tiering Yellow (Watchlist / Enhanced Monitoring)" : "Tiering Kuning (Waspada / Enhanced Monitoring)";
+          tierColor = "🟡";
+          tierDesc = isEn 
+            ? "Receivables slightly exceed the budget ceiling but stay within acceptable moderate tolerance (105% - 120%)."
+            : "Realisasi piutang melampaui plafon RKAP namun masih berada dalam ambang toleransi moderat (105% - 120%).";
+        } else {
+          tier = isEn ? "Tiering Red (Critical / High Risk)" : "Tiering Merah (Kritis / High Risk Exposure)";
+          tierColor = "🔴";
+          tierDesc = isEn 
+            ? "Receivables overrun breaches the 120% critical threshold, freezing operational cash."
+            : "Lonjakan piutang melampaui ambang batas toleransi kritis 120%, menyandera likuiditas kas operasional.";
+        }
+
+        return `
+### 🧪 Simulasi Skenario Forensik: Jika RTC Piutang = ${simRtc}%
+Menjawab simulasi skenario Anda, berikut adalah analisis komputasional dampak jika rasio RTC piutang menjadi **${simRtc}%**:
+
+#### 1. Perubahan Status Tiering Risiko:
+• **Status Sebelumnya:** 🔴 **Tiering Merah** (RTC ${((curArAct / arTar)*100).toFixed(1)}% > 120% Plafon)
+• **Status Skenario Baru:** ${tierColor} **${tier}**
+• **Evaluasi Regulasi:** ${tierDesc}
+
+#### 2. Dampak Finansial & Likuiditas Kas Riil:
+• **Plafon RKAP Piutang:** Rp${arTar.toFixed(2)} Miliar
+• **Realisasi Piutang Baru:** ${simRtc}% × Rp${arTar.toFixed(2)} M = **Rp${simArAct.toFixed(2)} Miliar**
+• **Kas Tertagih / Pengurangan Saldo Piutang:** Rp${curArAct.toFixed(2)} M - Rp${simArAct.toFixed(2)} M = **+Rp${arDelta.toFixed(2)} Miliar**
+• **Perbaikan Modal Kerja Bersih (NWC):** Aliran kas masuk dari pelunasan debitur memangkas defisit modal kerja dari **${curNwc < 0 ? '-' : '+'}Rp${Math.abs(curNwc).toFixed(2)} M** menjadi **${simNwc < 0 ? '-' : '+'}Rp${Math.abs(simNwc).toFixed(2)} M** (${Math.round((arDelta/Math.abs(curNwc))*100)}% pemulihan defisit).
+
+#### 3. Dampak Terhadap Hak Dividen Minoritas 1% (Rp${divMinoritas.toFixed(0)} Juta):
+${simRtc <= 105 
+  ? `• **Status Dividen:** 🟢 **Sangat Aman & Likuid**. Kas riil tidak lagi tersandera di debitur macet. Hak dividen minoritas 1% YKPP sebesar **Rp${divMinoritas.toFixed(0)} Juta** dijamin 100% aman dan likuid untuk disetorkan tunai ke kas yayasan tepat waktu.`
+  : (simRtc <= 120
+    ? `• **Status Dividen:** 🟡 **Moderately Secure**. Pembagian dividen Rp${divMinoritas.toFixed(0)} Juta dapat dipenuhi dengan monitoring berkala atas penagihan piutang mingguan.`
+    : `• **Status Dividen:** 🔴 **Berisiko Tertunda**. Kas masih tersandera di atas batas toleransi 120%, sehingga pembagian dividen tunai tetap berisiko terhambat.`
+)}
+
+#### 4. Implikasi Tata Kelola & Prosedur Audit:
+${simRtc <= 105 
+  ? `• Mandat pembentukan Gugus Tugas Penagihan Darurat dapat dicabut.\n• Entitas memenuhi tata kelola anggaran RKAP dengan predikat **Disiplin Anggaran Sangat Baik** (Good Corporate Governance).`
+  : `• Tetap lakukan konfirmasi saldo independen (SA 505) dan pemantauan berkala debitur utama.`
+}
+`;
+      }
+
+      // What-If nominal piutang simulation
+      const arNomMatch = q.match(/(?:kalo|kalau|jika|bagaimana jika|misal)\s+piutang(?:nya)?\s*(?:menjadi|turun|naik|jadi|sebesar|=|ke)?\s*(\d+(?:[.,]\d+)?)\s*(?:m|miliar|jt|juta)?/i);
+      if (arNomMatch && (q.includes("m") || q.includes("miliar") || q.includes("gmn") || q.includes("gimana") || q.includes("bagaimana"))) {
+        const nominal = parseFloat(arNomMatch[1].replace(',', '.'));
+        const arTar = metrics.arTar || 61.42;
+        const calcRtc = ((nominal / arTar) * 100).toFixed(1);
+        const curArAct = metrics.arAct || 185.00;
+        const curNwc = metrics.nwc || -347.18;
+        const arDelta = curArAct - nominal;
+        const simNwc = curNwc + arDelta;
+        const tier = nominal <= (arTar * 1.05) ? '🟢 Tiering Hijau (Aman)' : (nominal <= (arTar * 1.20) ? '🟡 Tiering Kuning (Waspada)' : '🔴 Tiering Merah (Kritis)');
+
+        return `
+### 🧪 Simulasi Skenario Forensik: Jika Realisasi Piutang = Rp${nominal.toFixed(2)} Miliar
+
+Jika saldo piutang berubah menjadi **Rp${nominal.toFixed(2)} Miliar** (terhadap Plafon RKAP Rp${arTar.toFixed(2)} Miliar):
+• **Rasio RTC Terhitung:** **${calcRtc}%** (Klasifikasi: **${tier}**)
+• **Kas Tertagih Masuk ke Kas Perseroan:** **+Rp${arDelta.toFixed(2)} Miliar**
+• **Posisi Modal Kerja Baru:** Defisit NWC berkurang menjadi **${simNwc < 0 ? '-' : '+'}Rp${Math.abs(simNwc).toFixed(2)} Miliar**
+• **Kepastian Hak Dividen 1% (Rp185 Juta):** ${nominal <= (arTar * 1.05) ? '🟢 Dijamin likuid dan dapat dibagikan tunai segera tanpa hambatan kas.' : '🟡 Memerlukan penjadwalan kas prioritas.'}
+`;
+      }
+
       // 1. Asking about what the findings/anomalies are
       if (q.includes("temuannya apa") || q.includes("apa temuan") || q.includes("temuan apa") || q.includes("apa saja temuan") || q.includes("rincikan temuan") || q.includes("jelaskan temuan") || q.includes("detail temuan") || q.includes("anomali apa") || q.includes("apa anomalinya") || q.includes("temenuan") || (q.includes("temuan") && (q.includes("apa") || q.includes("mana") || q.includes("apaan") || q.includes("jelaskan") || q.includes("lihat")))) {
         if (mode === 'non_pengendali') {
@@ -3126,6 +3271,27 @@ Berdasarkan pengujian analitis atas data entitas **${mode.toUpperCase()}**:
       if (!feed) return;
 
       const isEn = appState.lang === 'en';
+
+      // Check if user pasted API Key directly into prompt
+      if (query.startsWith("AIza") && query.length >= 35) {
+        inputEl.value = '';
+        appState.geminiApiKey = query;
+        try {
+          localStorage.setItem('om_ihsan_gemini_api_key', query);
+          sessionStorage.setItem('om_ihsan_gemini_api_key', query);
+        } catch (e) {}
+        updateApiKeyBadge();
+
+        const successBubble = document.createElement('div');
+        successBubble.style.cssText = 'background:#E8F5E9; border:1px solid #A5D6A7; border-radius:6px; padding:10px 14px; font-size:12px; margin-bottom:10px; color:#2E7D32;';
+        successBubble.innerHTML = `
+          ✅ <strong>Google Gemini API Key Berhasil Disimpan & Diaktifkan!</strong><br>
+          <span style="font-size:11px;">Koneksi live AI Google Gemini kini aktif di browser Anda. Seluruh pertanyaan, analisis data, dan simulasi skenario (seperti <em>"kalo rtc 70% gmn"</em>) akan langsung dijawab oleh Google Gemini AI secara real-time. Silakan ajukan pertanyaan analisis Anda!</span>
+        `;
+        feed.appendChild(successBubble);
+        showToast('Google Gemini API Key aktif!', 'success');
+        return;
+      }
 
       // 1. User Message Bubble
       const userBubble = document.createElement('div');
@@ -3278,9 +3444,15 @@ Berdasarkan pengujian analitis atas data entitas **${mode.toUpperCase()}**:
       const contentEl = document.getElementById(`content_${fbId}`);
       if (contentEl) {
         const apiKeyHint = !appState.geminiApiKey ? `
-          <div style="margin-top:8px; padding:6px 10px; background:#F4FAF6; border:1px solid #B8DAC8; border-radius:6px; font-size:11px; display:flex; justify-content:space-between; align-items:center;">
-            <span>💡 <strong>Ingin AI berpikir lebih fleksibel & interaktif?</strong> Masukkan Google Gemini API Key Anda.</span>
-            <button type="button" onclick="openApiKeyModal()" class="btn btn-secondary btn-sm" style="font-size:10px; padding:2px 8px;">🔑 Atur Gemini Key</button>
+          <div style="margin-top:10px; padding:10px 12px; background:#F4FAF6; border:1px solid #B8DAC8; border-radius:6px; font-size:11px; color:var(--forest-deep);">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+              <span>🔑 <strong>Aktifkan Google Gemini Live AI:</strong> Tempel API Key Anda di sini untuk penalaran tak terbatas:</span>
+              <button type="button" onclick="openApiKeyModal()" style="background:none; border:none; font-size:10.5px; color:var(--forest); cursor:pointer; text-decoration:underline;">Pilih Model</button>
+            </div>
+            <div style="display:flex; gap:6px;">
+              <input type="password" id="quickApiKey_${fbId}" placeholder="Tempel Gemini API Key (AIzaSy...)" style="flex:1; padding:5px 8px; font-size:11px; border:1px solid #B8DAC8; border-radius:4px; font-family:monospace;" />
+              <button type="button" onclick="saveQuickApiKey('quickApiKey_${fbId}', '${mode}')" class="btn btn-primary" style="font-size:11px; padding:5px 12px; white-space:nowrap;">⚡ Aktifkan Key</button>
+            </div>
           </div>
         ` : '';
 
@@ -5357,11 +5529,11 @@ Berdasarkan pengujian analitis atas data entitas **${mode.toUpperCase()}**:
 
     // Drag and Drop & App Initialization
     window.addEventListener('DOMContentLoaded', () => {
-      // Initialize Gemini Key & Model from sessionStorage
+      // Initialize Gemini Key & Model from localStorage or sessionStorage
       try {
-        const savedKey = sessionStorage.getItem('om_ihsan_gemini_api_key');
+        const savedKey = localStorage.getItem('om_ihsan_gemini_api_key') || sessionStorage.getItem('om_ihsan_gemini_api_key');
         if (savedKey) appState.geminiApiKey = savedKey;
-        const savedModel = sessionStorage.getItem('om_ihsan_gemini_model');
+        const savedModel = localStorage.getItem('om_ihsan_gemini_model') || sessionStorage.getItem('om_ihsan_gemini_model');
         if (savedModel) appState.geminiModel = savedModel;
       } catch (e) {}
       updateApiKeyBadge();
