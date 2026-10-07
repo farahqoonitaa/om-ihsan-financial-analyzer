@@ -17,6 +17,7 @@ const reconciliationEngine = require("./src/engine/reconciliationEngine");
 const auditLogger = require("./src/engine/auditLogger");
 const geminiClient = require("./src/engine/geminiClient");
 const excelEngine = require("./src/engine/excelEngine");
+const ragEngine = require("./src/engine/ragEngine");
 
 const PORT = process.env.PORT || 3000;
 const PUBLIC_DIR = path.join(__dirname, "public");
@@ -311,6 +312,32 @@ const server = http.createServer(async (req, res) => {
         const body = await parseBody(req);
         const updated = auditLogger.recordAction(body);
         return sendJson(res, 200, updated);
+      }
+
+      // 10b. Forensic Data Pool & Pattern Intelligence API
+      if (pathname === "/api/data-pool" && method === "GET") {
+        return sendJson(res, 200, {
+          totalCases: ragEngine.getDynamicPool().length,
+          pool: ragEngine.getDynamicPool(),
+          retrievedAt: new Date().toISOString()
+        });
+      }
+      if (pathname === "/api/data-pool/sync" && method === "POST") {
+        const body = await parseBody(req);
+        const cases = Array.isArray(body) ? body : (body.cases || [body]);
+        cases.forEach(c => ragEngine.ingestCase(c));
+        return sendJson(res, 200, {
+          success: true,
+          totalCases: ragEngine.getDynamicPool().length,
+          message: `${cases.length} kasus berhasil diindeks ke Dynamic Knowledge Base RAG.`
+        });
+      }
+      if (pathname === "/api/data-pool/patterns" && method === "GET") {
+        return sendJson(res, 200, ragEngine.detectSystemicPatterns());
+      }
+      if (pathname === "/api/data-pool/clear" && method === "POST") {
+        ragEngine.clearDynamicPool();
+        return sendJson(res, 200, { success: true, message: "Data Pool dikosongkan." });
       }
 
       // 11. AI Forensic Copilot Chat with Gemini API & Local RAG

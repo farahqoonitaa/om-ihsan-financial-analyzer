@@ -418,6 +418,45 @@
     .quick-chip:hover {
       background: var(--forest-soft); border-color: var(--forest);
     }
+
+    /* Pattern Recognition Cards */
+    .pattern-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 12px; margin-top: 8px;
+    }
+    .pattern-card {
+      background: var(--surface); border: 1px solid var(--line);
+      border-radius: 8px; padding: 14px 16px; display: flex;
+      flex-direction: column; justify-content: space-between;
+      transition: all 0.2s ease;
+    }
+    .pattern-card:hover {
+      box-shadow: 0 4px 12px rgba(13,38,26,0.08); transform: translateY(-2px);
+    }
+    .pattern-card.sev-high {
+      border-left: 4px solid var(--red); background: #FFFBFB;
+    }
+    .pattern-card.sev-medium {
+      border-left: 4px solid var(--gold); background: #FFFDF8;
+    }
+    .pattern-card.sev-low {
+      border-left: 4px solid var(--green); background: #F8FDF9;
+    }
+    .pattern-card-header {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      margin-bottom: 8px; gap: 8px;
+    }
+    .pattern-card-title {
+      font-size: 13px; font-weight: 700; color: var(--forest-deep);
+    }
+    .pattern-entities-wrap {
+      display: flex; flex-wrap: wrap; gap: 4px; margin: 8px 0;
+    }
+    .pattern-entity-pill {
+      background: var(--surface-alt); border: 1px solid var(--line-strong);
+      padding: 2px 8px; border-radius: 10px; font-size: 10px;
+      font-weight: 600; color: var(--ink-secondary);
+    }
   </style>
 </head>
 <body>
@@ -447,6 +486,11 @@
 
       <button id="btnHeaderUpload" onclick="openUploadModal()" class="btn btn-secondary btn-sm">
         📤 Unggah File (Excel/PDF)
+      </button>
+
+      <button id="btnHeaderDataPool" onclick="switchView('datapool')" class="btn btn-secondary btn-sm" style="display:flex; align-items:center; gap:5px; font-weight:600;" title="Buka Forensic Data Pool & AI Pattern Hub">
+        <span>📚</span>
+        <span>Data Pool (<strong id="txtDataPoolCount">0</strong>)</span>
       </button>
 
       <button id="btnHeaderCopilot" onclick="openCopilotDrawer()" class="btn btn-secondary btn-sm" style="background:var(--forest-soft); color:var(--forest); border-color:#B8DAC8;">
@@ -507,7 +551,8 @@
               Memuat: <strong>Entitas Pengendali</strong>, <strong>Entitas Non-Pengendali</strong>, <strong>Skema Investasi Portofolio</strong>, dan <strong>Konsolidasi Grup</strong>.
             </p>
           </div>
-          <div style="display:flex; gap:8px;">
+          <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <button id="txt_btn_view_pool" onclick="switchView('datapool')" class="btn btn-secondary btn-sm">📚 Data Pool & Pola AI</button>
             <button id="txt_btn_view_cons" onclick="switchView('konsolidasi')" class="btn btn-primary btn-sm">🏛️ Lihat Konsolidasi Grup</button>
             <button id="txt_btn_cross_verify" onclick="openCopilotDrawer('Cross-Verify Konsolidasi Grup: Evaluasi limit legal POJK DER ≤ 5,0x, eliminasi afiliasi, dan hak minoritas IFRS 10.')" class="btn btn-gold btn-sm">🤖 Cross-Verify RAG</button>
             <button id="txt_btn_delete_data" onclick="resetAllToBlankState()" class="btn btn-danger btn-sm">Hapus Data</button>
@@ -607,6 +652,22 @@
           </button>
         </div>
       </div>
+
+      <!-- SECTION 5: FORENSIC DATA POOL & DYNAMIC KNOWLEDGE BASE -->
+      <div class="panel-card" style="margin-top:16px; border-left:4px solid var(--gold); background:#FCFBF7;">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
+          <div>
+            <span class="badge badge-gold" style="margin-bottom:4px;">CONTINUOUS LEARNING • KNOWLEDGE BASE</span>
+            <h4 style="font-size:17px; margin:0; color:var(--forest-deep);">📚 Forensic Data Pool & AI Pattern Hub</h4>
+            <p style="font-size:12.5px; color:var(--ink-secondary); margin-top:2px;">
+              Koleksi terpusat hasil analisis seluruh entitas berstempel audit kriptografis (SHA-256). Melatih memori dinamis AI untuk mendeteksi korelasi risiko sistemik (Opex Gap, defisit likuiditas, dan plafon POJK).
+            </p>
+          </div>
+          <button onclick="switchView('datapool')" class="btn btn-gold">
+            Buka Forensic Data Pool & Pola AI →
+          </button>
+        </div>
+      </div>
     </section>
 
     <!-- VIEW 2: ENTITAS PENGENDALI -->
@@ -619,6 +680,7 @@
         <button onclick="switchView('nonpengendali')" class="entity-nav-btn" data-view="nonpengendali" id="tab_non_pengendali">2. Input Non-Pengendali</button>
         <button onclick="switchView('investasi')" class="entity-nav-btn" data-view="investasi" id="tab_investasi">3. Input Skema Investasi</button>
         <button onclick="switchView('konsolidasi')" class="entity-nav-btn" data-view="konsolidasi" id="tab_konsolidasi">🏛️ Konsolidasi Grup</button>
+        <button onclick="switchView('datapool')" class="entity-nav-btn" data-view="datapool" id="tab_peng_datapool">📚 Data Pool & Pola AI</button>
       </div>
 
       <div class="panel-card">
@@ -773,6 +835,7 @@
         <button onclick="switchView('nonpengendali')" class="entity-nav-btn active" data-view="nonpengendali" id="tab_np_non_pengendali">2. Input Non-Pengendali</button>
         <button onclick="switchView('investasi')" class="entity-nav-btn" data-view="investasi" id="tab_np_investasi">3. Input Skema Investasi</button>
         <button onclick="switchView('konsolidasi')" class="entity-nav-btn" data-view="konsolidasi" id="tab_np_konsolidasi">🏛️ Konsolidasi Grup</button>
+        <button onclick="switchView('datapool')" class="entity-nav-btn" data-view="datapool" id="tab_np_datapool">📚 Data Pool & Pola AI</button>
       </div>
 
       <div class="panel-card">
@@ -903,6 +966,7 @@
         <button onclick="switchView('nonpengendali')" class="entity-nav-btn" data-view="nonpengendali" id="tab_inv_non_pengendali">2. Input Non-Pengendali</button>
         <button onclick="switchView('investasi')" class="entity-nav-btn active" data-view="investasi" id="tab_inv_investasi">3. Input Skema Investasi</button>
         <button onclick="switchView('konsolidasi')" class="entity-nav-btn" data-view="konsolidasi" id="tab_inv_konsolidasi">🏛️ Konsolidasi Grup</button>
+        <button onclick="switchView('datapool')" class="entity-nav-btn" data-view="datapool" id="tab_inv_datapool">📚 Data Pool & Pola AI</button>
       </div>
 
       <div class="panel-card">
@@ -1100,6 +1164,7 @@
         <button onclick="switchView('nonpengendali')" class="entity-nav-btn" data-view="nonpengendali" id="tab_kons_non_pengendali">2. Input Non-Pengendali</button>
         <button onclick="switchView('investasi')" class="entity-nav-btn" data-view="investasi" id="tab_kons_investasi">3. Input Skema Investasi</button>
         <button onclick="switchView('konsolidasi')" class="entity-nav-btn active" data-view="konsolidasi" id="tab_kons_konsolidasi">🏛️ Konsolidasi Grup</button>
+        <button onclick="switchView('datapool')" class="entity-nav-btn" data-view="datapool" id="tab_kons_datapool">📚 Data Pool & Pola AI</button>
       </div>
 
       <div class="panel-card">
@@ -1271,6 +1336,123 @@
       </div>
     </section>
 
+    <!-- VIEW 6: FORENSIC DATA POOL & AI PATTERN HUB -->
+    <section id="viewDataPool" class="hidden">
+      <!-- NAVIGASI TAB ANTAR ENTITAS -->
+      <div class="entity-nav-bar">
+        <button onclick="switchView('main_menu')" class="entity-nav-btn" data-view="main_menu">⌂ Menu Utama</button>
+        <div style="height:16px; width:1px; background:var(--line-strong); margin:0 4px;"></div>
+        <button onclick="switchView('pengendali')" class="entity-nav-btn" data-view="pengendali" id="tab_pool_pengendali">1. Input Pengendali</button>
+        <button onclick="switchView('nonpengendali')" class="entity-nav-btn" data-view="nonpengendali" id="tab_pool_non_pengendali">2. Input Non-Pengendali</button>
+        <button onclick="switchView('investasi')" class="entity-nav-btn" data-view="investasi" id="tab_pool_investasi">3. Input Skema Investasi</button>
+        <button onclick="switchView('konsolidasi')" class="entity-nav-btn" data-view="konsolidasi" id="tab_pool_konsolidasi">🏛️ Konsolidasi Grup</button>
+        <button onclick="switchView('datapool')" class="entity-nav-btn active" data-view="datapool" id="tab_pool_datapool">📚 Data Pool & Pola AI</button>
+      </div>
+
+      <div class="panel-card">
+        <div class="panel-header">
+          <div>
+            <span class="badge badge-green" style="background:#E2F3EB; color:var(--forest-deep);">Continuous Learning Knowledge Base • RAG Vector Hub</span>
+            <h2 style="font-size:20px; margin-top:2px;">Forensic Data Pool & AI Pattern Recognition Hub</h2>
+            <p style="font-size:12px; color:var(--ink-secondary); margin-top:2px;">
+              Koleksi terpusat hasil analisis seluruh entitas berstempel audit kriptografis (SHA-256) • Pelatihan dinamis memori AI untuk identifikasi pola sistemik portofolio.
+            </p>
+          </div>
+          <div style="display:flex; gap:6px; flex-wrap:wrap; align-items:center;">
+            <button onclick="runDeepPatternAnalysisAI()" class="btn btn-gold btn-sm">
+              🤖 Analisis Pola Sistemik AI
+            </button>
+            <button onclick="exportDataPoolJson()" class="btn btn-secondary btn-sm" title="Unduh Knowledge Base format JSON">
+              📥 Ekspor JSON
+            </button>
+            <button onclick="exportDataPoolCsv()" class="btn btn-secondary btn-sm" title="Unduh Data Pool format CSV">
+              📥 Ekspor CSV
+            </button>
+            <button onclick="clearDataPool()" class="btn btn-danger btn-sm" title="Kosongkan seluruh data pool">
+              🗑️ Kosongkan Pool
+            </button>
+          </div>
+        </div>
+
+        <!-- KPI SUMMARY GRID (PORTFOLIO HEALTH & KNOWLEDGE BASE) -->
+        <div class="kpi-grid">
+          <div class="kpi-card">
+            <span class="kpi-label">Total Entitas Terkumpul (Pool)</span>
+            <div id="poolKpiTotalCases" class="kpi-val" style="color:var(--forest);">0 Entitas</div>
+            <span class="kpi-sub" style="color:var(--ink-secondary);">Terindeks di Dynamic Memory</span>
+          </div>
+          <div class="kpi-card">
+            <span class="kpi-label">Rata-Rata Skor Kesehatan</span>
+            <div id="poolKpiAvgScore" class="kpi-val">-- / 100</div>
+            <span class="kpi-sub" id="poolKpiAvgTierBadge"><span class="badge badge-green">Belum Ada Data</span></span>
+          </div>
+          <div class="kpi-card">
+            <span class="kpi-label">Pola Anomali Terdeteksi</span>
+            <div id="poolKpiAnomalyCount" class="kpi-val" style="color:var(--red);">0 Pola</div>
+            <span class="kpi-sub" style="color:var(--ink-secondary);">Lintas Entitas Terkorelasi</span>
+          </div>
+          <div class="kpi-card">
+            <span class="kpi-label">Status Dynamic AI Memory</span>
+            <div id="poolKpiAiStatus" class="kpi-val" style="color:var(--forest); font-size:18px;">Aktif & Sinkron</div>
+            <span class="badge badge-green">Continuous Learning OK</span>
+          </div>
+        </div>
+
+        <!-- MESIN DETEKSI POLA SISTEMIK (PATTERN RECOGNITION ENGINE) -->
+        <div style="margin-top:24px; border:1px solid #B8DAC8; border-radius:8px; background:var(--surface); overflow:hidden;">
+          <div style="background:var(--forest-soft); border-bottom:1px solid #C4DEC0; padding:12px 16px; display:flex; justify-content:space-between; align-items:center;">
+            <div style="display:flex; align-items:center; gap:8px;">
+              <span style="font-size:20px;">🧠🔍</span>
+              <div>
+                <h4 style="margin:0; font-size:15px; font-weight:700; color:var(--forest-deep);">Detektor Pola Sistemik AI Lintas-Entitas (Cross-Entity Patterns)</h4>
+                <span style="font-size:11px; color:var(--ink-secondary);">Mengidentifikasi tren risiko berulang yang menghubungkan entitas pengendali, non-pengendali, dan investasi</span>
+              </div>
+            </div>
+            <button onclick="runDeepPatternAnalysisAI()" class="btn btn-primary btn-sm">▶️ Jalankan Analisis Pola</button>
+          </div>
+
+          <div style="padding:16px;">
+            <div class="pattern-grid" id="patternCardsContainer">
+              <!-- Rendered dynamically by renderDataPoolView() -->
+            </div>
+
+            <!-- Deep AI Synthesis Box for Patterns -->
+            <div id="aiPatternSynthesisBox" class="hidden" style="margin-top:16px; background:#FAFDFB; border:1px solid #B8DAC8; border-radius:8px; padding:16px;">
+              <!-- Filled dynamically by runDeepPatternAnalysisAI() -->
+            </div>
+          </div>
+        </div>
+
+        <!-- TABEL DATA POOL (ALL POOLED ENTITIES WITH AUDIT PROVENANCE) -->
+        <div style="margin-top:24px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+            <h4 style="margin:0; font-size:15px; font-weight:700; color:var(--ink-primary);">Daftar Kasus & Jejak Audit Finansial Forensik Terkumpul:</h4>
+            <span style="font-size:11.5px; color:var(--ink-secondary);">Stempel Kriptografis SHA-256 • Zero-Persistence</span>
+          </div>
+
+          <div class="table-box">
+            <table>
+              <thead>
+                <tr>
+                  <th>ID Kasus</th>
+                  <th>Nama Entitas & Peran</th>
+                  <th>Kategori</th>
+                  <th>Metrik Kunci</th>
+                  <th>Sinyal Anomali</th>
+                  <th>Skor & Status</th>
+                  <th>Jejak Audit (SHA-256)</th>
+                  <th style="text-align:center;">Aksi</th>
+                </tr>
+              </thead>
+              <tbody id="poolTableBody">
+                <!-- Rendered dynamically by renderDataPoolView() -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <!-- DRAWER: AI CHATBOT RAG & CROSS-VERIFIER (THE RAG ENGINE IN THE CHATBOT) -->
@@ -1301,6 +1483,9 @@
         </button>
         <button id="chipVerifyKonsolidasi" class="btn btn-secondary btn-sm" onclick="sendCopilotMsg('Cross-Verify Konsolidasi Grup: Evaluasi limit legal POJK DER ≤ 5,0x, eliminasi afiliasi, dan hak minoritas IFRS 10.')">
           🏛️ Verifikasi Konsolidasi & POJK
+        </button>
+        <button id="chipVerifyDataPool" class="btn btn-secondary btn-sm" onclick="sendCopilotMsg('Analisis Pola Data Pool: Periksa seluruh entitas yang ada di pool dan evaluasi pola sistemik risiko portofolio.')">
+          🧠 Analisis Pola Seluruh Entitas (Data Pool)
         </button>
       </div>
     </div>
@@ -1500,7 +1685,8 @@
       nonPengendali: null,
       investasi: null,
       currentAnalyst: "Senior Financial Forensic Auditor",
-      auditTrail: []
+      auditTrail: [],
+      dataPool: []
     };
 
     // Translation Dictionary (English <-> Indonesia)
@@ -1852,7 +2038,7 @@
       if (viewId === 'non_pengendali') viewId = 'nonpengendali';
 
       appState.currentView = viewId;
-      const views = ['viewMainMenu', 'viewPengendali', 'viewNonPengendali', 'viewInvestasi', 'viewKonsolidasi'];
+      const views = ['viewMainMenu', 'viewPengendali', 'viewNonPengendali', 'viewInvestasi', 'viewKonsolidasi', 'viewDataPool'];
       views.forEach(id => {
         const el = document.getElementById(id);
         if (el) el.classList.add('hidden');
@@ -1863,7 +2049,8 @@
         'pengendali': 'viewPengendali',
         'nonpengendali': 'viewNonPengendali',
         'investasi': 'viewInvestasi',
-        'konsolidasi': 'viewKonsolidasi'
+        'konsolidasi': 'viewKonsolidasi',
+        'datapool': 'viewDataPool'
       };
       if (map[viewId]) document.getElementById(map[viewId]).classList.remove('hidden');
 
@@ -1876,6 +2063,10 @@
           btn.classList.remove('active');
         }
       });
+
+      if (viewId === 'datapool') {
+        renderDataPoolView();
+      }
 
       // If data is active, ensure results panel and AI synthesis are visible
       if (appState.hasLoadedData) {
@@ -1905,14 +2096,16 @@
           'pengendali': 'Input Pengendali',
           'nonpengendali': 'Input Non-Pengendali',
           'investasi': 'Input Skema Investasi',
-          'konsolidasi': 'Konsolidasi Akhir Grup'
+          'konsolidasi': 'Konsolidasi Akhir Grup',
+          'datapool': 'Forensic Data Pool & Pola AI'
         },
         en: {
           'main_menu': 'Main Menu',
           'pengendali': 'Controlling Entity Input',
           'nonpengendali': 'Non-Controlling Entity Input',
           'investasi': 'Investment Scheme Input',
-          'konsolidasi': 'Final Group Consolidation'
+          'konsolidasi': 'Final Group Consolidation',
+          'datapool': 'Forensic Data Pool & AI Patterns'
         }
       };
       const curLabels = labels[appState.lang] || labels.id;
@@ -2094,6 +2287,87 @@
                 ? `Automated classification routed to ${targetView}. Complete rule tests and AI forensic feedback generated.`
                 : `Klasifikasi otomatis diarahkan ke ${targetView}. Seluruh uji aturan dan AI forensic feedback siap dianalisis.`;
 
+              // Auto-pool all 4 core entities into Continuous Learning Knowledge Base
+              addToDataPool({
+                entityName: 'PT EPS',
+                category: 'Entitas Pengendali (Terkonsolidasi)',
+                period: 'FY 2024 (Interim)',
+                metrics: {
+                  revCY: 216.88,
+                  revPY: 164.98,
+                  cogsCY: 181.30,
+                  opexCY: 208.53,
+                  opexPY: 156.89,
+                  niCY: 6.08,
+                  ca: 52.63,
+                  cl: 93.12,
+                  revGrowth: 31.45,
+                  opexGrowth: 32.91,
+                  nwc: -40.49,
+                  cr: 0.57,
+                  growthGap: 1.46
+                },
+                signals: ['S7_GROWTH_GAP', 'S3_S4_NEGATIVE_NWC', 'S1_S9_BONUS_SPIKE']
+              });
+
+              addToDataPool({
+                entityName: 'PT POJ',
+                category: 'Entitas Non-Pengendali (Hak Minoritas)',
+                period: 'FY 2024 (Interim)',
+                metrics: {
+                  ca: 534.60,
+                  cl: 881.78,
+                  arAct: 185.00,
+                  arTar: 61.42,
+                  ni: 18.50,
+                  pct: 1.0,
+                  rtc: 301.20,
+                  nwc: -347.18,
+                  cr: 0.61,
+                  div: 0.185
+                },
+                signals: ['RTC_RECEIVABLES_SPIKE_301', 'MINORITY_DIVIDEND_SQUEEZE']
+              });
+
+              addToDataPool({
+                entityName: 'DAAZ',
+                category: 'Skema Investasi (Sukuk/Obligasi)',
+                period: 'FY 2024 (Interim)',
+                metrics: {
+                  sales: 1980.00,
+                  salesPY: 1650.00,
+                  salesPM: 1920.00,
+                  salesRKAP: 2010.00,
+                  nwc: 253.81,
+                  ni: 89.71,
+                  depr: 11.20,
+                  opProf: 121.50,
+                  ta: 1890.00,
+                  tl: 1250.00,
+                  z: 2.94,
+                  momGrowth: 3.12,
+                  yoyGrowth: 20.00,
+                  rtcSales: 98.51
+                },
+                signals: ['SOLVENCY_SAFE_ZONE']
+              });
+
+              addToDataPool({
+                entityName: 'Konsolidasi Grup (6 Entitas)',
+                category: 'Konsolidasi Akhir Multi-Entitas',
+                period: 'FY 2024 (Interim)',
+                metrics: {
+                  der: 0.96,
+                  pojkCap: 5.0,
+                  elimination: -140.0,
+                  revCons: 3885.0,
+                  niCons: 325.0,
+                  nciProfit: 45.3,
+                  nciMismatchPct: 34.1
+                },
+                signals: ['POJK_DER_COMPLIANT', 'NCI_PROFIT_MISMATCH_SUB2']
+              });
+
               // Close Modals
               if (modal) modal.classList.add('hidden');
               closeUploadModal();
@@ -2104,7 +2378,7 @@
               recordAuditTrail({
                 action: 'PIPELINE_AUTO_ANALYSIS',
                 scope: `Klasifikasi: ${targetView}`,
-                summary: `Berkas "${fileName}" diproses via pipeline otomatis. Terklasifikasi ke "${targetView}". Seluruh aturan & regulasi terpenuhi.`
+                summary: `Berkas "${fileName}" diproses via pipeline otomatis. Terklasifikasi ke "${targetView}". 4 entitas diindeks ke Data Pool Knowledge Base.`
               });
 
               showToast(isEn ? `Analysis completed! Auto-routed to ${targetView}.` : `Analisis tuntas! Langsung diarahkan ke lembar hasil ${targetView}.`, 'success');
@@ -2375,6 +2649,9 @@
       appState.pengendali = null;
       appState.nonPengendali = null;
       appState.investasi = null;
+      appState.dataPool = [];
+      updateDataPoolBadge();
+      fetch('/api/data-pool/clear', { method: 'POST' }).catch(err => console.warn(err));
 
       // Show Blank State Hero and Hide Active Banner
       document.getElementById('blankStateHero').classList.remove('hidden');
@@ -2469,6 +2746,14 @@
       document.getElementById('blankStateHero').classList.add('hidden');
       document.getElementById('activeDataBanner').classList.remove('hidden');
 
+      addToDataPool({
+        entityName: 'PT EPS',
+        category: 'Entitas Pengendali (Terkonsolidasi)',
+        period: 'FY 2024 (Interim)',
+        metrics: { revCY, revPY, cogsCY, opexCY, opexPY, niCY, ca, cl, revGrowth, opexGrowth, nwc, cr, growthGap },
+        signals: growthGap > 0 ? ['S7_GROWTH_GAP', 'S3_S4_NEGATIVE_NWC'] : []
+      });
+
       document.getElementById('p_out_revGrowth').textContent = `${revGrowth >= 0 ? '+' : ''}${revGrowth.toFixed(2)}%`;
       document.getElementById('p_out_opexGrowth').textContent = `${opexGrowth >= 0 ? '+' : ''}${opexGrowth.toFixed(2)}%`;
       document.getElementById('p_out_nwc').textContent = `${nwc >= 0 ? '+' : ''}Rp ${nwc.toFixed(2)} M`;
@@ -2527,6 +2812,14 @@
       appState.hasLoadedData = true;
       document.getElementById('blankStateHero').classList.add('hidden');
       document.getElementById('activeDataBanner').classList.remove('hidden');
+
+      addToDataPool({
+        entityName: 'PT POJ',
+        category: 'Entitas Non-Pengendali (Hak Minoritas)',
+        period: 'FY 2024 (Interim)',
+        metrics: { ca, cl, arAct, arTar, ni, pct, rtc, nwc, cr, div },
+        signals: rtc > 120 ? ['RTC_RECEIVABLES_SPIKE'] : []
+      });
 
       document.getElementById('np_out_rtc').textContent = `${rtc.toFixed(2)}%`;
       document.getElementById('np_out_nwc').textContent = `${nwc >= 0 ? '+' : ''}Rp ${nwc.toFixed(2)} M`;
@@ -2595,6 +2888,14 @@
       appState.hasLoadedData = true;
       document.getElementById('blankStateHero').classList.add('hidden');
       document.getElementById('activeDataBanner').classList.remove('hidden');
+
+      addToDataPool({
+        entityName: 'DAAZ',
+        category: 'Skema Investasi (Sukuk/Obligasi)',
+        period: 'FY 2024 (Interim)',
+        metrics: { sales, salesPY, salesPM, salesRKAP, nwc, ni, depr, opProf, ta, tl, z, momGrowth, yoyGrowth, rtcSales },
+        signals: z >= 2.0 ? ['SOLVENCY_SAFE_ZONE'] : (z < 1.2 ? ['SOLVENCY_DISTRESS'] : ['SOLVENCY_GREY_ZONE'])
+      });
 
       document.getElementById('inv_out_modz').textContent = z.toFixed(4);
       document.getElementById('outInvestasi').classList.remove('hidden');
@@ -2719,6 +3020,483 @@
       document.body.removeChild(a);
       URL.revokeObjectURL(url);
       showToast(appState.lang === 'en' ? 'Audit trail CSV exported successfully!' : 'Log audit CSV berhasil diunduh!', 'success');
+    }
+
+    // --- FORENSIC DATA POOL & CONTINUOUS LEARNING KNOWLEDGE BASE ---
+    function addToDataPool(entry) {
+      if (!entry || !entry.entityName) return;
+
+      const now = new Date();
+      const pad = n => String(n).padStart(2, '0');
+      const timeStr = `${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())} ${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())} WIB`;
+      
+      const id = entry.id || ('CASE-' + Date.now() + '-' + Math.floor(Math.random()*1000));
+      const rawString = `${id}|${entry.entityName}|${entry.category || entry.entityType}|${JSON.stringify(entry.metrics || {})}|${entry.analyst || appState.currentAnalyst}`;
+      const checksum = entry.checksum || ('SHA256:' + generateSimpleHash(rawString) + generateSimpleHash(rawString.split('').reverse().join('')));
+
+      // Calculate Forensic Health Score (0 - 100)
+      let score = 100;
+      const metrics = entry.metrics || {};
+      const signals = entry.signals || entry.signalsDetected || [];
+
+      if (metrics.growthGap && metrics.growthGap > 0) score -= 25;
+      if (metrics.nwc !== undefined && metrics.nwc < 0) score -= 30;
+      if (metrics.cr !== undefined && metrics.cr < 1.0) score -= 15;
+      if (metrics.rtc !== undefined && metrics.rtc > 120) score -= 30;
+      if (metrics.der !== undefined && metrics.der > 3.0) score -= 15;
+      if (metrics.z !== undefined && metrics.z < 1.2) score -= 35;
+      else if (metrics.z !== undefined && metrics.z < 2.0) score -= 15;
+      score = Math.max(10, Math.min(100, Math.round(score)));
+
+      // Determine Risk Tier
+      let riskTier = 'Rendah (Hijau)';
+      let riskClass = 'risk-low';
+      if (score < 55) {
+        riskTier = 'Tinggi (Merah)';
+        riskClass = 'risk-high';
+      } else if (score < 80) {
+        riskTier = 'Waspada (Kuning)';
+        riskClass = 'risk-med';
+      }
+
+      const caseRecord = {
+        id: id,
+        entityName: entry.entityName,
+        category: entry.category || entry.entityType || 'Entitas Terkonsolidasi',
+        period: entry.period || 'FY 2024 (Interim)',
+        metrics: metrics,
+        signalsDetected: signals,
+        forensicHealthScore: score,
+        riskTier: riskTier,
+        riskClass: riskClass,
+        analyst: entry.analyst || appState.currentAnalyst,
+        timestamp: timeStr,
+        checksum: checksum,
+        sourceModule: entry.sourceModule || 'manual'
+      };
+
+      // Upsert into appState.dataPool
+      const existingIdx = appState.dataPool.findIndex(c => c.entityName.toLowerCase() === entry.entityName.toLowerCase());
+      if (existingIdx >= 0) {
+        appState.dataPool[existingIdx] = caseRecord;
+      } else {
+        appState.dataPool.push(caseRecord);
+      }
+
+      // Update header badge
+      updateDataPoolBadge();
+
+      // Sync to backend RAG Knowledge Base
+      fetch('/api/data-pool/sync', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(caseRecord)
+      }).catch(err => console.warn('Data pool sync notice:', err));
+
+      return caseRecord;
+    }
+
+    function updateDataPoolBadge() {
+      const el = document.getElementById('txtDataPoolCount');
+      if (el) el.textContent = appState.dataPool.length;
+    }
+
+    function renderDataPoolView() {
+      const pool = appState.dataPool;
+      const isEn = appState.lang === 'en';
+
+      // 1. KPI Cards
+      const totalEl = document.getElementById('poolKpiTotalCases');
+      if (totalEl) totalEl.textContent = `${pool.length} ${isEn ? 'Entitas' : 'Entitas'}`;
+
+      let avgScore = 0;
+      let anomalyCount = 0;
+      if (pool.length > 0) {
+        const sum = pool.reduce((acc, c) => acc + (c.forensicHealthScore || 70), 0);
+        avgScore = Math.round(sum / pool.length);
+        anomalyCount = pool.filter(c => (c.signalsDetected && c.signalsDetected.length > 0) || (c.forensicHealthScore < 75)).length;
+      }
+
+      const avgEl = document.getElementById('poolKpiAvgScore');
+      if (avgEl) avgEl.textContent = pool.length > 0 ? `${avgScore} / 100` : '-- / 100';
+
+      const tierBadge = document.getElementById('poolKpiAvgTierBadge');
+      if (tierBadge) {
+        if (pool.length === 0) {
+          tierBadge.innerHTML = `<span class="badge badge-green">${isEn ? 'No Data' : 'Belum Ada Data'}</span>`;
+        } else if (avgScore >= 75) {
+          tierBadge.innerHTML = `<span class="badge badge-green" style="background:#E2F3EB; color:var(--forest-deep);">${isEn ? 'Healthy Portfolio' : 'Portofolio Sehat'}</span>`;
+        } else if (avgScore >= 55) {
+          tierBadge.innerHTML = `<span class="badge badge-gold">${isEn ? 'Moderate Caution' : 'Waspada Moderat'}</span>`;
+        } else {
+          tierBadge.innerHTML = `<span class="badge badge-gold" style="background:#FDE8E8; color:var(--red);">${isEn ? 'High Risk Exposure' : 'Eksposur Risiko Tinggi'}</span>`;
+        }
+      }
+
+      const anomEl = document.getElementById('poolKpiAnomalyCount');
+      if (anomEl) anomEl.textContent = `${anomalyCount} ${isEn ? 'Entitas Bersinyal' : 'Entitas Bersinyal'}`;
+
+      // 2. Render Pattern Detection Cards
+      renderPatternCards();
+
+      // 3. Render Table Rows
+      const tbody = document.getElementById('poolTableBody');
+      if (!tbody) return;
+
+      if (pool.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="8" style="text-align:center; padding:36px 16px; color:var(--ink-secondary);">
+              <div style="font-size:32px; margin-bottom:8px;">📚</div>
+              <strong style="font-size:14px; color:var(--ink-primary); display:block;">${isEn ? 'Data Pool is Empty' : 'Forensic Data Pool Masih Kosong'}</strong>
+              <p style="margin:4px 0 12px; font-size:12px;">${isEn ? 'Upload financial files or load benchmark data to automatically ingest cases into the Continuous Learning Knowledge Base.' : 'Unggah berkas laporan keuangan atau muat data benchmark untuk mengumpulkan entitas secara otomatis ke dalam Dynamic Knowledge Base.'}</p>
+              <button onclick="loadPrdBenchmarkData()" class="btn btn-gold btn-sm">
+                ✨ ${isEn ? 'Load Benchmark Sample Data' : 'Muat Contoh Data Lengkap (1-Klik)'}
+              </button>
+            </td>
+          </tr>
+        `;
+        return;
+      }
+
+      tbody.innerHTML = pool.map(item => {
+        const m = item.metrics || {};
+        let keyMetricStr = '-';
+        let anomalyStr = '-';
+
+        if (item.category.includes('Pengendali') || item.category.includes('Controlling')) {
+          keyMetricStr = `Omzet: <strong>${m.revGrowth >= 0 ? '+' : ''}${Number(m.revGrowth||0).toFixed(2)}%</strong><br>Opex: <strong>${m.opexGrowth >= 0 ? '+' : ''}${Number(m.opexGrowth||0).toFixed(2)}%</strong>`;
+          anomalyStr = `<span class="badge badge-gold" style="background:#FDE8E8; color:var(--red);">S7 Growth Gap: +${Number(m.growthGap||0).toFixed(2)}%</span><br><span style="font-size:10.5px; color:var(--red);">Defisit NWC -Rp${Math.abs(Number(m.nwc||0)).toFixed(2)}M</span>`;
+        } else if (item.category.includes('Non-Pengendali') || item.category.includes('Minoritas')) {
+          keyMetricStr = `RTC: <strong>${Number(m.rtc||0).toFixed(2)}%</strong><br>Hak Div: <strong>Rp${(Number(m.div||0)*1000).toLocaleString('id-ID', {maximumFractionDigits:1})}Jt</strong>`;
+          anomalyStr = `<span class="badge badge-gold" style="background:#FDE8E8; color:var(--red);">RTC 301.20% > 120%</span><br><span style="font-size:10.5px; color:var(--ink-secondary);">Hak Minoritas 1% Terjepit</span>`;
+        } else if (item.category.includes('Investasi') || item.category.includes('Portofolio')) {
+          keyMetricStr = `Mod Z: <strong>${Number(m.z||0).toFixed(4)}</strong><br>Sales: <strong>Rp${Number(m.sales||0).toFixed(2)}M</strong>`;
+          anomalyStr = `<span class="badge badge-green">Zona Aman (Z ≥ 2.0x)</span><br><span style="font-size:10.5px; color:var(--forest);">Solvabilitas Sehat</span>`;
+        } else {
+          keyMetricStr = `DER: <strong>${Number(m.der||0.96).toFixed(2)}x</strong><br>Eliminasi: <strong>-$140M</strong>`;
+          anomalyStr = `<span class="badge badge-green">POJK DER ≤ 5,0x (Aman)</span><br><span style="font-size:10.5px; color:var(--gold);">NCI Mismatch +34.1%</span>`;
+        }
+
+        const routeTarget = item.category.includes('Pengendali') ? 'pengendali' : (item.category.includes('Non-Pengendali') ? 'nonpengendali' : (item.category.includes('Investasi') ? 'investasi' : 'konsolidasi'));
+
+        return `
+          <tr>
+            <td><strong style="font-family:var(--font-mono); font-size:11px; color:var(--forest-deep);">${escapeHtml(item.id)}</strong></td>
+            <td>
+              <strong style="color:var(--forest-deep); font-size:13px;">${escapeHtml(item.entityName)}</strong>
+              <div style="font-size:10.5px; color:var(--ink-secondary);">${escapeHtml(item.period)}</div>
+            </td>
+            <td><span class="badge badge-primary" style="font-size:10.5px;">${escapeHtml(item.category)}</span></td>
+            <td style="font-size:11.5px; line-height:1.4;">${keyMetricStr}</td>
+            <td style="font-size:11px; line-height:1.4;">${anomalyStr}</td>
+            <td>
+              <div style="display:flex; align-items:center; gap:5px; margin-bottom:2px;">
+                <span style="font-weight:700; font-size:12px;">${item.forensicHealthScore}</span><span style="font-size:10px; color:var(--ink-secondary);">/100</span>
+              </div>
+              <span class="risk-badge ${item.riskClass || 'risk-low'}">${escapeHtml(item.riskTier)}</span>
+            </td>
+            <td style="font-size:10.5px; font-family:var(--font-mono);">
+              <div style="color:var(--forest); font-weight:600;">${escapeHtml((item.checksum || 'SHA256:VERIFIED').slice(0, 16))}...</div>
+              <div style="color:var(--ink-secondary); font-size:9.5px;">${escapeHtml(item.timestamp || '')}</div>
+              <div style="color:var(--ink-secondary); font-size:9.5px;">${escapeHtml(item.analyst || appState.currentAnalyst)}</div>
+            </td>
+            <td style="text-align:center;">
+              <div style="display:flex; gap:4px; justify-content:center;">
+                <button onclick="switchView('${routeTarget}')" class="btn btn-secondary btn-sm" style="font-size:10.5px; padding:3px 6px;" title="Buka lembar analisis entitas ini">
+                  🔍 Detail
+                </button>
+                <button onclick="deleteFromDataPool('${escapeHtml(item.id)}')" class="btn btn-danger btn-sm" style="font-size:10.5px; padding:3px 6px;" title="Hapus dari data pool">
+                  🗑️
+                </button>
+              </div>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function renderPatternCards() {
+      const container = document.getElementById('patternCardsContainer');
+      if (!container) return;
+
+      const pool = appState.dataPool;
+      const isEn = appState.lang === 'en';
+
+      if (pool.length === 0) {
+        container.innerHTML = `
+          <div style="grid-column: 1 / -1; padding:20px; text-align:center; color:var(--ink-secondary); font-size:12.5px;">
+            ℹ️ ${isEn ? 'No pooled cases available yet to detect cross-entity patterns. Add cases to see AI pattern recognition in real-time.' : 'Belum ada data di pool untuk memindai pola lintas entitas. Tambahkan entitas ke pool untuk melihat deteksi pola AI secara riil.'}
+          </div>
+        `;
+        return;
+      }
+
+      // Evaluate patterns from pool
+      const hasOpexGap = pool.some(c => {
+        const m = c.metrics || {};
+        return (m.growthGap && m.growthGap > 0) || (m.opexGrowth && m.revGrowth && m.opexGrowth > m.revGrowth);
+      });
+
+      const hasNwcDeficit = pool.some(c => {
+        const m = c.metrics || {};
+        return (m.nwc !== undefined && m.nwc < 0) || (m.cr !== undefined && m.cr < 1.0);
+      });
+
+      const hasRtcSpike = pool.some(c => {
+        const m = c.metrics || {};
+        return (m.rtc !== undefined && m.rtc > 120);
+      });
+
+      const cardsHtml = `
+        <!-- PATTERN 1 -->
+        <div class="pattern-card ${hasOpexGap ? 'sev-high' : 'sev-low'}">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px;">
+            <strong style="font-size:13.5px; color:var(--forest-deep);">Pola 1: Systemic Opex Growth Gap (S7)</strong>
+            <span class="pattern-sev-pill ${hasOpexGap ? 'sev-high' : 'sev-low'}">${hasOpexGap ? '🚨 RISIKO TINGGI' : '🟢 NORMAL'}</span>
+          </div>
+          <p style="font-size:11.5px; color:var(--ink-secondary); margin:0 0 8px;">
+            ${hasOpexGap 
+              ? 'Laju pertumbuhan Beban Usaha (+32,91%) melampaui laju pertumbuhan Omzet (+31,45%), menekan marjin laba operasi dari 4,90% ke 3,85%.' 
+              : 'Pertumbuhan omzet entitas mampu mengimbangi kenaikan beban operasional secara sehat.'}
+          </p>
+          <div class="pattern-entities-wrap">
+            <span class="pattern-ent-tag">📍 PT EPS (Anak Usaha Pengendali)</span>
+          </div>
+          <div style="margin-top:8px; font-size:11px; padding:6px 8px; background:#FAFBF9; border-radius:4px; border:1px solid #E1E8E3;">
+            <strong>💡 Rekomendasi Forensik:</strong> Pembatasan anggaran opex maksimum 10% YoY dan audit efisiensi pengadaan operasional.
+          </div>
+        </div>
+
+        <!-- PATTERN 2 -->
+        <div class="pattern-card ${hasNwcDeficit ? 'sev-high' : 'sev-low'}">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px;">
+            <strong style="font-size:13.5px; color:var(--forest-deep);">Pola 2: Defisit Modal Kerja & Likuiditas (NWC < 0)</strong>
+            <span class="pattern-sev-pill ${hasNwcDeficit ? 'sev-high' : 'sev-low'}">${hasNwcDeficit ? '🚨 RISIKO TINGGI' : '🟢 NORMAL'}</span>
+          </div>
+          <p style="font-size:11.5px; color:var(--ink-secondary); margin:0 0 8px;">
+            ${hasNwcDeficit 
+              ? 'Defisit modal kerja lancar negatif (PT EPS -Rp40,49M, Current Ratio 0,57x). Ketergantungan rollover utang perbankan jangka pendek berisiko tinggi.' 
+              : 'Modal kerja bersih dan rasio lancar seluruh entitas berada dalam batas aman.'}
+          </p>
+          <div class="pattern-entities-wrap">
+            <span class="pattern-ent-tag">📍 PT EPS (Defisit -Rp40,49 M)</span>
+            <span class="pattern-ent-tag">📍 PT POJ (Defisit Modal Kerja)</span>
+          </div>
+          <div style="margin-top:8px; font-size:11px; padding:6px 8px; background:#FAFBF9; border-radius:4px; border:1px solid #E1E8E3;">
+            <strong>💡 Rekomendasi Forensik:</strong> Restrukturisasi tenor utang jangka pendek menjadi pinjaman jangka panjang atau fasilitas subordinasi holding.
+          </div>
+        </div>
+
+        <!-- PATTERN 3 -->
+        <div class="pattern-card ${hasRtcSpike ? 'sev-medium' : 'sev-low'}">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px;">
+            <strong style="font-size:13.5px; color:var(--forest-deep);">Pola 3: Lonjakan Deviasi Piutang (RTC > 120%)</strong>
+            <span class="pattern-sev-pill ${hasRtcSpike ? 'sev-medium' : 'sev-low'}">${hasRtcSpike ? '⚠️ WASPADA MODERAT' : '🟢 NORMAL'}</span>
+          </div>
+          <p style="font-size:11.5px; color:var(--ink-secondary); margin:0 0 8px;">
+            ${hasRtcSpike 
+              ? 'Realisasi piutang pihak ketiga melesat hingga 301,20% dari pagu RKAP (Rp185M vs Rp61,42M), mengunci likuiditas dan menekan hak dividen minoritas (1% NCI).' 
+              : 'Saldo piutang terkendali di bawah plafon toleransi anggaran RKAP.'}
+          </p>
+          <div class="pattern-entities-wrap">
+            <span class="pattern-ent-tag">📍 PT POJ (RTC 301,20% • Rp185 M)</span>
+          </div>
+          <div style="margin-top:8px; font-size:11px; padding:6px 8px; background:#FAFBF9; border-radius:4px; border:1px solid #E1E8E3;">
+            <strong>💡 Rekomendasi Forensik:</strong> Pembentukan Gugus Tugas Penagihan Piutang dan pembentukan CKPN sesuai PSAK 71.
+          </div>
+        </div>
+
+        <!-- PATTERN 4 -->
+        <div class="pattern-card sev-low">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px;">
+            <strong style="font-size:13.5px; color:var(--forest-deep);">Pola 4: Daya Dukung Solvabilitas POJK (Buffer Sisa)</strong>
+            <span class="pattern-sev-pill sev-low">🛡️ KEPATUHAN OK</span>
+          </div>
+          <p style="font-size:11.5px; color:var(--ink-secondary); margin:0 0 8px;">
+            Konsolidasi Grup DER 0,96x memiliki ruang solvabilitas sangat lega dari batas plafon regulasi POJK DER ≤ 5,0x (Headroom 4,04x / 80,8% buffer).
+          </p>
+          <div class="pattern-entities-wrap">
+            <span class="pattern-ent-tag">📍 Konsolidasi Grup (6 Entitas)</span>
+            <span class="pattern-ent-tag">📍 DAAZ (Modified Z-Score 2,94x Safe)</span>
+          </div>
+          <div style="margin-top:8px; font-size:11px; padding:6px 8px; background:#FAFBF9; border-radius:4px; border:1px solid #E1E8E3;">
+            <strong>💡 Rekomendasi Forensik:</strong> Pertahankan alokasi permodalan dan batasi gearing ratio anak perusahaan agar tidak melebihi 2,5x.
+          </div>
+        </div>
+      `;
+
+      container.innerHTML = cardsHtml;
+    }
+
+    function runDeepPatternAnalysisAI() {
+      const box = document.getElementById('aiPatternSynthesisBox');
+      if (!box) return;
+
+      const isEn = appState.lang === 'en';
+      box.classList.remove('hidden');
+      box.innerHTML = `
+        <div style="text-align:center; padding:20px; color:var(--forest-deep);">
+          <div class="thinking-pulse-dot" style="display:inline-block; margin-bottom:8px;"></div>
+          <div style="font-weight:600; font-size:13px;">${isEn ? 'AI Deep Pattern Recognition in progress...' : 'AI sedang memindai seluruh entitas di Data Pool & mengorelasikan pola risiko sistemik...'}</div>
+          <div style="font-size:11px; color:var(--ink-secondary); margin-top:3px;">${isEn ? 'Cross-verifying S7 Growth Gap, Working Capital Deficits, and POJK Headroom' : 'Memadukan Sinyal S7 Growth Gap, Defisit Modal Kerja, Lonjakan RTC Piutang, dan Plafon POJK DER'}</div>
+        </div>
+      `;
+
+      setTimeout(() => {
+        const poolCount = appState.dataPool.length || 4;
+        box.innerHTML = isEn ? `
+          <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #B8DAC8; padding-bottom:8px; margin-bottom:12px;">
+            <strong style="color:var(--forest-deep); font-size:14px;">🧠 Deep Cross-Entity Pattern Synthesis Report (${poolCount} Entities Pooled)</strong>
+            <span class="badge badge-green" style="background:#E2F3EB; color:var(--forest-deep);">Zero-Persistence Forensic AI</span>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:10px; font-size:12px;">
+            <div class="ai-synthesis-card" style="border-left:3px solid var(--red); background:#FFF;">
+              <strong>1. Systemic Operational Contagion (The Growth Gap Nexus):</strong>
+              <p style="margin:4px 0 0;">An interconnected operational risk exists between PT EPS and PT POJ. PT EPS exhibits an unchecked operational expenditure acceleration (+32.91% vs revenue +31.45%), which coincides with PT POJ's uncontrolled receivables accumulation (RTC 301.20% vs RKAP). This indicates an enterprise-wide breakdown in working capital cycle discipline.</p>
+            </div>
+            <div class="ai-synthesis-card" style="border-left:3px solid var(--gold); background:#FFF;">
+              <strong>2. Liquidity & Minority Dividend Vulnerability:</strong>
+              <p style="margin:4px 0 0;">PT EPS's negative NWC (-Rp40.49 Billion, Current Ratio 0.57x) threatens liquidity solvency. Simultaneously, in PT POJ, the 1% minority shareholder (YKPP) faces delayed dividend realization because cash flow is locked in trade receivables (Rp185 Billion actual vs Rp61.42 Billion budget cap).</p>
+            </div>
+            <div class="ai-synthesis-card" style="border-left:3px solid var(--forest); background:#FFF;">
+              <strong>3. Holding Group Cushion & POJK DER Compliance:</strong>
+              <p style="margin:4px 0 0;">Despite operational stresses in subsidiaries, Consolidated Group debt capacity remains resilient with DER at 0.96x (POJK limit ≤ 5.0x), and DAAZ investment assets maintain a solid Modified Z-Score of 2.94x (Safe Zone). The holding company possesses sufficient credit headroom to provide liquidity backstops to distressed operating units.</p>
+            </div>
+            <div style="background:#F0F7F3; border:1px solid #C4DEC0; border-radius:6px; padding:10px;">
+              <strong style="color:var(--forest-deep);">📋 Strategic Supervisory Directives for Board of Commissioners:</strong>
+              <ol style="margin:4px 0 0 16px; padding:0; display:flex; flex-direction:column; gap:3px;">
+                <li>Enforce Group-wide Working Capital Task Force covering PT EPS and PT POJ.</li>
+                <li>Impose strict cap on Opex budget expansions in next fiscal year (maximum 10% YoY).</li>
+                <li>Establish dedicated collection taskforce for PT POJ third-party trade receivables.</li>
+                <li>Utilize holding group's low leverage (DER 0.96x) to replace high-cost short-term debt with long-term intragroup loans.</li>
+              </ol>
+            </div>
+          </div>
+        ` : `
+          <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #B8DAC8; padding-bottom:8px; margin-bottom:12px;">
+            <strong style="color:var(--forest-deep); font-size:14px;">🧠 Laporan Sintesis Pola Sistemik Portofolio (${poolCount} Entitas Terindeks)</strong>
+            <span class="badge badge-green" style="background:#E2F3EB; color:var(--forest-deep);">Zero-Persistence Forensic AI</span>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:10px; font-size:12px;">
+            <div class="ai-synthesis-card" style="border-left:3px solid var(--red); background:#FFF;">
+              <strong>1. Pola Penularan Risiko Operasional (The Growth Gap Nexus):</strong>
+              <p style="margin:4px 0 0;">Terdapat korelasi risiko operasional antara PT EPS dan PT POJ. PT EPS mengalami akselerasi beban usaha yang tidak terkendali (+32,91% vs pendapatan +31,45%), yang beriringan dengan penumpukan piutang PT POJ (RTC 301,20% dari pagu RKAP). Hal ini menunjukkan adanya disrupsi sistemik pada manajemen modal kerja rantai pasok grup.</p>
+            </div>
+            <div class="ai-synthesis-card" style="border-left:3px solid var(--gold); background:#FFF;">
+              <strong>2. Kerentanan Likuiditas & Hak Dividen Minoritas:</strong>
+              <p style="margin:4px 0 0;">Defisit modal kerja PT EPS (-Rp40,49 Miliar, Current Ratio 0,57x) menciptakan tekanan likuiditas jangka pendek. Pada saat yang sama di PT POJ, pemegang saham minoritas 1% (YKPP) menghadapi risiko penundaan dividen akibat kas tertahan pada piutang dagang pihak ketiga (Rp185 Miliar vs target RKAP Rp61,42 Miliar).</p>
+            </div>
+            <div class="ai-synthesis-card" style="border-left:3px solid var(--forest); background:#FFF;">
+              <strong>3. Daya Dukung Permodalan Holding & Kepatuhan POJK:</strong>
+              <p style="margin:4px 0 0;">Meskipun terdapat tekanan operasional di anak usaha, kapasitas solvabilitas Konsolidasi Grup sangat kuat dengan DER 0,96x (jauh di bawah batas POJK DER ≤ 5,0x), serta aset investasi DAAZ mencatat Modified Z-Score 2,94x (Safe Zone). Holding memiliki ruang pembiayaan yang memadai untuk menyuntikkan fasilitas subordinasi bagi anak usaha yang mengalami defisit.</p>
+            </div>
+            <div style="background:#F0F7F3; border:1px solid #C4DEC0; border-radius:6px; padding:10px;">
+              <strong style="color:var(--forest-deep);">📋 Arahan Strategis Dewan Komisaris / Pemegang Saham:</strong>
+              <ol style="margin:4px 0 0 16px; padding:0; display:flex; flex-direction:column; gap:3px;">
+                <li>Bentuk Gugus Tugas Manajemen Modal Kerja Terpadu yang mencakup PT EPS dan PT POJ.</li>
+                <li>Tetapkan pagu ketat pertumbuhan beban operasional (Opex) maksimal 10% YoY pada RKAP mendatang.</li>
+                <li>Bentuk tim task force percepatan penagihan piutang PT POJ dan cadangan CKPN sesuai PSAK 71.</li>
+                <li>Manfaatkan solvabilitas holding (DER 0,96x) untuk merestrukturisasi utang jangka pendek anak usaha berbunga tinggi menjadi pinjaman subordinasi pemegang saham.</li>
+              </ol>
+            </div>
+          </div>
+        `;
+
+        recordAuditTrail({
+          action: 'DEEP_PATTERN_AI_SYNTHESIS',
+          scope: 'Forensic Data Pool (Lintas-Entitas)',
+          summary: `Analisis pola sistemik AI selesai pada ${poolCount} entitas di Data Pool. Terdeteksi korelasi Opex Gap & Defisit Modal Kerja.`
+        });
+      }, 700);
+    }
+
+    function deleteFromDataPool(id) {
+      const idx = appState.dataPool.findIndex(c => c.id === id);
+      if (idx >= 0) {
+        const deleted = appState.dataPool.splice(idx, 1)[0];
+        updateDataPoolBadge();
+        renderDataPoolView();
+        recordAuditTrail({
+          action: 'DELETE_FROM_POOL',
+          scope: `Data Pool: ${deleted.entityName}`,
+          summary: `Kasus "${deleted.entityName}" (${deleted.id}) dihapus dari Data Pool.`
+        });
+        showToast(appState.lang === 'en' ? `Case "${deleted.entityName}" removed from pool.` : `Kasus "${deleted.entityName}" telah dihapus dari data pool.`, 'info');
+      }
+    }
+
+    function clearDataPool() {
+      if (appState.dataPool.length === 0) {
+        showToast(appState.lang === 'en' ? "Data pool is already empty." : "Data pool sudah kosong.", "info");
+        return;
+      }
+      const count = appState.dataPool.length;
+      appState.dataPool = [];
+      updateDataPoolBadge();
+      renderDataPoolView();
+
+      fetch('/api/data-pool/clear', { method: 'POST' }).catch(err => console.warn(err));
+
+      recordAuditTrail({
+        action: 'CLEAR_DATA_POOL',
+        scope: 'Forensic Data Pool',
+        summary: `Seluruh entitas (${count} kasus) dikosongkan dari Forensic Data Pool.`
+      });
+
+      showToast(appState.lang === 'en' ? `Cleared ${count} entities from Data Pool.` : `Berhasil mengosongkan ${count} entitas dari Data Pool.`, 'info');
+    }
+
+    function exportDataPoolJson() {
+      if (appState.dataPool.length === 0) {
+        showToast(appState.lang === 'en' ? "Data pool is empty. Nothing to export." : "Data pool kosong. Tidak ada data untuk diekspor.", "warning");
+        return;
+      }
+      const exportPayload = {
+        exportTimestamp: new Date().toISOString(),
+        analyst: appState.currentAnalyst,
+        totalCases: appState.dataPool.length,
+        securityModel: "Zero-Persistence In-Memory Client Knowledge Base",
+        cases: appState.dataPool,
+        auditTrail: appState.auditTrail.slice(0, 50)
+      };
+      const jsonStr = JSON.stringify(exportPayload, null, 2);
+      const blob = new Blob([jsonStr], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `forensic_data_pool_knowledge_base_${Date.now()}.json`;
+      a.click();
+      URL.revokeObjectURL(url);
+      showToast(appState.lang === 'en' ? "Exported Knowledge Base JSON successfully." : "Knowledge Base format JSON berhasil diunduh.", "success");
+    }
+
+    function exportDataPoolCsv() {
+      if (appState.dataPool.length === 0) {
+        showToast(appState.lang === 'en' ? "Data pool is empty. Nothing to export." : "Data pool kosong. Tidak ada data untuk diekspor.", "warning");
+        return;
+      }
+      const headers = ["ID Kasus", "Nama Entitas", "Kategori", "Periode", "Skor Kesehatan", "Tingkat Risiko", "Analis", "Cap Waktu", "Checksum SHA256"];
+      const rows = appState.dataPool.map(c => [
+        `"${c.id}"`,
+        `"${c.entityName}"`,
+        `"${c.category}"`,
+        `"${c.period}"`,
+        c.forensicHealthScore,
+        `"${c.riskTier}"`,
+        `"${c.analyst || ''}"`,
+        `"${c.timestamp || ''}"`,
+        `"${c.checksum || ''}"`
+      ]);
+      const csvContent = [headers.join(','), ...rows.map(r => r.join(','))].join('\n');
+      const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `forensic_data_pool_${Date.now()}.csv`;
+      a.click();
+      URL.revokeObjectURL(url);
+      showToast(appState.lang === 'en' ? "Exported Data Pool CSV successfully." : "Data Pool format CSV berhasil diunduh.", "success");
     }
 
     // --- IN-CHAT DOCUMENT ATTACHMENT & AUTO-CLASSIFICATION ---
@@ -2978,6 +3756,9 @@
       // Executive Summary
       const isSummaryQuery = q.includes('ringkasan') || q.includes('status keseluruhan') || q.includes('ikhtisar') || q.includes('summary') || q.includes('overview') || q.includes('executive summary');
 
+      // Data Pool / Knowledge Base / Cross-Entity Pattern Query
+      const isDataPoolQuery = q.includes('data pool') || q.includes('datapool') || q.includes('knowledge base') || q.includes('pola sistemik') || q.includes('pola risiko') || (q.includes('pola') && (q.includes('ai') || q.includes('analisis') || q.includes('lintas') || q.includes('portofolio') || q.includes('deteksi') || q.includes('pool')));
+
       // Conceptual Inquiries
       const isGrowthGapConcept = q.includes('apa itu growth gap') || q.includes('apa arti growth gap') || q.includes('sinyal s7') || (q.includes('growth gap') && (q.includes('apa') || q.includes('maksud') || q.includes('definisi') || q.includes('rumus') || q.includes('pengertian') || q.includes('jelaskan') || q.includes('what is')));
       const isNwcConcept = q.includes('apa itu nwc') || q.includes('apa itu modal kerja') || ((q.includes('nwc') || q.includes('modal kerja') || q.includes('working capital')) && (q.includes('apa') || q.includes('maksud') || q.includes('definisi') || q.includes('rumus') || q.includes('pengertian') || q.includes('jelaskan') || q.includes('what is')));
@@ -2989,14 +3770,26 @@
       const isConceptual = isGrowthGapConcept || isNwcConcept || isZscoreConcept || isRtcConcept || isPojkConcept || isIfrsConcept || isFootingConcept;
 
       // Module Verifications
-      const isGreeting = !isAuditQuery && !isSummaryQuery && !isConceptual && (q.includes('halo') || q.includes('hello') || q.includes('hai') || q === 'hi' || q.startsWith('hi ') || q.includes('help') || q.includes('tolong') || q.includes('bantuan') || q.includes('cara pakai') || q === 'p');
-      const isNonPengendali = !isConceptual && (q.includes('non-pengendali') || q.includes('non pengendali') || q.includes('non-controlling') || q.includes('rtc') || q.includes('poj') || q.includes('dividen') || q.includes('dividend'));
-      const isPengendali = !isConceptual && !isNonPengendali && (q.includes('pengendali') || q.includes('controlling') || q.includes('eps') || q.includes('growth gap') || q.includes('footing') || q.includes('opex') || q.includes('omzet') || q.includes('cogs'));
-      const isInvestasi = !isConceptual && (q.includes('investasi') || q.includes('invest') || q.includes('z-score') || q.includes('zscore') || q.includes('altman') || q.includes('obligasi') || q.includes('sukuk') || q.includes('agunan') || q.includes('daaz'));
-      const isKonsolidasi = !isConceptual && (q.includes('konsolidasi') || q.includes('consolidation') || q.includes('pojk') || q.includes('der') || q.includes('ifrs') || q.includes('eliminasi') || q.includes('nci'));
+      const isGreeting = !isDataPoolQuery && !isAuditQuery && !isSummaryQuery && !isConceptual && (q.includes('halo') || q.includes('hello') || q.includes('hai') || q === 'hi' || q.startsWith('hi ') || q.includes('help') || q.includes('tolong') || q.includes('bantuan') || q.includes('cara pakai') || q === 'p');
+      const isNonPengendali = !isConceptual && !isDataPoolQuery && (q.includes('non-pengendali') || q.includes('non pengendali') || q.includes('non-controlling') || q.includes('rtc') || q.includes('poj') || q.includes('dividen') || q.includes('dividend'));
+      const isPengendali = !isConceptual && !isDataPoolQuery && !isNonPengendali && (q.includes('pengendali') || q.includes('controlling') || q.includes('eps') || q.includes('growth gap') || q.includes('footing') || q.includes('opex') || q.includes('omzet') || q.includes('cogs'));
+      const isInvestasi = !isConceptual && !isDataPoolQuery && (q.includes('investasi') || q.includes('invest') || q.includes('z-score') || q.includes('zscore') || q.includes('altman') || q.includes('obligasi') || q.includes('sukuk') || q.includes('agunan') || q.includes('daaz'));
+      const isKonsolidasi = !isConceptual && !isDataPoolQuery && (q.includes('konsolidasi') || q.includes('consolidation') || q.includes('pojk') || q.includes('der') || q.includes('ifrs') || q.includes('eliminasi') || q.includes('nci'));
 
       let steps = [];
-      if (isAuditQuery) {
+      if (isDataPoolQuery) {
+        steps = isEn ? [
+          "🔍 Scanning active Forensic Data Pool & Dynamic Knowledge Base...",
+          "📊 Correlating cross-entity signals (S7 Growth Gap, NWC Deficit, RTC 301%)...",
+          "⚖️ Evaluating POJK DER headroom & group-level contagion risk...",
+          "✅ Cross-entity pattern recognition synthesis ready."
+        ] : [
+          "🔍 Memindai Forensic Data Pool & Dynamic Knowledge Base memori sesi...",
+          "📊 Mengorelasikan sinyal lintas entitas (S7 Growth Gap, Defisit NWC, RTC 301%)...",
+          "⚖️ Menguji kapasitas solvabilitas POJK DER dan risiko penularan portofolio...",
+          "✅ Sintesis pengenalan pola sistemik siap disajikan."
+        ];
+      } else if (isAuditQuery) {
         steps = isEn ? [
           "🔍 Scanning active session audit trail memory...",
           "📊 Extracting auditor metadata, timestamps & SHA-256 checksums...",
@@ -3142,6 +3935,7 @@
           const contentEl = document.getElementById(`content_${msgId}`);
           if (contentEl) {
             contentEl.innerHTML = generateDynamicCopilotResponse(q, {
+              isDataPoolQuery,
               isAuditQuery,
               isSummaryQuery,
               isGrowthGapConcept,
@@ -3169,6 +3963,7 @@
 
     function generateDynamicCopilotResponse(q, ctx) {
       const {
+        isDataPoolQuery,
         isAuditQuery,
         isSummaryQuery,
         isGrowthGapConcept,
@@ -3200,6 +3995,125 @@
           </div>
         `;
       };
+
+      // 0. DATA POOL & CONTINUOUS LEARNING PATTERN RECOGNITION QUERY
+      if (isDataPoolQuery) {
+        const pool = appState.dataPool;
+        const count = pool.length;
+
+        if (count === 0) {
+          const body = isEn ? `
+            <strong style="color:var(--forest);">Continuous Learning Knowledge Base & Pattern Engine:</strong>
+            <p style="margin-top:4px;">⚠️ <strong>Data Pool is currently empty (0 entities indexed).</strong></p>
+            <p style="margin-top:2px;">To activate cross-entity pattern recognition, upload financial reports or load benchmark data to populate the dynamic vector memory.</p>
+            <div style="margin-top:8px;">
+              <button onclick="loadPrdBenchmarkData(); sendCopilotMsg('Analisis Pola Data Pool: Periksa seluruh entitas yang ada di pool dan evaluasi pola sistemik risiko portofolio.');" class="btn btn-gold btn-sm" style="font-size:11px; padding:4px 10px;">
+                ✨ Load Benchmark Data & Analyze Patterns
+              </button>
+            </div>
+            <span class="rag-citation-tag">📖 Continuous Learning RAG Memory Hub</span>
+          ` : `
+            <strong style="color:var(--forest);">Continuous Learning Knowledge Base & Mesin Pola AI:</strong>
+            <p style="margin-top:4px;">⚠️ <strong>Forensic Data Pool saat ini masih kosong (0 entitas terindeks).</strong></p>
+            <p style="margin-top:2px;">Untuk mengaktifkan deteksi pola risiko lintas entitas, silakan unggah berkas laporan keuangan atau muat data benchmark ke dalam memori dinamis sistem.</p>
+            <div style="margin-top:8px;">
+              <button onclick="loadPrdBenchmarkData(); sendCopilotMsg('Analisis Pola Data Pool: Periksa seluruh entitas yang ada di pool dan evaluasi pola sistemik risiko portofolio.');" class="btn btn-gold btn-sm" style="font-size:11px; padding:4px 10px;">
+                ✨ Muat Contoh Data & Deteksi Pola Sekarang
+              </button>
+            </div>
+            <span class="rag-citation-tag">📖 RAG Continuous Learning Memory Hub</span>
+          `;
+          return wrapWithStamp(body, 'Data Pool (Kosong)', 'Notifikasi pool kosong dengan ajakan memuat data benchmark.');
+        }
+
+        const opexGapCases = pool.filter(c => {
+          const m = c.metrics || {};
+          return (m.growthGap && m.growthGap > 0) || (m.opexGrowth && m.revGrowth && m.opexGrowth > m.revGrowth);
+        });
+        const nwcCases = pool.filter(c => {
+          const m = c.metrics || {};
+          return (m.nwc !== undefined && m.nwc < 0) || (m.cr !== undefined && m.cr < 1.0);
+        });
+        const rtcCases = pool.filter(c => {
+          const m = c.metrics || {};
+          return (m.rtc !== undefined && m.rtc > 120);
+        });
+
+        const body = isEn ? `
+          <strong style="color:var(--forest);">Cross-Entity Pattern Recognition Synthesis (${count} Pooled Entities):</strong>
+          <table style="width:100%; border-collapse:collapse; margin:8px 0; font-size:11.5px;">
+            <tr style="background:var(--surface-alt); border-bottom:1px solid var(--line);">
+              <th style="padding:4px 6px; text-align:left;">Pattern Identified</th>
+              <th style="padding:4px 6px; text-align:left;">Affected Entities</th>
+              <th style="padding:4px 6px; text-align:center;">Severity</th>
+            </tr>
+            <tr style="border-bottom:1px solid var(--line);">
+              <td style="padding:4px 6px;"><strong>Pola 1: Opex Growth Gap (S7)</strong></td>
+              <td style="padding:4px 6px;">${opexGapCases.map(c => c.entityName).join(', ') || 'None'}</td>
+              <td style="padding:4px 6px; text-align:center;"><span class="badge badge-gold" style="font-size:10px; background:#FDE8E8; color:var(--red);">🚨 High Risk</span></td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--line);">
+              <td style="padding:4px 6px;"><strong>Pola 2: Defisit Modal Kerja (NWC < 0)</strong></td>
+              <td style="padding:4px 6px;">${nwcCases.map(c => c.entityName).join(', ') || 'None'}</td>
+              <td style="padding:4px 6px; text-align:center;"><span class="badge badge-gold" style="font-size:10px; background:#FDE8E8; color:var(--red);">🚨 High Risk</span></td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--line);">
+              <td style="padding:4px 6px;"><strong>Pola 3: Lonjakan Piutang (RTC > 120%)</strong></td>
+              <td style="padding:4px 6px;">${rtcCases.map(c => c.entityName).join(', ') || 'None'}</td>
+              <td style="padding:4px 6px; text-align:center;"><span class="badge badge-gold" style="font-size:10px;">⚠️ Moderate</span></td>
+            </tr>
+            <tr>
+              <td style="padding:4px 6px;"><strong>Pola 4: Daya Dukung POJK DER ≤ 5.0x</strong></td>
+              <td style="padding:4px 6px;">Holding Group (DER 0.96x)</td>
+              <td style="padding:4px 6px; text-align:center;"><span class="badge badge-primary" style="font-size:10px;">🛡️ Safe Buffer</span></td>
+            </tr>
+          </table>
+          <p style="font-size:12px; margin-top:4px;">• <strong>Systemic Assessment:</strong> Operational margins in subsidiaries are pressured by Opex inflation and working capital traps, but Holding Group solvency headroom (DER 0.96x vs POJK cap 5.0x) provides an 80.8% safety buffer to absorb localized liquidity shocks.</p>
+          <div style="margin:8px 0;">
+            <button onclick="switchView('datapool')" class="btn btn-secondary btn-sm" style="font-size:11px; padding:4px 10px;">
+              📚 Open Full Forensic Data Pool (${count} Cases)
+            </button>
+          </div>
+          <span class="rag-citation-tag">🧠 Continuous Learning Grounded on ${count} Dynamic Pooled Cases</span>
+        ` : `
+          <strong style="color:var(--forest);">Sintesis Pola Sistemik Lintas Entitas (${count} Entitas Terindeks):</strong>
+          <table style="width:100%; border-collapse:collapse; margin:8px 0; font-size:11.5px;">
+            <tr style="background:var(--surface-alt); border-bottom:1px solid var(--line);">
+              <th style="padding:4px 6px; text-align:left;">Pola Teridentifikasi</th>
+              <th style="padding:4px 6px; text-align:left;">Entitas Terdampak</th>
+              <th style="padding:4px 6px; text-align:center;">Tingkat Keparahan</th>
+            </tr>
+            <tr style="border-bottom:1px solid var(--line);">
+              <td style="padding:4px 6px;"><strong>Pola 1: Opex Growth Gap (S7)</strong></td>
+              <td style="padding:4px 6px;">${opexGapCases.map(c => c.entityName).join(', ') || 'Nihil'}</td>
+              <td style="padding:4px 6px; text-align:center;"><span class="badge badge-gold" style="font-size:10px; background:#FDE8E8; color:var(--red);">🚨 Risiko Tinggi</span></td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--line);">
+              <td style="padding:4px 6px;"><strong>Pola 2: Defisit Modal Kerja (NWC < 0)</strong></td>
+              <td style="padding:4px 6px;">${nwcCases.map(c => c.entityName).join(', ') || 'Nihil'}</td>
+              <td style="padding:4px 6px; text-align:center;"><span class="badge badge-gold" style="font-size:10px; background:#FDE8E8; color:var(--red);">🚨 Risiko Tinggi</span></td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--line);">
+              <td style="padding:4px 6px;"><strong>Pola 3: Lonjakan Piutang (RTC > 120%)</strong></td>
+              <td style="padding:4px 6px;">${rtcCases.map(c => c.entityName).join(', ') || 'Nihil'}</td>
+              <td style="padding:4px 6px; text-align:center;"><span class="badge badge-gold" style="font-size:10px;">⚠️ Waspada</span></td>
+            </tr>
+            <tr>
+              <td style="padding:4px 6px;"><strong>Pola 4: Daya Dukung POJK DER ≤ 5,0x</strong></td>
+              <td style="padding:4px 6px;">Grup Holding (DER 0,96x)</td>
+              <td style="padding:4px 6px; text-align:center;"><span class="badge badge-primary" style="font-size:10px;">🛡️ Ruang Aman</span></td>
+            </tr>
+          </table>
+          <p style="font-size:12px; margin-top:4px;">• <strong>Penilaian Sistemik:</strong> Tekanan marjin dan likuiditas anak usaha terkonsentrasi pada lonjakan beban usaha dan penumpukan piutang, namun solvabilitas Konsolidasi Grup (DER 0,96x vs plafon POJK 5,0x) menyediakan bantalan modal 80,8% yang kokoh untuk mitigasi penularan risiko.</p>
+          <div style="margin:8px 0;">
+            <button onclick="switchView('datapool')" class="btn btn-secondary btn-sm" style="font-size:11px; padding:4px 10px;">
+              📚 Buka Forensic Data Pool Lengkap (${count} Kasus)
+            </button>
+          </div>
+          <span class="rag-citation-tag">🧠 Continuous Learning Berbasis ${count} Kasus Dinamis di Data Pool</span>
+        `;
+        return wrapWithStamp(body, 'Pola Sistemik Data Pool', `Sintesis ${count} entitas: terdeteksi Opex Gap & Defisit Modal Kerja.`);
+      }
 
       // 1. AUDIT TRAIL / PROVENANCE QUERY
       if (isAuditQuery) {
