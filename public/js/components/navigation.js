@@ -15,7 +15,7 @@ export function renderHeader(container, currentView, onNavigate, onOpenUpload, o
         <div class="brand-logo" style="cursor:pointer;" id="brandLogoHome">YK</div>
         <div class="brand-title">
           <h1>Platform Terpadu Analisis Keuangan</h1>
-          <p>YKPP & Solanascope · Zero-Persistence & AI RAG Cross-Verifier</p>
+          <p>Kajian Ihsan & Solanascope · Zero-Persistence & AI RAG Cross-Verifier</p>
         </div>
       </div>
 

@@ -1,12 +1,12 @@
 app_code = """/**
- * Solanascope & YKPP Financial Intelligence Platform - Client Application
+ * Solanascope & Kajian Ihsan Financial Intelligence Platform - Client Application
  */
 
 // Application State
 const state = {
   currentRole: "reviewer", // 'reviewer' | 'configurator'
   activeTab: "agenda",
-  geminiApiKey: localStorage.getItem("ykpp_gemini_key") || "",
+  geminiApiKey: localStorage.getItem("om_ihsan_gemini_api_key") || "",
   currentInvestasiId: "investasi-daaz",
   data: {
     pengendali: null,
@@ -302,7 +302,7 @@ function renderNonPengendali(d) {
           <span class="badge badge-red">Kewajiban Dividen</span>
         </div>
         <div class="kpi-big">Rp${f.dividendPayableCY} M</div>
-        <p class="kpi-sub">Tercatat di Liabilitas Lancar; YKPP berhak atas pembagian dividen tunai proporsional</p>
+        <p class="kpi-sub">Tercatat di Liabilitas Lancar; Kajian Ihsan berhak atas pembagian dividen tunai proporsional</p>
       </div>
 
       <div class="card">
@@ -326,7 +326,7 @@ function renderNonPengendali(d) {
 
     <!-- Matriks Tingkat Perhatian: Merah / Kuning / Hijau -->
     <div class="card" style="margin-bottom:20px;">
-      <h3 style="margin-bottom:14px;">Matriks Monitoring Pemegang Saham Minoritas (YKPP 1% Saham)</h3>
+      <h3 style="margin-bottom:14px;">Matriks Monitoring Pemegang Saham Minoritas (Kajian Ihsan 1% Saham)</h3>
       
       <!-- KELOMPOK MERAH -->
       <div style="margin-bottom:18px;">
@@ -343,7 +343,7 @@ function renderNonPengendali(d) {
               <div class="finding-delta">${m.metric}</div>
               <p style="font-size:12.5px; margin-bottom:8px;">${m.desc}</p>
               <div style="background:var(--forest-soft); padding:10px; border-radius:var(--radius-sm); border-left:3px solid var(--forest);">
-                <strong style="color:var(--forest-deep);">Pertanyaan Kritis YKPP:</strong>
+                <strong style="color:var(--forest-deep);">Pertanyaan Kritis Kajian Ihsan:</strong>
                 <p style="font-size:12px; margin-top:3px; color:var(--ink);">${m.pertanyaanKritis}</p>
               </div>
             </div>
@@ -969,7 +969,7 @@ function renderParameters(p) {
             <tr>
               <td><strong>Ambang Deviasi Piutang RKAP (RTC)</strong></td>
               <td class="num"><strong>Maksimum 120,0%</strong></td>
-              <td>Kajian Ihsan & Rencana Kerja Anggaran YKPP</td>
+              <td>Kajian Ihsan & Rencana Kerja Anggaran Kajian Ihsan</td>
               <td>Tiering Merah & Pertanyaan Kritis Manajemen</td>
             </tr>
           </tbody>
@@ -1043,9 +1043,9 @@ window.exportNotaDinas = function(entityName) {
     </div>
 
     <table style="width:100%; margin-bottom:16px; font-size:13px; border-collapse:collapse;">
-      <tr><td style="width:100px; padding:3px 0;"><strong>Nomor</strong></td><td>: ND-104/YKPP-DKS/X/2026</td></tr>
+      <tr><td style="width:100px; padding:3px 0;"><strong>Nomor</strong></td><td>: ND-104/Kajian Ihsan-DKS/X/2026</td></tr>
       <tr><td style="padding:3px 0;"><strong>Tanggal</strong></td><td>: 06 Oktober 2026</td></tr>
-      <tr><td style="padding:3px 0;"><strong>Kepada Yth.</strong></td><td>: Pengurus YKPP</td></tr>
+      <tr><td style="padding:3px 0;"><strong>Kepada Yth.</strong></td><td>: Pengurus Kajian Ihsan</td></tr>
       <tr><td style="padding:3px 0;"><strong>Dari</strong></td><td>: Divisi Keuangan & Subsidiary</td></tr>
       <tr><td style="padding:3px 0;"><strong>Perihal</strong></td><td>: Hasil Verifikasi Laporan Keuangan ${entityName} Periode Agustus 2026</td></tr>
     </table>
@@ -1101,7 +1101,7 @@ window.closeModal = (id) => document.getElementById(id).style.display = "none";
 window.saveGeminiKey = function() {
   const key = document.getElementById("geminiApiKeyInput").value;
   state.geminiApiKey = key;
-  localStorage.setItem("ykpp_gemini_key", key);
+  localStorage.setItem("om_ihsan_gemini_api_key", key);
   window.closeModal("settingsModal");
   alert("Konfigurasi Google Gemini API Key berhasil disimpan!");
 };

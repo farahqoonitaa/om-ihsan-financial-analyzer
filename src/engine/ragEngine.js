@@ -19,28 +19,28 @@ class RAGEngine {
     this.documents = [
       {
         id: "DOC-PRD-EPS-01",
-        source: "PRD Pengendali YKPP × PT EPS (Laporan Manajemen → Nota Dinas)",
+        source: "PRD Pengendali Kajian Ihsan × PT EPS (Laporan Manajemen → Nota Dinas)",
         section: "Bagian 1: Karakteristik Input & Output",
         page: "hlm. 1-3",
         text: "Input entitas pengendali adalah Laporan Manajemen bulanan (23 halaman) yang terdiri dari 9 blok: Cover, Surat Pengantar, Neraca, Laba Rugi Komprehensif, Arus Kas, Perubahan Ekuitas, CALK Notes 1-24, Realisasi Anggaran RKAP, dan Laba Rugi per Unit Bisnis. Output adalah Nota Dinas Hasil Verifikasi berstruktur 19 bagian dengan stance verifikator: temuan adalah indikasi yang memerlukan klarifikasi, bukan opini audit."
       },
       {
         id: "DOC-PRD-EPS-02",
-        source: "PRD Pengendali YKPP × PT EPS (Signal Library)",
+        source: "PRD Pengendali Kajian Ihsan × PT EPS (Signal Library)",
         section: "Sinyal Forensik S1 - S10",
         page: "hlm. 8-10",
         text: "10 Sinyal Forensik: S1 Movement (|Δ%| ≥ 50%), S2 Static Balance (Δ = 0 pada akun yang seharusnya bergerak seperti cadangan), S3 Anomalous Sign (cadangan tujuan bernilai negatif), S4 Footing / Cross-Check Breaks (selisih neraca vs CALK), S5 Policy / Tax Rate Breaks (perubahan tarif pajak efektif 22% vs 25%), S6 Non-Operating Spikes, S7 Growth Gap (Opex tumbuh lebih cepat dari omzet, opex +32,91% vs omzet +31,45%), S8 Segment Decline (penurunan pendapatan lini usaha > 10% atau rugi unit), S9 Budget Pacing (lonjakan tunjangan bonus jasa produksi 2.308% dari RKAP), S10 Related Party Concentration."
       },
       {
         id: "DOC-PRD-POJ-01",
-        source: "PRD Non-Pengendali YKPP × PT POJ (55 hlm LK Juli/Agustus 2026)",
+        source: "PRD Non-Pengendali Kajian Ihsan × PT POJ (55 hlm LK Juli/Agustus 2026)",
         section: "Minority Shareholder Stance & Governance",
         page: "hlm. 16-19",
-        text: "YKPP berkedudukan sebagai pemegang saham non-pengendali pada PT POJ dengan kepemilikan 1.000 lembar (1,00%). Monitoring YKPP difokuskan pada perlindungan hak ekonomi, kepastian dividen, risiko refinancing, capital call, dan kualitas laba. Hasil analisis dikelompokkan dalam tingkat perhatian Merah, Kuning, dan Hijau."
+        text: "Kajian Ihsan berkedudukan sebagai pemegang saham non-pengendali pada PT POJ dengan kepemilikan 1.000 lembar (1,00%). Monitoring Kajian Ihsan difokuskan pada perlindungan hak ekonomi, kepastian dividen, risiko refinancing, capital call, dan kualitas laba. Hasil analisis dikelompokkan dalam tingkat perhatian Merah, Kuning, dan Hijau."
       },
       {
         id: "DOC-PRD-POJ-02",
-        source: "PRD Non-Pengendali YKPP × PT POJ",
+        source: "PRD Non-Pengendali Kajian Ihsan × PT POJ",
         section: "Temuan Kritis & Pertanyaan Kritis",
         page: "hlm. 27-29",
         text: "Temuan Merah PT POJ meliputi: 1. Likuiditas & Defisit Modal Kerja: Current ratio 0,52x, NWC negatif -Rp347,18 Miliar, serta utang dividen Rp110,27 Miliar di liabilitas lancar. 2. Leverage & Pinjaman: Total pinjaman Rp727,97 Miliar vs ekuitas Rp479,58 Miliar (DER 2,19x). 3. Lonjakan Piutang Pihak Ketiga Mencapai 301,20% terhadap target RKAP (realisasi Rp91,18 M vs target Rp30,27 M). Setiap temuan Merah wajib menyertakan rumusan Pertanyaan Kritis terstruktur untuk manajemen."
@@ -61,17 +61,24 @@ class RAGEngine {
       },
       {
         id: "DOC-KONSOLIDASI-01",
-        source: "Arsitektur Konsolidasi Grup Yayasan (Presentasi Pak Ihsan)",
+        source: "Arsitektur Konsolidasi Grup Kajian Ihsan (Presentasi Pak Ihsan)",
         section: "Atribusi NCI IFRS 10 & Aturan Forensik",
         page: "Slide 4-8",
         text: "Konsolidasi Grup 6 entitas menghasilkan pendapatan konsolidasi $3.885,0 M dan laba bersih konsolidasi $325,0 M (Parent Attributable $279,7 M / 86,1%, NCI Minority $45,3 M / 13,9%). Konsolidasi DER 0,96x berada jauh di bawah batas maksimum regulasi POJK 5,0x. Konsolidasi ROA 5,4% berada di atas rata-rata industri microfinance (3,5% - 5,2%). Terdeteksi NCI profit mismatch pada Subsidiary II sebesar +34,1% (melebihi toleransi 8%) dan lonjakan piutang berelasi +158,8% (melebihi ambang batas 30%)."
       },
       {
         id: "DOC-MOM-01",
-        source: "MOM: Analisis Laporan Keuangan (Draft Terstruktur)",
+        source: "MOM: Analisis Laporan Keuangan (Kajian Ihsan Terstruktur)",
         section: "Alur Terpadu 3 Fungsi, Definisi RTC & 8 Action Items",
         page: "Notulensi",
         text: "MOM menyepakati 3 alur analisis dalam 1 platform terpadu: 1. Entitas Pengendali (Kajian Ihsan) -> Analisis vertikal dan horizontal; 2. Entitas Non-Pengendali (Kajian Ihsan) -> Analisis vertikal dan horizontal; 3. Investasi (Kajian docs) -> Analisis komparasi 4 periode: Tahun lalu, Bulan lalu, YoY %, dan RTC (Realisasi Terhadap Cita-cita / RKAP %). Agenda hari ini: analisis untuk 2 investasi dan 2 entitas pengendali, lalu ditutup dengan analisis akhir (konsolidasi). RTC didefinisikan sebagai Realisasi Terhadap Cita-cita (Realisasi Aktual / Target RKAP)."
+      },
+      {
+        id: "DOC-INV-PINDO-01",
+        source: "Kajian Ihsan: PT Pindo Deli Pulp and Paper Mills (Expected Output for Investment Analysis)",
+        section: "Analisis Horizontal, Analisis Vertikal, Kualitas Laba dan Covenant",
+        page: "hlm. 1-3",
+        text: "Kajian Ihsan PT Pindo Deli Pulp and Paper Mills per 30 Juni 2026. Neraca: Total Aset USD 9.564.776 ribu (+5,4%), Aset Lancar USD 3.815.764 ribu (+8,9%), Total Liabilitas USD 4.078.921 ribu (+1,0%), Ekuitas USD 5.485.855 ribu (+8,9%, Equity Cushion 57,4%). Laba Rugi: Penjualan neto USD 1.084.245 ribu (-1,34%), HPP USD 791.935 ribu (-2,16%), Laba Bruto USD 292.310 ribu (+0,96%), Laba Usaha USD 154.056 ribu (-1,93%), Bagian Laba Asosiasi USD 212.518 ribu (+179,4%), Laba Selisih Kurs USD 140.198 ribu (+2.533%), Laba Neto melonjak +210,3% menjadi USD 455.637 ribu karena faktor non-operasional (asosiasi & kurs). Analisis Vertikal: Gross Margin 26,96%, Operating Margin 14,21%, Net Margin 42,02% (kualitas laba perlu diuji). Segmen Usaha: Pulp & Cultural Paper turun 5,2% ke USD 471,0 juta, Industrial Paper & Tissue naik 1,9% ke USD 613,3 juta. Covenant: Current Ratio 1,96x (headroom memadai vs min 1,00x), DER pengelolaan modal 0,5x (indikatif memadai vs maks 2,00-4,00x), DSCR perlu formula kontraktual. Rekomendasi Investor: Positif dengan monitoring."
       }
     ];
   }
@@ -92,7 +99,7 @@ class RAGEngine {
     const metricsStr = Object.entries(caseRecord.metrics || {})
       .map(([k, v]) => `${k}: ${v}`)
       .join(", ");
-    const docText = `Entitas: ${caseRecord.entityName} (${caseRecord.category}). Skor Kesehatan Forensik: ${caseRecord.forensicHealthScore || 70}/100. Status Risiko: ${caseRecord.riskTier || 'Waspada'}. Sinyal Anomali: [${signalsStr}]. Metrik: [${metricsStr}]. Jejak Audit: ${caseRecord.checksum || 'SHA256:VERIFIED'}. Waktu Analisis: ${caseRecord.timestamp || new Date().toISOString()}.`;
+    const docText = `Entitas: ${caseRecord.entityName} (${caseRecord.category}). Skor Kesehatan Forensik: ${caseRecord.forensicHealthScore || 70}/100. Status Risiko: ${caseRecord.riskTier || 'Waspada'}. Sinyal Anomali: [${signalsStr}]. Metrik: [${metricsStr}]. Jejak Audit: ${caseRecord.checksum || 'AUDIT-LOG:RECORDED'}. Waktu Analisis: ${caseRecord.timestamp || new Date().toISOString()}.`;
 
     const docIdx = this.documents.findIndex(d => d.id === docId);
     const newDoc = {
@@ -219,13 +226,38 @@ class RAGEngine {
     };
   }
 
-  // Cari dokumen relevan berdasarkan query pengguna
-  search(query, topK = 4) {
+  // Dapatkan seluruh dokumen knowledge base (statis + dinamis)
+  getAllDocuments() {
+    return this.documents.map(d => ({
+      id: d.id,
+      source: d.source,
+      section: d.section,
+      page: d.page,
+      text: d.text,
+      isDynamic: d.id.startsWith("POOL-")
+    }));
+  }
+
+  getDocumentById(id) {
+    return this.documents.find(d => d.id === id) || null;
+  }
+
+  // Cari dokumen relevan berdasarkan query pengguna dengan filter activeDocIds
+  search(query, topK = 4, activeDocIds = null) {
     if (!query || typeof query !== "string") return [];
     const tokens = query.toLowerCase().split(/\s+/).filter(t => t.length > 2);
-    if (tokens.length === 0) return this.documents.slice(0, topK);
 
-    const scored = this.documents.map(doc => {
+    let docPool = this.documents;
+    if (Array.isArray(activeDocIds) && activeDocIds.length > 0) {
+      const filtered = this.documents.filter(d => activeDocIds.includes(d.id));
+      if (filtered.length > 0) {
+        docPool = filtered;
+      }
+    }
+
+    if (tokens.length === 0) return docPool.slice(0, topK);
+
+    const scored = docPool.map(doc => {
       let score = 0;
       const hay = (doc.source + " " + doc.section + " " + doc.text).toLowerCase();
       tokens.forEach(token => {
@@ -247,11 +279,11 @@ class RAGEngine {
   }
 
   // Buat context string terformat untuk prompt AI
-  buildGroundedContext(query) {
-    const hits = this.search(query, 4);
+  buildGroundedContext(query, activeDocIds = null) {
+    const hits = this.search(query, 4, activeDocIds);
     let ctx = "=== GROUNDED KNOWLEDGE, DATA POOL & REGULATORY RULES (RAG) ===\n";
     hits.forEach((h, i) => {
-      ctx += `[Sumber ${i + 1}]: ${h.source} | ${h.section} (${h.page})\nKutipan: \"${h.text}\"\n\n`;
+      ctx += `[Sumber ${i + 1} - ${h.id}]: ${h.source} | ${h.section} (${h.page})\nKutipan: \"${h.text}\"\n\n`;
     });
     if (this.dynamicPool.length > 0) {
       const pat = this.detectSystemicPatterns();

@@ -12,7 +12,7 @@ export function renderMainMenu(container, onSelectMode, onOpenUpload, onRunAutoC
       
       <!-- Top Section -->
       <div style="text-align:center; max-width:760px; margin:0 auto 28px auto;">
-        <span class="badge badge-gold" style="font-size:11px; margin-bottom:8px;">Platform Analisis Keuangan Terpadu YKPP</span>
+        <span class="badge badge-gold" style="font-size:11px; margin-bottom:8px;">Platform Analisis Keuangan Terpadu Kajian Ihsan</span>
         <h2 style="font-size:26px; margin:4px 0 8px 0; color:var(--forest-deep);">Kalkulator Laporan Keuangan 3 Mode</h2>
         <p style="color:var(--ink-secondary); font-size:14px; line-height:1.5;">
           Pilih salah satu dari 3 mode kalkulasi manual di bawah, atau manfaatkan fitur <strong>Auto-Calculate dari File</strong> untuk memproses seluruh entitas sekaligus dengan verifikasi silang AI Copilot RAG.

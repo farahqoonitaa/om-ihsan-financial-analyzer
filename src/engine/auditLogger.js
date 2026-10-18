@@ -75,7 +75,7 @@ function loadLogs() {
         id: "LOG-105",
         timestamp: "2026-10-06T10:05:00+07:00",
         sessionId: "SES-20261006-001",
-        entity: "Konsolidasi Grup Yayasan (6 Entitas)",
+        entity: "Konsolidasi Grup Kajian Ihsan (6 Entitas)",
         functionType: "Konsolidasi Akhir",
         action: "Agregasi, Eliminasi & NCI Disparity Check",
         role: "Reviewer (Konsultan / Advisor)",

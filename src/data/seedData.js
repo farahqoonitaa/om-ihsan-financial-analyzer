@@ -12,7 +12,7 @@ const SEED_DATA = {
       name: "PT Era Permata Sejahtera (PT EPS)",
       category: "Entitas Pengendali",
       ownershipRole: "Anak Perusahaan Terkendali Penuh",
-      shareholder: "Yayasan Kesejahteraan Pegadaian Permata (YKPP) - Pemegang Saham Pengendali",
+      shareholder: "Kajian Ihsan - Pemegang Saham Pengendali",
       period: "31 Agustus 2026",
       comparativePeriod: "31 Agustus 2025",
       unit: "Miliar Rupiah",
@@ -64,7 +64,7 @@ const SEED_DATA = {
       name: "PT Anak Pengendali I (Subsidiary I)",
       category: "Entitas Pengendali",
       ownershipRole: "Anak Perusahaan Operasional 100% Kepemilikan",
-      shareholder: "Yayasan Holding (Induk) - Kontrol Penuh 100%",
+      shareholder: "Kajian Ihsan Holding (Induk) - Kontrol Penuh 100%",
       period: "31 Agustus 2026",
       comparativePeriod: "31 Agustus 2025",
       unit: "Miliar Rupiah / Juta USD",
@@ -115,11 +115,11 @@ const SEED_DATA = {
       category: "Entitas Non-Pengendali",
       ownershipRole: "Penyertaan Saham Minoritas (1.000 dari 100.000 lembar = 1,00%)",
       controllingShareholder: "PT Pegadaian Galeri Dua Empat (99,00%)",
-      investorEntity: "Yayasan Kesejahteraan Pegadaian Permata (YKPP)",
+      investorEntity: "Kajian Ihsan",
       period: "31 Agustus 2026",
       comparativePeriod: "31 Agustus 2025",
       unit: "Miliar Rupiah",
-      summary: "Pertumbuhan pendapatan +42,4% dan laba +44,8% positif secara top-line, namun YKPP sebagai pemegang saham minoritas mencatat risiko kritis pada likuiditas (NWC -Rp347,18 M), utang dividen Rp110,27 M yang belum dibayar, serta lonjakan piutang pihak ketiga mencapai 301,20% terhadap target RKAP.",
+      summary: "Pertumbuhan pendapatan +42,4% dan laba +44,8% positif secara top-line, namun Kajian Ihsan sebagai pemegang saham minoritas mencatat risiko kritis pada likuiditas (NWC -Rp347,18 M), utang dividen Rp110,27 M yang belum dibayar, serta lonjakan piutang pihak ketiga mencapai 301,20% terhadap target RKAP.",
       financials: {
         revenueCY: 1512.00,
         revenuePY: 1062.00,
@@ -157,7 +157,7 @@ const SEED_DATA = {
             title: "Leverage Tinggi dan Risiko Refinancing",
             metric: "Total Pinjaman Rp727,97 M vs Ekuitas Rp479,58 M | DER 2,19x",
             desc: "Tingginya ketergantungan modal kerja pada pinjaman luar berpotensi memicu capital call atau kebutuhan injeksi modal pemegang saham.",
-            pertanyaanKritis: "Apakah terdapat covenant bank yang membatasi pembagian dividen; berapa total kebutuhan pembiayaan hingga akhir 2027; serta apakah ada rencana corporate action yang membutuhkan tambahan setoran modal YKPP?"
+            pertanyaanKritis: "Apakah terdapat covenant bank yang membatasi pembagian dividen; berapa total kebutuhan pembiayaan hingga akhir 2027; serta apakah ada rencana corporate action yang membutuhkan tambahan setoran modal Kajian Ihsan?"
           },
           {
             title: "Piutang Usaha Pihak Ketiga Mencapai 301,20% terhadap RKAP",
@@ -198,6 +198,100 @@ const SEED_DATA = {
 
   // --- FUNGSI 3: INVESTASI (OBLIGASI & EKUITAS) ---
   investasi: [
+    {
+      id: "investasi-pindodeli",
+      name: "PT Pindo Deli Pulp and Paper Mills dan Entitas Anak",
+      instrumentType: "PUB Obligasi II dan Sukuk Mudharabah II",
+      industry: "Pulp, Cultural Paper, Industrial Paper & Tissue",
+      baseDate: "30 Juni 2026 (Semester I)",
+      priorDate: "31 Desember 2025",
+      unit: "Ribuan Dolar AS (USD '000)",
+      summary: "Kajian Ihsan Expected Output: Neraca menguat (Aset $9.564.776 ribu, Ekuitas $5.485.855 ribu) dan leverage terkendali (DER 0,5x, CR 1,96x), namun lonjakan laba bersih +210,3% terutama ditopang laba entitas asosiasi ($212.518 ribu) dan kurs ($140.198 ribu). Kualitas laba perlu dipisahkan antara operasi inti vs non-operasional.",
+      financials: {
+        currentAssetsCY: 2502506,
+        currentAssetsPY: 2457818,
+        nonCurrentAssetsCY: 7062270,
+        nonCurrentAssetsPY: 6619141,
+        totalAssetsCY: 9564776,
+        totalAssetsPY: 9076959,
+        currentLiabCY: 1278361,
+        currentLiabPY: 1334331,
+        longTermLiabCY: 2800560,
+        longTermLiabPY: 2702946,
+        totalLiabCY: 4078921,
+        totalLiabPY: 4037277,
+        equityCY: 5485855,
+        equityPY: 5039682,
+        revenueCY: 1084245,
+        revenuePY: 1098988,
+        cogsCY: 791935,
+        cogsPY: 809528,
+        grossProfitCY: 292310,
+        grossProfitPY: 289460,
+        operatingExpensesCY: 138254,
+        operatingExpensesPY: 132378,
+        operatingProfitCY: 154056,
+        operatingProfitPY: 157082,
+        associateIncomeCY: 212518,
+        associateIncomePY: 76066,
+        forexGainCY: 140198,
+        forexGainPY: 5325,
+        interestExpenseCY: 89261,
+        interestExpensePY: 98055,
+        preTaxProfitCY: 459789,
+        preTaxProfitPY: 156417,
+        netProfitCY: 455637,
+        netProfitPY: 146852
+      },
+      verticalRatios: {
+        cogsToRevenueCY: 73.0,
+        cogsToRevenuePY: 73.7,
+        grossMarginCY: 27.0,
+        grossMarginPY: 26.3,
+        opexToRevenueCY: 12.8,
+        opexToRevenuePY: 12.0,
+        operatingMarginCY: 14.2,
+        operatingMarginPY: 14.3,
+        interestToRevenueCY: 8.2,
+        interestToRevenuePY: 8.9,
+        preTaxMarginCY: 42.4,
+        preTaxMarginPY: 14.2,
+        netMarginCY: 42.0,
+        netMarginPY: 13.4,
+        currentAssetsRatio: 26.2,
+        nonCurrentAssetsRatio: 73.8,
+        debtRatio: 42.6,
+        equityCushion: 57.4
+      },
+      segments: [
+        { name: "Kertas Budaya dan Pulp", revCY: 585808, revPY: 618064, shareCY: 54.0, deltaPct: -5.2, note: "Pemberat utama penurunan penjualan; dipengaruhi pelemahan harga global / volume permintaan kertas cetak & tulis." },
+        { name: "Kertas Industri dan Produk Konsumen (Tissue)", revCY: 498437, revPY: 489102, shareCY: 46.0, deltaPct: 1.9, note: "Bantalan defensif yang resilien terhadap siklus ekonomi; permintaan kemasan dan tissue stabil." }
+      ],
+      covenants: [
+        { parameter: "Current Ratio (CR) - Fasilitas Kredit", threshold: "Minimum 1,00x", actualCY: "1,96x", actualPY: "1,84x", status: "Sangat aman (headroom +0,96x)", color: "green" },
+        { parameter: "DER (Pinjaman Berbunga / Ekuitas)", threshold: "Maksimum 2,00x - 4,00x", actualCY: "~0,50x", actualPY: "~0,55x", status: "Sangat aman (headroom luas)", color: "green" },
+        { parameter: "Total Liabilities / Equity", threshold: "Maksimum 2,50x", actualCY: "0,74x", actualPY: "0,80x", status: "Membaik, jauh di bawah batas", color: "green" },
+        { parameter: "Interest Coverage (EBIT / Bunga)", threshold: "Minimum 1,25x - 1,50x", actualCY: "1,73x", actualPY: "1,60x", status: "Cukup aman (laba usaha murni)", color: "green" },
+        { parameter: "Negative Covenant Obligasi/Sukuk", threshold: "Pinjaman/agunan, perubahan usaha, transaksi afiliasi", actualCY: "Kepatuhan penuh", actualPY: "Kepatuhan penuh", status: "Tidak ada pelanggaran", color: "green" }
+      ],
+      investorAssessment: {
+        positives: [
+          "Neraca bertumbuh dengan dukungan ekuitas yang lebih kuat (+8,9% ke $5.485.855 ribu).",
+          "Total liabilitas relatif stabil hanya naik +1,0% ($4.078.921 ribu vs $4.036.544 ribu).",
+          "Gross margin membaik dari 26,35% menjadi 26,96%.",
+          "Beban bunga turun 9,6% dari $98.472 ribu ke $89.033 ribu.",
+          "Current ratio 1,96x memberikan headroom likuiditas yang memadai di atas batas kredit 1,00x.",
+          "DER pengelolaan modal (pinjaman berbunga thd ekuitas) turun dari sekitar 0,6x ke 0,5x."
+        ],
+        monitoringAreas: [
+          "Penjualan (-1,34%) dan laba usaha (-1,93%) bisnis inti belum mengalami pertumbuhan.",
+          "Liabilitas jangka pendek meningkat +7,2%, sehingga profil jatuh tempo 12 bulan perlu dimonitor.",
+          "Lonjakan laba neto (+210,3%) sangat bergantung pada laba entitas asosiasi (USD136,5M) dan laba selisih kurs (USD134,9M).",
+          "DSCR covenant belum diverifikasi karena formula debt service harus mengikuti definisi kontraktual perwaliamanatan."
+        ],
+        recommendation: "Kategori Positif dengan Monitoring. Untuk keputusan hold atau penambahan eksposur, prioritaskan arus kas operasi, EBITDA, interest coverage, DSCR, debt maturity 12 bulan, dan covenant headroom."
+      }
+    },
     {
       id: "investasi-daaz",
       name: "PT Daaz Bara Lestari Tbk",
@@ -327,13 +421,13 @@ const SEED_DATA = {
     }
   ],
 
-  // --- KONSOLIDASI AKHIR: GRUP YAYASAN (6 ENTITAS) ---
+  // --- KONSOLIDASI AKHIR: GRUP KAJIAN IHSAN (6 ENTITAS) ---
   konsolidasi: {
-    title: "Konsolidasi Keuangan Grup Yayasan (6 Entitas)",
+    title: "Konsolidasi Keuangan Grup Kajian Ihsan (6 Entitas)",
     period: "Tahun Berjalan 2026 (CY) vs Tahun Sebelumnya (PY)",
     unit: "Juta USD / Miliar Rupiah Equivalent",
     entities: [
-      { name: "Yayasan Holding (Induk)", role: "parent", nciPercent: 0, revCY: 820.0, revPY: 770.0, niCY: 64.0, niPY: 60.0, assetsCY: 1450.0, liabCY: 610.0, eqCY: 840.0, rpCY: 40.0, rpPY: 36.0, reportedNci: null },
+      { name: "Kajian Ihsan Holding (Induk)", role: "parent", nciPercent: 0, revCY: 820.0, revPY: 770.0, niCY: 64.0, niPY: 60.0, assetsCY: 1450.0, liabCY: 610.0, eqCY: 840.0, rpCY: 40.0, rpPY: 36.0, reportedNci: null },
       { name: "Subsidiary I (100% Control)", role: "controlling", nciPercent: 0, revCY: 1240.0, revPY: 1120.0, niCY: 118.0, niPY: 104.0, assetsCY: 1980.0, liabCY: 1120.0, eqCY: 860.0, rpCY: 55.0, rpPY: 50.0, reportedNci: null },
       { name: "Subsidiary II (35% NCI)", role: "nci", nciPercent: 35, revCY: 640.0, revPY: 610.0, niCY: 52.0, niPY: 49.0, assetsCY: 900.0, liabCY: 430.0, eqCY: 470.0, rpCY: 88.0, rpPY: 34.0, reportedNci: 24.4 },
       { name: "Subsidiary III (40% NCI)", role: "nci", nciPercent: 40, revCY: 510.0, revPY: 495.0, niCY: 31.0, niPY: 33.0, assetsCY: 740.0, liabCY: 390.0, eqCY: 350.0, rpCY: 26.0, rpPY: 24.0, reportedNci: 12.4 },
@@ -368,7 +462,7 @@ const SEED_DATA = {
         severity: "CRITICAL",
         status: "Needs Management Clarification",
         metric: "Dilaporkan .4M vs Terhitung .2M (Selisih +34,1%)\ = Disparitas > 8% batas toleransi IFRS 10",
-        auditImpact: "Potensi distorsi laba yang diatribusikan ke induk yayasan; risiko kebocoran dividen atau alokasi terselubung ke pemegang saham minoritas."
+        auditImpact: "Potensi distorsi laba yang diatribusikan ke induk holding Kajian Ihsan; risiko kebocoran dividen atau alokasi terselubung ke pemegang saham minoritas."
       },
       {
         id: "CONS-02",

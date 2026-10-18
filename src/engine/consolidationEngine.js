@@ -57,7 +57,7 @@ function runConsolidation(entities, eliminations = {}) {
             severity: "CRITICAL",
             status: "Needs Management Clarification",
             quantifiedDelta: `Dilaporkan $${ent.reportedNci}M vs Terhitung $${computedNciShare}M (+${disp}% gap)`,
-            auditImpact: "Potensi distorsi laba yang diatribusikan ke induk yayasan; risiko kebocoran dividen atau alokasi terselubung ke pemegang saham minoritas (IFRS 10 / PSAK 65)."
+            auditImpact: "Potensi distorsi laba yang diatribusikan ke induk holding Kajian Ihsan; risiko kebocoran dividen atau alokasi terselubung ke pemegang saham minoritas (IFRS 10 / PSAK 65)."
           });
         }
       }

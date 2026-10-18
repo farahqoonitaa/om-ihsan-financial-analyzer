@@ -43,7 +43,7 @@ export function renderRagModal(onContinue, onOpenCopilot) {
           <div class="rag-icon-badge">🧠</div>
           <div>
             <h3 style="font-size:17px; margin:0; color:var(--forest-deep);">RAG Knowledge Assistant & Cross-Verifier</h3>
-            <p style="font-size:12px; color:var(--ink-secondary); margin:0;">Basis Parameter Baku Analisis Keuangan YKPP & Kajian Ihsan</p>
+            <p style="font-size:12px; color:var(--ink-secondary); margin:0;">Basis Parameter Baku Analisis Keuangan Kajian Ihsan & Kajian Ihsan</p>
           </div>
         </div>
         <button id="btnCloseRagCross" class="btn-icon" style="font-size:16px;">✕</button>

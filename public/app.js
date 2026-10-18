@@ -15,7 +15,7 @@ const EMBEDDED_MASTER = /**
  {
   version: "1.0-2026.10",
   lastUpdated: "2026-10-06",
-  sourceBaseline: "Kajian Ihsan & YKPP Divisi Keuangan & Subsidiary",
+  sourceBaseline: "Kajian Ihsan & Kajian Ihsan Divisi Keuangan & Subsidiary",
 
   // 1. Definisi 4 Dimensi Komparasi (MOM Action Item 3)
   comparisonDimensions: {
@@ -162,7 +162,7 @@ const EMBEDDED_SEED = /**
       name: "PT Era Permata Sejahtera (PT EPS)",
       category: "Entitas Pengendali",
       ownershipRole: "Anak Perusahaan Terkendali Penuh",
-      shareholder: "Yayasan Kesejahteraan Pegadaian Permata (YKPP) - Pemegang Saham Pengendali",
+      shareholder: "Kajian Ihsan - Pemegang Saham Pengendali",
       period: "31 Agustus 2026",
       comparativePeriod: "31 Agustus 2025",
       unit: "Miliar Rupiah",
@@ -265,11 +265,11 @@ const EMBEDDED_SEED = /**
       category: "Entitas Non-Pengendali",
       ownershipRole: "Penyertaan Saham Minoritas (1.000 dari 100.000 lembar = 1,00%)",
       controllingShareholder: "PT Pegadaian Galeri Dua Empat (99,00%)",
-      investorEntity: "Yayasan Kesejahteraan Pegadaian Permata (YKPP)",
+      investorEntity: "Kajian Ihsan",
       period: "31 Agustus 2026",
       comparativePeriod: "31 Agustus 2025",
       unit: "Miliar Rupiah",
-      summary: "Pertumbuhan pendapatan +42,4% dan laba +44,8% positif secara top-line, namun YKPP sebagai pemegang saham minoritas mencatat risiko kritis pada likuiditas (NWC -Rp347,18 M), utang dividen Rp110,27 M yang belum dibayar, serta lonjakan piutang pihak ketiga mencapai 301,20% terhadap target RKAP.",
+      summary: "Pertumbuhan pendapatan +42,4% dan laba +44,8% positif secara top-line, namun Kajian Ihsan sebagai pemegang saham minoritas mencatat risiko kritis pada likuiditas (NWC -Rp347,18 M), utang dividen Rp110,27 M yang belum dibayar, serta lonjakan piutang pihak ketiga mencapai 301,20% terhadap target RKAP.",
       financials: {
         revenueCY: 1512.00,
         revenuePY: 1062.00,
@@ -307,7 +307,7 @@ const EMBEDDED_SEED = /**
             title: "Leverage Tinggi dan Risiko Refinancing",
             metric: "Total Pinjaman Rp727,97 M vs Ekuitas Rp479,58 M | DER 2,19x",
             desc: "Tingginya ketergantungan modal kerja pada pinjaman luar berpotensi memicu capital call atau kebutuhan injeksi modal pemegang saham.",
-            pertanyaanKritis: "Apakah terdapat covenant bank yang membatasi pembagian dividen; berapa total kebutuhan pembiayaan hingga akhir 2027; serta apakah ada rencana corporate action yang membutuhkan tambahan setoran modal YKPP?"
+            pertanyaanKritis: "Apakah terdapat covenant bank yang membatasi pembagian dividen; berapa total kebutuhan pembiayaan hingga akhir 2027; serta apakah ada rencana corporate action yang membutuhkan tambahan setoran modal Kajian Ihsan?"
           },
           {
             title: "Piutang Usaha Pihak Ketiga Mencapai 301,20% terhadap RKAP",
@@ -548,14 +548,14 @@ const EMBEDDED_SEED = /**
   }
 };
 /**
- * Solanascope & YKPP Financial Intelligence Platform - Client Application
+ * Solanascope & Kajian Ihsan Financial Intelligence Platform - Client Application
  */
 
 // Application State
 const state = {
   currentRole: "reviewer", // 'reviewer' | 'configurator'
   activeTab: "agenda",
-  geminiApiKey: localStorage.getItem("ykpp_gemini_key") || "",
+  geminiApiKey: localStorage.getItem("om_ihsan_gemini_api_key") || "",
   currentInvestasiId: "investasi-daaz",
   data: {
     pengendali: null,
@@ -869,7 +869,7 @@ function renderNonPengendali(d) {
           <span class="badge badge-red">Kewajiban Dividen</span>
         </div>
         <div class="kpi-big">Rp${f.dividendPayableCY} M</div>
-        <p class="kpi-sub">Tercatat di Liabilitas Lancar; YKPP berhak atas pembagian dividen tunai proporsional</p>
+        <p class="kpi-sub">Tercatat di Liabilitas Lancar; Kajian Ihsan berhak atas pembagian dividen tunai proporsional</p>
       </div>
 
       <div class="card">
@@ -893,7 +893,7 @@ function renderNonPengendali(d) {
 
     <!-- Matriks Tingkat Perhatian: Merah / Kuning / Hijau -->
     <div class="card" style="margin-bottom:20px;">
-      <h3 style="margin-bottom:14px;">Matriks Monitoring Pemegang Saham Minoritas (YKPP 1% Saham)</h3>
+      <h3 style="margin-bottom:14px;">Matriks Monitoring Pemegang Saham Minoritas (Kajian Ihsan 1% Saham)</h3>
       
       <!-- KELOMPOK MERAH -->
       <div style="margin-bottom:18px;">
@@ -910,7 +910,7 @@ function renderNonPengendali(d) {
               <div class="finding-delta">${m.metric}</div>
               <p style="font-size:12.5px; margin-bottom:8px;">${m.desc}</p>
               <div style="background:var(--forest-soft); padding:10px; border-radius:var(--radius-sm); border-left:3px solid var(--forest);">
-                <strong style="color:var(--forest-deep);">Pertanyaan Kritis YKPP:</strong>
+                <strong style="color:var(--forest-deep);">Pertanyaan Kritis Kajian Ihsan:</strong>
                 <p style="font-size:12px; margin-top:3px; color:var(--ink);">${m.pertanyaanKritis}</p>
               </div>
             </div>
@@ -1583,7 +1583,7 @@ function renderParameters(p) {
             <tr>
               <td><strong>Ambang Deviasi Piutang RKAP (RTC)</strong></td>
               <td class="num"><strong>Maksimum 120,0%</strong></td>
-              <td>Kajian Ihsan & Rencana Kerja Anggaran YKPP</td>
+              <td>Kajian Ihsan & Rencana Kerja Anggaran Kajian Ihsan</td>
               <td>Tiering Merah & Pertanyaan Kritis Manajemen</td>
             </tr>
           </tbody>
@@ -1657,9 +1657,9 @@ window.exportNotaDinas = function(entityName) {
     </div>
 
     <table style="width:100%; margin-bottom:16px; font-size:13px; border-collapse:collapse;">
-      <tr><td style="width:100px; padding:3px 0;"><strong>Nomor</strong></td><td>: ND-104/YKPP-DKS/X/2026</td></tr>
+      <tr><td style="width:100px; padding:3px 0;"><strong>Nomor</strong></td><td>: ND-104/Kajian Ihsan-DKS/X/2026</td></tr>
       <tr><td style="padding:3px 0;"><strong>Tanggal</strong></td><td>: 06 Oktober 2026</td></tr>
-      <tr><td style="padding:3px 0;"><strong>Kepada Yth.</strong></td><td>: Pengurus YKPP</td></tr>
+      <tr><td style="padding:3px 0;"><strong>Kepada Yth.</strong></td><td>: Pengurus Kajian Ihsan</td></tr>
       <tr><td style="padding:3px 0;"><strong>Dari</strong></td><td>: Divisi Keuangan & Subsidiary</td></tr>
       <tr><td style="padding:3px 0;"><strong>Perihal</strong></td><td>: Hasil Verifikasi Laporan Keuangan ${entityName} Periode Agustus 2026</td></tr>
     </table>
@@ -1715,7 +1715,7 @@ window.closeModal = (id) => document.getElementById(id).style.display = "none";
 window.saveGeminiKey = function() {
   const key = document.getElementById("geminiApiKeyInput").value;
   state.geminiApiKey = key;
-  localStorage.setItem("ykpp_gemini_key", key);
+  localStorage.setItem("om_ihsan_gemini_api_key", key);
   window.closeModal("settingsModal");
   alert("Konfigurasi Google Gemini API Key berhasil disimpan!");
 };

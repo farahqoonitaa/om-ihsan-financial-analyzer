@@ -13,7 +13,7 @@
 const MASTER_PARAMETERS = {
   version: "1.0-2026.10",
   lastUpdated: "2026-10-06",
-  sourceBaseline: "Kajian Ihsan & YKPP Divisi Keuangan & Subsidiary",
+  sourceBaseline: "Kajian Ihsan Divisi Keuangan & Subsidiary",
 
   // 1. Definisi 4 Dimensi Komparasi (MOM Action Item 3)
   comparisonDimensions: {

@@ -29,7 +29,7 @@ export function renderInvestasiInput(container, onCalculate, onBackToMenu, initi
             <div class="form-group">
               <label for="investmentAmount">Nilai Pokok Portofolio / Sukuk (Rp) *</label>
               <input type="number" id="investmentAmount" name="investmentAmount" placeholder="Contoh: 100000000000" required>
-              <small class="form-hint">Nominal penempatan investasi YKPP.</small>
+              <small class="form-hint">Nominal penempatan investasi Kajian Ihsan.</small>
               <div class="form-error" id="err_investmentAmount"></div>
             </div>
 

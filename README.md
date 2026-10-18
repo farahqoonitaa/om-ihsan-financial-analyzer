@@ -1,4 +1,4 @@
-# Unified AI Financial Statement Analysis Platform (Om Ihsan / YKPP)
+# Kajian Ihsan
 
 Platform Terpadu AI Analisis Laporan Keuangan berbasis web dengan 3 alur analisis deterministik, konsolidasi multi-entitas, kepatuhan regulasi POJK DER ≤ 5,0x & IFRS 10 / PSAK 65, serta asisten AI Financial Forensic Copilot dengan mesin Retrieval-Augmented Generation (RAG).
 

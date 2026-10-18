@@ -3,7 +3,7 @@ html_content = """<!DOCTYPE html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>YKPP & Solanascope — AI Financial Analysis Platform</title>
+  <title>Kajian Ihsan & Solanascope — AI Financial Analysis Platform</title>
   <link rel="stylesheet" href="/style.css">
 </head>
 <body>
@@ -14,7 +14,7 @@ html_content = """<!DOCTYPE html>
         <div class="brand-logo">YK</div>
         <div class="brand-title">
           <h1>Platform Terpadu AI Analisis Laporan Keuangan</h1>
-          <p>YKPP Divisi Keuangan & Subsidiary · Sesuai MOM Kajian Keuangan Terstruktur</p>
+          <p>Kajian Ihsan Divisi Keuangan & Subsidiary · Sesuai MOM Kajian Keuangan Terstruktur</p>
         </div>
       </div>
 
@@ -146,7 +146,7 @@ html_content = """<!DOCTYPE html>
             </div>
             <div style="background:var(--surface-alt); padding:14px; border-radius:var(--radius-md); border-left:4px solid var(--gold);">
               <div style="font-weight:600; font-size:13px;">Langkah 2: Non-Pengendali</div>
-              <p style="font-size:12px; color:var(--ink-secondary);">Evaluasi hak dividen YKPP, risiko refinancing, tiering Merah/Kuning/Hijau, rumusan pertanyaan kritis.</p>
+              <p style="font-size:12px; color:var(--ink-secondary);">Evaluasi hak dividen Kajian Ihsan, risiko refinancing, tiering Merah/Kuning/Hijau, rumusan pertanyaan kritis.</p>
             </div>
             <div style="background:var(--surface-alt); padding:14px; border-radius:var(--radius-md); border-left:4px solid var(--orange);">
               <div style="font-weight:600; font-size:13px;">Langkah 3: Investasi</div>
@@ -186,11 +186,11 @@ html_content = """<!DOCTYPE html>
           <div>
             <h2>Fungsi 2: Analisis Entitas Non-Pengendali (PT POJ - Saham 1%)</h2>
             <p style="color:var(--ink-secondary); font-size:13px;">
-              Monitoring Investasi Minoritas YKPP, Tiering Perhatian Merah/Kuning/Hijau, Proteksi Dividen, dan Perumusan Pertanyaan Kritis Tata Kelola.
+              Monitoring Investasi Minoritas Kajian Ihsan, Tiering Perhatian Merah/Kuning/Hijau, Proteksi Dividen, dan Perumusan Pertanyaan Kritis Tata Kelola.
             </p>
           </div>
           <div style="display:flex; gap:8px;">
-            <button class="btn btn-secondary" onclick="window.exportNotaDinas('PT Pesonna Optima Jasa')">📄 Draf Memo Monitoring YKPP</button>
+            <button class="btn btn-secondary" onclick="window.exportNotaDinas('PT Pesonna Optima Jasa')">📄 Draf Memo Monitoring Kajian Ihsan</button>
             <button class="btn btn-primary" onclick="window.runNonPengendaliAnalysis()">🔄 Perbarui Analisis Non-Pengendali</button>
           </div>
         </div>
@@ -275,7 +275,7 @@ html_content = """<!DOCTYPE html>
           <div>
             <h2>Action Item 1: Kamus Parameter Baku, Bobot & Ambang Batas</h2>
             <p style="color:var(--ink-secondary); font-size:13px;">
-              Parameter baku resmi YKPP: formula 33 rasio, formula Modified Z-Score, threshold RTC, dan plafon regulasi POJK.
+              Parameter baku resmi Kajian Ihsan: formula 33 rasio, formula Modified Z-Score, threshold RTC, dan plafon regulasi POJK.
             </p>
           </div>
           <div id="paramEditNotice" style="font-size:12px; color:var(--gold); font-weight:600;">
@@ -300,7 +300,7 @@ html_content = """<!DOCTYPE html>
 
       <div class="copilot-chat" id="copilotChat">
         <div class="chat-bubble agent">
-          Halo, saya <strong>AI Forensic Copilot YKPP</strong>. Saya telah mengindeks seluruh aturan PRD, kajian obligasi, batas POJK, dan laporan keuangan interim 2026.
+          Halo, saya <strong>AI Forensic Copilot Kajian Ihsan</strong>. Saya telah mengindeks seluruh aturan PRD, kajian obligasi, batas POJK, dan laporan keuangan interim 2026.
           <br><br>
           Silakan ajukan pertanyaan seputar:
           <br>• Disparitas NCI pada Subsidiary II

@@ -123,7 +123,7 @@ export function renderNonPendanaanInput(container, onCalculate, onBackToMenu, in
             <div class="form-group">
               <label for="nciPercent">Porsi Hak Non-Pengendali / NCI (%)</label>
               <input type="number" step="0.01" id="nciPercent" name="nciPercent" placeholder="Contoh: 1.00">
-              <small class="form-hint">Persentase kepemilikan minoritas (contoh YKPP: 1%).</small>
+              <small class="form-hint">Persentase kepemilikan minoritas (contoh Kajian Ihsan: 1%).</small>
             </div>
           </div>
 

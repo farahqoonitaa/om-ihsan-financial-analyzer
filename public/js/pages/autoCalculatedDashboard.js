@@ -122,7 +122,7 @@ export function renderAutoCalculatedDashboard(container, sourceData, sourceFileN
               <span class="badge badge-red">Tiering Merah</span>
             </div>
             <p style="font-size:12px; color:var(--ink-secondary); margin-bottom:10px;">
-              Kepemilikan minoritas YKPP (1,0%). Dilakukan evaluasi proteksi dividen dan risiko penagihan piutang.
+              Kepemilikan minoritas Kajian Ihsan (1,0%). Dilakukan evaluasi proteksi dividen dan risiko penagihan piutang.
             </p>
             <div style="background:var(--surface-alt); border:1px solid var(--line); border-radius:6px; padding:10px; font-size:12px; margin-bottom:12px;">
               <div style="display:flex; justify-content:space-between; margin-bottom:4px;">

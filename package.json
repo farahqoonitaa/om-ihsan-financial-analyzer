@@ -1,0 +1,25 @@
+{
+  "name": "kajian-ihsan-financial-intelligence",
+  "version": "2.0.0",
+  "description": "Enterprise AI Financial Analysis Agent & High-Scale Holding Portfolio Analytics Platform",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js",
+    "start:cluster": "CLUSTER_MODE=true node server.js",
+    "test": "node scripts/test_all_features.mjs && node scripts/test_pengendali_non_pengendali_logic.mjs && node scripts/test_entity_identification_logic.mjs && node scripts/test_upload_and_parsing_loading_state.mjs && node scripts/test_copilot_system_prompt.mjs && node scripts/test_step_by_step_workflow.mjs && node scripts/test_dynamic_scheme_workflow.mjs",
+    "test:benchmark": "node scripts/benchmark_high_scale.mjs"
+  },
+  "keywords": [
+    "financial-intelligence",
+    "high-scale",
+    "holding-analytics",
+    "ojk-kbli",
+    "nota-dinas"
+  ],
+  "author": "Kajian Ihsan Engineering Team",
+  "license": "UNLICENSED",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
