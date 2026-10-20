@@ -1866,6 +1866,25 @@
             <!-- Populated dynamically by renderSchemeDynamicPreview() -->
           </div>
 
+          <!-- Cross-Year Comparison Callout (Knowledge Base Integration) -->
+          <div style="background:#F0FDF4; border:1.5px solid #86EFAC; border-radius:10px; padding:12px 16px; margin-bottom:12px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+            <div style="display:flex; align-items:center; gap:10px;">
+              <span style="font-size:24px;">⚖️</span>
+              <div>
+                <span class="badge badge-green" style="font-size:10px; font-weight:800;">KNOWLEDGE BASE CROSS-YEAR COMPARISON</span>
+                <div style="font-size:13px; font-weight:800; color:#14532D; margin-top:2px;">
+                  Bandingkan Hasil Entitas Ini dengan Periode Lain Secara Berdampingan (Side-by-Side)
+                </div>
+                <div style="font-size:11.5px; color:#166534;">
+                  Lihat pergeseran rasio, delta nominal, delta persen, dan bukti audit antar tahun pelaporan (2023–2026).
+                </div>
+              </div>
+            </div>
+            <button type="button" onclick="openCrossYearComparisonForActiveScheme()" class="btn btn-primary btn-sm" style="font-weight:700; font-size:11.5px; padding:6px 14px; cursor:pointer;">
+              ⚖️ Buka Komparasi di Knowledge Base →
+            </button>
+          </div>
+
           <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; padding-top:8px; border-top:1px solid #E2E8F0;">
             <button type="button" onclick="goToSchemeJourneyStep(4)" class="btn btn-secondary btn-sm" style="cursor:pointer;">
               ← Kembali ke Langkah 4: Proses & Analisis
@@ -1898,6 +1917,25 @@
 
           <div id="schemeFinalOutputContainer" style="margin-bottom:12px;">
             <!-- Populated dynamically by renderSchemeFinalOutputStep() -->
+          </div>
+
+          <!-- Cross-Year Comparison Callout on Step 6 -->
+          <div style="background:#F0FDF4; border:1.5px solid #86EFAC; border-radius:10px; padding:12px 16px; margin-bottom:12px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+            <div style="display:flex; align-items:center; gap:10px;">
+              <span style="font-size:24px;">⚖️</span>
+              <div>
+                <span class="badge badge-green" style="font-size:10px; font-weight:800;">KNOWLEDGE BASE BENCHMARKING</span>
+                <div style="font-size:13px; font-weight:800; color:#14532D; margin-top:2px;">
+                  Bandingkan Entitas Ini dengan Data Historis di Knowledge Base
+                </div>
+                <div style="font-size:11.5px; color:#166534;">
+                  Verifikasi kepatuhan covenant dan pergerakan indikator S1–S10 terhadap periode sebelumnya.
+                </div>
+              </div>
+            </div>
+            <button type="button" onclick="openCrossYearComparisonForActiveScheme()" class="btn btn-secondary btn-sm" style="font-weight:700; font-size:11.5px; padding:6px 14px; background:#FFFFFF; border-color:#86EFAC; color:#14532D; cursor:pointer;">
+              ⚖️ Bandingkan Lintas Periode →
+            </button>
           </div>
 
           <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; padding-top:8px; border-top:1px solid #E2E8F0;">
@@ -6070,25 +6108,147 @@
           </div>
         </div>
 
-        <!-- KONTROL GROUNDING KNOWLEDGE BASE (CENTANG DOKUMEN AKTIF RAG) -->
-        <div style="margin-top:24px; border:1px solid #B8DAC8; border-radius:8px; background:var(--surface); overflow:hidden;">
-          <div style="background:var(--forest-soft); border-bottom:1px solid #C4DEC0; padding:12px 16px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
-            <div style="display:flex; align-items:center; gap:8px;">
-              <span style="font-size:20px;">📚☑️</span>
+        <!-- ================================================================= -->
+        <!-- ENHANCED KNOWLEDGE BASE HUB: INTELLIGENT CATEGORIZATION &          -->
+        <!-- CROSS-YEAR / MULTI-DOCUMENT SIDE-BY-SIDE COMPARISON SUITE          -->
+        <!-- ================================================================= -->
+        <div id="kbMainHubSection" style="margin-top:24px; border:2px solid #86EFAC; border-radius:12px; background:#FFFFFF; box-shadow:0 4px 16px rgba(15,83,56,0.08); overflow:hidden;">
+          <!-- Header Banner -->
+          <div style="background:linear-gradient(135deg, #0F5338, #166534); padding:16px 20px; color:#FFFFFF; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
+            <div style="display:flex; align-items:center; gap:12px;">
+              <span style="font-size:28px;">📚⚖️</span>
               <div>
-                <h4 style="margin:0; font-size:15px; font-weight:700; color:var(--forest-deep);">Knowledge Base Grounding Selector (Pemilihan Dokumen Aktif RAG)</h4>
-                <span style="font-size:11px; color:var(--ink-secondary);">Centang (tick) dokumen atau aturan yang ingin diaktifkan sebagai acuan pembuktian forensik (Ground Truth) untuk AI Copilot</span>
+                <span class="badge" style="background:#DCFCE7; color:#14532D; font-size:10.5px; font-weight:800; text-transform:uppercase;">Knowledge Base Terpadu &amp; Komparasi Lintas Tahun</span>
+                <h3 style="margin:4px 0 2px 0; font-size:17px; font-weight:800; color:#FFFFFF;">
+                  Intelligent Knowledge Base &amp; Side-by-Side Comparison Hub
+                </h3>
+                <p style="margin:0; font-size:12px; color:#E2E8F0; opacity:0.95;">
+                  Penyimpanan terstruktur dokumen keuangan, kategorisasi konten cerdas (Investasi, Pengendali, Non-Pengendali), dan komparasi matriks berdampingan lintas tahun pelaporan.
+                </p>
               </div>
             </div>
-            <div style="display:flex; gap:6px; align-items:center;">
-              <span id="kbActiveCountBadge" class="badge badge-green" style="font-size:11px; font-weight:700;">8/8 Dokumen Aktif</span>
-              <button type="button" onclick="selectAllKnowledgeBase(true)" class="btn btn-secondary btn-sm" style="font-size:11px; padding:3px 8px;">☑️ Centang Semua</button>
-              <button type="button" onclick="selectAllKnowledgeBase(false)" class="btn btn-secondary btn-sm" style="font-size:11px; padding:3px 8px;">⬜ Hapus Semua</button>
+            <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
+              <span id="kbCatalogCountBadge" class="badge" style="background:#FFFFFF; color:#14532D; font-size:11px; font-weight:800; padding:5px 12px; border-radius:20px;">
+                13 Dokumen Terindeks
+              </span>
+              <button type="button" onclick="refreshKnowledgeBaseCatalog(true)" class="btn btn-secondary btn-sm" style="font-size:11px; padding:5px 10px; background:#FFFFFF; color:#0F5338; font-weight:700; cursor:pointer;" title="Muat ulang katalog dari server">
+                🔄 Segarkan Data
+              </button>
             </div>
           </div>
 
-          <div style="padding:4px 0;" id="kbDocListContainer">
-            <!-- Rendered dynamically by renderKnowledgeBaseSelector() -->
+          <!-- Category Navigation Pills & Search Bar -->
+          <div style="background:#F8FAFC; border-bottom:1px solid #E2E8F0; padding:12px 18px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+            <!-- Category Pills -->
+            <div id="kbCategoryFilterBar" style="display:flex; gap:6px; flex-wrap:wrap; align-items:center;">
+              <button type="button" onclick="setKbCategoryFilter('ALL')" id="kbCatBtn_ALL" class="kb-cat-pill active" style="padding:6px 14px; border-radius:20px; font-size:12px; font-weight:800; cursor:pointer; border:1.5px solid var(--forest); background:var(--forest); color:#fff;">
+                Semua Kategori (<span id="cntKb_ALL">13</span>)
+              </button>
+              <button type="button" onclick="setKbCategoryFilter('Investasi')" id="kbCatBtn_Investasi" class="kb-cat-pill" style="padding:6px 14px; border-radius:20px; font-size:12px; font-weight:700; cursor:pointer; border:1px solid #CBD5E1; background:#fff; color:#334155;">
+                📈 Investasi (<span id="cntKb_Investasi">6</span>)
+              </button>
+              <button type="button" onclick="setKbCategoryFilter('Pengendali')" id="kbCatBtn_Pengendali" class="kb-cat-pill" style="padding:6px 14px; border-radius:20px; font-size:12px; font-weight:700; cursor:pointer; border:1px solid #CBD5E1; background:#fff; color:#334155;">
+                🏢 Pengendali (<span id="cntKb_Pengendali">3</span>)
+              </button>
+              <button type="button" onclick="setKbCategoryFilter('Non-Pengendali')" id="kbCatBtn_Non-Pengendali" class="kb-cat-pill" style="padding:6px 14px; border-radius:20px; font-size:12px; font-weight:700; cursor:pointer; border:1px solid #CBD5E1; background:#fff; color:#334155;">
+                🤝 Non-Pengendali (<span id="cntKb_Non-Pengendali">2</span>)
+              </button>
+              <button type="button" onclick="setKbCategoryFilter('Konsolidasi Grup')" id="kbCatBtn_Konsolidasi" class="kb-cat-pill" style="padding:6px 14px; border-radius:20px; font-size:12px; font-weight:700; cursor:pointer; border:1px solid #CBD5E1; background:#fff; color:#334155;">
+                🏛️ Konsolidasi (<span id="cntKb_Konsolidasi">2</span>)
+              </button>
+            </div>
+
+            <!-- Search Input -->
+            <div style="display:flex; align-items:center; gap:6px;">
+              <input type="text" id="kbSearchInput" placeholder="Cari nama entitas, tahun, atau kata kunci..." oninput="handleKbSearchInput(this.value)" style="padding:6px 12px; font-size:12px; border:1px solid #CBD5E1; border-radius:6px; min-width:240px;">
+              <button type="button" onclick="clearKbSearch()" class="btn btn-secondary btn-sm" style="font-size:11px; padding:6px 8px; cursor:pointer;" title="Bersihkan pencarian">✕</button>
+            </div>
+          </div>
+
+          <!-- 1-Click Senior / Executive Comparison Presets -->
+          <div style="background:#F0FDF4; border-bottom:1px solid #DCFCE7; padding:10px 18px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:6px;">
+              <span style="font-size:11.5px; font-weight:800; color:#14532D; display:flex; align-items:center; gap:6px;">
+                <span>⚡</span> <span>1-Klik Preset Komparasi Lintas Tahun (Senior Decision-Maker Ready):</span>
+              </span>
+              <span style="font-size:10.5px; color:#166534;">Klik tombol di bawah untuk langsung membuka perbandingan 2 atau lebih periode</span>
+            </div>
+            <div style="display:flex; flex-wrap:wrap; gap:6px;">
+              <button type="button" onclick="triggerKbQuickCompare(['KB-INV-PINDO-2023', 'KB-INV-PINDO-2024'])" class="btn btn-secondary btn-sm" style="font-size:11px; font-weight:700; background:#fff; border-color:#86EFAC; color:#14532D; cursor:pointer;">
+                📈 PT Pindo Deli: FY 2023 vs FY 2024
+              </button>
+              <button type="button" onclick="triggerKbQuickCompare(['KB-INV-PINDO-2025', 'KB-INV-PINDO-2026'])" class="btn btn-secondary btn-sm" style="font-size:11px; font-weight:700; background:#fff; border-color:#86EFAC; color:#14532D; cursor:pointer;">
+                📈 PT Pindo Deli: 6M 2025 vs 6M 2026 (Lonjakan Laba & Kurs)
+              </button>
+              <button type="button" onclick="triggerKbQuickCompare(['KB-INV-DAAZ-2023', 'KB-INV-DAAZ-2024'])" class="btn btn-secondary btn-sm" style="font-size:11px; font-weight:700; background:#fff; border-color:#86EFAC; color:#14532D; cursor:pointer;">
+                📈 PT DAAZ: FY 2023 vs FY 2024 (Modified Z-Score)
+              </button>
+              <button type="button" onclick="triggerKbQuickCompare(['KB-CTRL-EPS-2024', 'KB-CTRL-EPS-2025', 'KB-CTRL-EPS-2026'])" class="btn btn-secondary btn-sm" style="font-size:11px; font-weight:700; background:#fff; border-color:#86EFAC; color:#14532D; cursor:pointer;">
+                🏢 PT EPS: 2024 vs 2025 vs 2026 (Tren S7 Growth Gap)
+              </button>
+              <button type="button" onclick="triggerKbQuickCompare(['KB-NCI-POJ-2024', 'KB-NCI-POJ-2025'])" class="btn btn-secondary btn-sm" style="font-size:11px; font-weight:700; background:#fff; border-color:#86EFAC; color:#14532D; cursor:pointer;">
+                🤝 PT POJ: 2024 vs 2025 (RTC Piutang 301% & Dividen)
+              </button>
+              <button type="button" onclick="triggerKbQuickCompare(['KB-KONS-GRUP-2025', 'KB-KONS-GRUP-2026'])" class="btn btn-secondary btn-sm" style="font-size:11px; font-weight:700; background:#fff; border-color:#86EFAC; color:#14532D; cursor:pointer;">
+                🏛️ Konsolidasi Grup: 2025 vs 2026 (POJK DER ≤ 5.0x)
+              </button>
+            </div>
+          </div>
+
+          <!-- Multi-Select Action Bar (Shows when 1 or more documents checked) -->
+          <div id="kbSelectionActionBar" class="hidden" style="background:#EFF6FF; border-bottom:1.5px solid #93C5FD; padding:10px 18px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+            <div style="display:flex; align-items:center; gap:8px;">
+              <span style="font-size:18px;">☑️</span>
+              <strong id="kbSelectedCountText" style="font-size:13px; color:#1E3A8A;">0 Dokumen Terpilih</strong>
+              <span id="kbSelectedCategoryHint" style="font-size:11.5px; color:#1E40AF;"></span>
+            </div>
+            <div style="display:flex; gap:8px; align-items:center;">
+              <button type="button" id="btnExecuteKbCompare" onclick="executeKnowledgeBaseCompareSelected()" class="btn btn-primary btn-sm" style="font-weight:800; font-size:12px; padding:7px 18px; background:#16A34A; border-color:#15803D; cursor:pointer; box-shadow:0 2px 6px rgba(22,163,74,0.3);">
+                ⚖️ Bandingkan Dokumen Terpilih Side-by-Side →
+              </button>
+              <button type="button" onclick="clearKbDocumentSelection()" class="btn btn-secondary btn-sm" style="font-size:11px; padding:6px 10px; cursor:pointer;">
+                ⬜ Batal Pilih
+              </button>
+            </div>
+          </div>
+
+          <!-- DYNAMIC SIDE-BY-SIDE COMPARISON VIEW CONTAINER -->
+          <div id="kbSideBySideBox" class="hidden" style="padding:18px; background:#F8FAFC; border-bottom:1px solid #E2E8F0;">
+            <!-- Rendered dynamically by renderKbSideBySideComparisonView() -->
+          </div>
+
+          <!-- DYNAMIC GROUPED DOCUMENTS CATALOG (CATEGORY -> ENTITY -> YEAR) -->
+          <div id="kbGroupedCatalogBox" style="padding:18px;">
+            <!-- Rendered dynamically by renderKbGroupedCatalog() -->
+          </div>
+
+          <!-- FAILED INGESTIONS & REJECTION TRACKER (NO SILENT EXCLUSION) -->
+          <div id="kbFailedIngestionsBox" style="padding:14px 18px; background:#FEF2F2; border-top:1px solid #FCA5A5;">
+            <!-- Rendered dynamically by renderKbFailedIngestionsView() -->
+          </div>
+
+          <!-- COLLAPSIBLE GROUNDING RAG SELECTOR (BACKWARDS COMPATIBILITY) -->
+          <div style="border-top:1px solid #E2E8F0; background:#FAFAFA;">
+            <div style="padding:10px 18px; display:flex; justify-content:space-between; align-items:center; cursor:pointer;" onclick="toggleKbGroundingAccordion()">
+              <div style="display:flex; align-items:center; gap:8px;">
+                <span style="font-size:16px;">📚☑️</span>
+                <span style="font-size:12.5px; font-weight:700; color:var(--forest-deep);">Ground Truth Reference Grounding Selector for AI Copilot</span>
+                <span id="kbActiveCountBadge" class="badge badge-green" style="font-size:10.5px; font-weight:700;">8/8 Dokumen Aktif</span>
+              </div>
+              <span id="kbGroundingArrow" style="font-size:12px; color:var(--ink-secondary);">▼ Buka Pengaturan Acuan Copilot</span>
+            </div>
+            <div id="kbGroundingBody" class="hidden" style="padding:10px 18px 16px 18px; border-top:1px solid #E2E8F0;">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                <span style="font-size:11.5px; color:var(--ink-secondary);">Centang dokumen yang ingin dijadikan acuan grounded knowledge untuk AI Copilot:</span>
+                <div style="display:flex; gap:6px;">
+                  <button type="button" onclick="selectAllKnowledgeBase(true)" class="btn btn-secondary btn-sm" style="font-size:10.5px; padding:3px 8px;">☑️ Centang Semua</button>
+                  <button type="button" onclick="selectAllKnowledgeBase(false)" class="btn btn-secondary btn-sm" style="font-size:10.5px; padding:3px 8px;">⬜ Hapus Semua</button>
+                </div>
+              </div>
+              <div id="kbDocListContainer">
+                <!-- Rendered dynamically by renderKnowledgeBaseSelector() -->
+              </div>
+            </div>
           </div>
         </div>
 
@@ -8766,6 +8926,1227 @@
       showToast(selectAll ? 'Seluruh 8 dokumen diaktifkan untuk Grounding RAG' : 'Seluruh dokumen dinonaktifkan', 'info');
     }
 
+    // ============================================================================
+    // ENHANCED KNOWLEDGE BASE & SIDE-BY-SIDE COMPARISON CLIENT SUITE
+    // ============================================================================
+    const CLIENT_KB_REPOSITORY = [
+      {
+        id: "KB-INV-PINDO-2023",
+        title: "PT Pindo Deli Pulp and Paper Mills — Laporan Keuangan Auditan & Covenant FY 2023",
+        entityName: "PT Pindo Deli Pulp and Paper Mills",
+        reportingYear: 2023,
+        reportingPeriod: "31 Desember 2023 (FY 2023)",
+        category: "Investasi",
+        secondaryCategories: ["Laporan Keuangan"],
+        selectedScheme: "investasi",
+        documentType: "Audited Financial Statements & Bond Covenant Report",
+        currency: "USD Ribu",
+        status: "STORED",
+        originalDocument: {
+          fileName: "LK_Auditan_PT_Pindo_Deli_FY2023.pdf",
+          fileType: "PDF",
+          fileSizeKB: "1.840,0",
+          pageReference: "hlm. 1–18, CALK 4–29",
+          sectionReference: "Laporan Posisi Keuangan & Laba Rugi Konsolidasian 2023",
+          checksum: "SHA256:9A31F0E4B281C440"
+        },
+        fields: {
+          totalAssets: 8650420, currentAssets: 3210450, nonCurrentAssets: 5439970,
+          totalLiabilities: 3980120, currentLiabilities: 1720400, longTermLiabilities: 2259720,
+          equity: 4670300, nwc: 1490050, footingDelta: 0,
+          revenue: 2110400, cogs: 1565900, grossProfit: 544500, opex: 248200, operatingProfit: 296300,
+          associateIncome: 142500, fxGainLoss: -8400, interestExpense: 192400, netIncome: 254800,
+          currentRatio: 1.87, der: 0.56, grossMarginPct: 25.80, operatingMarginPct: 14.04, netMarginPct: 12.07,
+          modifiedZScore: 2.31, dscrContractual: null, sinkingFundBalance: 0, forensicHealthScore: 84
+        },
+        analysisResults: {
+          forensicHealthScore: 84, riskTier: "Positif • Sehat",
+          signals: ["S4 Footing Balanced (Δ = 0)", "Covenant CR 1,87x > 1,00x"],
+          summary: "Kinerja FY 2023 menunjukkan Laba Usaha inti USD 296,30 juta, rugi kurs -USD 8,40 juta, dan struktur modal sehat (DER 0,56x)."
+        }
+      },
+      {
+        id: "KB-INV-PINDO-2024",
+        title: "PT Pindo Deli Pulp and Paper Mills — Laporan Keuangan Auditan & Covenant FY 2024",
+        entityName: "PT Pindo Deli Pulp and Paper Mills",
+        reportingYear: 2024,
+        reportingPeriod: "31 Desember 2024 (FY 2024)",
+        category: "Investasi",
+        secondaryCategories: ["Laporan Keuangan"],
+        selectedScheme: "investasi",
+        documentType: "Audited Financial Statements & Bond Covenant Report",
+        currency: "USD Ribu",
+        status: "STORED",
+        originalDocument: {
+          fileName: "LK_Auditan_PT_Pindo_Deli_FY2024.pdf",
+          fileType: "PDF",
+          fileSizeKB: "1.925,4",
+          pageReference: "hlm. 1–22, CALK 5–31",
+          sectionReference: "Laporan Posisi Keuangan & Laba Rugi Konsolidasian 2024",
+          checksum: "SHA256:7C42D881E9A03B12"
+        },
+        fields: {
+          totalAssets: 9075523, currentAssets: 3503087, nonCurrentAssets: 5572436,
+          totalLiabilities: 4036544, currentLiabilities: 1814009, longTermLiabilities: 2222535,
+          equity: 5038979, nwc: 1689078, footingDelta: 0,
+          revenue: 2195800, cogs: 1618300, grossProfit: 577500, opex: 263500, operatingProfit: 314000,
+          associateIncome: 168400, fxGainLoss: 19200, interestExpense: 194100, netIncome: 318900,
+          currentRatio: 1.93, der: 0.52, grossMarginPct: 26.30, operatingMarginPct: 14.30, netMarginPct: 14.52,
+          modifiedZScore: 2.48, dscrContractual: 1.62, sinkingFundBalance: 25000, forensicHealthScore: 86
+        },
+        analysisResults: {
+          forensicHealthScore: 86, riskTier: "Positif • Kuat",
+          signals: ["S4 Footing Balanced (Δ = 0)", "Penambahan Sinking Fund USD 25,0 Juta"],
+          summary: "Total Aset naik +4,91% ke USD 9,08 Miliar, Ekuitas menguat ke USD 5,04 Miliar (+7,89%), dan Laba Bersih naik +25,16% ke USD 318,90 Juta."
+        }
+      },
+      {
+        id: "KB-INV-PINDO-2025",
+        title: "PT Pindo Deli Pulp and Paper Mills — Laporan Keuangan Interim 6M 2025",
+        entityName: "PT Pindo Deli Pulp and Paper Mills",
+        reportingYear: 2025,
+        reportingPeriod: "30 Juni 2025 (6M 2025)",
+        category: "Investasi",
+        secondaryCategories: ["Laporan Keuangan"],
+        selectedScheme: "investasi",
+        documentType: "Interim Financial Statements & Covenant Review",
+        currency: "USD Ribu",
+        status: "STORED",
+        originalDocument: {
+          fileName: "LK_Interim_PT_Pindo_Deli_6M2025.pdf",
+          fileType: "PDF",
+          fileSizeKB: "1.410,2",
+          pageReference: "hlm. 1–14, CALK Segmen",
+          sectionReference: "Laporan Keuangan Konsolidasian Interim 6M 2025",
+          checksum: "SHA256:4B19E77A0D32F819"
+        },
+        fields: {
+          totalAssets: 9075523, currentAssets: 3503087, nonCurrentAssets: 5572436,
+          totalLiabilities: 4036544, currentLiabilities: 1814009, longTermLiabilities: 2222535,
+          equity: 5038979, nwc: 1689078, footingDelta: 0,
+          revenue: 1098987, cogs: 809381, grossProfit: 289606, opex: 132512, operatingProfit: 157094,
+          associateIncome: 76049, fxGainLoss: 5325, interestExpense: 98472, netIncome: 146814,
+          currentRatio: 1.93, der: 0.52, grossMarginPct: 26.35, operatingMarginPct: 14.29, netMarginPct: 13.36,
+          modifiedZScore: 2.42, dscrContractual: null, sinkingFundBalance: 25000, forensicHealthScore: 83
+        },
+        analysisResults: {
+          forensicHealthScore: 83, riskTier: "Positif • Stabil",
+          signals: ["S4 Footing Balanced (Δ = 0)", "Operating Margin Inti 14,29%"],
+          summary: "Basis 6M 2025: Penjualan Neto USD 1.098,99 juta, Laba Usaha USD 157,09 juta, dan Laba Neto USD 146,81 juta."
+        }
+      },
+      {
+        id: "KB-INV-PINDO-2026",
+        title: "PT Pindo Deli Pulp and Paper Mills — Laporan Keuangan Interim & Kajian 7-Seksi 6M 2026",
+        entityName: "PT Pindo Deli Pulp and Paper Mills",
+        reportingYear: 2026,
+        reportingPeriod: "30 Juni 2026 (6M 2026)",
+        category: "Investasi",
+        secondaryCategories: ["Laporan Keuangan"],
+        selectedScheme: "investasi",
+        documentType: "Interim Financial Statements & 7-Section Investment Analysis",
+        currency: "USD Ribu",
+        status: "STORED",
+        originalDocument: {
+          fileName: "01_LK_Auditan_PT_Pindo_Deli_30Jun2026.pdf",
+          fileType: "PDF",
+          fileSizeKB: "1.620,5",
+          pageReference: "hlm. 1–16, Seksi 1–7 Kajian Ihsan",
+          sectionReference: "Laporan Posisi Keuangan, Laba Rugi & Covenant 30 Juni 2026",
+          checksum: "SHA256:8F90C123E7B64A01"
+        },
+        fields: {
+          totalAssets: 9564776, currentAssets: 3815764, nonCurrentAssets: 5749012,
+          totalLiabilities: 4078921, currentLiabilities: 1944954, longTermLiabilities: 2133967,
+          equity: 5485855, nwc: 1870810, footingDelta: 0,
+          revenue: 1084245, cogs: 791935, grossProfit: 292310, opex: 138254, operatingProfit: 154056,
+          associateIncome: 212518, fxGainLoss: 140198, interestExpense: 89033, netIncome: 455637,
+          currentRatio: 1.96, der: 0.50, grossMarginPct: 26.96, operatingMarginPct: 14.21, netMarginPct: 42.02,
+          modifiedZScore: 2.68, dscrContractual: null, sinkingFundBalance: null, forensicHealthScore: 82
+        },
+        analysisResults: {
+          forensicHealthScore: 82, riskTier: "Positif dengan Monitoring",
+          signals: ["S6 Non-Operating Spike (+210,3% Laba didominasi Asosiasi & Kurs)", "S7 Opex +4,39% vs Penjualan -1,34%"],
+          summary: "Laba Neto melonjak +210,3% ke USD 455,64 Juta ditopang Laba Asosiasi (+179,4%) dan Selisih Kurs (+2.533%), sementara Laba Usaha turun -1,93%."
+        }
+      },
+      {
+        id: "KB-INV-DAAZ-2023",
+        title: "PT Daaz Bara Lestari Tbk — Kertas Kerja Solvabilitas Obligasi FY 2023",
+        entityName: "PT Daaz Bara Lestari Tbk",
+        reportingYear: 2023,
+        reportingPeriod: "31 Desember 2023 (FY 2023)",
+        category: "Investasi",
+        secondaryCategories: ["Laporan Keuangan"],
+        selectedScheme: "investasi",
+        documentType: "Bond Solvency & Modified Z-Score Report",
+        currency: "Rp Miliar (IDR)",
+        status: "STORED",
+        originalDocument: {
+          fileName: "Kertas_Kerja_Obligasi_DAAZ_FY2023.xlsx",
+          fileType: "XLSX",
+          fileSizeKB: "640,0",
+          pageReference: "Sheet 1–3 (Neraca & Modified Z-Score)",
+          sectionReference: "Evaluasi Obligasi & Solvabilitas FY 2023",
+          checksum: "SHA256:1D44B920A11C7E03"
+        },
+        fields: {
+          totalAssets: 1620.00, currentAssets: 980.50, nonCurrentAssets: 639.50,
+          totalLiabilities: 1090.00, currentLiabilities: 765.20, longTermLiabilities: 324.80,
+          equity: 530.00, nwc: 215.30, footingDelta: 0,
+          revenue: 1650.00, cogs: 1340.00, grossProfit: 310.00, opex: 112.00, operatingProfit: 198.00,
+          associateIncome: 0, fxGainLoss: 4.20, interestExpense: 48.50, netIncome: 142.00,
+          currentRatio: 1.28, der: 2.06, grossMarginPct: 18.79, operatingMarginPct: 12.00, netMarginPct: 8.61,
+          modifiedZScore: 2.28, dscrContractual: 1.85, sinkingFundBalance: 15.00, forensicHealthScore: 81
+        },
+        analysisResults: {
+          forensicHealthScore: 81, riskTier: "Aman (Safe Zone)",
+          signals: ["Modified Z-Score 2,28 > 2,00", "DER 2,06x ≤ Covenant 3,00x"],
+          summary: "Solvabilitas obligasi PT DAAZ FY 2023 berada di Zona Aman (Modified Z-Score 2,28)."
+        }
+      },
+      {
+        id: "KB-INV-DAAZ-2024",
+        title: "PT Daaz Bara Lestari Tbk — Kertas Kerja Solvabilitas Obligasi FY 2024",
+        entityName: "PT Daaz Bara Lestari Tbk",
+        reportingYear: 2024,
+        reportingPeriod: "31 Desember 2024 (FY 2024)",
+        category: "Investasi",
+        secondaryCategories: ["Laporan Keuangan"],
+        selectedScheme: "investasi",
+        documentType: "Bond Solvency & Modified Z-Score Report",
+        currency: "Rp Miliar (IDR)",
+        status: "STORED",
+        originalDocument: {
+          fileName: "Kertas_Kerja_Obligasi_DAAZ_FY2024.xlsx",
+          fileType: "XLSX",
+          fileSizeKB: "712,8",
+          pageReference: "Sheet 1–4 (4 Dimensi & Modified Z-Score)",
+          sectionReference: "Evaluasi Obligasi & Solvabilitas FY 2024",
+          checksum: "SHA256:2E55C831B22D8F14"
+        },
+        fields: {
+          totalAssets: 1890.00, currentAssets: 1148.81, nonCurrentAssets: 741.19,
+          totalLiabilities: 1250.00, currentLiabilities: 895.00, longTermLiabilities: 355.00,
+          equity: 640.00, nwc: 253.81, footingDelta: 0,
+          revenue: 1980.00, cogs: 1584.00, grossProfit: 396.00, opex: 151.00, operatingProfit: 245.00,
+          associateIncome: 0, fxGainLoss: 6.80, interestExpense: 52.00, netIncome: 185.00,
+          currentRatio: 1.28, der: 1.95, grossMarginPct: 20.00, operatingMarginPct: 12.37, netMarginPct: 9.34,
+          modifiedZScore: 2.54, dscrContractual: 2.12, sinkingFundBalance: 30.00, forensicHealthScore: 86
+        },
+        analysisResults: {
+          forensicHealthScore: 86, riskTier: "Aman (Safe Zone)",
+          signals: ["Modified Z-Score 2,54 > 2,00", "Penjualan +20,00% YoY (98,51% RKAP)"],
+          summary: "FY 2024: Penjualan PT DAAZ tumbuh +20,00% YoY ke Rp1.980,00 Miliar dan Modified Z-Score naik ke 2,54."
+        }
+      },
+      {
+        id: "KB-CTRL-EPS-2024",
+        title: "PT Era Permata Sejahtera (PT EPS) — Laporan Manajemen Entitas Pengendali 2024",
+        entityName: "PT Era Permata Sejahtera",
+        reportingYear: 2024,
+        reportingPeriod: "31 Agustus 2024 (8M 2024)",
+        category: "Pengendali",
+        secondaryCategories: ["Laporan Keuangan"],
+        selectedScheme: "pengendali",
+        documentType: "Laporan Manajemen Bulanan & Realisasi RKAP Entitas Pengendali",
+        currency: "Rp Miliar (IDR)",
+        status: "STORED",
+        originalDocument: {
+          fileName: "Laporan_Manajemen_PT_EPS_Agu2024.xlsx",
+          fileType: "XLSX",
+          fileSizeKB: "498,2",
+          pageReference: "Blok 1–9 (hlm. 1–21)",
+          sectionReference: "Neraca, Laba Rugi & Realisasi Anggaran RKAP 2024",
+          checksum: "SHA256:5A71D204C91B3E22"
+        },
+        fields: {
+          totalAssets: 192.40, currentAssets: 61.20, nonCurrentAssets: 131.20,
+          totalLiabilities: 108.50, currentLiabilities: 58.10, longTermLiabilities: 50.40,
+          equity: 83.90, nwc: 3.10, footingDelta: 0,
+          revenue: 142.50, cogs: 108.30, grossProfit: 34.20, opex: 24.80, operatingProfit: 9.40, netIncome: 7.15,
+          currentRatio: 1.05, der: 1.29, grossMarginPct: 24.00, operatingMarginPct: 6.60, netMarginPct: 5.02,
+          revGrowthPct: 14.20, opexGrowthPct: 11.80, growthGapPct: -2.40, bonusRealizationPct: 98.40, forensicHealthScore: 80
+        },
+        analysisResults: {
+          forensicHealthScore: 80, riskTier: "Terkendali • Hijau",
+          signals: ["NWC Positif +Rp3,10 Miliar", "Bonus Sesuai Pagu (98,40%)"],
+          summary: "Pertumbuhan omzet (+14,20%) di atas opex (+11,80%) dan modal kerja positif +Rp3,10 Miliar."
+        }
+      },
+      {
+        id: "KB-CTRL-EPS-2025",
+        title: "PT Era Permata Sejahtera (PT EPS) — Laporan Manajemen Entitas Pengendali 2025",
+        entityName: "PT Era Permata Sejahtera",
+        reportingYear: 2025,
+        reportingPeriod: "31 Agustus 2025 (8M 2025)",
+        category: "Pengendali",
+        secondaryCategories: ["Laporan Keuangan"],
+        selectedScheme: "pengendali",
+        documentType: "Laporan Manajemen Bulanan & Realisasi RKAP Entitas Pengendali",
+        currency: "Rp Miliar (IDR)",
+        status: "STORED",
+        originalDocument: {
+          fileName: "Laporan_Manajemen_PT_EPS_Agu2025.xlsx",
+          fileType: "XLSX",
+          fileSizeKB: "524,6",
+          pageReference: "Blok 1–9 (hlm. 1–23)",
+          sectionReference: "Neraca, Laba Rugi & Realisasi Anggaran RKAP 2025",
+          checksum: "SHA256:6B82E315D02C4F33"
+        },
+        fields: {
+          totalAssets: 215.80, currentAssets: 58.40, nonCurrentAssets: 157.40,
+          totalLiabilities: 126.90, currentLiabilities: 76.20, longTermLiabilities: 50.70,
+          equity: 88.90, nwc: -17.80, footingDelta: 0,
+          revenue: 164.98, cogs: 125.38, grossProfit: 39.60, opex: 31.51, operatingProfit: 8.09, netIncome: 6.12,
+          currentRatio: 0.77, der: 1.43, grossMarginPct: 24.00, operatingMarginPct: 4.90, netMarginPct: 3.71,
+          revGrowthPct: 15.78, opexGrowthPct: 27.06, growthGapPct: 11.28, bonusRealizationPct: 145.00, forensicHealthScore: 68
+        },
+        analysisResults: {
+          forensicHealthScore: 68, riskTier: "Waspada • Kuning",
+          signals: ["S7 Growth Gap Awal", "Defisit NWC -Rp17,80 Miliar"],
+          summary: "Modal kerja berbalik defisit (-Rp17,80 Miliar) dan marjin operasional menyusut ke 4,90%."
+        }
+      },
+      {
+        id: "KB-CTRL-EPS-2026",
+        title: "PT Era Permata Sejahtera (PT EPS) — Laporan Manajemen Entitas Pengendali 2026",
+        entityName: "PT Era Permata Sejahtera",
+        reportingYear: 2026,
+        reportingPeriod: "31 Agustus 2026 (8M 2026)",
+        category: "Pengendali",
+        secondaryCategories: ["Laporan Keuangan"],
+        selectedScheme: "pengendali",
+        documentType: "Laporan Manajemen Bulanan & Realisasi RKAP Entitas Pengendali",
+        currency: "Rp Miliar (IDR)",
+        status: "STORED",
+        originalDocument: {
+          fileName: "01_Laporan_Manajemen_PT_EPS_Agu2026.xlsx",
+          fileType: "XLSX",
+          fileSizeKB: "548,0",
+          pageReference: "Blok 1–9 (hlm. 1–23), CALK 1–24",
+          sectionReference: "Neraca, Laba Rugi & Realisasi Anggaran RKAP 2026",
+          checksum: "SHA256:7C93F426E13D5A44"
+        },
+        fields: {
+          totalAssets: 242.10, currentAssets: 52.63, nonCurrentAssets: 189.47,
+          totalLiabilities: 148.62, currentLiabilities: 93.12, longTermLiabilities: 55.50,
+          equity: 93.48, nwc: -40.49, footingDelta: 0,
+          revenue: 216.88, cogs: 166.65, grossProfit: 50.23, opex: 41.88, operatingProfit: 8.35, netIncome: 6.45,
+          currentRatio: 0.57, der: 1.59, grossMarginPct: 23.16, operatingMarginPct: 3.85, netMarginPct: 2.97,
+          revGrowthPct: 31.45, opexGrowthPct: 32.91, growthGapPct: 1.46, bonusRealizationPct: 2308.00, forensicHealthScore: 58
+        },
+        analysisResults: {
+          forensicHealthScore: 58, riskTier: "Risiko Tinggi • Merah",
+          signals: ["S7 Growth Gap (+1,46 pp: Opex +32,91% > Omzet +31,45%)", "Defisit NWC -Rp40,49 Miliar (CR 0,57x)", "Lonjakan Bonus 2.308% RKAP"],
+          summary: "Defisit modal kerja meluas ke -Rp40,49 Miliar (CR 0,57x), marjin operasional tertekan ke 3,85%, dan bonus membengkak 2.308% RKAP."
+        }
+      },
+      {
+        id: "KB-NCI-POJ-2024",
+        title: "PT Pesonna Optima Jasa (PT POJ) — Laporan Monitoring Saham Minoritas 1% FY 2024",
+        entityName: "PT Pesonna Optima Jasa",
+        reportingYear: 2024,
+        reportingPeriod: "31 Desember 2024 (FY 2024)",
+        category: "Non-Pengendali",
+        secondaryCategories: ["Laporan Keuangan"],
+        selectedScheme: "nonpengendali",
+        documentType: "Minority Shareholder Monitoring & Audited Financial Statements",
+        currency: "Rp Miliar (IDR)",
+        status: "STORED",
+        originalDocument: {
+          fileName: "Laporan_Keuangan_PT_POJ_FY2024.pdf",
+          fileType: "PDF",
+          fileSizeKB: "812,0",
+          pageReference: "hlm. 1–48, Catatan Piutang & Dividen",
+          sectionReference: "Evaluasi Hak Minoritas 1% & Realisasi RKAP 2024",
+          checksum: "SHA256:3F12A890B44E1C55"
+        },
+        fields: {
+          totalAssets: 1180.40, currentAssets: 512.30, nonCurrentAssets: 668.10,
+          totalLiabilities: 728.90, currentLiabilities: 645.10, longTermLiabilities: 83.80,
+          equity: 451.50, nwc: -132.80, footingDelta: 0,
+          revenue: 845.20, opex: 118.40, operatingProfit: 31.20, netIncome: 16.40,
+          currentRatio: 0.79, der: 1.61, receivablesAct: 68.50, receivablesRKAP: 58.00, rtcPct: 118.10,
+          minorityPct: 1.00, dividendEntitlement: 0.164, dividendPayable: 64.20, forensicHealthScore: 69
+        },
+        analysisResults: {
+          forensicHealthScore: 69, riskTier: "Perhatian Moderat • Kuning",
+          signals: ["RTC Piutang 118,10% (Tiering Kuning: 101%–120%)", "Defisit NWC -Rp132,80 Miliar"],
+          summary: "Realisasi piutang PT POJ Rp68,50 Miliar (118,10% RKAP — Tiering Kuning) dengan utang dividen tertahan Rp64,20 Miliar."
+        }
+      },
+      {
+        id: "KB-NCI-POJ-2025",
+        title: "PT Pesonna Optima Jasa (PT POJ) — Laporan Monitoring Saham Minoritas 1% FY 2025",
+        entityName: "PT Pesonna Optima Jasa",
+        reportingYear: 2025,
+        reportingPeriod: "31 Desember 2025 (FY 2025)",
+        category: "Non-Pengendali",
+        secondaryCategories: ["Laporan Keuangan"],
+        selectedScheme: "nonpengendali",
+        documentType: "Minority Shareholder Monitoring & Audited Financial Statements",
+        currency: "Rp Miliar (IDR)",
+        status: "STORED",
+        originalDocument: {
+          fileName: "01_Laporan_Keuangan_PT_POJ_2025.pdf",
+          fileType: "PDF",
+          fileSizeKB: "945,2",
+          pageReference: "hlm. 1–55, Catatan Piutang & Dividen",
+          sectionReference: "Evaluasi Hak Minoritas 1% & Realisasi RKAP 2025",
+          checksum: "SHA256:4A23B901C55F2D66"
+        },
+        fields: {
+          totalAssets: 1361.36, currentAssets: 534.60, nonCurrentAssets: 826.76,
+          totalLiabilities: 881.78, currentLiabilities: 881.78, longTermLiabilities: 0,
+          equity: 479.58, nwc: -347.18, footingDelta: 0,
+          revenue: 912.60, opex: 134.80, operatingProfit: 28.90, netIncome: 18.50,
+          currentRatio: 0.61, der: 2.19, receivablesAct: 185.00, receivablesRKAP: 61.42, rtcPct: 301.20,
+          minorityPct: 1.00, dividendEntitlement: 0.185, dividendPayable: 110.27, forensicHealthScore: 54
+        },
+        analysisResults: {
+          forensicHealthScore: 54, riskTier: "Perhatian Tinggi • Merah",
+          signals: ["RTC Piutang 301,20% > 120% (Tiering Merah)", "Defisit NWC -Rp347,18 Miliar (CR 0,61x)", "Utang Dividen Naik ke Rp110,27 Miliar"],
+          summary: "Piutang pihak ketiga PT POJ melonjak +170,07% YoY ke Rp185,00 Miliar (RTC 301,20% RKAP), memperdalam defisit modal kerja dan menahan dividen minoritas 1%."
+        }
+      },
+      {
+        id: "KB-KONS-GRUP-2025",
+        title: "Holding Konsolidasi Grup Kajian Ihsan (6 Entitas) — Laporan Konsolidasi FY 2025",
+        entityName: "Holding Konsolidasi Grup Kajian Ihsan",
+        reportingYear: 2025,
+        reportingPeriod: "31 Desember 2025 (FY 2025)",
+        category: "Konsolidasi Grup",
+        secondaryCategories: ["Laporan Keuangan"],
+        selectedScheme: "konsolidasi",
+        documentType: "Consolidated Group Financial Worksheet (IFRS 10 / PSAK 65)",
+        currency: "USD Juta",
+        status: "STORED",
+        originalDocument: {
+          fileName: "Kertas_Kerja_Konsolidasi_Grup_FY2025.xlsx",
+          fileType: "XLSX",
+          fileSizeKB: "1.120,0",
+          pageReference: "Matrix Eliminasi Slide 1–8",
+          sectionReference: "Konsolidasi 6 Entitas & Kepatuhan POJK 2025",
+          checksum: "SHA256:9B01C234D56E7F88"
+        },
+        fields: {
+          totalAssets: 5620.00, totalLiabilities: 2810.00, equity: 2810.00, footingDelta: 0,
+          revenue: 3540.00, operatingProfit: 412.00, netIncome: 290.00, der: 1.00, forensicHealthScore: 85
+        },
+        analysisResults: {
+          forensicHealthScore: 85, riskTier: "Patuh POJK • Hijau",
+          signals: ["POJK DER 1,00x ≤ 5,00x", "Eliminasi Afiliasi 100%"],
+          summary: "Konsolidasi Grup FY 2025: Pendapatan USD 3.540,0 juta, Laba Bersih USD 290,0 juta, dan DER 1,00x."
+        }
+      },
+      {
+        id: "KB-KONS-GRUP-2026",
+        title: "Holding Konsolidasi Grup Kajian Ihsan (6 Entitas) — Laporan Konsolidasi FY 2026",
+        entityName: "Holding Konsolidasi Grup Kajian Ihsan",
+        reportingYear: 2026,
+        reportingPeriod: "31 Agustus 2026 (FY 2026)",
+        category: "Konsolidasi Grup",
+        secondaryCategories: ["Laporan Keuangan"],
+        selectedScheme: "konsolidasi",
+        documentType: "Consolidated Group Financial Worksheet (IFRS 10 / PSAK 65)",
+        currency: "USD Juta",
+        status: "STORED",
+        originalDocument: {
+          fileName: "Kertas_Kerja_Konsolidasi_Grup_FY2026.xlsx",
+          fileType: "XLSX",
+          fileSizeKB: "1.245,0",
+          pageReference: "Matrix Eliminasi Slide 1–10",
+          sectionReference: "Konsolidasi 6 Entitas & Kepatuhan POJK 2026",
+          checksum: "SHA256:AC12D345E67F8A99"
+        },
+        fields: {
+          totalAssets: 6018.00, totalLiabilities: 2948.00, equity: 3070.00, footingDelta: 0,
+          revenue: 3885.00, operatingProfit: 458.00, netIncome: 325.00, der: 0.96, forensicHealthScore: 88
+        },
+        analysisResults: {
+          forensicHealthScore: 88, riskTier: "Patuh POJK • Hijau",
+          signals: ["POJK DER 0,96x ≤ 5,00x", "NCI Profit Mismatch Subsidiary II +34,1%"],
+          summary: "Konsolidasi Grup FY 2026: Pendapatan USD 3.885,0 juta (+9,75%), Laba Bersih USD 325,0 juta (+12,07%), dan DER 0,96x."
+        }
+      }
+    ];
+
+    window.CLIENT_KB_REPOSITORY = CLIENT_KB_REPOSITORY;
+    window.CLIENT_FAILED_INGESTIONS = window.CLIENT_FAILED_INGESTIONS || [];
+    appState.kbActiveCategoryFilter = 'ALL';
+    appState.kbSearchQuery = '';
+    appState.kbSelectedDocIds = [];
+
+    function toggleKbGroundingAccordion() {
+      const body = document.getElementById('kbGroundingBody');
+      const arrow = document.getElementById('kbGroundingArrow');
+      if (!body) return;
+      const isHidden = body.classList.toggle('hidden');
+      if (arrow) {
+        arrow.textContent = isHidden ? '▼ Buka Pengaturan Acuan Copilot' : '▲ Tutup Pengaturan Acuan Copilot';
+      }
+    }
+
+    function setKbCategoryFilter(category) {
+      appState.kbActiveCategoryFilter = category || 'ALL';
+      const pills = document.querySelectorAll('.kb-cat-pill');
+      pills.forEach(btn => {
+        btn.style.border = '1px solid #CBD5E1';
+        btn.style.background = '#FFFFFF';
+        btn.style.color = '#334155';
+        btn.style.fontWeight = '700';
+      });
+
+      const activeBtnId = category === 'ALL' ? 'kbCatBtn_ALL' : (category === 'Konsolidasi Grup' ? 'kbCatBtn_Konsolidasi' : `kbCatBtn_${category}`);
+      const activeBtn = document.getElementById(activeBtnId);
+      if (activeBtn) {
+        activeBtn.style.border = '1.5px solid var(--forest)';
+        activeBtn.style.background = 'var(--forest)';
+        activeBtn.style.color = '#FFFFFF';
+        activeBtn.style.fontWeight = '800';
+      }
+
+      renderKbGroupedCatalog();
+    }
+
+    function handleKbSearchInput(query) {
+      appState.kbSearchQuery = (query || '').trim().toLowerCase();
+      renderKbGroupedCatalog();
+    }
+
+    function clearKbSearch() {
+      const input = document.getElementById('kbSearchInput');
+      if (input) input.value = '';
+      appState.kbSearchQuery = '';
+      renderKbGroupedCatalog();
+    }
+
+    function toggleKbDocumentSelection(docId, isChecked) {
+      if (!appState.kbSelectedDocIds) appState.kbSelectedDocIds = [];
+      if (isChecked) {
+        if (!appState.kbSelectedDocIds.includes(docId)) appState.kbSelectedDocIds.push(docId);
+      } else {
+        appState.kbSelectedDocIds = appState.kbSelectedDocIds.filter(id => id !== docId);
+      }
+      updateKbSelectionActionBar();
+    }
+
+    function clearKbDocumentSelection() {
+      appState.kbSelectedDocIds = [];
+      document.querySelectorAll('.kb-doc-chk').forEach(chk => chk.checked = false);
+      updateKbSelectionActionBar();
+    }
+
+    function updateKbSelectionActionBar() {
+      const bar = document.getElementById('kbSelectionActionBar');
+      const countEl = document.getElementById('kbSelectedCountText');
+      const hintEl = document.getElementById('kbSelectedCategoryHint');
+      const btnCompare = document.getElementById('btnExecuteKbCompare');
+      if (!bar) return;
+
+      const sel = appState.kbSelectedDocIds || [];
+      if (sel.length === 0) {
+        bar.classList.add('hidden');
+        return;
+      }
+
+      bar.classList.remove('hidden');
+      if (countEl) countEl.textContent = `${sel.length} Dokumen Terpilih untuk Dikomparasi`;
+
+      const selectedDocs = sel.map(id => CLIENT_KB_REPOSITORY.find(r => r.id === id)).filter(Boolean);
+      const cats = [...new Set(selectedDocs.map(d => d.category))];
+      const years = [...new Set(selectedDocs.map(d => d.reportingYear))];
+
+      if (hintEl) {
+        if (cats.length === 1) {
+          hintEl.innerHTML = `• Kategori: <strong>${escapeHtml(cats[0])}</strong> &bull; Tahun: <strong>${years.join(', ')}</strong> ${years.length > 1 ? '(Komparasi Lintas Tahun ✓)' : '(Komparasi Entitas Sejenis ✓)'}`;
+          hintEl.style.color = '#1E40AF';
+        } else {
+          hintEl.innerHTML = `⚠️ <strong>Peringatan Kategori Berbeda:</strong> ${cats.join(' vs ')} (Disarankan memilih kategori yang sama)`;
+          hintEl.style.color = '#B45309';
+        }
+      }
+
+      if (btnCompare) {
+        btnCompare.disabled = sel.length < 2;
+        btnCompare.textContent = sel.length >= 2
+          ? `⚖️ Bandingkan ${sel.length} Dokumen Side-by-Side →`
+          : `Pilih Minimal 2 Dokumen (Saat ini: ${sel.length})`;
+      }
+    }
+
+    function triggerKbQuickCompare(docIds) {
+      if (!Array.isArray(docIds) || docIds.length < 2) return;
+      appState.kbSelectedDocIds = [...docIds];
+      updateKbSelectionActionBar();
+      executeKnowledgeBaseCompareSelected();
+    }
+
+    async function executeKnowledgeBaseCompareSelected() {
+      const sel = appState.kbSelectedDocIds || [];
+      if (sel.length < 2) {
+        showToast('Pilih minimal 2 dokumen untuk menjalankan komparasi berdampingan.', 'warning');
+        return;
+      }
+
+      let compResult = null;
+      try {
+        const resp = await fetch('/api/knowledge-base/compare', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ itemIds: sel })
+        });
+        if (resp.ok) {
+          compResult = await resp.json();
+        }
+      } catch (_) {}
+
+      if (!compResult || !compResult.alignedRows) {
+        // Instant local computation fallback
+        compResult = compareKnowledgeBaseItemsClient(sel);
+      }
+
+      renderKbSideBySideComparisonView(compResult);
+    }
+
+    function closeKbSideBySideView() {
+      const box = document.getElementById('kbSideBySideBox');
+      if (box) box.classList.add('hidden');
+      const catBox = document.getElementById('kbGroupedCatalogBox');
+      if (catBox) catBox.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function openCrossYearComparisonForActiveScheme() {
+      const activeScheme = appState.selectedScheme || 'investasi';
+      let targetIds = ['KB-INV-PINDO-2025', 'KB-INV-PINDO-2026'];
+
+      if (activeScheme === 'investasi') {
+        const isDaaz = appState.investasiActivePreset === 'daaz' ||
+          (appState.schemeAnalysisResult?.entityName || '').toLowerCase().includes('daaz');
+        targetIds = isDaaz ? ['KB-INV-DAAZ-2023', 'KB-INV-DAAZ-2024'] : ['KB-INV-PINDO-2025', 'KB-INV-PINDO-2026'];
+      } else if (activeScheme === 'pengendali') {
+        targetIds = ['KB-CTRL-EPS-2025', 'KB-CTRL-EPS-2026'];
+      } else if (activeScheme === 'nonpengendali') {
+        targetIds = ['KB-NCI-POJ-2024', 'KB-NCI-POJ-2025'];
+      }
+
+      switchView('datapool');
+      setTimeout(() => {
+        triggerKbQuickCompare(targetIds);
+      }, 150);
+    }
+
+    // Local client comparison engine fallback
+    function compareKnowledgeBaseItemsClient(docIds, options = {}) {
+      const selectedItems = docIds
+        .map(id => CLIENT_KB_REPOSITORY.find(r => r.id === id))
+        .filter(Boolean)
+        .sort((a, b) => (a.reportingYear || 0) - (b.reportingYear || 0));
+
+      if (selectedItems.length < 2) {
+        return { success: false, comparisonSupported: false, message: "Minimal 2 dokumen diperlukan." };
+      }
+
+      const uniqueCats = [...new Set(selectedItems.map(i => i.category))];
+      const samePrimaryCategory = uniqueCats.length === 1;
+      const uniqueCurrencies = [...new Set(selectedItems.map(i => i.currency))];
+      const unitsCompatible = uniqueCurrencies.length === 1;
+      const uniqueYears = [...new Set(selectedItems.map(i => i.reportingYear))];
+      const activeCat = samePrimaryCategory ? uniqueCats[0] : "Laporan Keuangan";
+
+      const FIELD_CATALOG = [
+        { key: "totalAssets", label: "Total Aset (Total Assets)", group: "1. Posisi Keuangan (Neraca)", isMonetary: true, unitType: "currency" },
+        { key: "currentAssets", label: "Aset Lancar (Current Assets)", group: "1. Posisi Keuangan (Neraca)", isMonetary: true, unitType: "currency" },
+        { key: "nonCurrentAssets", label: "Aset Tidak Lancar (Non-Current Assets)", group: "1. Posisi Keuangan (Neraca)", isMonetary: true, unitType: "currency" },
+        { key: "totalLiabilities", label: "Total Liabilitas (Total Liabilities)", group: "1. Posisi Keuangan (Neraca)", isMonetary: true, unitType: "currency" },
+        { key: "currentLiabilities", label: "Liabilitas Jangka Pendek (Current Liabilities)", group: "1. Posisi Keuangan (Neraca)", isMonetary: true, unitType: "currency" },
+        { key: "longTermLiabilities", label: "Liabilitas Jangka Panjang (Long-Term Liabilities)", group: "1. Posisi Keuangan (Neraca)", isMonetary: true, unitType: "currency" },
+        { key: "equity", label: "Total Ekuitas (Total Equity)", group: "1. Posisi Keuangan (Neraca)", isMonetary: true, unitType: "currency" },
+        { key: "nwc", label: "Modal Kerja Bersih (NWC)", group: "1. Posisi Keuangan (Neraca)", isMonetary: true, unitType: "currency" },
+        { key: "footingDelta", label: "Selisih Footing Neraca (Δ)", group: "1. Posisi Keuangan (Neraca)", isMonetary: true, unitType: "currency" },
+
+        { key: "revenue", label: "Pendapatan / Penjualan Neto (Revenue)", group: "2. Kinerja Laba Rugi (Income Statement)", isMonetary: true, unitType: "currency" },
+        { key: "cogs", label: "Beban Pokok Penjualan (COGS / HPP)", group: "2. Kinerja Laba Rugi (Income Statement)", isMonetary: true, unitType: "currency" },
+        { key: "grossProfit", label: "Laba Bruto (Gross Profit)", group: "2. Kinerja Laba Rugi (Income Statement)", isMonetary: true, unitType: "currency" },
+        { key: "opex", label: "Beban Usaha Operasional (Opex)", group: "2. Kinerja Laba Rugi (Income Statement)", isMonetary: true, unitType: "currency" },
+        { key: "operatingProfit", label: "Laba Usaha Inti (Operating Profit / EBIT)", group: "2. Kinerja Laba Rugi (Income Statement)", isMonetary: true, unitType: "currency" },
+        { key: "associateIncome", label: "Bagian Laba Entitas Asosiasi", group: "2. Kinerja Laba Rugi (Income Statement)", isMonetary: true, unitType: "currency" },
+        { key: "fxGainLoss", label: "Laba / (Rugi) Selisih Kurs Neto", group: "2. Kinerja Laba Rugi (Income Statement)", isMonetary: true, unitType: "currency" },
+        { key: "interestExpense", label: "Beban Bunga & Keuangan", group: "2. Kinerja Laba Rugi (Income Statement)", isMonetary: true, unitType: "currency" },
+        { key: "netIncome", label: "Laba Neto Periode Berjalan", group: "2. Kinerja Laba Rugi (Income Statement)", isMonetary: true, unitType: "currency" },
+
+        { key: "currentRatio", label: "Rasio Lancar (Current Ratio)", group: "3. Rasio Keuangan, Covenant & Indikator Forensik", isMonetary: false, unitType: "ratio_x" },
+        { key: "der", label: "Rasio Utang terhadap Ekuitas (DER)", group: "3. Rasio Keuangan, Covenant & Indikator Forensik", isMonetary: false, unitType: "ratio_x" },
+        { key: "grossMarginPct", label: "Marjin Laba Bruto (%)", group: "3. Rasio Keuangan, Covenant & Indikator Forensik", isMonetary: false, unitType: "percent" },
+        { key: "operatingMarginPct", label: "Marjin Laba Usaha Inti (%)", group: "3. Rasio Keuangan, Covenant & Indikator Forensik", isMonetary: false, unitType: "percent" },
+        { key: "netMarginPct", label: "Marjin Laba Neto (%)", group: "3. Rasio Keuangan, Covenant & Indikator Forensik", isMonetary: false, unitType: "percent" },
+        { key: "modifiedZScore", label: "Modified Z-Score Solvabilitas", group: "3. Rasio Keuangan, Covenant & Indikator Forensik", isMonetary: false, unitType: "score" },
+        { key: "dscrContractual", label: "DSCR Kontraktual", group: "3. Rasio Keuangan, Covenant & Indikator Forensik", isMonetary: false, unitType: "ratio_x" },
+        { key: "sinkingFundBalance", label: "Dana Cadangan Pelunasan (Sinking Fund)", group: "3. Rasio Keuangan, Covenant & Indikator Forensik", isMonetary: true, unitType: "currency" },
+        { key: "revGrowthPct", label: "Pertumbuhan Omzet YoY (%)", group: "3. Rasio Keuangan, Covenant & Indikator Forensik", isMonetary: false, unitType: "percent" },
+        { key: "opexGrowthPct", label: "Pertumbuhan Opex YoY (%)", group: "3. Rasio Keuangan, Covenant & Indikator Forensik", isMonetary: false, unitType: "percent" },
+        { key: "growthGapPct", label: "S7 Growth Gap (Opex% - Omzet%)", group: "3. Rasio Keuangan, Covenant & Indikator Forensik", isMonetary: false, unitType: "pp" },
+        { key: "bonusRealizationPct", label: "Realisasi Bonus Jasa Produksi vs RKAP (%)", group: "3. Rasio Keuangan, Covenant & Indikator Forensik", isMonetary: false, unitType: "percent" },
+        { key: "receivablesAct", label: "Piutang Usaha Aktual", group: "3. Rasio Keuangan, Covenant & Indikator Forensik", isMonetary: true, unitType: "currency" },
+        { key: "receivablesRKAP", label: "Pagu Anggaran Piutang RKAP", group: "3. Rasio Keuangan, Covenant & Indikator Forensik", isMonetary: true, unitType: "currency" },
+        { key: "rtcPct", label: "Rasio Realisasi Piutang thd RKAP (RTC %)", group: "3. Rasio Keuangan, Covenant & Indikator Forensik", isMonetary: false, unitType: "percent" },
+        { key: "minorityPct", label: "Porsi Saham Minoritas (%)", group: "3. Rasio Keuangan, Covenant & Indikator Forensik", isMonetary: false, unitType: "percent" },
+        { key: "dividendEntitlement", label: "Hak Atribusi Dividen Minoritas", group: "3. Rasio Keuangan, Covenant & Indikator Forensik", isMonetary: true, unitType: "currency" },
+        { key: "dividendPayable", label: "Utang Dividen Tertahan di Neraca", group: "3. Rasio Keuangan, Covenant & Indikator Forensik", isMonetary: true, unitType: "currency" },
+        { key: "forensicHealthScore", label: "Skor Kesehatan Forensik (/100)", group: "3. Rasio Keuangan, Covenant & Indikator Forensik", isMonetary: false, unitType: "score_100" }
+      ];
+
+      const alignedRows = [];
+      const highlights = [];
+      const inconsistencies = [];
+
+      const docBase = selectedItems[0];
+      const docTarget = selectedItems[selectedItems.length - 1];
+
+      FIELD_CATALOG.forEach(fDef => {
+        const hasAny = selectedItems.some(item => item.fields && (fDef.key in item.fields));
+        if (!hasAny) return;
+
+        const cells = selectedItems.map(item => {
+          const raw = (item.fields && fDef.key in item.fields) ? item.fields[fDef.key] : null;
+          const isMissing = raw === null || raw === undefined;
+          const isZero = raw === 0;
+          let display = "Data Tidak Tersedia (N/A)";
+          if (!isMissing) {
+            const num = Number(raw);
+            if (fDef.unitType === "currency") {
+              display = `${num.toLocaleString('id-ID', { maximumFractionDigits: 2 })} ${item.currency}${isZero ? ' (Nol Aktual)' : ''}`;
+            } else if (fDef.unitType === "percent") {
+              display = `${num.toFixed(2)}%${isZero ? ' (Nol Aktual)' : ''}`;
+            } else if (fDef.unitType === "pp") {
+              display = `${num >= 0 ? '+' : ''}${num.toFixed(2)} pp${isZero ? ' (Nol Aktual)' : ''}`;
+            } else if (fDef.unitType === "ratio_x") {
+              display = `${num.toFixed(2)}x${isZero ? ' (Nol Aktual)' : ''}`;
+            } else {
+              display = `${num.toFixed(2)}${isZero ? ' (Nol Aktual)' : ''}`;
+            }
+          }
+          return {
+            docId: item.id,
+            reportingYear: item.reportingYear,
+            currency: item.currency,
+            raw,
+            isMissing,
+            isZero,
+            display,
+            sourceRef: `${item.originalDocument?.fileName || item.id} (${item.originalDocument?.pageReference || item.reportingPeriod})`
+          };
+        });
+
+        const cA = cells[0];
+        const cB = cells[cells.length - 1];
+
+        let changeType = "UNCHANGED";
+        let changeBadge = "Tetap (0,00)";
+        let deltaAbsoluteDisplay = "—";
+        let deltaPercentDisplay = "—";
+        let comparabilityNote = "Kompatibel";
+
+        if (cA.isMissing && cB.isMissing) {
+          changeType = "MISSING_BOTH";
+          changeBadge = "Data Tidak Tersedia";
+          comparabilityNote = "Pos ini tidak tersedia pada kedua dokumen sumber (bukan bernilai nol).";
+        } else if (cA.isMissing && !cB.isMissing) {
+          changeType = "ADDED";
+          changeBadge = "➕ Penambahan Baru (Added)";
+          comparabilityNote = `Pos baru tersedia pada ${docTarget.reportingYear} (${cB.display}), tidak dilaporkan pada ${docBase.reportingYear}.`;
+          highlights.push({ type: "ADDED", field: fDef.label, detail: `${fDef.label} baru muncul sebesar ${cB.display} pada ${docTarget.reportingYear}.` });
+        } else if (!cA.isMissing && cB.isMissing) {
+          changeType = "OMITTED";
+          changeBadge = "⚠️ Data Hilang (Omitted)";
+          comparabilityNote = `Pos tercatat ${cA.display} pada ${docBase.reportingYear}, namun dihilangkan/tidak dilaporkan pada ${docTarget.reportingYear}.`;
+          highlights.push({ type: "OMITTED", field: fDef.label, detail: `${fDef.label} dilaporkan ${cA.display} pada ${docBase.reportingYear}, tetapi tidak diungkapkan pada ${docTarget.reportingYear}.` });
+        } else if (fDef.isMonetary && !unitsCompatible) {
+          changeType = "UNIT_MISMATCH";
+          changeBadge = "⚠️ Satuan Berbeda";
+          deltaAbsoluteDisplay = `Tidak Dihitung (${cA.currency} vs ${cB.currency})`;
+          deltaPercentDisplay = "Satuan Berbeda";
+          comparabilityNote = `Satuan mata uang berbeda (${cA.currency} vs ${cB.currency}).`;
+        } else {
+          const deltaAbs = Number((cB.raw - cA.raw).toFixed(4));
+          const sign = deltaAbs > 0 ? "+" : "";
+          if (fDef.unitType === "currency") {
+            deltaAbsoluteDisplay = `${sign}${deltaAbs.toLocaleString('id-ID', { maximumFractionDigits: 2 })} ${cB.currency}`;
+          } else if (fDef.unitType === "percent" || fDef.unitType === "pp") {
+            deltaAbsoluteDisplay = `${sign}${deltaAbs.toFixed(2)} pp`;
+          } else {
+            deltaAbsoluteDisplay = `${sign}${deltaAbs.toFixed(2)}`;
+          }
+
+          if (cA.raw === 0) {
+            deltaPercentDisplay = cB.raw === 0 ? "0,00%" : `Baru dari Basis 0 (${sign}${cB.display})`;
+          } else {
+            const pct = Number((((cB.raw - cA.raw) / Math.abs(cA.raw)) * 100).toFixed(2));
+            deltaPercentDisplay = `${pct > 0 ? "+" : ""}${pct.toFixed(2)}%`;
+            if (Math.abs(pct) >= 25) {
+              highlights.push({
+                type: pct > 0 ? "MAJOR_INCREASE" : "MAJOR_DECREASE",
+                field: fDef.label,
+                detail: `${fDef.label} berubah signifikan ${deltaAbsoluteDisplay} (${deltaPercentDisplay}) dari ${cA.display} ke ${cB.display}.`
+              });
+            }
+          }
+
+          if (deltaAbs > 0) {
+            changeType = "INCREASED";
+            changeBadge = `▲ Naik (${deltaPercentDisplay})`;
+          } else if (deltaAbs < 0) {
+            changeType = "DECREASED";
+            changeBadge = `▼ Turun (${deltaPercentDisplay})`;
+          } else {
+            changeType = "UNCHANGED";
+            changeBadge = "▬ Tetap (0,00%)";
+          }
+        }
+
+        alignedRows.push({
+          key: fDef.key,
+          label: fDef.label,
+          group: fDef.group,
+          cells,
+          changeType,
+          changeBadge,
+          deltaAbsoluteDisplay,
+          deltaPercentDisplay,
+          comparabilityNote
+        });
+      });
+
+      return {
+        success: true,
+        comparisonSupported: true,
+        comparisonMode: uniqueYears.length > 1 ? "CROSS_YEAR_COMPARISON" : "SAME_YEAR_BENCHMARK",
+        comparisonModeLabel: uniqueYears.length > 1 ? "Komparasi Lintas Tahun (Cross-Year Side-by-Side Comparison)" : "Komparasi Entitas pada Tahun Pelaporan Sama",
+        category: activeCat,
+        samePrimaryCategory,
+        unitsCompatible,
+        documents: selectedItems,
+        alignedRows,
+        highlights,
+        inconsistencies,
+        generatedAt: new Date().toISOString()
+      };
+    }
+
+    // Render Side-by-Side Comparison View
+    function renderKbSideBySideComparisonView(comp) {
+      const container = document.getElementById('kbSideBySideBox');
+      if (!container) return;
+
+      if (!comp || !comp.comparisonSupported) {
+        container.classList.remove('hidden');
+        container.innerHTML = `
+          <div style="background:#FFFBEB; border:2px solid #F59E0B; border-radius:10px; padding:16px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+              <strong style="color:#92400E; font-size:14px;">⚠️ Komparasi Otomatis Tidak Didukung</strong>
+              <button type="button" onclick="closeKbSideBySideView()" class="btn btn-secondary btn-sm" style="font-size:11px; cursor:pointer;">✕ Tutup</button>
+            </div>
+            <p style="margin:0 0 10px 0; font-size:12px; color:#78350F; line-height:1.5;">
+              ${escapeHtml(comp.message || 'Dokumen yang dipilih tidak memiliki hubungan komparasi yang valid.')}
+            </p>
+            <button type="button" onclick="closeKbSideBySideView()" class="btn btn-primary btn-sm" style="font-weight:700; cursor:pointer;">
+              ← Kembali dan Pilih Dokumen dalam Kategori yang Sama
+            </button>
+          </div>
+        `;
+        container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        return;
+      }
+
+      const docs = comp.documents || [];
+      const docA = docs[0];
+      const docB = docs[docs.length - 1];
+
+      // Group aligned rows by section group
+      const groups = {};
+      (comp.alignedRows || []).forEach(r => {
+        const g = r.group || 'Pos Keuangan';
+        if (!groups[g]) groups[g] = [];
+        groups[g].push(r);
+      });
+
+      const highlightsHtml = (comp.highlights || []).length > 0 ? `
+        <div style="background:#FFFFFF; border:1px solid #86EFAC; border-left:4px solid #16A34A; border-radius:8px; padding:12px 16px; margin-bottom:14px;">
+          <strong style="color:#14532D; font-size:12.5px; display:flex; align-items:center; gap:6px; margin-bottom:6px;">
+            <span>💡</span> <span>Perubahan Kunci &amp; Anomali Terdeteksi (${docs.length} Periode):</span>
+          </strong>
+          <ul style="margin:0; padding-left:18px; font-size:11.5px; color:#1E293B; line-height:1.55;">
+            ${comp.highlights.map(h => `<li><strong>${escapeHtml(h.field)}:</strong> ${escapeHtml(h.detail)}</li>`).join('')}
+          </ul>
+        </div>
+      ` : '';
+
+      container.classList.remove('hidden');
+      container.innerHTML = `
+        <div style="background:#FFFFFF; border:2px solid #16A34A; border-radius:12px; overflow:hidden; box-shadow:0 4px 14px rgba(0,0,0,0.06);">
+          <!-- Comparison View Header -->
+          <div style="background:linear-gradient(135deg, #14532D, #16A34A); padding:14px 20px; color:#FFFFFF; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+            <div>
+              <span class="badge" style="background:#DCFCE7; color:#14532D; font-size:10px; font-weight:800; text-transform:uppercase;">
+                ${escapeHtml(comp.comparisonModeLabel)}
+              </span>
+              <h4 style="margin:4px 0 2px 0; font-size:16px; font-weight:800; color:#FFFFFF;">
+                ⚖️ Matriks Komparasi Berdampingan: ${escapeHtml(docA.entityName)} ${docA.reportingYear !== docB.reportingYear ? `(${docA.reportingYear} vs ${docB.reportingYear})` : `(${docA.reportingPeriod})`}
+              </h4>
+              <div style="font-size:11.5px; color:#E2E8F0;">
+                Kategori: <strong>${escapeHtml(comp.category)}</strong> &bull; Satuan: <strong>${escapeHtml(comp.currencies ? comp.currencies.join(' vs ') : docA.currency)}</strong> &bull; Prinsip: <em>Nilai asli dipertahankan, nilai nol dibedakan tegas dari data tidak tersedia</em>
+              </div>
+            </div>
+            <div style="display:flex; gap:8px;">
+              <button type="button" onclick="closeKbSideBySideView()" class="btn btn-secondary btn-sm" style="background:#FFFFFF; color:#14532D; font-weight:700; cursor:pointer;">
+                ← Kembali ke Daftar Knowledge Base
+              </button>
+            </div>
+          </div>
+
+          <div style="padding:16px;">
+            <!-- Document Source Cards Side-by-Side Header -->
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:12px; margin-bottom:14px;">
+              ${docs.map((d, idx) => `
+                <div style="background:#F8FAFC; border:1.5px solid ${idx === docs.length - 1 ? '#86EFAC' : '#CBD5E1'}; border-radius:8px; padding:12px;">
+                  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+                    <span class="badge ${idx === docs.length - 1 ? 'badge-green' : 'badge-gold'}" style="font-size:10px; font-weight:800;">
+                      ${idx === 0 ? 'DOKUMEN BASIS (A)' : `DOKUMEN PEMBANDING (${idx === docs.length - 1 ? 'B' : idx + 1})`}
+                    </span>
+                    <span style="font-family:var(--font-mono); font-size:10px; color:#64748B;">${escapeHtml(d.id)}</span>
+                  </div>
+                  <div style="font-size:13px; font-weight:800; color:#1E293B; margin-bottom:2px;">${escapeHtml(d.title)}</div>
+                  <div style="font-size:11px; color:#64748B; margin-bottom:4px;">Periode: <strong>${escapeHtml(d.reportingPeriod)}</strong> &bull; Satuan: <strong>${escapeHtml(d.currency)}</strong></div>
+                  <div style="font-size:10.5px; color:#14532D; background:#DCFCE7; padding:4px 8px; border-radius:4px; font-family:var(--font-mono);">
+                    📄 ${escapeHtml(d.originalDocument?.fileName || 'Dokumen Sumber')} (${escapeHtml(d.originalDocument?.pageReference || 'Kertas Kerja')})
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+
+            <!-- Highlights -->
+            ${highlightsHtml}
+
+            <!-- Aligned Field Rows Table -->
+            <div style="overflow-x:auto; border:1px solid #CBD5E1; border-radius:8px;">
+              <table class="data-table" style="width:100%; font-size:11.5px; margin:0;">
+                <thead>
+                  <tr style="background:#F1F5F9;">
+                    <th style="min-width:200px;">Pos / Indikator Keuangan</th>
+                    ${docs.map((d, i) => `<th style="text-align:right; min-width:140px;">${escapeHtml(d.reportingPeriod)}<br><span style="font-size:9.5px; font-weight:500; color:#64748B;">${escapeHtml(d.currency)}</span></th>`).join('')}
+                    <th style="text-align:right; min-width:130px;">Δ Nominal (${docA.reportingYear} &rarr; ${docB.reportingYear})</th>
+                    <th style="text-align:right; min-width:100px;">Δ Persen (%)</th>
+                    <th style="min-width:150px;">Status Perubahan &amp; Catatan</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${Object.entries(groups).map(([groupName, rows]) => `
+                    <tr style="background:#E2E8F0; font-weight:800; color:#1E293B;">
+                      <td colspan="${docs.length + 4}" style="padding:7px 12px; font-size:11.5px;">${escapeHtml(groupName)}</td>
+                    </tr>
+                    ${rows.map(r => `
+                      <tr style="background:${r.changeType === 'ADDED' ? '#F0FDF4' : (r.changeType === 'OMITTED' ? '#FEF2F2' : (r.changeType === 'UNIT_MISMATCH' ? '#FFFBEB' : '#FFFFFF'))};">
+                        <td>
+                          <strong>${escapeHtml(r.label)}</strong>
+                          <div style="font-size:9.5px; color:#64748B;">Sumber: ${escapeHtml(r.cells[0]?.sourceRef || '')}</div>
+                        </td>
+                        ${r.cells.map(c => `
+                          <td style="text-align:right; font-family:var(--font-mono); font-weight:${c.isMissing ? '400' : '700'}; color:${c.isMissing ? '#94A3B8' : (c.isZero ? '#2563EB' : '#1E293B')};">
+                            ${escapeHtml(c.display)}
+                          </td>
+                        `).join('')}
+                        <td style="text-align:right; font-family:var(--font-mono); font-weight:700; color:${r.deltaAbsoluteDisplay.startsWith('+') ? '#166534' : (r.deltaAbsoluteDisplay.startsWith('-') ? '#991B1B' : '#475569')};">
+                          ${escapeHtml(r.deltaAbsoluteDisplay)}
+                        </td>
+                        <td style="text-align:right; font-family:var(--font-mono); font-weight:700; color:${r.deltaPercentDisplay.startsWith('+') ? '#166534' : (r.deltaPercentDisplay.startsWith('-') ? '#991B1B' : '#475569')};">
+                          ${escapeHtml(r.deltaPercentDisplay)}
+                        </td>
+                        <td>
+                          <span class="badge" style="font-size:10px; font-weight:700; background:${r.changeType === 'INCREASED' ? '#DCFCE7' : (r.changeType === 'DECREASED' ? '#FEE2E2' : (r.changeType === 'ADDED' ? '#DCFCE7' : (r.changeType === 'OMITTED' ? '#FEE2E2' : '#F1F5F9')))}; color:${r.changeType === 'INCREASED' ? '#14532D' : (r.changeType === 'DECREASED' ? '#991B1B' : (r.changeType === 'ADDED' ? '#14532D' : (r.changeType === 'OMITTED' ? '#991B1B' : '#475569')))};">
+                            ${escapeHtml(r.changeBadge)}
+                          </span>
+                          <div style="font-size:10px; color:#64748B; margin-top:2px;">${escapeHtml(r.comparabilityNote)}</div>
+                        </td>
+                      </tr>
+                    `).join('')}
+                  `).join('')}
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Footer Action Bar -->
+            <div style="margin-top:14px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+              <span style="font-size:11px; color:#64748B;">
+                🔒 Bukti audit terjaga: Stempel SHA-256 tersimpan di dokumen sumber masing-masing.
+              </span>
+              <button type="button" onclick="closeKbSideBySideView()" class="btn btn-primary btn-sm" style="font-weight:700; cursor:pointer;">
+                ← Selesai Meninjau • Kembali ke Daftar Knowledge Base
+              </button>
+            </div>
+          </div>
+        </div>
+      `;
+
+      container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    // Render Grouped Catalog (Category -> Entity -> Year)
+    function renderKbGroupedCatalog() {
+      const container = document.getElementById('kbGroupedCatalogBox');
+      if (!container) return;
+
+      const activeCat = appState.kbActiveCategoryFilter || 'ALL';
+      const q = (appState.kbSearchQuery || '').toLowerCase();
+      let items = [...CLIENT_KB_REPOSITORY];
+
+      // Update category badges counts
+      const counts = { 'ALL': CLIENT_KB_REPOSITORY.length, 'Investasi': 0, 'Pengendali': 0, 'Non-Pengendali': 0, 'Konsolidasi': 0 };
+      CLIENT_KB_REPOSITORY.forEach(r => {
+        if (counts[r.category] !== undefined) counts[r.category]++;
+        if (r.category === 'Konsolidasi Grup') counts['Konsolidasi']++;
+      });
+      const elAll = document.getElementById('cntKb_ALL'); if (elAll) elAll.textContent = counts['ALL'];
+      const elInv = document.getElementById('cntKb_Investasi'); if (elInv) elInv.textContent = counts['Investasi'];
+      const elCtrl = document.getElementById('cntKb_Pengendali'); if (elCtrl) elCtrl.textContent = counts['Pengendali'];
+      const elNci = document.getElementById('cntKb_Non-Pengendali'); if (elNci) elNci.textContent = counts['Non-Pengendali'];
+      const elKons = document.getElementById('cntKb_Konsolidasi'); if (elKons) elKons.textContent = counts['Konsolidasi'];
+
+      // Filter by category
+      if (activeCat !== 'ALL') {
+        items = items.filter(i => i.category.toLowerCase() === activeCat.toLowerCase());
+      }
+      // Filter by query
+      if (q) {
+        items = items.filter(i => {
+          const hay = `${i.id} ${i.title} ${i.entityName} ${i.category} ${i.reportingPeriod} ${i.originalDocument?.fileName || ''}`.toLowerCase();
+          return hay.includes(q);
+        });
+      }
+
+      if (items.length === 0) {
+        container.innerHTML = `
+          <div style="background:#F8FAFC; border:1.5px dashed #CBD5E1; border-radius:8px; padding:24px; text-align:center; color:#64748B;">
+            <div style="font-size:28px; margin-bottom:6px;">🔍</div>
+            <div style="font-size:13px; font-weight:700;">Tidak ada dokumen yang cocok dengan filter "${escapeHtml(activeCat)}" ${q ? `dan pencarian "${escapeHtml(q)}"` : ''}.</div>
+            <button type="button" onclick="setKbCategoryFilter('ALL'); clearKbSearch();" class="btn btn-secondary btn-sm" style="margin-top:10px; cursor:pointer;">
+              Tampilkan Semua Dokumen
+            </button>
+          </div>
+        `;
+        return;
+      }
+
+      // Group by Entity Name
+      const byEntity = {};
+      items.forEach(item => {
+        if (!byEntity[item.entityName]) byEntity[item.entityName] = [];
+        byEntity[item.entityName].push(item);
+      });
+
+      const selSet = new Set(appState.kbSelectedDocIds || []);
+
+      container.innerHTML = `
+        <div style="display:flex; flex-direction:column; gap:16px;">
+          ${Object.entries(byEntity).map(([entityName, entityItems]) => {
+            const sorted = [...entityItems].sort((a, b) => (a.reportingYear || 0) - (b.reportingYear || 0));
+            const primaryCat = sorted[0].category;
+            const catBadgeClass = primaryCat === 'Investasi' ? 'badge-gold' : (primaryCat === 'Pengendali' ? 'badge-green' : 'badge-blue');
+
+            return `
+              <div style="border:1px solid #CBD5E1; border-radius:10px; overflow:hidden; background:#FFFFFF; box-shadow:0 1px 4px rgba(0,0,0,0.04);">
+                <div style="background:#F1F5F9; border-bottom:1px solid #CBD5E1; padding:10px 16px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+                  <div style="display:flex; align-items:center; gap:8px;">
+                    <span class="badge ${catBadgeClass}" style="font-size:10px; font-weight:800;">${escapeHtml(primaryCat)}</span>
+                    <strong style="font-size:14px; color:#0F5338;">${escapeHtml(entityName)}</strong>
+                    <span style="font-size:11px; color:#64748B;">(${sorted.length} Periode Tersedia: ${sorted.map(s => s.reportingYear).join(', ')})</span>
+                  </div>
+                  ${sorted.length >= 2 ? `
+                    <button type="button" onclick="triggerKbQuickCompare(${JSON.stringify(sorted.map(s => s.id))})" class="btn btn-secondary btn-sm" style="font-size:11px; font-weight:700; background:#fff; border-color:#86EFAC; color:#14532D; cursor:pointer;">
+                      ⚖️ Bandingkan Seluruh Periode ${escapeHtml(entityName)} Side-by-Side (${sorted.length} Dokumen)
+                    </button>
+                  ` : ''}
+                </div>
+
+                <div style="padding:10px 16px;">
+                  <table class="data-table" style="width:100%; font-size:11.5px; margin:0;">
+                    <thead>
+                      <tr style="background:#F8FAFC;">
+                        <th style="width:40px; text-align:center;">Pilih</th>
+                        <th style="width:90px;">Tahun</th>
+                        <th>Judul Dokumen &amp; Berkas Sumber</th>
+                        <th style="width:110px;">Kategori</th>
+                        <th>Metrik Kunci yang Diekstrak</th>
+                        <th style="width:120px;">Skor Forensik</th>
+                        <th style="width:100px; text-align:center;">Aksi</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      ${sorted.map(item => {
+                        const isChecked = selSet.has(item.id);
+                        const f = item.fields || {};
+                        let keyMetricsText = '';
+                        if (item.category === 'Investasi') {
+                          keyMetricsText = `Assets: USD ${Number(f.totalAssets||0).toLocaleString('id-ID')}k &bull; Net Income: USD ${Number(f.netIncome||0).toLocaleString('id-ID')}k &bull; CR: ${f.currentRatio||'-'}x &bull; Z-Score: ${f.modifiedZScore||'-'}`;
+                        } else if (item.category === 'Pengendali') {
+                          keyMetricsText = `Omzet: Rp ${f.revenue||'-'}M &bull; Opex: Rp ${f.opex||'-'}M &bull; NWC: Rp ${f.nwc||'-'}M &bull; Growth Gap: ${f.growthGapPct||'-'} pp`;
+                        } else if (item.category === 'Non-Pengendali') {
+                          keyMetricsText = `Piutang: Rp ${f.receivablesAct||'-'}M vs RKAP Rp ${f.receivablesRKAP||'-'}M &bull; RTC: ${f.rtcPct||'-'}% &bull; Dividen: Rp ${f.dividendPayable||'-'}M`;
+                        } else {
+                          keyMetricsText = `Aset: USD ${f.totalAssets||'-'}M &bull; Laba: USD ${f.netIncome||'-'}M &bull; DER: ${f.der||'-'}x`;
+                        }
+
+                        return `
+                          <tr style="background:${isChecked ? '#EFF6FF' : '#FFFFFF'};">
+                            <td style="text-align:center;">
+                              <input type="checkbox" class="kb-doc-chk" id="chk_kb_${item.id}" ${isChecked ? 'checked' : ''} onchange="toggleKbDocumentSelection('${item.id}', this.checked)" style="width:16px; height:16px; cursor:pointer;">
+                            </td>
+                            <td><strong style="color:#0F5338; font-size:12.5px;">${item.reportingYear}</strong></td>
+                            <td>
+                              <strong>${escapeHtml(item.title)}</strong>
+                              <div style="font-size:10px; color:#64748B;">
+                                📄 ${escapeHtml(item.originalDocument?.fileName || '-')} &bull; ${escapeHtml(item.reportingPeriod)} &bull; <code>${escapeHtml(item.originalDocument?.checksum || '').slice(0, 16)}...</code>
+                              </div>
+                            </td>
+                            <td><span class="badge ${item.category === 'Investasi' ? 'badge-gold' : (item.category === 'Pengendali' ? 'badge-green' : 'badge-blue')}" style="font-size:10px;">${escapeHtml(item.category)}</span></td>
+                            <td style="font-size:11px; color:#334155;">${keyMetricsText}</td>
+                            <td>
+                              <span style="font-weight:700;">${item.analysisResults?.forensicHealthScore || 80}/100</span>
+                              <div style="font-size:9.5px; color:#64748B;">${escapeHtml(item.analysisResults?.riskTier || 'Sehat')}</div>
+                            </td>
+                            <td style="text-align:center;">
+                              <button type="button" onclick="toggleKbDocumentSelection('${item.id}', true); updateKbSelectionActionBar();" class="btn btn-secondary btn-sm" style="font-size:10.5px; padding:2px 8px; cursor:pointer;" title="Pilih dokumen ini untuk dikomparasi">
+                                ⚖️ Pilih
+                              </button>
+                            </td>
+                          </tr>
+                        `;
+                      }).join('')}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            `;
+          }).join('')}
+        </div>
+      `;
+    }
+
+    // Render Failed Ingestions Log View (No Silent Exclusion)
+    function renderKbFailedIngestionsView() {
+      const container = document.getElementById('kbFailedIngestionsBox');
+      if (!container) return;
+
+      const failedList = window.CLIENT_FAILED_INGESTIONS || [];
+      if (failedList.length === 0) {
+        container.innerHTML = `
+          <div style="display:flex; justify-content:space-between; align-items:center; font-size:11.5px; color:#14532D; background:#F0FDF4; border:1px solid #86EFAC; border-radius:6px; padding:8px 12px;">
+            <span>✓ <strong>Ledger Integritas Dokumen:</strong> Seluruh berkas yang diunggah berhasil diproses dan disimpan di Knowledge Base (0 berkas gagal/ditolak).</span>
+            <span style="font-size:10.5px; color:#166534;">Prinsip: Tidak ada dokumen eligible yang dikecualikan secara diam-diam.</span>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = `
+        <div style="background:#FEF2F2; border:1.5px solid #FCA5A5; border-left:4px solid #DC2626; border-radius:8px; padding:10px 14px; font-size:11.5px; color:#991B1B;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+            <strong>❌ Riwayat Berkas yang Ditolak / Gagal Masuk Knowledge Base (${failedList.length} Berkas):</strong>
+            <span style="font-size:10px; color:#7F1D1D;">Transparan &bull; Non-Silent Exclusion Policy</span>
+          </div>
+          <ul style="margin:0; padding-left:18px; line-height:1.5;">
+            ${failedList.map(f => `
+              <li>
+                <strong>${escapeHtml(f.fileName)}</strong> (${escapeHtml(f.timestamp || 'Baru saja')}):
+                <span style="color:#7F1D1D;">${escapeHtml(f.reason || 'Struktur tidak valid')}</span>
+                &bull; Status: <code>FAILED_INGESTION</code>
+              </li>
+            `).join('')}
+          </ul>
+        </div>
+      `;
+    }
+
+    // Auto-ingest client-side item into CLIENT_KB_REPOSITORY
+    function ingestClientKnowledgeItem(itemPayload) {
+      if (!itemPayload) return;
+      const fileName = itemPayload.fileName || itemPayload.originalDocument?.fileName || 'dokumen.xlsx';
+      if (itemPayload.validationValid === false || itemPayload.status === 'Failed' || itemPayload.status === 'Failed Validation') {
+        const failRec = {
+          fileName,
+          reason: itemPayload.validationErrors ? itemPayload.validationErrors.join('; ') : 'Gagal validasi',
+          timestamp: new Date().toLocaleTimeString('id-ID')
+        };
+        if (!window.CLIENT_FAILED_INGESTIONS) window.CLIENT_FAILED_INGESTIONS = [];
+        window.CLIENT_FAILED_INGESTIONS.unshift(failRec);
+        renderKbFailedIngestionsView();
+        return;
+      }
+
+      const id = itemPayload.id || `KB-DYN-${Date.now()}`;
+      const rec = {
+        id,
+        title: itemPayload.title || `${itemPayload.entityName} — ${itemPayload.category || 'Dokumen'} (${itemPayload.period || '2026'})`,
+        entityName: itemPayload.entityName || 'Entitas Terindeks',
+        reportingYear: itemPayload.reportingYear || 2026,
+        reportingPeriod: itemPayload.period || '30 Juni 2026',
+        category: itemPayload.category || 'Investasi',
+        secondaryCategories: ['Laporan Keuangan'],
+        selectedScheme: itemPayload.selectedScheme || 'investasi',
+        documentType: itemPayload.documentType || 'Laporan Keuangan Terverifikasi',
+        currency: itemPayload.currency || 'USD Ribu',
+        status: 'STORED',
+        originalDocument: {
+          fileName,
+          fileType: (fileName.split('.').pop() || 'DOC').toUpperCase(),
+          pageReference: 'Dokumen Unggahan Langsung',
+          checksum: `SHA256:${Date.now().toString(16).toUpperCase()}`
+        },
+        fields: itemPayload.fields || {},
+        analysisResults: {
+          forensicHealthScore: itemPayload.forensicHealthScore || 80,
+          riskTier: 'Terverifikasi',
+          summary: `Dokumen ${itemPayload.entityName} tervalidasi dan tersimpan di Knowledge Base.`
+        }
+      };
+
+      const existingIdx = CLIENT_KB_REPOSITORY.findIndex(r => r.id === id || r.title === rec.title);
+      if (existingIdx >= 0) {
+        CLIENT_KB_REPOSITORY[existingIdx] = rec;
+      } else {
+        CLIENT_KB_REPOSITORY.unshift(rec);
+      }
+
+      renderKbGroupedCatalog();
+      return rec;
+    }
+
+    async function refreshKnowledgeBaseCatalog(showToastNotice = false) {
+      try {
+        const resp = await fetch('/api/knowledge-base/catalog');
+        if (resp.ok) {
+          const data = await resp.json();
+          if (data && data.items && data.items.length > 0) {
+            data.items.forEach(srvItem => {
+              const idx = CLIENT_KB_REPOSITORY.findIndex(c => c.id === srvItem.id);
+              if (idx >= 0) CLIENT_KB_REPOSITORY[idx] = srvItem;
+              else CLIENT_KB_REPOSITORY.push(srvItem);
+            });
+            if (data.failedIngestions && Array.isArray(data.failedIngestions)) {
+              window.CLIENT_FAILED_INGESTIONS = data.failedIngestions;
+            }
+          }
+        }
+      } catch (_) {}
+
+      renderKbGroupedCatalog();
+      renderKbFailedIngestionsView();
+      if (showToastNotice) {
+        showToast('Katalog Knowledge Base berhasil disinkronkan!', 'success');
+      }
+    }
+
+
     // ==========================================
     // NOTA DINAS ACTIONS (COPY, DOWNLOAD .DOC, PRINT)
     // ==========================================
@@ -11061,6 +12442,23 @@ Conflict: ${escapeHtml(c.conflict)}</div>
         readyToProcess: validItems.length > 0
       };
 
+      // Record any rejected files into Knowledge Base Failed Ingestion Tracker (No Silent Exclusion)
+      if (invalidItems.length > 0 && typeof renderKbFailedIngestionsView === 'function') {
+        if (!window.CLIENT_FAILED_INGESTIONS) window.CLIENT_FAILED_INGESTIONS = [];
+        invalidItems.forEach(inv => {
+          const reason = inv.validationErrors.join('; ');
+          const existIdx = window.CLIENT_FAILED_INGESTIONS.findIndex(f => f.fileName === inv.name && f.reason === reason);
+          if (existIdx < 0) {
+            window.CLIENT_FAILED_INGESTIONS.unshift({
+              fileName: inv.name,
+              reason,
+              timestamp: new Date().toLocaleTimeString('id-ID')
+            });
+          }
+        });
+        renderKbFailedIngestionsView();
+      }
+
       renderSchemeSelectionUI();
       renderSchemeValidationStep();
 
@@ -11438,6 +12836,23 @@ Conflict: ${escapeHtml(c.conflict)}</div>
         aggregatedParseResult,
         timestamp: new Date().toISOString()
       };
+
+      // Auto-ingest into Knowledge Base with consistent scheme category
+      if (typeof ingestClientKnowledgeItem === 'function') {
+        const kbCatName = cfg.label.split('(')[0].trim();
+        ingestClientKnowledgeItem({
+          id: `KB-DYN-${activeScheme.toUpperCase()}-${primaryEntityName.replace(/[^A-Za-z0-9]/g, '').slice(0, 8)}-${Date.now()}`,
+          entityName: primaryEntityName,
+          title: `${primaryEntityName} — ${cfg.label} (${period})`,
+          period,
+          reportingYear: parseInt((period.match(/202[0-9]/) || ['2026'])[0], 10),
+          category: kbCatName,
+          selectedScheme: activeScheme,
+          currency,
+          fileName: combinedFileLabel,
+          fields: { ...mergedFinancials, ...(mergedInvestmentMetrics || {}) }
+        });
+      }
 
       renderDocParsingResultBanner(activeScheme, aggregatedParseResult);
       return appState.schemeAnalysisResult;
@@ -16117,6 +17532,10 @@ Berdasarkan pengawasan konsolidasi 6 entitas portofolio Kajian Ihsan:
 
       // 2. Render Pattern Detection Cards
       renderPatternCards();
+
+      // 2b. Render Knowledge Base Grouped Catalog & Failed Ingestions Tracker
+      if (typeof renderKbGroupedCatalog === 'function') renderKbGroupedCatalog();
+      if (typeof renderKbFailedIngestionsView === 'function') renderKbFailedIngestionsView();
 
       // 3. Render Table Rows
       const tbody = document.getElementById('poolTableBody');

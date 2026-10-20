@@ -344,6 +344,42 @@ const server = http.createServer(async (req, res) => {
         });
       }
 
+      // 1c. Enhanced Knowledge Base Catalog (Grouped by Category, Entity, Year & Traceable Ingestions)
+      if (pathname === "/api/knowledge-base/catalog" && method === "GET") {
+        const filters = {
+          category: parsedUrlObj.searchParams.get("category") || null,
+          entityName: parsedUrlObj.searchParams.get("entityName") || null,
+          reportingYear: parsedUrlObj.searchParams.get("reportingYear") || null,
+          query: parsedUrlObj.searchParams.get("query") || null
+        };
+        const catalog = typeof ragEngine.getKnowledgeBaseCatalog === "function"
+          ? ragEngine.getKnowledgeBaseCatalog(filters)
+          : { items: [], totalStored: 0 };
+        return sendJson(res, 200, { success: true, ...catalog });
+      }
+
+      // 1d. Ingest Item into Knowledge Base (Content-Based Classification, Traceable Ingestion, Explicit Failure Status)
+      if (pathname === "/api/knowledge-base/ingest" && method === "POST") {
+        const body = await parseBody(req);
+        if (typeof ragEngine.ingestKnowledgeBaseItem === "function") {
+          const result = ragEngine.ingestKnowledgeBaseItem(body);
+          return sendJson(res, result.success ? 200 : 422, result);
+        }
+        return sendJson(res, 500, { success: false, message: "ingestKnowledgeBaseItem not implemented" });
+      }
+
+      // 1e. Cross-Year & Side-by-Side Comparison Engine
+      if (pathname === "/api/knowledge-base/compare" && method === "POST") {
+        const body = await parseBody(req);
+        const itemIds = Array.isArray(body) ? body : (body.itemIds || body.docIds || []);
+        const options = typeof body === "object" ? (body.options || body) : {};
+        if (typeof ragEngine.compareKnowledgeBaseItems === "function") {
+          const result = ragEngine.compareKnowledgeBaseItems(itemIds, options);
+          return sendJson(res, result.comparisonSupported ? 200 : (result.success === false ? 400 : 200), result);
+        }
+        return sendJson(res, 500, { success: false, message: "compareKnowledgeBaseItems not implemented" });
+      }
+
       // 2. Master Parameters (Action Item 1)
       if (pathname === "/api/parameters" && method === "GET") {
         return sendJson(res, 200, masterParams);

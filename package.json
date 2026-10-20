@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node server.js",
     "start:cluster": "CLUSTER_MODE=true node server.js",
-    "test": "node scripts/test_all_features.mjs && node scripts/test_pengendali_non_pengendali_logic.mjs && node scripts/test_entity_identification_logic.mjs && node scripts/test_upload_and_parsing_loading_state.mjs && node scripts/test_copilot_system_prompt.mjs && node scripts/test_step_by_step_workflow.mjs && node scripts/test_dynamic_scheme_workflow.mjs",
+    "test": "node scripts/test_all_features.mjs && node scripts/test_pengendali_non_pengendali_logic.mjs && node scripts/test_entity_identification_logic.mjs && node scripts/test_upload_and_parsing_loading_state.mjs && node scripts/test_copilot_system_prompt.mjs && node scripts/test_step_by_step_workflow.mjs && node scripts/test_dynamic_scheme_workflow.mjs && node scripts/test_knowledge_base_and_comparison.mjs",
     "test:benchmark": "node scripts/benchmark_high_scale.mjs"
   },
   "keywords": [
