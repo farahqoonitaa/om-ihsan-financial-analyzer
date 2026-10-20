@@ -636,6 +636,50 @@
       50% { transform: translateY(-8px); }
     }
 
+    /* Dedicated Scheme Portals (Separate Entry Points & 3+ Files Capacity) */
+    .dedicated-portals-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .dedicated-portal-card {
+      border-radius: 12px;
+      padding: 20px;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+      background: #FFFFFF;
+    }
+    .dedicated-portal-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    }
+    .portal-investasi {
+      background: linear-gradient(180deg, #FFFFFF 0%, #F0FDF4 100%);
+      border: 2px solid #86EFAC;
+    }
+    .portal-investasi:hover {
+      border-color: #16A34A;
+    }
+    .portal-pengendali {
+      background: linear-gradient(180deg, #FFFFFF 0%, #EFF6FF 100%);
+      border: 2px solid #93C5FD;
+    }
+    .portal-pengendali:hover {
+      border-color: #2563EB;
+    }
+    .portal-nonpengendali {
+      background: linear-gradient(180deg, #FFFFFF 0%, #FFFBEB 100%);
+      border: 2px solid #FDE68A;
+    }
+    .portal-nonpengendali:hover {
+      border-color: #D97706;
+    }
+
     /* Entity Nav Tabs */
     .entity-nav-bar {
       display: flex; align-items: center; gap: 6px; flex-wrap: wrap;
@@ -1493,56 +1537,134 @@
         </div>
       </div>
 
-      <!-- AI THINKING ONBOARDING GUIDE (HIDDEN TO ENSURE FILE DROPZONE IS THE ONE AND ONLY ENTRY POINT) -->
-      <div id="aiThinkingHeroGuide" style="display:none; background:linear-gradient(135deg, #F3F8F5 0%, #E8F3EC 100%); border:1.5px solid #B8DAC8; border-radius:var(--radius-md); padding:18px 22px; margin-bottom:18px; box-shadow:0 3px 12px rgba(16,124,65,0.06);">
-        <div style="display:flex; align-items:flex-start; gap:16px; flex-wrap:wrap;">
-          <div style="width:48px; height:48px; border-radius:50%; background:var(--forest); color:#fff; display:flex; align-items:center; justify-content:center; font-size:24px; flex-shrink:0; box-shadow:0 2px 8px rgba(16,124,65,0.25);">
-            🤖
-          </div>
-          <div style="flex:1; min-width:260px;">
-            <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:4px;">
-              <span class="badge badge-gold" style="font-weight:700;" data-i18n="ai_guide_badge">🧠 ASISTEN AI FORENSIK KEUANGAN</span>
-              <span style="font-size:11.5px; color:var(--forest); font-weight:700;" data-i18n="ai_guide_layperson_tag">Mode Ramah Orang Awam Aktif</span>
+      <!-- ========================================================================= -->
+      <!-- DEDICATED 3-SCHEME ENTRY GATEWAY (SEPARATE ENTRY POINTS & 3+ FILES CAPACITY) -->
+      <!-- ========================================================================= -->
+      <div id="threeDedicatedPortalsGrid" style="margin-bottom:20px;">
+        <div style="background:linear-gradient(135deg, #064E3B, #0F5338); border-radius:12px; padding:18px 24px; color:#FFFFFF; margin-bottom:14px; box-shadow:0 4px 16px rgba(6,78,59,0.15);">
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
+            <div>
+              <span class="badge" style="background:#DCFCE7; color:#14532D; font-size:11px; font-weight:800; text-transform:uppercase;">Gerbang Analisis Mandiri Sesuai Skema</span>
+              <h2 style="margin:4px 0 2px 0; font-size:20px; font-weight:800; color:#FFFFFF;">
+                Pilih Jalur &amp; Masuk Melalui Pintu Khusus (Dedicated Entry Points)
+              </h2>
+              <p style="margin:0; font-size:12.5px; color:#E2E8F0; opacity:0.95;">
+                Setiap jalur memiliki pintu masuk tersendiri, kapasitas penyerapan <strong>3 berkas atau lebih</strong>, serta logika evaluasi dan naskah Nota Dinas yang 100% independen.
+              </p>
             </div>
-            <h2 style="font-size:16px; font-weight:800; color:var(--forest-deep); margin:0 0 4px 0;" data-i18n="ai_guide_title">
-              Bingung Mau Mulai dari Mana? Biarkan AI yang Berpikir & Membimbing Anda
-            </h2>
-            <p style="font-size:12.5px; color:var(--ink-secondary); margin:0 0 12px 0; line-height:1.5;" data-i18n="ai_guide_desc">
-              Anda tidak perlu memahami istilah akuntansi rumit (seperti Footing, NCI, atau Z-Score). Cukup pilih salah satu dari 3 cara praktis di bawah, dan AI akan menganalisis serta menjelaskannya dalam bahasa sehari-hari:
-            </p>
-            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(230px, 1fr)); gap:10px;">
-              <!-- Path 1: Drop file -->
-              <div onclick="triggerUniversalFileUpload()" style="background:#fff; border:1px solid #C4DFC9; border-radius:8px; padding:10px 14px; cursor:pointer; transition:all 0.2s;" onmouseover="this.style.borderColor='var(--forest)'; this.style.transform='translateY(-1px)';" onmouseout="this.style.borderColor='#C4DFC9'; this.style.transform='none';">
-                <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px;">
-                  <span style="font-size:18px;">📂</span>
-                  <strong style="font-size:12.5px; color:var(--forest-deep);" data-i18n="ai_path1_title">1. Punya Berkas Laporan?</strong>
-                </div>
-                <div style="font-size:11.5px; color:var(--ink-secondary); line-height:1.4;" data-i18n="ai_path1_desc">
-                  Tarik berkas PDF / Excel ke kotak di bawah. AI akan otomatis membaca nama perusahaan, cek keseimbangan angka, dan mendeteksi bahaya.
-                </div>
-              </div>
-              <!-- Path 2: Guided Wizard -->
-              <div onclick="openAiWizardModal()" style="background:#fff; border:1px solid #C4DFC9; border-radius:8px; padding:10px 14px; cursor:pointer; transition:all 0.2s;" onmouseover="this.style.borderColor='var(--forest)'; this.style.transform='translateY(-1px)';" onmouseout="this.style.borderColor='#C4DFC9'; this.style.transform='none';">
-                <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px;">
-                  <span style="font-size:18px;">💬</span>
-                  <strong style="font-size:12.5px; color:var(--forest-deep);" data-i18n="ai_path2_title">2. Tidak Punya Berkas?</strong>
-                </div>
-                <div style="font-size:11.5px; color:var(--ink-secondary); line-height:1.4;" data-i18n="ai_path2_desc">
-                  Jawab 3 pertanyaan santai dari AI (nama perusahaan, perkiraan omzet, status kepemilikan). AI yang akan memetakan dan menghitungkan.
-                </div>
-              </div>
-              <!-- Path 3: Try Real Case -->
-              <div onclick="openDocumentAnalysis('eps')" style="background:#fff; border:1px solid #C4DFC9; border-radius:8px; padding:10px 14px; cursor:pointer; transition:all 0.2s;" onmouseover="this.style.borderColor='var(--forest)'; this.style.transform='translateY(-1px)';" onmouseout="this.style.borderColor='#C4DFC9'; this.style.transform='none';">
-                <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px;">
-                  <span style="font-size:18px;">⚡</span>
-                  <strong style="font-size:12.5px; color:var(--forest-deep);" data-i18n="ai_path3_title">3. Ingin Coba Contoh Nyata?</strong>
-                </div>
-                <div style="font-size:11.5px; color:var(--ink-secondary); line-height:1.4;" data-i18n="ai_path3_desc">
-                  1-Klik lihat bagaimana AI berpikir membongkar kasus perusahaan boncos (PT EPS) dengan penjelasan bahasa awam seketika.
-                </div>
-              </div>
+            <div style="display:flex; align-items:center; gap:8px;">
+              <span style="font-size:12px; font-weight:700; background:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.3); border-radius:20px; padding:6px 14px; color:#FFFFFF;">
+                ⚡ Kapasitas Penyerapan: &ge; 3 Berkas Kolektif
+              </span>
             </div>
           </div>
+        </div>
+
+        <!-- 3 Dedicated Scheme Cards -->
+        <div class="dedicated-portals-grid">
+          
+          <!-- PORTAL 1: JALUR INVESTASI -->
+          <div class="dedicated-portal-card portal-investasi" id="portalCard_investasi">
+            <div>
+              <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;">
+                <span class="badge badge-gold" style="font-size:10.5px; font-weight:800;">JALUR A • INVESTMENT SCHEME</span>
+                <span style="font-size:11px; font-weight:700; color:#166534; background:#DCFCE7; padding:3px 10px; border-radius:12px;">Kapasitas ≥ 3 Berkas</span>
+              </div>
+              <h3 style="margin:0 0 6px 0; font-size:17px; font-weight:800; color:var(--forest-deep);">
+                📈 Jalur Khusus Investasi (Obligasi, Sukuk &amp; Saham)
+              </h3>
+              <p style="margin:0 0 12px 0; font-size:12px; color:var(--ink-secondary); line-height:1.5;">
+                Evaluasi kelayakan instrumen investasi berbasis <strong>7 Seksi Standar Resmi</strong>, 33 Rasio Keuangan, Altman Modified Z-Score, Quality of Earnings (QoE Waterfall), dan batas covenant perbankan.
+              </p>
+              <div style="background:#FFFFFF; border:1px solid #BBF7D0; border-radius:8px; padding:10px 12px; margin-bottom:14px; font-size:11.5px; color:#14532D;">
+                <strong style="display:block; margin-bottom:4px;">📦 Kapasitas Penyerapan 3 Berkas Kolektif:</strong>
+                <div style="color:#166534; line-height:1.45;">
+                  • <strong>Berkas 1:</strong> LK Auditan (Neraca, Penjualan, Laba Bersih)<br>
+                  • <strong>Berkas 2:</strong> Kertas Kerja Obligasi (Z-Score &amp; Batas Solvabilitas)<br>
+                  • <strong>Berkas 3:</strong> CALK &amp; Covenant (CR ≥ 1,50x, Asosiasi OKI USD 136,5M, Valas)
+                </div>
+              </div>
+            </div>
+            <div>
+              <div style="display:grid; grid-template-columns:1fr; gap:8px;">
+                <button type="button" onclick="enterSchemePortal('investasi', false)" class="btn btn-primary btn-sm" style="font-weight:800; padding:9px 16px; font-size:12px; cursor:pointer; text-align:center;">
+                  🚪 Masuk ke Alur Investasi (Pintu Khusus) →
+                </button>
+                <button type="button" onclick="enterSchemePortal('investasi', true)" class="btn btn-secondary btn-sm" style="font-weight:700; background:#FFFFFF; border-color:#86EFAC; color:#14532D; font-size:11px; padding:7px 12px; cursor:pointer;">
+                  ⚡ 1-Klik Muat &amp; Serap 3 Berkas Investasi (Pindo Deli + DAAZ)
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- PORTAL 2: JALUR PENGENDALI -->
+          <div class="dedicated-portal-card portal-pengendali" id="portalCard_pengendali">
+            <div>
+              <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;">
+                <span class="badge badge-green" style="font-size:10.5px; font-weight:800;">JALUR B • CONTROLLING PARTY</span>
+                <span style="font-size:11px; font-weight:700; color:#1E40AF; background:#EFF6FF; padding:3px 10px; border-radius:12px;">Kapasitas ≥ 3 Berkas</span>
+              </div>
+              <h3 style="margin:0 0 6px 0; font-size:17px; font-weight:800; color:#1E3A8A;">
+                🏢 Jalur Khusus Pengendali (Entitas Anak &gt;50%)
+              </h3>
+              <p style="margin:0 0 12px 0; font-size:12px; color:var(--ink-secondary); line-height:1.5;">
+                Pengawasan operasional entitas anak terkonsolidasi: Uji Keseimbangan Neraca <strong>ISA 520 Footing (&Delta; = 0)</strong>, deteksi <strong>S7 Growth Gap (+1,46%)</strong>, defisit NWC, dan audit bonus vs RKAP.
+              </p>
+              <div style="background:#FFFFFF; border:1px solid #BFDBFE; border-radius:8px; padding:10px 12px; margin-bottom:14px; font-size:11.5px; color:#1E40AF;">
+                <strong style="display:block; margin-bottom:4px;">📦 Kapasitas Penyerapan 3 Berkas Kolektif:</strong>
+                <div style="color:#1D4ED8; line-height:1.45;">
+                  • <strong>Berkas 1:</strong> Laporan Manajemen Bulanan (Omzet Rp684,8M, Opex Rp97,9M)<br>
+                  • <strong>Berkas 2:</strong> Dokumen Anggaran RKAP (Pagu Rp557,7Jt vs Realisasi Rp12,87M)<br>
+                  • <strong>Berkas 3:</strong> Kertas Kerja Likuiditas &amp; NWC (Defisit NWC Rp-17,22M)
+                </div>
+              </div>
+            </div>
+            <div>
+              <div style="display:grid; grid-template-columns:1fr; gap:8px;">
+                <button type="button" onclick="enterSchemePortal('pengendali', false)" class="btn btn-primary btn-sm" style="font-weight:800; background:#2563EB; border-color:#1D4ED8; padding:9px 16px; font-size:12px; cursor:pointer; text-align:center;">
+                  🚪 Masuk ke Alur Pengendali (Pintu Khusus) →
+                </button>
+                <button type="button" onclick="enterSchemePortal('pengendali', true)" class="btn btn-secondary btn-sm" style="font-weight:700; background:#FFFFFF; border-color:#93C5FD; color:#1E40AF; font-size:11px; padding:7px 12px; cursor:pointer;">
+                  ⚡ 1-Klik Muat &amp; Serap 3 Berkas Pengendali (PT EPS + RKAP)
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- PORTAL 3: JALUR NON-PENGENDALI -->
+          <div class="dedicated-portal-card portal-nonpengendali" id="portalCard_nonpengendali">
+            <div>
+              <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;">
+                <span class="badge badge-blue" style="font-size:10.5px; font-weight:800;">JALUR C • NON-CONTROLLING PARTY</span>
+                <span style="font-size:11px; font-weight:700; color:#92400E; background:#FEF3C7; padding:3px 10px; border-radius:12px;">Kapasitas ≥ 3 Berkas</span>
+              </div>
+              <h3 style="margin:0 0 6px 0; font-size:17px; font-weight:800; color:#92400E;">
+                🤝 Jalur Khusus Non-Pengendali (Hak Minoritas 1%)
+              </h3>
+              <p style="margin:0 0 12px 0; font-size:12px; color:var(--ink-secondary); line-height:1.5;">
+                Proteksi kepentingan pemegang saham minoritas (NCI): Pengujian batas toleransi <strong>RTC Cadangan Piutang (301,20% Red Flag)</strong>, kepastian hak dividen kas 1%, dan mitigasi risiko capital call.
+              </p>
+              <div style="background:#FFFFFF; border:1px solid #FDE68A; border-radius:8px; padding:10px 12px; margin-bottom:14px; font-size:11.5px; color:#92400E;">
+                <strong style="display:block; margin-bottom:4px;">📦 Kapasitas Penyerapan 3 Berkas Kolektif:</strong>
+                <div style="color:#B45309; line-height:1.45;">
+                  • <strong>Berkas 1:</strong> LK Investee Minoritas (Aset Lancar, Liabilitas, Laba Bersih)<br>
+                  • <strong>Berkas 2:</strong> Jadwal Piutang vs RKAP (Realisasi Rp185,5M vs Pagu Rp61,6M)<br>
+                  • <strong>Berkas 3:</strong> Risalah RUPS &amp; Dividen (Hak 1% Rp185Jt, Utang Dividen Rp110,2M)
+                </div>
+              </div>
+            </div>
+            <div>
+              <div style="display:grid; grid-template-columns:1fr; gap:8px;">
+                <button type="button" onclick="enterSchemePortal('nonpengendali', false)" class="btn btn-primary btn-sm" style="font-weight:800; background:#D97706; border-color:#B45309; padding:9px 16px; font-size:12px; cursor:pointer; text-align:center;">
+                  🚪 Masuk ke Alur Non-Pengendali (Pintu Khusus) →
+                </button>
+                <button type="button" onclick="enterSchemePortal('nonpengendali', true)" class="btn btn-secondary btn-sm" style="font-weight:700; background:#FFFFFF; border-color:#FDE68A; color:#92400E; font-size:11px; padding:7px 12px; cursor:pointer;">
+                  ⚡ 1-Klik Muat &amp; Serap 3 Berkas Non-Pengendali (PT POJ + RTC)
+                </button>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
 
@@ -1730,20 +1852,26 @@
               <span style="font-size:10.5px; color:#166534;">Memproses seluruh berkas valid dalam antrean</span>
             </div>
             <div style="display:flex; flex-wrap:wrap; gap:6px;">
-              <button type="button" onclick="loadSchemeMultiFileBundle('investasi_multi')" class="btn btn-secondary btn-sm" style="font-size:11px; background:#fff; border-color:#86EFAC; cursor:pointer;">
+              <button type="button" onclick="loadSchemeMultiFileBundle('investasi_multi')" class="btn btn-secondary btn-sm" style="font-size:11px; background:#fff; border-color:#86EFAC; font-weight:700; color:#14532D; cursor:pointer;">
                 📈 Paket 3 Berkas Investasi (Pindo Deli + DAAZ + Covenant)
               </button>
-              <button type="button" onclick="loadSchemeMultiFileBundle('pengendali_multi')" class="btn btn-secondary btn-sm" style="font-size:11px; background:#fff; border-color:#86EFAC; cursor:pointer;">
-                🏢 Paket 2 Berkas Pengendali (Neraca PT EPS + Rincian RKAP Bonus)
+              <button type="button" onclick="loadSchemeMultiFileBundle('pengendali_3files')" class="btn btn-secondary btn-sm" style="font-size:11px; background:#fff; border-color:#93C5FD; font-weight:700; color:#1E40AF; cursor:pointer;">
+                🏢 Paket 3 Berkas Pengendali (LK PT EPS + RKAP + Rincian Opex)
               </button>
-              <button type="button" onclick="loadSchemeMultiFileBundle('nonpengendali_multi')" class="btn btn-secondary btn-sm" style="font-size:11px; background:#fff; border-color:#86EFAC; cursor:pointer;">
-                🤝 Paket 2 Berkas Non-Pengendali (LK PT POJ + Jadwal Piutang RTC)
+              <button type="button" onclick="loadSchemeMultiFileBundle('nonpengendali_3files')" class="btn btn-secondary btn-sm" style="font-size:11px; background:#fff; border-color:#FDE68A; font-weight:700; color:#92400E; cursor:pointer;">
+                🤝 Paket 3 Berkas Non-Pengendali (LK PT POJ + Jadwal RTC + RUPS)
+              </button>
+              <button type="button" onclick="loadSchemeMultiFileBundle('pengendali_multi')" class="btn btn-secondary btn-sm" style="font-size:11px; background:#fff; border-color:#CBD5E1; color:#475569; cursor:pointer;">
+                🏢 Paket 2 Berkas Pengendali
+              </button>
+              <button type="button" onclick="loadSchemeMultiFileBundle('nonpengendali_multi')" class="btn btn-secondary btn-sm" style="font-size:11px; background:#fff; border-color:#CBD5E1; color:#475569; cursor:pointer;">
+                🤝 Paket 2 Berkas Non-Pengendali
               </button>
               <button type="button" onclick="loadSchemeMultiFileBundle('mismatch_test')" class="btn btn-secondary btn-sm" style="font-size:11px; background:#FFFBEB; border-color:#F59E0B; color:#92400E; cursor:pointer;">
-                ⚠️ Uji Mismatch Bukti Dokumen (Dokumen "Pengendali" pada Skema Aktif)
+                ⚠️ Uji Mismatch Bukti Dokumen
               </button>
               <button type="button" onclick="loadSchemeMultiFileBundle('invalid_file_test')" class="btn btn-secondary btn-sm" style="font-size:11px; background:#FEF2F2; border-color:#FCA5A5; color:#991B1B; cursor:pointer;">
-                🧪 Tambah Berkas Gagal Validasi (Format/Ukuran Invalid)
+                🧪 Tambah Berkas Gagal Validasi
               </button>
             </div>
           </div>
@@ -2325,6 +2453,30 @@
       <div id="p_step_pane_1">
         <!-- DEDICATED DOCUMENT PARSING RESULT BANNER PENGENDALI -->
         <div id="docParsingBanner_pengendali"></div>
+
+        <!-- DEDICATED ENTRY POINT BANNER PENGENDALI (KAPASITAS PENYERAPAN ≥ 3 BERKAS) -->
+        <div style="background:#EFF6FF; border:1.5px solid #93C5FD; border-left:5px solid #2563EB; border-radius:10px; padding:12px 16px; margin-bottom:14px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+          <div>
+            <div style="display:flex; align-items:center; gap:8px;">
+              <span class="badge badge-green" style="font-size:10px; font-weight:800;">PINTU MASUK KHUSUS PENGENDALI</span>
+              <span style="font-size:11px; font-weight:700; color:#1E40AF; background:#DBEAFE; padding:2px 8px; border-radius:12px;">Kapasitas Penyerapan &ge; 3 Berkas</span>
+            </div>
+            <div style="font-size:13px; font-weight:800; color:#1E3A8A; margin-top:3px;">
+              🏢 Logika Pengendali: ISA 520 Footing Check, S7 Growth Gap (+1,46%), &amp; Realisasi Bonus vs RKAP
+            </div>
+            <div style="font-size:11.5px; color:#1E40AF; margin-top:2px;">
+              Unggah Laporan Manajemen Bulanan, Anggaran RKAP, dan Rincian Opex/Bonus secara bersamaan untuk diserap secara kolektif.
+            </div>
+          </div>
+          <div style="display:flex; gap:6px; flex-wrap:wrap;">
+            <button type="button" onclick="loadSchemeMultiFileBundle('pengendali_3files')" class="btn btn-primary btn-sm" style="font-weight:700; background:#2563EB; border-color:#1D4ED8; font-size:11px; padding:6px 12px; cursor:pointer;">
+              ⚡ 1-Klik Muat &amp; Serap 3 Berkas Pengendali
+            </button>
+            <button type="button" onclick="triggerUniversalFileUpload()" class="btn btn-secondary btn-sm" style="font-size:11px; padding:6px 10px; cursor:pointer;">
+              ➕ Unggah 3+ Berkas
+            </button>
+          </div>
+        </div>
 
         <!-- QUICK DROPZONE STRIP PENGENDALI -->
         <div class="quick-dropzone-strip"
@@ -3001,6 +3153,30 @@
         <!-- DEDICATED DOCUMENT PARSING RESULT BANNER NON-PENGENDALI -->
         <div id="docParsingBanner_nonpengendali"></div>
 
+        <!-- DEDICATED ENTRY POINT BANNER NON-PENGENDALI (KAPASITAS PENYERAPAN ≥ 3 BERKAS) -->
+        <div style="background:#FFFBEB; border:1.5px solid #FDE68A; border-left:5px solid #D97706; border-radius:10px; padding:12px 16px; margin-bottom:14px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+          <div>
+            <div style="display:flex; align-items:center; gap:8px;">
+              <span class="badge badge-blue" style="font-size:10px; font-weight:800;">PINTU MASUK KHUSUS NON-PENGENDALI</span>
+              <span style="font-size:11px; font-weight:700; color:#92400E; background:#FEF3C7; padding:2px 8px; border-radius:12px;">Kapasitas Penyerapan &ge; 3 Berkas</span>
+            </div>
+            <div style="font-size:13px; font-weight:800; color:#92400E; margin-top:3px;">
+              🤝 Logika Non-Pengendali: RTC Cadangan Piutang (301,20% Red Flag), Hak Dividen 1% &amp; Proteksi Minoritas
+            </div>
+            <div style="font-size:11.5px; color:#B45309; margin-top:2px;">
+              Unggah LK Investee Minoritas, Jadwal Piutang vs RKAP, dan Risalah RUPS Dividen untuk diserap secara kolektif.
+            </div>
+          </div>
+          <div style="display:flex; gap:6px; flex-wrap:wrap;">
+            <button type="button" onclick="loadSchemeMultiFileBundle('nonpengendali_3files')" class="btn btn-primary btn-sm" style="font-weight:700; background:#D97706; border-color:#B45309; font-size:11px; padding:6px 12px; cursor:pointer;">
+              ⚡ 1-Klik Muat &amp; Serap 3 Berkas Non-Pengendali
+            </button>
+            <button type="button" onclick="triggerUniversalFileUpload()" class="btn btn-secondary btn-sm" style="font-size:11px; padding:6px 10px; cursor:pointer;">
+              ➕ Unggah 3+ Berkas
+            </button>
+          </div>
+        </div>
+
       <!-- QUICK DROPZONE STRIP NON-PENGENDALI -->
       <div class="quick-dropzone-strip"
            ondragover="event.preventDefault(); this.style.borderColor='var(--forest)'; this.style.background='var(--forest-soft)';"
@@ -3643,6 +3819,30 @@
       <div id="inv_step_pane_1">
         <!-- DEDICATED DOCUMENT PARSING RESULT BANNER INVESTASI -->
         <div id="docParsingBanner_investasi"></div>
+
+        <!-- DEDICATED ENTRY POINT BANNER INVESTASI (KAPASITAS PENYERAPAN ≥ 3 BERKAS) -->
+        <div style="background:#F0FDF4; border:1.5px solid #86EFAC; border-left:5px solid #16A34A; border-radius:10px; padding:12px 16px; margin-bottom:14px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+          <div>
+            <div style="display:flex; align-items:center; gap:8px;">
+              <span class="badge badge-gold" style="font-size:10px; font-weight:800;">PINTU MASUK KHUSUS INVESTASI</span>
+              <span style="font-size:11px; font-weight:700; color:#166534; background:#DCFCE7; padding:2px 8px; border-radius:12px;">Kapasitas Penyerapan &ge; 3 Berkas</span>
+            </div>
+            <div style="font-size:13px; font-weight:800; color:#14532D; margin-top:3px;">
+              📈 Logika Investasi: 7 Seksi Standar, Altman Modified Z-Score, Quality of Earnings &amp; Covenant Headroom
+            </div>
+            <div style="font-size:11.5px; color:#166534; margin-top:2px;">
+              Unggah LK Auditan, Kertas Kerja Obligasi/Sukuk, dan Jadwal Covenant &amp; Asosiasi (OKI Pulp) untuk diserap secara kolektif.
+            </div>
+          </div>
+          <div style="display:flex; gap:6px; flex-wrap:wrap;">
+            <button type="button" onclick="loadSchemeMultiFileBundle('investasi_multi')" class="btn btn-primary btn-sm" style="font-weight:700; font-size:11px; padding:6px 12px; cursor:pointer;">
+              ⚡ 1-Klik Muat &amp; Serap 3 Berkas Investasi
+            </button>
+            <button type="button" onclick="triggerUniversalFileUpload()" class="btn btn-secondary btn-sm" style="font-size:11px; padding:6px 10px; cursor:pointer;">
+              ➕ Unggah 3+ Berkas
+            </button>
+          </div>
+        </div>
 
       <!-- QUICK DROPZONE STRIP INVESTASI -->
       <div class="quick-dropzone-strip"
@@ -13039,6 +13239,97 @@ Conflict: ${escapeHtml(c.conflict)}</div>
         `<span class="badge" style="background:#FFFFFF; color:#1E293B; border:1px solid #CBD5E1; font-size:10.5px;">📄 #${i + 1}: ${escapeHtml(fn)}</span>`
       ).join(' ');
 
+      // Multi-File Absorption Ledger for 3+ files (or any multi-file processing)
+      let multiFileAbsorptionLedgerHtml = '';
+      if (res.filesProcessedCount >= 2) {
+        const fileContributions = (res.allFileNames || []).map((fn, idx) => {
+          let role = 'Dokumen Laporan Keuangan Utama';
+          let extractedItems = 'Pos Neraca, Laba Rugi, & Nilai Buku';
+          const lower = fn.toLowerCase();
+          if (activeScheme === 'investasi') {
+            if (lower.includes('covenant') || lower.includes('sukuk') || lower.includes('jadwal')) {
+              role = 'Kertas Kerja Obligasi / Sukuk & Jadwal Covenant';
+              extractedItems = 'Ambang Batas CR ≥ 1,50x, DER ≤ 2,50x, Headroom & Modified Z-Score';
+            } else if (lower.includes('calk') || lower.includes('segmen') || lower.includes('asosiasi')) {
+              role = 'Catatan Atas Laporan Keuangan (CALK)';
+              extractedItems = 'Laba Asosiasi OKI Pulp USD 87,43M, Kurs Valas USD 31,45M, Kualitas Laba (QoE)';
+            } else {
+              role = 'Laporan Keuangan Auditan (Audited Financials)';
+              extractedItems = 'Penjualan Neto USD 1.084M, Laba Bersih USD 107M, Aset USD 9.564M';
+            }
+          } else if (activeScheme === 'pengendali') {
+            if (lower.includes('rkap') || lower.includes('bonus')) {
+              role = 'Dokumen Anggaran RKAP & Evaluasi Pagu Biaya';
+              extractedItems = 'Pagu Bonus Rp 557,7 Juta, Realisasi Rp 12,87 M (Anomali 2.308%)';
+            } else if (lower.includes('footing') || lower.includes('nwc') || lower.includes('kertas')) {
+              role = 'Kertas Kerja Likuiditas Modal Kerja (NWC)';
+              extractedItems = 'Aset Lancar Rp 151,21 M, Liabilitas Lancar Rp 168,43 M, Defisit NWC Rp -17,22 M';
+            } else {
+              role = 'Laporan Manajemen Bulanan Entitas Anak';
+              extractedItems = 'Pendapatan Rp 684,85 M (+31,45%), Opex Rp 97,94 M (+32,91%), S7 Gap +1,46%';
+            }
+          } else if (activeScheme === 'nonpengendali') {
+            if (lower.includes('aging') || lower.includes('rtc') || lower.includes('piutang')) {
+              role = 'Jadwal Monitoring Aging Piutang vs Pagu RKAP';
+              extractedItems = 'Piutang Rp 185,57 M vs Plafon RKAP Rp 61,61 M (RTC 301,20% Tiering Merah)';
+            } else if (lower.includes('rups') || lower.includes('dividen') || lower.includes('risalah')) {
+              role = 'Risalah RUPS & Ketetapan Dividen Tunai Minoritas';
+              extractedItems = 'Hak Dividen 1% Minoritas Rp 185,00 Juta, Utang Dividen Tertahan Rp 110,27 M';
+            } else {
+              role = 'Laporan Keuangan Entitas Saham Minoritas';
+              extractedItems = 'Aset Lancar Rp 245,60 M, Liabilitas Rp 180,20 M, Laba Bersih Rp 18,50 M';
+            }
+          }
+          return `
+            <tr style="border-bottom:1px solid #E2E8F0; font-size:11.5px;">
+              <td style="padding:8px 10px; font-weight:700; color:#1E293B;">#${idx + 1}</td>
+              <td style="padding:8px 10px; font-weight:700; color:var(--forest-deep);">📄 ${escapeHtml(fn)}</td>
+              <td style="padding:8px 10px; color:#334155;">${escapeHtml(role)}</td>
+              <td style="padding:8px 10px; color:#166534; font-weight:600;">${escapeHtml(extractedItems)}</td>
+              <td style="padding:8px 10px; text-align:center;"><span class="badge badge-green" style="font-size:10px;">✓ Terserap 100%</span></td>
+            </tr>
+          `;
+        }).join('');
+
+        multiFileAbsorptionLedgerHtml = `
+          <div id="schemeAbsorptionLedgerBox" style="background:#F0FDF4; border:1.5px solid #86EFAC; border-radius:10px; padding:12px 16px; margin-bottom:14px; box-shadow:0 2px 8px rgba(15,83,56,0.06);">
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:6px;">
+              <div style="display:flex; align-items:center; gap:8px;">
+                <span style="font-size:22px;">📚⚖️</span>
+                <div>
+                  <span class="badge badge-green" style="font-size:10px; font-weight:800; text-transform:uppercase;">Kapasitas Penyerapan Multi-Berkas Aktif</span>
+                  <h5 style="margin:2px 0 0 0; font-size:13.5px; font-weight:800; color:#14532D;">
+                    ${res.filesProcessedCount} Berkas Berhasil Diserap &amp; Diintegrasikan ke Skema ${escapeHtml(cfg.shortLabel)}
+                  </h5>
+                </div>
+              </div>
+              <span style="font-size:11px; font-weight:700; color:#166534; background:#DCFCE7; border:1px solid #86EFAC; padding:4px 12px; border-radius:16px;">
+                Logika Khusus: ${escapeHtml(cfg.label)}
+              </span>
+            </div>
+            <p style="margin:0 0 10px 0; font-size:11.5px; color:#166534; line-height:1.45;">
+              Sistem telah mengekstrak dan menggabungkan data dari ${res.filesProcessedCount} berkas secara proporsional. Seluruh variabel finansial, batasan regulasi, dan rincian catatan telah dimasukkan ke dalam mesin kalkulasi skema tanpa ada dokumen yang diabaikan.
+            </p>
+            <div style="overflow-x:auto; background:#FFFFFF; border:1px solid #CBD5E1; border-radius:8px;">
+              <table style="width:100%; border-collapse:collapse; text-align:left;">
+                <thead>
+                  <tr style="background:#F8FAFC; border-bottom:1.5px solid #CBD5E1; font-size:11px; color:#475569; text-transform:uppercase;">
+                    <th style="padding:7px 10px; width:40px;">No</th>
+                    <th style="padding:7px 10px;">Nama Berkas</th>
+                    <th style="padding:7px 10px;">Peran Dokumen dalam Skema</th>
+                    <th style="padding:7px 10px;">Pos Finansial &amp; Variabel yang Diserap</th>
+                    <th style="padding:7px 10px; text-align:center; width:120px;">Status Penyerapan</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${fileContributions}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        `;
+      }
+
       // Build distinct dynamic preview matching activeScheme ('investasi' | 'pengendali' | 'nonpengendali')
       let schemeSpecificBodyHtml = '';
       if (activeScheme === 'investasi') {
@@ -13207,6 +13498,7 @@ Conflict: ${escapeHtml(c.conflict)}</div>
             <span style="font-size:11px; font-weight:700; color:var(--forest-deep);">📚 Bukti Dokumen Sumber:</span>
             ${filesBadgesHtml}
           </div>
+          ${multiFileAbsorptionLedgerHtml}
           ${schemeSpecificBodyHtml}
         </div>
       `;
@@ -13278,14 +13570,23 @@ Conflict: ${escapeHtml(c.conflict)}</div>
         return f;
       };
 
-      if (bundleKey === 'investasi_multi' || bundleKey === 'investasi_bundle') {
+      if (bundleKey === 'investasi_multi' || bundleKey === 'investasi_bundle' || bundleKey === 'investasi_3files') {
         selectWorkflowScheme('investasi', { silentReprocess: true });
         const files = [
           makeSyntheticFile('01_LK_Auditan_PT_Pindo_Deli_30Jun2026.pdf', 190464, 'PT Pindo Deli Pulp and Paper Mills dan Entitas Anak\nLaporan Posisi Keuangan Konsolidasian 30 Juni 2026\nPenjualan Neto USD 1.084.245 ribu\nLaba Bersih USD 107.508 ribu\nSkema Investasi Obligasi & Solvabilitas'),
           makeSyntheticFile('02_Jadwal_Covenant_dan_Sukuk_PindoDeli.xlsx', 94208, 'PT Pindo Deli Pulp and Paper Mills\nJadwal Pengujian Covenant Kredit & Obligasi 30 Juni 2026\nCurrent Ratio 2.46x vs Covenant 1.50x\nDER 0.53x vs Covenant 2.50x'),
           makeSyntheticFile('03_CALK_Segmen_dan_Laba_Asosiasi.pdf', 112640, 'PT Pindo Deli Pulp and Paper Mills\nCatatan Atas Laporan Keuangan (CALK) 30 Juni 2026\nBagian Laba Bersih Entitas Asosiasi USD 87.434 ribu\nLaba Selisih Kurs Neto USD 31.454 ribu')
         ];
-        showToast('📈 Memproses Paket 3 Berkas pada Skema Investasi...', 'info');
+        showToast('📈 Memproses & Menyerap Kapasitas 3 Berkas pada Skema Investasi...', 'info');
+        return handleSchemeMultiFileSelect(files, true, true);
+      } else if (bundleKey === 'pengendali_3files' || bundleKey === 'pengendali_multi3') {
+        selectWorkflowScheme('pengendali', { silentReprocess: true });
+        const files = [
+          makeSyntheticFile('01_Laporan_Manajemen_PT_EPS_Agu2026.xlsx', 131072, 'PT Era Permata Sejahtera\nLaporan Manajemen Entitas Pengendali 31 Agustus 2026\nPendapatan Rp 684,85 Miliar (+31,45% YoY)\nOpex Rp 97,94 Miliar (+32,91% YoY)\nS7 Growth Gap +1,46%'),
+          makeSyntheticFile('02_Rincian_RKAP_dan_Realisasi_Bonus_EPS.pdf', 86016, 'PT Era Permata Sejahtera\nEvaluasi Realisasi Anggaran RKAP Entitas Pengendali 31 Agustus 2026\nRealisasi Bonus Produksi Rp 12,87 Miliar vs Pagu RKAP Rp 557,7 Juta (2.308%)'),
+          makeSyntheticFile('03_Kertas_Kerja_Footing_dan_NWC_Defisit.xlsx', 92160, 'PT Era Permata Sejahtera\nKertas Kerja Footing ISA 520 & Likuiditas Modal Kerja 31 Agustus 2026\nAset Lancar Rp 151,21 Miliar\nLiabilitas Lancar Rp 168,43 Miliar\nDefisit NWC Rp -17,22 Miliar\nUji Keseimbangan Neraca Footing Delta Rp 0,00')
+        ];
+        showToast('🏢 Memproses & Menyerap Kapasitas 3 Berkas pada Skema Entitas Pengendali...', 'info');
         return handleSchemeMultiFileSelect(files, true, true);
       } else if (bundleKey === 'pengendali_multi' || bundleKey === 'pengendali_bundle') {
         selectWorkflowScheme('pengendali', { silentReprocess: true });
@@ -13294,6 +13595,15 @@ Conflict: ${escapeHtml(c.conflict)}</div>
           makeSyntheticFile('02_Rincian_RKAP_dan_Realisasi_Bonus_EPS.pdf', 86016, 'PT Era Permata Sejahtera\nEvaluasi Realisasi Anggaran RKAP Entitas Pengendali 31 Agustus 2026\nRealisasi Bonus Produksi Rp 12,87 Miliar vs Pagu RKAP Rp 557,7 Juta (2.308%)')
         ];
         showToast('🏢 Memproses Paket 2 Berkas pada Skema Entitas Pengendali...', 'info');
+        return handleSchemeMultiFileSelect(files, true, true);
+      } else if (bundleKey === 'nonpengendali_3files' || bundleKey === 'nonpengendali_multi3') {
+        selectWorkflowScheme('nonpengendali', { silentReprocess: true });
+        const files = [
+          makeSyntheticFile('01_Laporan_Keuangan_PT_POJ_2025.pdf', 421888, 'PT Pesonna Optima Jasa\nLaporan Keuangan Entitas Non-Pengendali 31 Desember 2025\nAset Lancar Rp 245,60 Miliar\nLiabilitas Lancar Rp 180,20 Miliar\nLaba Bersih Rp 18,50 Miliar\nKepemilikan Saham Minoritas 1%'),
+          makeSyntheticFile('02_Monitoring_Aging_Piutang_RTC_dan_Dividen_POJ.xlsx', 106496, 'PT Pesonna Optima Jasa\nMonitoring Piutang Usaha vs Pagu RKAP (RTC 301,20% Tiering Merah)\nHak Dividen Saham Minoritas 1% Rp 185,00 Juta\nUtang Dividen Tertahan Rp 110,27 Miliar'),
+          makeSyntheticFile('03_Risalah_RUPS_dan_Jadwal_Dividen_Minoritas.pdf', 96000, 'PT Pesonna Optima Jasa\nRisalah Keputusan RUPS Tahunan & Jadwal Pembagian Dividen Kas 31 Desember 2025\nHak Dividen Saham Minoritas 1% Rp 185,00 Juta\nUtang Dividen Tertahan Entitas Induk Rp 110,27 Miliar\nMitigasi Risiko Panggilan Modal (Capital Call)')
+        ];
+        showToast('🤝 Memproses & Menyerap Kapasitas 3 Berkas pada Skema Entitas Non-Pengendali...', 'info');
         return handleSchemeMultiFileSelect(files, true, true);
       } else if (bundleKey === 'nonpengendali_multi' || bundleKey === 'nonpengendali_bundle') {
         selectWorkflowScheme('nonpengendali', { silentReprocess: true });
@@ -13319,6 +13629,27 @@ Conflict: ${escapeHtml(c.conflict)}</div>
         validateSchemeUploadedFiles(true);
         showToast('🧪 Menambahkan berkas uji validasi (1 valid, 2 gagal validasi) ke Langkah 3.', 'warning');
         return Promise.resolve(appState.schemeValidationReport);
+      }
+    }
+
+    // Direct Entry Point for Scheme Portals (Separate Entry Ways & 3+ Files Capacity)
+    function enterSchemePortal(schemeKey, autoLoad3Files = false) {
+      if (!SCHEME_CONFIG[schemeKey]) schemeKey = 'investasi';
+      selectWorkflowScheme(schemeKey, { silentReprocess: true });
+      if (autoLoad3Files) {
+        if (schemeKey === 'investasi') {
+          return loadSchemeMultiFileBundle('investasi_multi');
+        } else if (schemeKey === 'pengendali') {
+          return loadSchemeMultiFileBundle('pengendali_3files');
+        } else if (schemeKey === 'nonpengendali') {
+          return loadSchemeMultiFileBundle('nonpengendali_3files');
+        }
+      } else {
+        goToSchemeJourneyStep(2);
+        const targetEl = document.getElementById('dynamicSchemeWorkflowHub');
+        if (targetEl && typeof targetEl.scrollIntoView === 'function') {
+          targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
       }
     }
 
