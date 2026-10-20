@@ -1246,71 +1246,187 @@
       color: #FFF;
       text-shadow: 0 1px 2px rgba(0,0,0,0.25);
     }
+
+    /* ============================================================================
+       SENIOR EXECUTIVE ("BOOMER-FRIENDLY") POLISHED UI & CORRESPONDING CHARTS CSS
+       Declutters unnecessary toggles/buttons & adds high-contrast visual charts
+       ============================================================================ */
+    #btnLangToggle,
+    #btnExplanationModeToggle,
+    #btnHeaderUpload,
+    #btnHeaderDownloadPdf,
+    #btnHeaderSettings,
+    #btnHeaderApiKey,
+    #btnHeaderDataPool,
+    #btnHeaderCopilot,
+    .entity-nav-bar,
+    .quick-prompt-chips,
+    #aiThinkingOnboardingBanner {
+      display: none !important;
+    }
+
+    .eo-table th {
+      font-size: 13.5px !important;
+      padding: 10px 12px !important;
+      background: #EDF4F0 !important;
+      color: #0D3B26 !important;
+    }
+    .eo-table td {
+      font-size: 14px !important;
+      padding: 10px 12px !important;
+    }
+    .nota-dinas-body p,
+    .nota-dinas-body li {
+      font-size: 14.5px !important;
+      line-height: 1.72 !important;
+      color: #1C1917 !important;
+    }
+
+    .boomer-chart-card {
+      background: #FFFFFF;
+      border: 2px solid #C8DFD1;
+      border-radius: 12px;
+      padding: 18px 20px;
+      margin: 14px 0 16px 0;
+      box-shadow: 0 3px 10px rgba(15, 83, 56, 0.06);
+    }
+    .boomer-chart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      border-bottom: 1.5px solid #E2EDE7;
+      padding-bottom: 10px;
+      margin-bottom: 14px;
+    }
+    .boomer-chart-title {
+      font-size: 15px;
+      font-weight: 800;
+      color: #0D3B26;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0;
+    }
+    .boomer-chart-legend {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 12.5px;
+      font-weight: 700;
+      color: #374151;
+    }
+    .boomer-legend-dot {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      border-radius: 3px;
+      margin-right: 5px;
+      vertical-align: middle;
+    }
+    .boomer-bar-row {
+      margin-bottom: 12px;
+      background: #F9FBF9;
+      border: 1px solid #E6EFE9;
+      border-radius: 8px;
+      padding: 10px 14px;
+    }
+    .boomer-bar-row:last-child {
+      margin-bottom: 0;
+    }
+    .boomer-bar-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+      font-size: 13.5px;
+      font-weight: 700;
+      color: #111827;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .boomer-bar-track {
+      height: 14px;
+      background: #E5ECE8;
+      border-radius: 7px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      margin-bottom: 4px;
+    }
+    .boomer-bar-fill-primary {
+      height: 100%;
+      background: linear-gradient(90deg, #0F5338, #198754);
+      border-radius: 7px;
+    }
+    .boomer-bar-fill-secondary {
+      height: 100%;
+      background: #94A3B8;
+      border-radius: 7px;
+    }
+    .boomer-bar-fill-gold {
+      height: 100%;
+      background: linear-gradient(90deg, #B45309, #D97706);
+      border-radius: 7px;
+    }
+    .boomer-bar-fill-purple {
+      height: 100%;
+      background: linear-gradient(90deg, #5B4896, #7C3AED);
+      border-radius: 7px;
+    }
+    .boomer-bar-fill-red {
+      height: 100%;
+      background: linear-gradient(90deg, #B91C1C, #DC2626);
+      border-radius: 7px;
+    }
+    .boomer-chart-takeaway {
+      margin-top: 12px;
+      background: #F0FDF4;
+      border-left: 4px solid #15803D;
+      padding: 10px 14px;
+      border-radius: 6px;
+      font-size: 13.5px;
+      color: #14532D;
+      line-height: 1.55;
+    }
   </style>
 </head>
 <body>
 
-  <!-- Top Executive Header -->
-  <header class="app-header">
-    <div class="brand-section" onclick="switchView('main_menu')" title="Menu Utama">
-      <h1 id="txt_brand_title" style="font-size:15.5px; font-weight:700; color:var(--forest-deep); margin:0;">Kajian Ihsan</h1>
+  <!-- Top Executive Header (Cleaned & Simplified for Senior Executive UX) -->
+  <header class="app-header" style="padding: 12px 24px;">
+    <div class="brand-section" onclick="switchView('main_menu')" title="Kembali ke Menu Utama" style="cursor:pointer;">
+      <h1 id="txt_brand_title" style="font-size:18px; font-weight:800; color:var(--forest-deep); margin:0;">🏛️ Kajian Ihsan — Telaah Keuangan Eksekutif</h1>
     </div>
 
-    <div class="header-actions">
-      <!-- Language Switch Toggle (Hidden for Clean UX; Configured in Codebase) -->
-      <div id="btnLangToggle" onclick="toggleLanguage()" title="Ganti Bahasa / Switch Language" style="display:none; cursor:pointer; align-items:center; background:var(--surface); border:1px solid var(--line-strong); border-radius:20px; padding:2px 4px; font-size:11.5px; font-weight:700; user-select:none; gap:2px;">
-        <span style="font-size:12px; margin:0 2px;">🌐</span>
-        <span id="pillLangID" style="padding:2px 7px; border-radius:14px; background:var(--forest); color:#fff; transition:all 0.2s;">ID</span>
-        <span id="pillLangEN" style="padding:2px 7px; border-radius:14px; color:var(--ink-secondary); transition:all 0.2s;">EN</span>
+    <div class="header-actions" style="gap:10px;">
+      <!-- Retained hidden DOM elements for compatibility; hidden via CSS -->
+      <div id="btnLangToggle" onclick="toggleLanguage()" style="display:none;">
+        <span id="pillLangID">ID</span><span id="pillLangEN">EN</span>
+      </div>
+      <div id="btnExplanationModeToggle" onclick="toggleExplanationMode()" style="display:none;">
+        <span id="pillModeAwam" data-i18n="mode_awam">Awam</span><span id="pillModePro" data-i18n="mode_pro">Pro</span>
       </div>
 
-      <!-- Explanation Mode Toggle (Hidden for Clean UX; Configured in Codebase) -->
-      <div id="btnExplanationModeToggle" onclick="toggleExplanationMode()" title="Ganti Mode: Bahasa Awam vs Audit Profesional" style="display:none; cursor:pointer; align-items:center; background:var(--surface); border:1px solid #B8DAC8; border-radius:20px; padding:2px 4px; font-size:11.5px; font-weight:700; user-select:none; gap:2px;">
-        <span style="font-size:12px; margin:0 2px;">💡</span>
-        <span id="pillModeAwam" data-i18n="mode_awam" style="padding:2px 7px; border-radius:14px; background:var(--forest); color:#fff; transition:all 0.2s;">Awam</span>
-        <span id="pillModePro" data-i18n="mode_pro" style="padding:2px 7px; border-radius:14px; color:var(--ink-secondary); transition:all 0.2s;">Pro</span>
-      </div>
-
-      <div class="breadcrumb-chip">
-        <span id="txt_nav_prefix">Alur:</span>
+      <div class="breadcrumb-chip" style="font-size:13px; padding:6px 14px;">
+        <span id="txt_nav_prefix">Posisi Layar:</span>
         <strong id="navBreadcrumbText">Menu Utama</strong>
       </div>
 
-      <button id="btnHeaderUpload" onclick="openUploadModal()" class="btn btn-secondary btn-sm" style="display:none;">
-        📤 Unggah File (Excel/PDF)
+      <button id="btnHeaderUpload" onclick="openUploadModal()" class="btn btn-secondary btn-sm" style="display:none;">📤 Unggah File</button>
+      <a id="btnHeaderDownloadPdf" href="/api/download-formula-pdf" download="Kajian_Ihsan_Formula_Reference_Compendium.pdf" class="btn btn-gold btn-sm" style="display:none;">📕 Unduh PDF Formula</a>
+      <button id="btnHeaderDataPool" onclick="switchView('datapool')" class="btn btn-secondary btn-sm" style="display:none;">📚 Data Pool (<strong id="txtDataPoolCount">0</strong>)</button>
+      <button id="btnHeaderSettings" onclick="switchView('settings')" class="btn btn-secondary btn-sm" style="display:none;"><span id="txtHeaderSettings"><strong id="txtAiModeBadge">Lokal Kajian Ihsan</strong></span></button>
+      <button id="btnHeaderApiKey" onclick="openApiKeyModal()" class="btn btn-secondary btn-sm" style="display:none;"><span id="txtApiKeyHeader"><strong id="txtApiKeyStatus">Codebase Config</strong></span></button>
+      <button id="btnHeaderCopilot" onclick="openCopilotDrawer()" class="btn btn-secondary btn-sm" style="display:none;">🤖 AI Copilot RAG</button>
+
+      <button id="btnHeaderHome" onclick="switchView('main_menu')" class="btn btn-primary btn-sm hidden" style="font-size:13.5px; padding:8px 16px; font-weight:700;">
+        ⌂ Kembali ke Menu Utama
       </button>
 
-      <a id="btnHeaderDownloadPdf" href="/api/download-formula-pdf" download="Kajian_Ihsan_Formula_Reference_Compendium.pdf" class="btn btn-gold btn-sm" style="display:none; align-items:center; gap:5px; font-weight:700; text-decoration:none;" title="Unduh PDF Resmi: Seluruh Rumus, Metrik & Rationale Forensik (7 Halaman)">
-        <span>📕</span>
-        <span>Unduh PDF Formula</span>
-      </a>
-
-      <button id="btnHeaderDataPool" onclick="switchView('datapool')" class="btn btn-secondary btn-sm" style="display:flex; align-items:center; gap:5px; font-weight:600;" title="Buka Forensic Data Pool & AI Pattern Hub">
-        <span>📚</span>
-        <span>Data Pool (<strong id="txtDataPoolCount">0</strong>)</span>
-      </button>
-
-      <!-- AI Settings & API Key Buttons Hidden from UI (Configured Directly in Codebase: src/config/aiConfig.js & CODEBASE_AI_CONFIG) -->
-      <button id="btnHeaderSettings" onclick="switchView('settings')" class="btn btn-secondary btn-sm" style="display:none; align-items:center; gap:5px; font-weight:600; border-color:#B8DAC8; background:#fff;" title="Buka Pengaturan AI: Google Gemini vs Mesin Forensik Lokal">
-        <span>⚙️</span>
-        <span id="txtHeaderSettings">AI: <strong id="txtAiModeBadge" style="color:var(--forest);">Lokal Kajian Ihsan</strong></span>
-      </button>
-
-      <button id="btnHeaderApiKey" onclick="openApiKeyModal()" class="btn btn-secondary btn-sm" style="display:none; align-items:center; gap:5px; font-weight:600; border-color:#B8DAC8; background:#fff;" title="Konfigurasi Google Gemini API Key">
-        <span>🔑</span>
-        <span id="txtApiKeyHeader"><strong id="txtApiKeyStatus" style="color:var(--ink-secondary);">Codebase Config</strong></span>
-      </button>
-
-      <button id="btnHeaderCopilot" onclick="openCopilotDrawer()" class="btn btn-secondary btn-sm" style="background:var(--forest-soft); color:var(--forest); border-color:#B8DAC8;">
-        🤖 AI Copilot RAG
-      </button>
-
-      <button id="btnHeaderReset" onclick="resetAllToBlankState()" class="btn btn-danger btn-sm" title="Kosongkan seluruh data kalkulasi">
-        🗑️ Reset Data
-      </button>
-
-      <button id="btnHeaderHome" onclick="switchView('main_menu')" class="btn btn-primary btn-sm hidden">
-        ⌂ Menu Utama
+      <button id="btnHeaderReset" onclick="resetAllToBlankState()" class="btn btn-danger btn-sm" style="font-size:13px; padding:8px 14px; font-weight:700;" title="Mulai ulang dari awal">
+        🔄 Mulai Ulang (Reset)
       </button>
     </div>
   </header>
@@ -1320,36 +1436,30 @@
          style="position:fixed; top:0; left:0; width:1px; height:1px; opacity:0.01; z-index:-1;" 
          onchange="handleUniversalFileUpload(this)">
 
-  <!-- Banner Zero-Persistence -->
-  <div style="background:var(--forest-soft); border-bottom:1px solid #C4DEC0; padding:6px 24px; font-size:11.5px; color:var(--forest-deep); display:flex; justify-content:space-between; align-items:center;">
-    <span id="txt_banner_persist"><strong>Zero-Persistence Keamanan Data:</strong> Seluruh data diproses murni di memori browser (tanpa database & tanpa penyimpanan lokal).</span>
-    <span id="txt_banner_agenda" style="color:var(--ink-secondary);">Agenda Hari Ini: 2 Investasi, 2 Pengendali, Non-Pengendali & Konsolidasi</span>
+  <!-- Banner Zero-Persistence (Hidden clutter, clean top bar) -->
+  <div style="display:none;">
+    <span id="txt_banner_persist">Zero-Persistence Keamanan Data</span>
+    <span id="txt_banner_agenda">Agenda Hari Ini</span>
   </div>
 
-  <!-- PERSISTENT GLOBAL ENTITY NAVIGATION STRIP (100% DIRECTLY CLICKABLE) -->
-  <nav class="entity-nav-strip" style="background:#fff; border-bottom:1px solid var(--line); padding:7px 24px; display:flex; gap:8px; overflow-x:auto; align-items:center; box-shadow:0 1px 3px rgba(0,0,0,0.03); z-index:30; position:relative;">
-    <button type="button" class="entity-nav-btn active" data-view="main_menu" onclick="switchView('main_menu')" style="display:flex; align-items:center; gap:6px; padding:6px 14px; border-radius:6px; border:1.5px solid #107C41; background:#F0FDF4; font-size:12.5px; font-weight:700; color:var(--forest-deep); cursor:pointer;">
-      <span>⌂</span> <span>Menu Utama</span>
+  <!-- PERSISTENT GLOBAL ENTITY NAVIGATION STRIP (LARGE, CLEAR BUTTONS FOR EXECUTIVES) -->
+  <nav class="entity-nav-strip" style="background:#F8FAFC; border-bottom:2px solid #D5E2D9; padding:10px 24px; display:flex; gap:10px; overflow-x:auto; align-items:center; z-index:30; position:relative;">
+    <span style="font-size:12.5px; font-weight:800; color:#475569; text-transform:uppercase; letter-spacing:0.4px; margin-right:4px;">Pilih Halaman:</span>
+    <button type="button" class="entity-nav-btn active" data-view="main_menu" onclick="switchView('main_menu')" style="display:flex; align-items:center; gap:6px; padding:8px 16px; border-radius:8px; border:1.5px solid #107C41; background:#F0FDF4; font-size:13.5px; font-weight:800; color:var(--forest-deep); cursor:pointer;">
+      <span>⌂</span> <span>Menu Utama (Pilih & Unggah)</span>
     </button>
-    <button type="button" class="entity-nav-btn" data-view="pengendali" onclick="switchView('pengendali')" style="display:flex; align-items:center; gap:6px; padding:6px 14px; border-radius:6px; border:1px solid var(--line); background:#fff; font-size:12.5px; font-weight:600; color:var(--ink); cursor:pointer;">
-      <span>🏢</span> <span>1. Entitas Pengendali (PT EPS)</span>
+    <button type="button" class="entity-nav-btn" data-view="investasi" onclick="switchView('investasi')" style="display:flex; align-items:center; gap:6px; padding:8px 16px; border-radius:8px; border:1.5px solid var(--line-strong); background:#fff; font-size:13.5px; font-weight:700; color:var(--ink); cursor:pointer;">
+      <span>📈</span> <span>Laporan Investasi (Pindo Deli / DAAZ)</span>
     </button>
-    <button type="button" class="entity-nav-btn" data-view="nonpengendali" onclick="switchView('nonpengendali')" style="display:flex; align-items:center; gap:6px; padding:6px 14px; border-radius:6px; border:1px solid var(--line); background:#fff; font-size:12.5px; font-weight:600; color:var(--ink); cursor:pointer;">
-      <span>👥</span> <span>2. Non-Pengendali (PT POJ)</span>
+    <button type="button" class="entity-nav-btn" data-view="pengendali" onclick="switchView('pengendali')" style="display:flex; align-items:center; gap:6px; padding:8px 16px; border-radius:8px; border:1.5px solid var(--line-strong); background:#fff; font-size:13.5px; font-weight:700; color:var(--ink); cursor:pointer;">
+      <span>🏢</span> <span>Laporan Pengendali (PT EPS)</span>
     </button>
-    <button type="button" class="entity-nav-btn" data-view="investasi" onclick="switchView('investasi')" style="display:flex; align-items:center; gap:6px; padding:6px 14px; border-radius:6px; border:1px solid var(--line); background:#fff; font-size:12.5px; font-weight:600; color:var(--ink); cursor:pointer;">
-      <span>📈</span> <span>3. Skema Investasi (Pindo Deli / DAAZ)</span>
+    <button type="button" class="entity-nav-btn" data-view="nonpengendali" onclick="switchView('nonpengendali')" style="display:flex; align-items:center; gap:6px; padding:8px 16px; border-radius:8px; border:1.5px solid var(--line-strong); background:#fff; font-size:13.5px; font-weight:700; color:var(--ink); cursor:pointer;">
+      <span>👥</span> <span>Laporan Non-Pengendali (PT POJ)</span>
     </button>
-    <button type="button" class="entity-nav-btn" data-view="konsolidasi" onclick="switchView('konsolidasi')" style="display:flex; align-items:center; gap:6px; padding:6px 14px; border-radius:6px; border:1px solid var(--line); background:#fff; font-size:12.5px; font-weight:600; color:var(--ink); cursor:pointer;">
-      <span>🏛️</span> <span>4. Konsolidasi Grup (POJK DER)</span>
+    <button type="button" class="entity-nav-btn" data-view="konsolidasi" onclick="switchView('konsolidasi')" style="display:flex; align-items:center; gap:6px; padding:8px 16px; border-radius:8px; border:1.5px solid var(--line-strong); background:#fff; font-size:13.5px; font-weight:700; color:var(--ink); cursor:pointer;">
+      <span>🏛️</span> <span>Konsolidasi Grup</span>
     </button>
-    <div style="flex:1;"></div>
-    <a href="/api/download-formula-pdf" download="Kajian_Ihsan_Formula_Reference_Compendium.pdf" style="display:flex; align-items:center; gap:6px; padding:5px 12px; border-radius:6px; border:1px solid #D9A74A; background:#FFFBEB; font-size:11.5px; font-weight:700; color:#92400E; text-decoration:none; cursor:pointer;" title="Unduh Kompendium Formula & Rationale Finansial 7 Halaman">
-      <span>📕</span> <span>Unduh PDF Formula (7 Hlm)</span>
-    </a>
-    <a href="/api/template-excel" download="template_analisis_keuangan_3sheet.xlsx" style="display:flex; align-items:center; gap:6px; padding:5px 12px; border-radius:6px; border:1px solid #86EFAC; background:#F0FDF4; font-size:11.5px; font-weight:700; color:#166534; text-decoration:none; cursor:pointer;" title="Unduh Template Excel Kertas Kerja 3-Sheet">
-      <span>📥</span> <span>Template Excel 3-Sheet</span>
-    </a>
   </nav>
 
   <!-- Main Container -->
@@ -2626,6 +2736,40 @@
                   </li>
                 </ol>
 
+                <!-- GRAFIK VISUAL NOTA DINAS PENGENDALI (PT EPS) -->
+                <div class="boomer-chart-card" id="chart_nd_pengendali">
+                  <div class="boomer-chart-header">
+                    <h6 class="boomer-chart-title">📊 Grafik Visual Temuan Utama Entitas Pengendali (PT EPS)</h6>
+                    <div class="boomer-chart-legend">
+                      <span><span class="boomer-legend-dot" style="background:#DC2626;"></span>Risiko / Defisit</span>
+                      <span><span class="boomer-legend-dot" style="background:#0F5338;"></span>Pertumbuhan Omzet</span>
+                    </div>
+                  </div>
+                  <div class="boomer-bar-row">
+                    <div class="boomer-bar-top">
+                      <span>1. Sinyal S7 Growth Gap (Pertumbuhan Biaya vs Omzet)</span>
+                      <span>Biaya Opex <strong>+32,91%</strong> vs Omzet <strong>+31,45%</strong> <span class="badge badge-gold" style="background:#FEE2E2; color:#991B1B;">Beban Tumbuh Lebih Cepat (+1,46%)</span></span>
+                    </div>
+                    <div class="boomer-bar-track"><div class="boomer-bar-fill-red" style="width:65.8%;"></div></div>
+                    <div class="boomer-bar-track" style="height:10px; margin-bottom:0;"><div class="boomer-bar-fill-primary" style="width:62.9%;"></div></div>
+                  </div>
+                  <div class="boomer-bar-row">
+                    <div class="boomer-bar-top">
+                      <span>2. Likuiditas Modal Kerja (Aset Lancar vs Utang Jangka Pendek)</span>
+                      <span>Aset Lancar <strong>Rp52,63 M</strong> vs Utang Lancar <strong>Rp93,12 M</strong> <span class="badge badge-gold" style="background:#FEE2E2; color:#991B1B;">Defisit -Rp40,49 M (CR 0,57x)</span></span>
+                    </div>
+                    <div class="boomer-bar-track"><div class="boomer-bar-fill-primary" style="width:56.5%;"></div></div>
+                    <div class="boomer-bar-track" style="height:10px; margin-bottom:0;"><div class="boomer-bar-fill-red" style="width:100%;"></div></div>
+                  </div>
+                  <div class="boomer-bar-row" style="background:#FFFDF5; border-color:#FDE68A;">
+                    <div class="boomer-bar-top">
+                      <span>3. Realisasi Beban Jasa Produksi thd Pagu RKAP (S1/S9)</span>
+                      <span>Realisasi <strong>Rp12,87 Miliar</strong> vs Anggaran <strong>Rp557,7 Juta</strong> <span class="badge badge-gold" style="background:#FEE2E2; color:#991B1B;">Melonjak 2.308% dari Anggaran</span></span>
+                    </div>
+                    <div class="boomer-bar-track"><div class="boomer-bar-fill-red" style="width:100%;"></div></div>
+                  </div>
+                </div>
+
                 <h5>III. Rekomendasi Tindak Lanjut Direksi & Dewan Pengawas Kajian Ihsan (Advisori Berbasis Bukti)</h5>
                 <ul style="margin-left:20px; margin-bottom:12px;">
                   <li style="margin-bottom:6px;">
@@ -3242,6 +3386,33 @@
                   <strong>Utang Dividen Belum Dibayarkan:</strong> Terdapat utang dividen sebesar <strong>Rp110,27 Miliar</strong> di liabilitas lancar yang belum direalisasikan pembayarannya kepada pemegang saham, sementara hak dividen minoritas <span id="nd_np_pct">1%</span> periode berjalan adalah <strong id="nd_np_div">Rp185,00 Juta</strong>.
                 </li>
               </ol>
+
+              <!-- GRAFIK VISUAL NOTA DINAS NON-PENGENDALI (PT POJ) -->
+              <div class="boomer-chart-card" id="chart_nd_nonpengendali">
+                <div class="boomer-chart-header">
+                  <h6 class="boomer-chart-title">📊 Grafik Visual Proteksi Saham Minoritas 1% & Risiko Piutang (PT POJ)</h6>
+                  <div class="boomer-chart-legend">
+                    <span><span class="boomer-legend-dot" style="background:#DC2626;"></span>Lonjakan Aktual</span>
+                    <span><span class="boomer-legend-dot" style="background:#0F5338;"></span>Pagu Aman RKAP</span>
+                  </div>
+                </div>
+                <div class="boomer-bar-row">
+                  <div class="boomer-bar-top">
+                    <span>1. Piutang Usaha Pihak Ketiga vs Pagu Anggaran RKAP (RTC)</span>
+                    <span>Aktual <strong>Rp185,00 Miliar</strong> vs Pagu <strong>Rp61,42 Miliar</strong> <span class="badge badge-gold" style="background:#FEE2E2; color:#991B1B;">RTC 301,20% (3x Lipat Pagu)</span></span>
+                  </div>
+                  <div class="boomer-bar-track"><div class="boomer-bar-fill-red" style="width:100%;"></div></div>
+                  <div class="boomer-bar-track" style="height:10px; margin-bottom:0;"><div class="boomer-bar-fill-primary" style="width:33.2%;"></div></div>
+                </div>
+                <div class="boomer-bar-row">
+                  <div class="boomer-bar-top">
+                    <span>2. Likuiditas Modal Kerja (Aset Lancar vs Liabilitas Lancar)</span>
+                    <span>Aset Lancar <strong>Rp534,60 M</strong> vs Utang Lancar <strong>Rp881,78 M</strong> <span class="badge badge-gold" style="background:#FEE2E2; color:#991B1B;">Defisit -Rp347,18 M (CR 0,61x)</span></span>
+                  </div>
+                  <div class="boomer-bar-track"><div class="boomer-bar-fill-primary" style="width:60.6%;"></div></div>
+                  <div class="boomer-bar-track" style="height:10px; margin-bottom:0;"><div class="boomer-bar-fill-red" style="width:100%;"></div></div>
+                </div>
+              </div>
 
               <h5>III. Rumusan Pertanyaan Kritis untuk Agenda RUPS & Advisori Berbasis Bukti</h5>
               <ul style="margin-left:20px; margin-bottom:12px;">
@@ -4334,6 +4505,57 @@
                     </tbody>
                   </table>
 
+                  <!-- GRAFIK VISUAL SEKSI 1: NERACA (RAMAH EKSEKUTIF SENIOR) -->
+                  <div class="boomer-chart-card" id="chart_eo_section_1">
+                    <div class="boomer-chart-header">
+                      <h6 class="boomer-chart-title">📊 Grafik Visual Seksi 1: Perbandingan Posisi Neraca (dalam USD '000)</h6>
+                      <div class="boomer-chart-legend">
+                        <span><span class="boomer-legend-dot" style="background:#0F5338;"></span>30 Jun 2026</span>
+                        <span><span class="boomer-legend-dot" style="background:#94A3B8;"></span>31 Des 2025</span>
+                      </div>
+                    </div>
+
+                    <div class="boomer-bar-row">
+                      <div class="boomer-bar-top">
+                        <span>1. Total Aset (Harta Perusahaan)</span>
+                        <span><strong>3.815.764 Lancar + 5.749.012 Tidak Lancar = 9.564.776</strong> <span class="badge badge-green" style="font-size:12px;">Naik +5,4% (+489.253)</span></span>
+                      </div>
+                      <div class="boomer-bar-track" title="30 Jun 2026: 9.564.776"><div class="boomer-bar-fill-primary" style="width:100%;"></div></div>
+                      <div class="boomer-bar-track" style="height:10px; margin-bottom:0;" title="31 Des 2025: 9.075.523"><div class="boomer-bar-fill-secondary" style="width:94.9%;"></div></div>
+                    </div>
+
+                    <div class="boomer-bar-row">
+                      <div class="boomer-bar-top">
+                        <span>2. Ekuitas (Modal Bersih Sendiri)</span>
+                        <span><strong>5.485.855</strong> vs 5.038.979 <span class="badge badge-green" style="font-size:12px;">Tumbuh Kuat +8,9% (+446.876)</span></span>
+                      </div>
+                      <div class="boomer-bar-track"><div class="boomer-bar-fill-primary" style="width:57.4%;"></div></div>
+                      <div class="boomer-bar-track" style="height:10px; margin-bottom:0;"><div class="boomer-bar-fill-secondary" style="width:52.7%;"></div></div>
+                    </div>
+
+                    <div class="boomer-bar-row">
+                      <div class="boomer-bar-top">
+                        <span>3. Total Liabilitas (Total Kewajiban / Utang)</span>
+                        <span><strong>4.078.921</strong> vs 4.036.544 <span class="badge badge-gold" style="font-size:12px;">Stabil +1,0% (+42.377)</span></span>
+                      </div>
+                      <div class="boomer-bar-track"><div class="boomer-bar-fill-gold" style="width:42.6%;"></div></div>
+                      <div class="boomer-bar-track" style="height:10px; margin-bottom:0;"><div class="boomer-bar-fill-secondary" style="width:42.2%;"></div></div>
+                    </div>
+
+                    <div class="boomer-bar-row">
+                      <div class="boomer-bar-top">
+                        <span>4. Aset Lancar vs Liabilitas Jangka Pendek (Bantalan Likuiditas)</span>
+                        <span>Aset Lancar <strong>3.815.764 (+8,9%)</strong> vs Utang Pendek <strong>1.944.954 (+7,2%)</strong> <span class="badge badge-green" style="font-size:12px;">Surplus +1.870.810 (1,96x)</span></span>
+                      </div>
+                      <div class="boomer-bar-track"><div class="boomer-bar-fill-primary" style="width:39.9%;"></div></div>
+                      <div class="boomer-bar-track" style="height:10px; margin-bottom:0;"><div class="boomer-bar-fill-gold" style="width:20.3%;"></div></div>
+                    </div>
+
+                    <div class="boomer-chart-takeaway">
+                      💡 <strong>Intisari Visual Neraca:</strong> Kenaikan Total Aset (+5,4%) ditopang oleh pertumbuhan <strong>Modal Sendiri / Ekuitas (+8,9%)</strong>, bukan tambahan utang (Total Liabilitas hanya naik +1,0%). Aset lancar hampir <strong>2 kali lipat (1,96x)</strong> dari utang jangka pendek.
+                    </div>
+                  </div>
+
                   <p style="margin-top:10px;">
                     Secara horizontal, total aset meningkat 5,4%, sedangkan total liabilitas hanya meningkat sekitar 1,0%. Ekuitas tumbuh 8,9%. Pola ini positif karena ekspansi neraca tidak terutama ditopang penambahan liabilitas. Namun liabilitas jangka pendek meningkat 7,2%, sehingga profil jatuh tempo tetap perlu dimonitor walaupun likuiditas saat ini masih memadai.
                   </p>
@@ -4436,6 +4658,67 @@
                     </tbody>
                   </table>
 
+                  <!-- GRAFIK VISUAL SEKSI 2: LABA RUGI & SUMBER LONJAKAN LABA -->
+                  <div class="boomer-chart-card" id="chart_eo_section_2">
+                    <div class="boomer-chart-header">
+                      <h6 class="boomer-chart-title">📊 Grafik Visual Seksi 2: Perbandingan Laba Rugi & Sumber Lonjakan Laba (6M 2026 vs 6M 2025)</h6>
+                      <div class="boomer-chart-legend">
+                        <span><span class="boomer-legend-dot" style="background:#0F5338;"></span>Operasi Inti</span>
+                        <span><span class="boomer-legend-dot" style="background:#D97706;"></span>Laba Asosiasi (Non-Op)</span>
+                        <span><span class="boomer-legend-dot" style="background:#7C3AED;"></span>Selisih Kurs (Non-Op)</span>
+                      </div>
+                    </div>
+
+                    <div class="boomer-bar-row">
+                      <div class="boomer-bar-top">
+                        <span>1. Penjualan Neto (Omzet Bisnis Inti)</span>
+                        <span><strong>1.084.245</strong> vs 1.098.987 <span class="badge badge-gold" style="background:#FEE2E2; color:#991B1B; font-size:12px;">Turun Tipis -1,34% (-14.742)</span></span>
+                      </div>
+                      <div class="boomer-bar-track"><div class="boomer-bar-fill-primary" style="width:98.6%;"></div></div>
+                      <div class="boomer-bar-track" style="height:10px; margin-bottom:0;"><div class="boomer-bar-fill-secondary" style="width:100%;"></div></div>
+                    </div>
+
+                    <div class="boomer-bar-row">
+                      <div class="boomer-bar-top">
+                        <span>2. Laba Usaha (Hasil Murni Pabrik/Operasi)</span>
+                        <span><strong>154.056</strong> vs 157.094 <span class="badge badge-gold" style="background:#FEE2E2; color:#991B1B; font-size:12px;">Turun -1,93% (-3.038)</span></span>
+                      </div>
+                      <div class="boomer-bar-track"><div class="boomer-bar-fill-primary" style="width:33.8%;"></div></div>
+                      <div class="boomer-bar-track" style="height:10px; margin-bottom:0;"><div class="boomer-bar-fill-secondary" style="width:34.5%;"></div></div>
+                    </div>
+
+                    <div class="boomer-bar-row" style="background:#FFFDF5; border-color:#FDE68A;">
+                      <div class="boomer-bar-top">
+                        <span>3. Bagian Laba Entitas Asosiasi (Non-Operasional)</span>
+                        <span><strong>212.518</strong> vs 76.049 <span class="badge badge-gold" style="font-size:12px;">Melonjak +179,4% (+136.469)</span></span>
+                      </div>
+                      <div class="boomer-bar-track"><div class="boomer-bar-fill-gold" style="width:46.6%;"></div></div>
+                      <div class="boomer-bar-track" style="height:10px; margin-bottom:0;"><div class="boomer-bar-fill-secondary" style="width:16.7%;"></div></div>
+                    </div>
+
+                    <div class="boomer-bar-row" style="background:#FAF8FF; border-color:#DDD6FE;">
+                      <div class="boomer-bar-top">
+                        <span>4. Laba Selisih Kurs Neto (Non-Operasional)</span>
+                        <span><strong>140.198</strong> vs 5.325 <span class="badge" style="background:#EDE9FE; color:#5B21B6; font-size:12px;">Melonjak +2.533% (+134.873)</span></span>
+                      </div>
+                      <div class="boomer-bar-track"><div class="boomer-bar-fill-purple" style="width:30.8%;"></div></div>
+                      <div class="boomer-bar-track" style="height:10px; margin-bottom:0;"><div class="boomer-bar-fill-secondary" style="width:2.0%;"></div></div>
+                    </div>
+
+                    <div class="boomer-bar-row" style="background:#F0FDF4; border-color:#86EFAC;">
+                      <div class="boomer-bar-top">
+                        <span>5. Laba Neto (Laba Bersih Akhir)</span>
+                        <span><strong>455.637</strong> vs 146.814 <span class="badge badge-green" style="font-size:12px;">Naik +210,3% (+308.823)</span></span>
+                      </div>
+                      <div class="boomer-bar-track"><div class="boomer-bar-fill-primary" style="width:100%;"></div></div>
+                      <div class="boomer-bar-track" style="height:10px; margin-bottom:0;"><div class="boomer-bar-fill-secondary" style="width:32.2%;"></div></div>
+                    </div>
+
+                    <div class="boomer-chart-takeaway" style="background:#FFFBEB; border-left-color:#D97706; color:#92400E;">
+                      ⚠️ <strong>Peringatan Kualitas Laba (Penting untuk Pengambil Keputusan):</strong> Meskipun Laba Bersih naik <strong>+210,3% (+USD 308,8 Juta)</strong>, sebesar <strong>87,9% (+USD 271,3 Juta)</strong> dari kenaikan tersebut berasal dari <strong>Laba Entitas Asosiasi + Selisih Kurs</strong>, sedangkan Laba Usaha pabrik justru turun <strong>-1,93%</strong>.
+                    </div>
+                  </div>
+
                   <p style="margin-top:10px;">
                     Penjualan semester I 2026 turun 1,34% dibanding periode yang sama tahun sebelumnya, sedangkan laba usaha turun 1,93%. Ini menunjukkan bahwa bisnis inti belum mengalami akselerasi. HPP turun lebih cepat daripada penjualan, sehingga laba bruto masih tumbuh tipis 0,96%, tetapi beban usaha meningkat 4,39% dan menahan pertumbuhan laba operasi.
                   </p>
@@ -4506,6 +4789,49 @@
                     </tbody>
                   </table>
 
+                  <!-- GRAFIK VISUAL SEKSI 3: ANALISIS VERTIKAL & KOMPOSISI NERACA -->
+                  <div class="boomer-chart-card" id="chart_eo_section_3">
+                    <div class="boomer-chart-header">
+                      <h6 class="boomer-chart-title">📊 Grafik Visual Seksi 3: Margin Profitabilitas (% thd Penjualan) & Komposisi Neraca</h6>
+                      <div class="boomer-chart-legend">
+                        <span><span class="boomer-legend-dot" style="background:#0F5338;"></span>Margin Inti (Operasional)</span>
+                        <span><span class="boomer-legend-dot" style="background:#D97706;"></span>Margin Akhir (Termasuk Non-Op)</span>
+                      </div>
+                    </div>
+
+                    <div class="boomer-bar-row">
+                      <div class="boomer-bar-top">
+                        <span>Gross Margin (Laba Kotor / Penjualan)</span>
+                        <span><strong>26,96%</strong> (6M 2026) vs <strong>26,35%</strong> (6M 2025) <span class="badge badge-green">Membaik +0,61%</span></span>
+                      </div>
+                      <div class="boomer-bar-track"><div class="boomer-bar-fill-primary" style="width:27.0%;"></div></div>
+                    </div>
+
+                    <div class="boomer-bar-row">
+                      <div class="boomer-bar-top">
+                        <span>Operating Margin (Laba Usaha Inti / Penjualan)</span>
+                        <span><strong>14,21%</strong> (6M 2026) vs <strong>14,29%</strong> (6M 2025) <span class="badge" style="background:#E2E8F0; color:#334155;">Stagnan (-0,08%)</span></span>
+                      </div>
+                      <div class="boomer-bar-track"><div class="boomer-bar-fill-primary" style="width:14.2%;"></div></div>
+                    </div>
+
+                    <div class="boomer-bar-row" style="background:#FFFDF5; border-color:#FDE68A;">
+                      <div class="boomer-bar-top">
+                        <span>Net Margin (Laba Bersih / Penjualan)</span>
+                        <span><strong>42,02%</strong> (6M 2026) vs <strong>13,36%</strong> (6M 2025) <span class="badge badge-gold">Terdongkrak Non-Operasional</span></span>
+                      </div>
+                      <div class="boomer-bar-track"><div class="boomer-bar-fill-gold" style="width:42.0%;"></div></div>
+                    </div>
+
+                    <div style="margin-top:12px; padding-top:10px; border-top:1px dashed #CBD5E1;">
+                      <div style="font-size:13.5px; font-weight:800; color:#0D3B26; margin-bottom:6px;">Komposisi Struktur Pendanaan Neraca (30 Juni 2026):</div>
+                      <div style="height:26px; border-radius:8px; overflow:hidden; display:flex; font-size:12.5px; font-weight:800; color:#fff; text-align:center; line-height:26px;">
+                        <div style="width:57.4%; background:#0F5338;">Ekuitas (Modal Sendiri): 57,4%</div>
+                        <div style="width:42.6%; background:#D97706;">Total Liabilitas (Utang): 42,6%</div>
+                      </div>
+                    </div>
+                  </div>
+
                   <p style="margin-top:10px;">
                     Secara vertikal, gross margin membaik dari 26,35% menjadi 26,96%. Akan tetapi operating margin praktis tetap sekitar 14%. Lonjakan net margin menjadi sekitar 42% bukan berasal dari lonjakan margin operasi, sehingga angka tersebut tidak tepat digunakan sendiri sebagai ukuran kemampuan pembayaran utang.
                   </p>
@@ -4526,6 +4852,35 @@
                   <p>
                     Segmen industrial paper, tissue dan lainnya naik dari USD602,0 juta menjadi USD613,3 juta atau sekitar 1,9%. Namun laba usaha kedua segmen sedikit melemah. Hal ini memperkuat kesimpulan bahwa lonjakan laba neto konsolidasian belum mencerminkan akselerasi laba dari core operating segments.
                   </p>
+
+                  <!-- GRAFIK VISUAL SEKSI 4: SEGMEN USAHA -->
+                  <div class="boomer-chart-card" id="chart_eo_section_4">
+                    <div class="boomer-chart-header">
+                      <h6 class="boomer-chart-title">📊 Grafik Visual Seksi 4: Pendapatan per Segmen Usaha (6M 2026 vs 6M 2025)</h6>
+                      <div class="boomer-chart-legend">
+                        <span><span class="boomer-legend-dot" style="background:#0F5338;"></span>6M 2026</span>
+                        <span><span class="boomer-legend-dot" style="background:#94A3B8;"></span>6M 2025</span>
+                      </div>
+                    </div>
+
+                    <div class="boomer-bar-row">
+                      <div class="boomer-bar-top">
+                        <span>1. Segmen Industrial Paper, Tissue & Lainnya (56,6% Omzet)</span>
+                        <span><strong>USD 613,3 Juta</strong> vs USD 602,0 Juta <span class="badge badge-green">Naik +1,9% (+USD 11,3 Juta)</span></span>
+                      </div>
+                      <div class="boomer-bar-track"><div class="boomer-bar-fill-primary" style="width:100%;"></div></div>
+                      <div class="boomer-bar-track" style="height:10px; margin-bottom:0;"><div class="boomer-bar-fill-secondary" style="width:98.1%;"></div></div>
+                    </div>
+
+                    <div class="boomer-bar-row">
+                      <div class="boomer-bar-top">
+                        <span>2. Segmen Pulp & Cultural Paper (43,4% Omzet)</span>
+                        <span><strong>USD 471,0 Juta</strong> vs USD 497,0 Juta <span class="badge badge-gold" style="background:#FEE2E2; color:#991B1B;">Turun -5,2% (-USD 26,0 Juta)</span></span>
+                      </div>
+                      <div class="boomer-bar-track"><div class="boomer-bar-fill-gold" style="width:76.8%;"></div></div>
+                      <div class="boomer-bar-track" style="height:10px; margin-bottom:0;"><div class="boomer-bar-fill-secondary" style="width:81.0%;"></div></div>
+                    </div>
+                  </div>
                 </div>
 
                 <!-- SEKSI 5: COVENANT DAN HEADROOM -->
@@ -4577,6 +4932,43 @@
                       </tr>
                     </tbody>
                   </table>
+
+                  <!-- GRAFIK VISUAL SEKSI 5: COVENANT DAN HEADROOM -->
+                  <div class="boomer-chart-card" id="chart_eo_section_5">
+                    <div class="boomer-chart-header">
+                      <h6 class="boomer-chart-title">📊 Grafik Visual Seksi 5: Bantalan Keamanan (Headroom) Covenant Kredit & Obligasi</h6>
+                      <div class="boomer-chart-legend">
+                        <span><span class="boomer-legend-dot" style="background:#0F5338;"></span>Posisi Aktual</span>
+                        <span><span class="boomer-legend-dot" style="background:#DC2626;"></span>Batas Covenant</span>
+                      </div>
+                    </div>
+
+                    <div class="boomer-bar-row">
+                      <div class="boomer-bar-top">
+                        <span>1. Current Ratio (Likuiditas — Wajib ≥ 1,00x)</span>
+                        <span>Aktual: <strong>1,96x</strong> vs Batas Min: <strong>1,00x</strong> <span class="badge badge-green">Aman • Bantalan +0,96x (+96% di atas batas)</span></span>
+                      </div>
+                      <div class="boomer-bar-track"><div class="boomer-bar-fill-primary" style="width:98%;"></div></div>
+                      <div class="boomer-bar-track" style="height:8px; margin-bottom:0;"><div class="boomer-bar-fill-red" style="width:50%;"></div></div>
+                    </div>
+
+                    <div class="boomer-bar-row">
+                      <div class="boomer-bar-top">
+                        <span>2. Rasio Utang Berbunga thd Ekuitas / DER (Wajib ≤ 2,00x)</span>
+                        <span>Aktual: <strong>0,50x</strong> vs Batas Maks: <strong>2,00x</strong> <span class="badge badge-green">Aman • Ruang Tersisa 1,50x (Baru terpakai 25%)</span></span>
+                      </div>
+                      <div class="boomer-bar-track"><div class="boomer-bar-fill-primary" style="width:25%;"></div></div>
+                      <div class="boomer-bar-track" style="height:8px; margin-bottom:0;"><div class="boomer-bar-fill-red" style="width:100%;"></div></div>
+                    </div>
+
+                    <div class="boomer-bar-row" style="background:#FFFDF5; border-color:#FDE68A;">
+                      <div class="boomer-bar-top">
+                        <span>3. DSCR & Covenant Perwaliamanatan Obligasi/Sukuk</span>
+                        <span>Indikasi Laba Usaha/Bunga: <strong>1,73x</strong> (Min 1,00x) <span class="badge badge-gold">Wajib Verifikasi Dokumen Kontrak Perwaliamanatan</span></span>
+                      </div>
+                      <div class="boomer-bar-track"><div class="boomer-bar-fill-gold" style="width:86.5%;"></div></div>
+                    </div>
+                  </div>
 
                   <p style="margin-top:10px; font-size:11.5px; color:#57534E;">
                     *DER sekitar 0,5x merupakan rasio pengelolaan modal dalam laporan keuangan, menggunakan pinjaman berbunga terhadap ekuitas. Definisi covenant pada masing-masing fasilitas harus dicocokkan sebelum dinyatakan sebagai compliance final.
@@ -4698,6 +5090,40 @@
                     <strong>Kepatuhan Batas Financial Covenant Terjaga:</strong> Rasio utang terhadap ekuitas (DER) emiten berada di level <strong>1,96x</strong>, jauh di bawah batas pengetatan perbankan (3,00x) maupun ambang batas regulasi POJK (5,00x), dengan Current Ratio sehat <strong>1,57x</strong>.
                   </li>
                 </ol>
+
+                <!-- GRAFIK VISUAL NOTA DINAS INVESTASI DAAZ -->
+                <div class="boomer-chart-card" id="chart_nd_investasi_daaz">
+                  <div class="boomer-chart-header">
+                    <h6 class="boomer-chart-title">📊 Grafik Visual Solvabilitas & Komparasi 4-Dimensi (PT DAAZ)</h6>
+                    <div class="boomer-chart-legend">
+                      <span><span class="boomer-legend-dot" style="background:#0F5338;"></span>Realisasi Aktual</span>
+                      <span><span class="boomer-legend-dot" style="background:#94A3B8;"></span>Target / Ambang Batas</span>
+                    </div>
+                  </div>
+                  <div class="boomer-bar-row">
+                    <div class="boomer-bar-top">
+                      <span>1. Skor Solvabilitas Modified Z-Score (Batas Aman ≥ 2,00)</span>
+                      <span>Aktual: <strong>2,5415</strong> vs Ambang Aman: <strong>2,0000</strong> <span class="badge badge-green">Zona Aman (Safe Zone)</span></span>
+                    </div>
+                    <div class="boomer-bar-track"><div class="boomer-bar-fill-primary" style="width:84.7%;"></div></div>
+                    <div class="boomer-bar-track" style="height:10px; margin-bottom:0;"><div class="boomer-bar-fill-secondary" style="width:66.7%;"></div></div>
+                  </div>
+                  <div class="boomer-bar-row">
+                    <div class="boomer-bar-top">
+                      <span>2. Realisasi Penjualan thd Target RKAP (RTC 98,51%) & Pertumbuhan YoY (+20,0%)</span>
+                      <span>Aktual: <strong>Rp1.980,0 M</strong> vs Target RKAP: <strong>Rp2.010,0 M</strong> (Tahun Lalu: Rp1.650,0 M)</span>
+                    </div>
+                    <div class="boomer-bar-track"><div class="boomer-bar-fill-primary" style="width:98.5%;"></div></div>
+                    <div class="boomer-bar-track" style="height:10px; margin-bottom:0;"><div class="boomer-bar-fill-secondary" style="width:82.1%;"></div></div>
+                  </div>
+                  <div class="boomer-bar-row">
+                    <div class="boomer-bar-top">
+                      <span>3. Rasio Utang thd Ekuitas / DER (Batas Covenant ≤ 3,00x)</span>
+                      <span>Aktual: <strong>1,96x</strong> vs Batas Maksimum: <strong>3,00x</strong> <span class="badge badge-green">Aman • Bantalan 1,04x</span></span>
+                    </div>
+                    <div class="boomer-bar-track"><div class="boomer-bar-fill-primary" style="width:65.3%;"></div></div>
+                  </div>
+                </div>
 
                 <h5>III. Rekomendasi Komite Investasi & Klausul Perlindungan (Covenant Berbasis Bukti)</h5>
                 <ul style="margin-left:20px; margin-bottom:12px;">
@@ -11159,7 +11585,30 @@ Conflict: ${escapeHtml(c.conflict)}</div>
               <div style="font-size:10.5px; color:#1E40AF; margin-top:2px;">7 Seksi Standar + Nota Dinas Investasi</div>
             </div>
           </div>
-          <div style="background:#FFFFFF; border:1px solid #E2E8F0; border-radius:8px; padding:10px 14px; font-size:11.5px; color:var(--ink); line-height:1.5;">
+          <div class="boomer-chart-card" style="margin:10px 0;">
+            <div class="boomer-chart-header">
+              <h6 class="boomer-chart-title">📊 Grafik Visual Ringkasan Preview Investasi (${escapeHtml(res.entityName)})</h6>
+              <div class="boomer-chart-legend">
+                <span><span class="boomer-legend-dot" style="background:#0F5338;"></span>Aktual</span>
+                <span><span class="boomer-legend-dot" style="background:#94A3B8;"></span>Pembanding / Batas</span>
+              </div>
+            </div>
+            <div class="boomer-bar-row">
+              <div class="boomer-bar-top">
+                <span>1. Likuiditas & Solvabilitas Covenant</span>
+                <span><strong>${isDaaz ? 'Modified Z-Score 2,5415 (Min 2,00)' : 'Current Ratio 1,96x (Min 1,00x) • DER 0,50x (Maks 2,00x)'}</strong> <span class="badge badge-green">Memenuhi Batas Aman</span></span>
+              </div>
+              <div class="boomer-bar-track"><div class="boomer-bar-fill-primary" style="width:92%;"></div></div>
+            </div>
+            <div class="boomer-bar-row">
+              <div class="boomer-bar-top">
+                <span>2. Kualitas Laba (Operasi Inti vs Faktor Non-Operasional)</span>
+                <span><strong>${isDaaz ? 'Omzet Rp1.980 M (98,51% RKAP)' : 'Laba Neto +210,3% (87,9% dari Asosiasi + Selisih Kurs)'}</strong> <span class="badge badge-gold">Perlu Monitoring Kas</span></span>
+              </div>
+              <div class="boomer-bar-track"><div class="boomer-bar-fill-gold" style="width:88%;"></div></div>
+            </div>
+          </div>
+          <div style="background:#FFFFFF; border:1px solid #E2E8F0; border-radius:8px; padding:10px 14px; font-size:12.5px; color:var(--ink); line-height:1.55;">
             <strong>Ringkasan Eksekutif Investment Preview (${escapeHtml(res.entityName)}):</strong> Berdasarkan ekstraksi dari <strong>${res.filesProcessedCount} dokumen</strong> yang diunggah pada jalur <strong>Skema Investasi</strong>, struktur permodalan dan covenant kredit memenuhi ambang batas solvabilitas, namun komite investasi wajib memantau <em>Quality of Earnings</em> (ketergantungan laba non-operasional/piutang) serta menetapkan klausul <em>Debt Service Reserve Account (DSRA)</em> pada Nota Dinas Investasi.
           </div>
         `;
@@ -11187,7 +11636,26 @@ Conflict: ${escapeHtml(c.conflict)}</div>
               <div style="font-size:10.5px; color:#1E40AF; margin-top:2px;">S1–S10 Pengendali Breakdown Siap</div>
             </div>
           </div>
-          <div style="background:#FFFFFF; border:1px solid #E2E8F0; border-radius:8px; padding:10px 14px; font-size:11.5px; color:var(--ink); line-height:1.5;">
+          <div class="boomer-chart-card" style="margin:10px 0;">
+            <div class="boomer-chart-header">
+              <h6 class="boomer-chart-title">📊 Grafik Visual Ringkasan Preview Pengendali (${escapeHtml(res.entityName)})</h6>
+            </div>
+            <div class="boomer-bar-row">
+              <div class="boomer-bar-top">
+                <span>1. Pertumbuhan Biaya Opex (+32,91%) vs Omzet (+31,45%)</span>
+                <span class="badge badge-gold" style="background:#FEE2E2; color:#991B1B;">S7 Growth Gap +1,46%</span>
+              </div>
+              <div class="boomer-bar-track"><div class="boomer-bar-fill-red" style="width:65.8%;"></div></div>
+            </div>
+            <div class="boomer-bar-row">
+              <div class="boomer-bar-top">
+                <span>2. Likuiditas Modal Kerja (Current Ratio 0,57x vs Standar 1,20x)</span>
+                <span class="badge badge-gold" style="background:#FEE2E2; color:#991B1B;">Defisit NWC -Rp 40,49 Miliar</span>
+              </div>
+              <div class="boomer-bar-track"><div class="boomer-bar-fill-gold" style="width:47.5%;"></div></div>
+            </div>
+          </div>
+          <div style="background:#FFFFFF; border:1px solid #E2E8F0; border-radius:8px; padding:10px 14px; font-size:12.5px; color:var(--ink); line-height:1.55;">
             <strong>Ringkasan Eksekutif Pengendali Preview (${escapeHtml(res.entityName)}):</strong> Berdasarkan ekstraksi dari <strong>${res.filesProcessedCount} dokumen</strong> pada jalur <strong>Entitas Pengendali</strong>, pembukuan neraca lulus uji matematika ISA 520 (Δ = 0,00), namun terdeteksi 3 anomali pengendalian operasional: <strong>S7 Growth Gap (+1,46 pp)</strong>, <strong>Defisit Modal Kerja Bersih (-Rp40,49 M; CR 0,57x)</strong>, dan <strong>Lonjakan Beban Insentif/Bonus (2.308% dari RKAP)</strong> yang memerlukan intervensi induk perusahaan.
           </div>
         `;
@@ -11200,7 +11668,7 @@ Conflict: ${escapeHtml(c.conflict)}</div>
               <div style="font-size:10.5px; color:#1E40AF; margin-top:2px;">Investee: <strong>${escapeHtml(res.entityName)}</strong></div>
             </div>
             <div style="background:#FEF2F2; border:1px solid #FECACA; border-radius:8px; padding:10px 12px;">
-              <div style="font-size:10px; font-weight:700; color:#991B1B;">RASIO PIUTang USAHA VS RKAP (RTC TIERING)</div>
+              <div style="font-size:10px; font-weight:700; color:#991B1B;">RASIO PIUTANG USAHA VS RKAP (RTC TIERING)</div>
               <div style="font-size:13.5px; font-weight:800; color:#991B1B; margin-top:2px;">RTC 301,20% • TIERING MERAH (&gt;120%)</div>
               <div style="font-size:10.5px; color:#7F1D1D; margin-top:2px;">Piutang Aktual Rp185,57 M vs Pagu Rp61,61 M</div>
             </div>
@@ -11215,7 +11683,26 @@ Conflict: ${escapeHtml(c.conflict)}</div>
               <div style="font-size:10.5px; color:#7F1D1D; margin-top:2px;">S1–S10 Non-Pengendali Breakdown Siap</div>
             </div>
           </div>
-          <div style="background:#FFFFFF; border:1px solid #E2E8F0; border-radius:8px; padding:10px 14px; font-size:11.5px; color:var(--ink); line-height:1.5;">
+          <div class="boomer-chart-card" style="margin:10px 0;">
+            <div class="boomer-chart-header">
+              <h6 class="boomer-chart-title">📊 Grafik Visual Ringkasan Preview Non-Pengendali (${escapeHtml(res.entityName)})</h6>
+            </div>
+            <div class="boomer-bar-row">
+              <div class="boomer-bar-top">
+                <span>1. Realisasi Piutang Pihak Ketiga (Rp185,0 M) vs Pagu RKAP (Rp61,4 M)</span>
+                <span class="badge badge-gold" style="background:#FEE2E2; color:#991B1B;">RTC 301,20% (Tiering Merah)</span>
+              </div>
+              <div class="boomer-bar-track"><div class="boomer-bar-fill-red" style="width:100%;"></div></div>
+            </div>
+            <div class="boomer-bar-row">
+              <div class="boomer-bar-top">
+                <span>2. Likuiditas Modal Kerja (Current Ratio 0,61x vs Standar 1,00x)</span>
+                <span class="badge badge-gold" style="background:#FEE2E2; color:#991B1B;">Defisit NWC -Rp 347,18 Miliar</span>
+              </div>
+              <div class="boomer-bar-track"><div class="boomer-bar-fill-gold" style="width:61%;"></div></div>
+            </div>
+          </div>
+          <div style="background:#FFFFFF; border:1px solid #E2E8F0; border-radius:8px; padding:10px 14px; font-size:12.5px; color:var(--ink); line-height:1.55;">
             <strong>Ringkasan Eksekutif Non-Pengendali Preview (${escapeHtml(res.entityName)}):</strong> Berdasarkan ekstraksi dari <strong>${res.filesProcessedCount} dokumen</strong> pada jalur <strong>Entitas Non-Pengendali</strong>, investasi saham minoritas 1% menghadapi risiko likuiditas tinggi akibat lonjakan piutang pihak ketiga (<strong>RTC 301,20% — Tiering Merah</strong>) yang menyandera kas operasional sehingga mengancam pencairan tunai hak dividen minoritas (UUPT Pasal 71 & PSAK 65).
           </div>
         `;
