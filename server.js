@@ -624,7 +624,22 @@ const server = http.createServer(async (req, res) => {
         return sendJson(res, 200, { success: true, message: "Data Pool dikosongkan." });
       }
 
-      // 11. AI Forensic Copilot Chat with Gemini API & Local RAG
+      // 11. AI Forensic Copilot Chat with Gemini API & Local RAG + Argon Deep-Dive API
+      if (pathname === "/api/rag/argon-deep-dive" && method === "POST") {
+        const body = await parseBody(req);
+        const topic = body.topic || body.query || "pindo_qoe";
+        const depth = Number(body.depthLevel || 3);
+        const activeContext = body.context || {};
+        const result = ragEngine.digDeeper(topic, depth, activeContext);
+        return sendJson(res, 200, result);
+      }
+
+      if (pathname === "/api/rag/train" && method === "POST") {
+        const body = await parseBody(req);
+        const result = ragEngine.trainOnDocument(body);
+        return sendJson(res, 200, result);
+      }
+
       if (pathname === "/api/copilot/chat" && method === "POST") {
         const body = await parseBody(req);
         const activeContext = {
