@@ -5,13 +5,14 @@
 
 const https = require("https");
 const ragEngine = require("./ragEngine");
+const aiConfig = require("../config/aiConfig");
 const { COPILOT_SYSTEM_PROMPT, buildCopilotPrompt } = require("./copilotSystemPrompt");
 
 class GeminiClient {
   constructor() {
-    this.apiKey = process.env.GEMINI_API_KEY || "";
-    this.models = ["gemini-2.5-flash", "gemini-2.0-flash", "gemini-1.5-flash", "gemini-1.5-pro"];
-    this.defaultModel = "gemini-2.0-flash";
+    this.apiKey = (aiConfig.gemini && aiConfig.gemini.apiKey) || process.env.GEMINI_API_KEY || "";
+    this.models = (aiConfig.gemini && aiConfig.gemini.fallbackModels) || ["gemini-2.5-flash", "gemini-2.0-flash", "gemini-1.5-flash", "gemini-1.5-pro"];
+    this.defaultModel = (aiConfig.gemini && aiConfig.gemini.defaultModel) || "gemini-2.0-flash";
   }
 
   setApiKey(key) {

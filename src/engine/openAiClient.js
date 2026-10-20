@@ -7,13 +7,14 @@
 const https = require("https");
 const ragEngine = require("./ragEngine");
 const geminiClient = require("./geminiClient");
+const aiConfig = require("../config/aiConfig");
 const { COPILOT_SYSTEM_PROMPT } = require("./copilotSystemPrompt");
 
 class OpenAIClient {
   constructor() {
-    this.apiKey = process.env.OPENAI_API_KEY || "";
-    this.models = ["gpt-4o", "gpt-4o-mini", "o3-mini", "gpt-4-turbo"];
-    this.defaultModel = "gpt-4o";
+    this.apiKey = (aiConfig.openai && aiConfig.openai.apiKey) || process.env.OPENAI_API_KEY || "";
+    this.models = (aiConfig.openai && aiConfig.openai.fallbackModels) || ["gpt-4o", "gpt-4o-mini", "o3-mini", "gpt-4-turbo"];
+    this.defaultModel = (aiConfig.openai && aiConfig.openai.defaultModel) || "gpt-4o";
   }
 
   setApiKey(key) {

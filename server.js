@@ -6,11 +6,12 @@
 const http = require("http");
 const fs = require("fs");
 const path = require("path");
-const url = require("url");
+const { URL } = require("url");
 const cluster = require("cluster");
 const os = require("os");
 
-// Import Domain Engines
+// Import Centralized Codebase Configuration & Domain Engines
+const aiConfig = require("./src/config/aiConfig");
 const masterParams = require("./src/data/masterParameters");
 const seedData = require("./src/data/seedData");
 const financialMath = require("./src/engine/financialMath");
@@ -35,6 +36,9 @@ const PUBLIC_DIR = path.join(__dirname, "public");
 function sendJson(res, statusCode, data, headers = {}) {
   res.writeHead(statusCode, {
     "Content-Type": "application/json",
+    "X-Content-Type-Options": "nosniff",
+    "X-Frame-Options": "SAMEORIGIN",
+    "Referrer-Policy": "strict-origin-when-cross-origin",
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
     "Access-Control-Allow-Headers": "Content-Type, Authorization, X-Requested-With",
@@ -69,8 +73,9 @@ function parseBody(req, maxBytes = 50 * 1024 * 1024) {
 
 const server = http.createServer(async (req, res) => {
   const reqStartTime = performance.now();
-  const parsedUrl = url.parse(req.url, true);
-  const pathname = parsedUrl.pathname;
+  const parsedUrlObj = new URL(req.url || "/", "http://localhost");
+  const pathname = parsedUrlObj.pathname;
+  const parsedUrl = { pathname, query: Object.fromEntries(parsedUrlObj.searchParams.entries()) };
   const method = req.method;
 
   // Real-time latency & throughput observability

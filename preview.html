@@ -1257,15 +1257,15 @@
     </div>
 
     <div class="header-actions">
-      <!-- Language Switch Toggle (English <-> Indonesian) -->
-      <div id="btnLangToggle" onclick="toggleLanguage()" title="Ganti Bahasa / Switch Language" style="cursor:pointer; display:inline-flex; align-items:center; background:var(--surface); border:1px solid var(--line-strong); border-radius:20px; padding:2px 4px; font-size:11.5px; font-weight:700; user-select:none; gap:2px;">
+      <!-- Language Switch Toggle (Hidden for Clean UX; Configured in Codebase) -->
+      <div id="btnLangToggle" onclick="toggleLanguage()" title="Ganti Bahasa / Switch Language" style="display:none; cursor:pointer; align-items:center; background:var(--surface); border:1px solid var(--line-strong); border-radius:20px; padding:2px 4px; font-size:11.5px; font-weight:700; user-select:none; gap:2px;">
         <span style="font-size:12px; margin:0 2px;">🌐</span>
         <span id="pillLangID" style="padding:2px 7px; border-radius:14px; background:var(--forest); color:#fff; transition:all 0.2s;">ID</span>
         <span id="pillLangEN" style="padding:2px 7px; border-radius:14px; color:var(--ink-secondary); transition:all 0.2s;">EN</span>
       </div>
 
-      <!-- Explanation Mode Toggle (Layperson / Bahasa Awam vs Pro Audit) -->
-      <div id="btnExplanationModeToggle" onclick="toggleExplanationMode()" title="Ganti Mode: Bahasa Awam vs Audit Profesional" style="cursor:pointer; display:inline-flex; align-items:center; background:var(--surface); border:1px solid #B8DAC8; border-radius:20px; padding:2px 4px; font-size:11.5px; font-weight:700; user-select:none; gap:2px;">
+      <!-- Explanation Mode Toggle (Hidden for Clean UX; Configured in Codebase) -->
+      <div id="btnExplanationModeToggle" onclick="toggleExplanationMode()" title="Ganti Mode: Bahasa Awam vs Audit Profesional" style="display:none; cursor:pointer; align-items:center; background:var(--surface); border:1px solid #B8DAC8; border-radius:20px; padding:2px 4px; font-size:11.5px; font-weight:700; user-select:none; gap:2px;">
         <span style="font-size:12px; margin:0 2px;">💡</span>
         <span id="pillModeAwam" data-i18n="mode_awam" style="padding:2px 7px; border-radius:14px; background:var(--forest); color:#fff; transition:all 0.2s;">Awam</span>
         <span id="pillModePro" data-i18n="mode_pro" style="padding:2px 7px; border-radius:14px; color:var(--ink-secondary); transition:all 0.2s;">Pro</span>
@@ -1276,11 +1276,11 @@
         <strong id="navBreadcrumbText">Menu Utama</strong>
       </div>
 
-      <button id="btnHeaderUpload" onclick="openUploadModal()" class="btn btn-secondary btn-sm">
+      <button id="btnHeaderUpload" onclick="openUploadModal()" class="btn btn-secondary btn-sm" style="display:none;">
         📤 Unggah File (Excel/PDF)
       </button>
 
-      <a id="btnHeaderDownloadPdf" href="/api/download-formula-pdf" download="Kajian_Ihsan_Formula_Reference_Compendium.pdf" class="btn btn-gold btn-sm" style="display:flex; align-items:center; gap:5px; font-weight:700; text-decoration:none;" title="Unduh PDF Resmi: Seluruh Rumus, Metrik & Rationale Forensik (7 Halaman)">
+      <a id="btnHeaderDownloadPdf" href="/api/download-formula-pdf" download="Kajian_Ihsan_Formula_Reference_Compendium.pdf" class="btn btn-gold btn-sm" style="display:none; align-items:center; gap:5px; font-weight:700; text-decoration:none;" title="Unduh PDF Resmi: Seluruh Rumus, Metrik & Rationale Forensik (7 Halaman)">
         <span>📕</span>
         <span>Unduh PDF Formula</span>
       </a>
@@ -1290,22 +1290,23 @@
         <span>Data Pool (<strong id="txtDataPoolCount">0</strong>)</span>
       </button>
 
-      <button id="btnHeaderSettings" onclick="switchView('settings')" class="btn btn-secondary btn-sm" style="display:flex; align-items:center; gap:5px; font-weight:600; border-color:#B8DAC8; background:#fff;" title="Buka Pengaturan AI: Google Gemini vs Mesin Forensik Lokal">
+      <!-- AI Settings & API Key Buttons Hidden from UI (Configured Directly in Codebase: src/config/aiConfig.js & CODEBASE_AI_CONFIG) -->
+      <button id="btnHeaderSettings" onclick="switchView('settings')" class="btn btn-secondary btn-sm" style="display:none; align-items:center; gap:5px; font-weight:600; border-color:#B8DAC8; background:#fff;" title="Buka Pengaturan AI: Google Gemini vs Mesin Forensik Lokal">
         <span>⚙️</span>
         <span id="txtHeaderSettings">AI: <strong id="txtAiModeBadge" style="color:var(--forest);">Lokal Kajian Ihsan</strong></span>
       </button>
 
-      <button id="btnHeaderApiKey" onclick="openApiKeyModal()" class="btn btn-secondary btn-sm" style="display:flex; align-items:center; gap:5px; font-weight:600; border-color:#B8DAC8; background:#fff;" title="Konfigurasi Google Gemini API Key">
+      <button id="btnHeaderApiKey" onclick="openApiKeyModal()" class="btn btn-secondary btn-sm" style="display:none; align-items:center; gap:5px; font-weight:600; border-color:#B8DAC8; background:#fff;" title="Konfigurasi Google Gemini API Key">
         <span>🔑</span>
-        <span id="txtHeaderApiKey">Gemini API: <strong id="txtApiKeyStatus" style="color:var(--ink-secondary);">Atur Key</strong></span>
+        <span id="txtApiKeyHeader"><strong id="txtApiKeyStatus" style="color:var(--ink-secondary);">Codebase Config</strong></span>
       </button>
 
       <button id="btnHeaderCopilot" onclick="openCopilotDrawer()" class="btn btn-secondary btn-sm" style="background:var(--forest-soft); color:var(--forest); border-color:#B8DAC8;">
-        🤖 AI Chatbot RAG (Cross-Verify)
+        🤖 AI Copilot RAG
       </button>
 
       <button id="btnHeaderReset" onclick="resetAllToBlankState()" class="btn btn-danger btn-sm" title="Kosongkan seluruh data kalkulasi">
-        🗑️ Kosongkan Data (Blank State)
+        🗑️ Reset Data
       </button>
 
       <button id="btnHeaderHome" onclick="switchView('main_menu')" class="btn btn-primary btn-sm hidden">
@@ -1371,7 +1372,7 @@
             <button type="button" onclick="switchView('datapool')" class="btn btn-gold btn-sm" style="font-weight:700;">
               📚 <span data-i18n="btn_datapool_nav">Data Pool & Pola AI</span>
             </button>
-            <button type="button" onclick="switchView('settings')" class="btn btn-secondary btn-sm" style="font-weight:700;">
+            <button type="button" onclick="switchView('settings')" class="btn btn-secondary btn-sm" style="display:none; font-weight:700;">
               ⚙️ <span data-i18n="btn_settings_nav">Pengaturan AI</span>
             </button>
           </div>
@@ -6333,9 +6334,26 @@
 
   <!-- JAVASCRIPT APPLICATION CONTROLLER -->
   <script>
+    // =========================================================================
+    // CENTRALIZED CODEBASE AI & LANGUAGE CONFIGURATION
+    // Configure API keys, provider preference, and language directly here in code
+    // (or on the backend in src/config/aiConfig.js / .env). End-user UI API key
+    // prompts and unnecessary header toggles are disabled for a clean UX.
+    // =========================================================================
+    const CODEBASE_AI_CONFIG = {
+      lang: 'id', // 'id' | 'en'
+      explanationMode: 'awam', // 'awam' | 'pro'
+      aiProvider: 'local', // 'local' | 'google' | 'openai'
+      activeCloudProvider: 'google', // 'google' | 'openai'
+      geminiApiKey: '', // Set Gemini API Key here in code (or in src/config/aiConfig.js)
+      geminiModel: 'gemini-2.0-flash',
+      openAiApiKey: '', // Set OpenAI API Key here in code (or in src/config/aiConfig.js)
+      openAiModel: 'gpt-4o'
+    };
+
     // State Tracker
     const appState = {
-      lang: 'id', // 'id' | 'en'
+      lang: CODEBASE_AI_CONFIG.lang,
       currentView: 'main_menu',
       hasLoadedData: false,
       stagedFile: null,
@@ -6345,12 +6363,12 @@
       currentAnalyst: "Senior Financial Forensic Auditor",
       auditTrail: [],
       dataPool: [],
-      geminiApiKey: '',
-      geminiModel: 'gemini-2.0-flash',
-      openAiApiKey: '',
-      openAiModel: 'gpt-4o',
-      activeCloudProvider: 'google', // 'google' | 'openai'
-      aiProvider: 'google', // 'google' | 'openai' | 'local'
+      geminiApiKey: CODEBASE_AI_CONFIG.geminiApiKey,
+      geminiModel: CODEBASE_AI_CONFIG.geminiModel,
+      openAiApiKey: CODEBASE_AI_CONFIG.openAiApiKey,
+      openAiModel: CODEBASE_AI_CONFIG.openAiModel,
+      activeCloudProvider: CODEBASE_AI_CONFIG.activeCloudProvider,
+      aiProvider: CODEBASE_AI_CONFIG.aiProvider,
       activeDocIds: [
         "DOC-PRD-EPS-01",
         "DOC-PRD-EPS-02",
@@ -13632,19 +13650,7 @@ Berdasarkan pengawasan konsolidasi 6 entitas portofolio Kajian Ihsan:
 
       const contentEl = document.getElementById(`content_${fbId}`);
       if (contentEl) {
-        const hasAnyKey = !!(appState.geminiApiKey || appState.openAiApiKey);
-        const apiKeyHint = !hasAnyKey ? `
-          <div style="margin-top:10px; padding:10px 12px; background:#F4FAF6; border:1px solid #B8DAC8; border-radius:6px; font-size:11px; color:var(--forest-deep);">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
-              <span>🔑 <strong>Aktifkan Live AI (Gemini / ChatGPT):</strong> Tempel API Key Anda di sini untuk penalaran tak terbatas:</span>
-              <button type="button" onclick="openApiKeyModal()" style="background:none; border:none; font-size:10.5px; color:var(--forest); cursor:pointer; text-decoration:underline;">Pilih Model & Provider</button>
-            </div>
-            <div style="display:flex; gap:6px;">
-              <input type="password" id="quickApiKey_${fbId}" placeholder="Tempel Gemini (AIzaSy...) atau ChatGPT (sk-...)" style="flex:1; padding:5px 8px; font-size:11px; border:1px solid #B8DAC8; border-radius:4px; font-family:monospace;" />
-              <button type="button" onclick="saveQuickApiKey('quickApiKey_${fbId}', '${mode}')" class="btn btn-primary" style="font-size:11px; padding:5px 12px; white-space:nowrap;">⚡ Aktifkan Key</button>
-            </div>
-          </div>
-        ` : '';
+        const apiKeyHint = '';
 
         contentEl.innerHTML = `
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
@@ -16431,13 +16437,7 @@ Berdasarkan pengawasan konsolidasi 6 entitas portofolio Kajian Ihsan:
                 modelBadge = `<span class="badge badge-blue" style="font-size:10px;">⚖️ Mesin Forensik Lokal (Kajian Ihsan)</span>`;
               }
 
-              const hasAnyKey = !!(appState.geminiApiKey || appState.openAiApiKey);
-              const apiKeyHint = !hasAnyKey ? `
-                <div style="margin-top:8px; padding:6px 10px; background:#F4FAF6; border:1px solid #B8DAC8; border-radius:6px; font-size:11px; display:flex; justify-content:space-between; align-items:center;">
-                  <span>💡 <strong>Ingin AI berpikir lebih fleksibel & interaktif?</strong> Masukkan Google Gemini atau OpenAI API Key Anda.</span>
-                  <button type="button" onclick="openApiKeyModal()" class="btn btn-secondary btn-sm" style="font-size:10px; padding:2px 8px;">🔑 Atur API Key</button>
-                </div>
-              ` : '';
+              const apiKeyHint = '';
 
               contentEl.innerHTML = `
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
@@ -17189,28 +17189,18 @@ Berdasarkan pengawasan konsolidasi 6 entitas portofolio Kajian Ihsan:
 
     // Drag and Drop & App Initialization
     window.addEventListener('DOMContentLoaded', () => {
-      // Initialize Gemini & OpenAI Keys & Models from localStorage or sessionStorage
+      // Enforce Codebase-Only AI Configuration & Zero-Persistence (purge any legacy browser-stored API keys)
       try {
-        const savedGeminiKey = localStorage.getItem('om_ihsan_gemini_api_key') || sessionStorage.getItem('om_ihsan_gemini_api_key');
-        if (savedGeminiKey) appState.geminiApiKey = savedGeminiKey;
-        const savedGeminiModel = localStorage.getItem('om_ihsan_gemini_model') || sessionStorage.getItem('om_ihsan_gemini_model');
-        if (savedGeminiModel) appState.geminiModel = savedGeminiModel;
-
-        const savedOpenAiKey = localStorage.getItem('om_ihsan_openai_api_key') || sessionStorage.getItem('om_ihsan_openai_api_key');
-        if (savedOpenAiKey) appState.openAiApiKey = savedOpenAiKey;
-        const savedOpenAiModel = localStorage.getItem('om_ihsan_openai_model') || sessionStorage.getItem('om_ihsan_openai_model');
-        if (savedOpenAiModel) appState.openAiModel = savedOpenAiModel;
-
-        const savedCloudProvider = localStorage.getItem('om_ihsan_cloud_provider');
-        if (savedCloudProvider) appState.activeCloudProvider = savedCloudProvider;
-
-        const savedProvider = localStorage.getItem('om_ihsan_ai_provider');
-        if (savedProvider) appState.aiProvider = savedProvider;
-
-        const savedDocIds = localStorage.getItem('om_ihsan_active_doc_ids');
-        if (savedDocIds) {
-          appState.activeDocIds = JSON.parse(savedDocIds);
-        }
+        localStorage.removeItem('om_ihsan_gemini_api_key');
+        sessionStorage.removeItem('om_ihsan_gemini_api_key');
+        localStorage.removeItem('om_ihsan_openai_api_key');
+        sessionStorage.removeItem('om_ihsan_openai_api_key');
+        appState.geminiApiKey = CODEBASE_AI_CONFIG.geminiApiKey || '';
+        appState.geminiModel = CODEBASE_AI_CONFIG.geminiModel || 'gemini-2.0-flash';
+        appState.openAiApiKey = CODEBASE_AI_CONFIG.openAiApiKey || '';
+        appState.openAiModel = CODEBASE_AI_CONFIG.openAiModel || 'gpt-4o';
+        appState.activeCloudProvider = CODEBASE_AI_CONFIG.activeCloudProvider || 'google';
+        appState.aiProvider = CODEBASE_AI_CONFIG.aiProvider || 'local';
       } catch (e) {}
       updateApiKeyBadge();
       renderSettingsView();
