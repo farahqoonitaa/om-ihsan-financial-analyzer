@@ -3,64 +3,75 @@
    Clean, institutional, smooth UX design system (Zero-Persistence Architecture)
    ========================================================================== */
 
-@import url("https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap");
 
 :root {
-  --bg: #FDFBF7;
+  /* Crisp White & Cool Slate Foundations */
+  --bg: #F8FAFC;
   --surface: #FFFFFF;
-  --surface-alt: #F8F5EE;
-  --surface-card: #FAF8F2;
-  --ink: #1C1917;
-  --ink-secondary: #524E48;
-  --ink-muted: #7E7971;
-  --line: #E5DFD5;
-  --line-strong: #CDC6B8;
+  --surface-alt: #F1F5F9;
+  --surface-card: #FFFFFF;
+  --ink: #0F172A;
+  --ink-secondary: #334155;
+  --ink-muted: #64748B;
+  --line: #E2E8F0;
+  --line-strong: #CBD5E1;
 
-  --forest-deep: #143826;
-  --forest: #1B4332;
-  --forest-light: #2D6A4F;
-  --forest-soft: #EEF4F0;
+  /* Executive Institutional Navy & Royal Blue System */
+  --forest-deep: #0A2540;
+  --forest: #1D4ED8;
+  --forest-light: #2563EB;
+  --forest-soft: #EFF6FF;
 
-  --sage: #5D7A68;
-  --sage-soft: #F2F6F3;
+  --sage: #0284C7;
+  --sage-soft: #F0F9FF;
 
-  --gold: #C29B38;
-  --gold-light: #D4AF4A;
-  --gold-soft: #FAF4E5;
-  --ochre: #9E7B34;
+  --gold: #0A2540;
+  --gold-light: #1E3A8A;
+  --gold-soft: #EFF6FF;
+  --ochre: #1E40AF;
 
-  --red: #A64B38;
-  --red-soft: #FBEFEF;
-  --green: #1B4332;
-  --green-soft: #EEF4F0;
-  --orange: #C05621;
-  --orange-soft: #FDF1EA;
-  --blue: #234E70;
-  --blue-soft: #EAF1F8;
+  --red: #E11D48;
+  --red-soft: #FFF1F2;
+  --green: #059669;
+  --green-soft: #ECFDF5;
+  --orange: #EA580C;
+  --orange-soft: #FFF7ED;
+  --blue: #1D4ED8;
+  --blue-soft: #EFF6FF;
 
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
-  --shadow-sm: 0 1px 3px rgba(20, 56, 38, 0.04);
-  --shadow-md: 0 4px 12px rgba(20, 56, 38, 0.06);
-  --shadow-lg: 0 10px 28px rgba(20, 56, 38, 0.09);
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.05);
+  --shadow-md: 0 4px 14px rgba(15, 23, 42, 0.07);
+  --shadow-lg: 0 12px 32px rgba(15, 23, 42, 0.10);
+
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --font-serif: "Plus Jakarta Sans", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-sans: "Plus Jakarta Sans", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: var(--font-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   background-color: var(--bg);
   color: var(--ink);
-  line-height: 1.5;
-  font-size: 14px;
+  line-height: 1.55;
+  font-size: 13.5px;
+  letter-spacing: -0.011em;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
 }
 
 h1, h2, h3, h4 {
-  font-family: "Source Serif 4", Georgia, serif;
-  font-weight: 600;
+  font-family: var(--font-sans);
+  font-weight: 700;
   color: var(--forest-deep);
+  letter-spacing: -0.025em;
 }
 
 .num, td.num {
