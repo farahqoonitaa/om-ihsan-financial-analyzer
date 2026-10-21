@@ -6,28 +6,33 @@
 @import url("https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap");
 
 :root {
-  --bg: #F5F3EC;
+  --bg: #FDFBF7;
   --surface: #FFFFFF;
-  --surface-alt: #FAF8F2;
+  --surface-alt: #F8F5EE;
+  --surface-card: #FAF8F2;
   --ink: #1C1917;
-  --ink-secondary: #57534E;
-  --ink-muted: #8E8A83;
-  --line: #E2DDD3;
-  --line-strong: #C8C2B4;
+  --ink-secondary: #524E48;
+  --ink-muted: #7E7971;
+  --line: #E5DFD5;
+  --line-strong: #CDC6B8;
 
-  --forest-deep: #0D261A;
+  --forest-deep: #143826;
   --forest: #1B4332;
   --forest-light: #2D6A4F;
-  --forest-soft: #E8F1EC;
+  --forest-soft: #EEF4F0;
 
-  --gold: #A17922;
-  --gold-light: #CFA646;
-  --gold-soft: #F9F3E3;
+  --sage: #5D7A68;
+  --sage-soft: #F2F6F3;
 
-  --red: #A63A24;
-  --red-soft: #FAEBE8;
-  --green: #2B6E4A;
-  --green-soft: #EBF5F0;
+  --gold: #C29B38;
+  --gold-light: #D4AF4A;
+  --gold-soft: #FAF4E5;
+  --ochre: #9E7B34;
+
+  --red: #A64B38;
+  --red-soft: #FBEFEF;
+  --green: #1B4332;
+  --green-soft: #EEF4F0;
   --orange: #C05621;
   --orange-soft: #FDF1EA;
   --blue: #234E70;
@@ -36,9 +41,9 @@
   --radius-sm: 4px;
   --radius-md: 8px;
   --radius-lg: 12px;
-  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
-  --shadow-md: 0 4px 14px rgba(0,0,0,0.08);
-  --shadow-lg: 0 12px 28px rgba(0,0,0,0.12);
+  --shadow-sm: 0 1px 3px rgba(20, 56, 38, 0.04);
+  --shadow-md: 0 4px 12px rgba(20, 56, 38, 0.06);
+  --shadow-lg: 0 10px 28px rgba(20, 56, 38, 0.09);
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }

@@ -50,7 +50,13 @@ def extract_text_from_pdf(file_path):
             except Exception:
                 pass
         for i, page in enumerate(reader.pages):
-            text = page.extract_text() or ""
+            text = ""
+            try:
+                text = page.extract_text(extraction_mode="layout") or ""
+            except Exception:
+                text = ""
+            if not text or len(text.strip()) < 10:
+                text = page.extract_text() or ""
             pages.append({
                 "page": i + 1,
                 "text": text
@@ -79,6 +85,25 @@ def extract_text_from_pdf(file_path):
             return fallback_text, [{"page": 1, "text": fallback_text}]
         except Exception:
             return f"Error reading PDF: {e}", [{"page": 1, "text": f"Error: {e}"}]
+
+def extract_text_from_docx(file_path):
+    pages = []
+    try:
+        import zipfile
+        import xml.etree.ElementTree as ET
+        with zipfile.ZipFile(file_path) as z:
+            xml_bytes = z.read("word/document.xml")
+            tree = ET.fromstring(xml_bytes)
+            paragraphs = []
+            for p in tree.iter("{http://schemas.openxmlformats.org/wordprocessingml/2006/main}p"):
+                texts = [node.text for node in p.iter("{http://schemas.openxmlformats.org/wordprocessingml/2006/main}t") if node.text]
+                if texts:
+                    paragraphs.append("".join(texts))
+            full_text = "\n".join(paragraphs)
+            pages.append({"page": 1, "text": full_text})
+            return full_text, pages
+    except Exception as e:
+        return f"Error reading DOCX: {e}", [{"page": 1, "text": f"Error: {e}"}]
 
 def extract_text_from_excel(file_path):
     pages = []
@@ -725,6 +750,8 @@ def parse_document(file_path=None, file_name=None, text_content=None):
             raw_text, pages = extract_text_from_pdf(file_path)
         elif ext in [".xlsx", ".xls"]:
             raw_text, pages = extract_text_from_excel(file_path)
+        elif ext in [".docx", ".doc"]:
+            raw_text, pages = extract_text_from_docx(file_path)
         elif ext in [".txt", ".json", ".csv"]:
             with open(file_path, "r", encoding="utf-8", errors="ignore") as f:
                 raw_text = f.read()

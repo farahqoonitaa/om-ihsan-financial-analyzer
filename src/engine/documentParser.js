@@ -896,7 +896,7 @@ function parseDocumentNode({ fileName = "dokumen.pdf", textContent = "", filePat
     }
     if (diskPath && fs.existsSync(diskPath)) {
       const ext = path.extname(diskPath).toLowerCase();
-      if (ext === ".pdf" || ext === ".xlsx" || ext === ".xls") {
+      if (ext === ".pdf" || ext === ".xlsx" || ext === ".xls" || ext === ".docx" || ext === ".doc") {
         const pyScript = path.join(__dirname, "../../scripts/parse_document.py");
         if (fs.existsSync(pyScript)) {
           try {
@@ -1125,7 +1125,7 @@ function parseDocumentNode({ fileName = "dokumen.pdf", textContent = "", filePat
 async function parseDocument({ fileName, filePath, textContent, entityOverride }) {
   if (filePath && fs.existsSync(filePath)) {
     const ext = path.extname(filePath).toLowerCase();
-    if (ext === ".pdf" || ext === ".xlsx" || ext === ".xls") {
+    if (ext === ".pdf" || ext === ".xlsx" || ext === ".xls" || ext === ".docx" || ext === ".doc") {
       const pyScript = path.join(__dirname, "../../scripts/parse_document.py");
       if (fs.existsSync(pyScript)) {
         try {

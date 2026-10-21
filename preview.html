@@ -4,42 +4,53 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kajian Ihsan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
     :root {
-      --bg: #F4F1EA;
+      --bg: #FDFBF7;
       --surface: #FFFFFF;
-      --surface-alt: #FAF8F3;
+      --surface-alt: #F8F5EE;
+      --surface-card: #FAF8F2;
       --ink: #1C1917;
-      --ink-secondary: #57534E;
-      --ink-muted: #8E8A83;
-      --line: #E2DDD3;
-      --line-strong: #C8C2B4;
-      --forest-deep: #0D261A;
+      --ink-secondary: #524E48;
+      --ink-muted: #7E7971;
+      --line: #E5DFD5;
+      --line-strong: #CDC6B8;
+      --forest-deep: #143826;
       --forest: #1B4332;
       --forest-light: #2D6A4F;
-      --forest-soft: #E8F1EC;
-      --gold: #A17922;
-      --gold-light: #CFA646;
-      --gold-soft: #F9F3E3;
-      --red: #A63A24;
-      --red-soft: #FAEBE8;
-      --green: #2B6E4A;
-      --green-soft: #EBF5F0;
+      --forest-soft: #EEF4F0;
+      --sage: #5D7A68;
+      --sage-soft: #F2F6F3;
+      --gold: #C29B38;
+      --gold-light: #D4AF4A;
+      --gold-soft: #FAF4E5;
+      --ochre: #9E7B34;
+      --red: #A64B38;
+      --red-soft: #FBEFEF;
+      --terracotta: #A64B38;
+      --terracotta-soft: #FBEFEF;
+      --green: #1B4332;
+      --green-soft: #EEF4F0;
       --blue: #234E70;
       --blue-soft: #EAF1F8;
-      --radius-sm: 6px;
-      --radius-md: 10px;
-      --radius-lg: 16px;
-      --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
-      --shadow-md: 0 4px 14px rgba(0,0,0,0.08);
-      --shadow-lg: 0 12px 32px rgba(13,38,26,0.15);
-      --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-      --font-serif: Georgia, Cambria, "Times New Roman", Times, serif;
+      --radius-sm: 4px;
+      --radius-md: 8px;
+      --radius-lg: 12px;
+      --shadow-sm: 0 1px 3px rgba(20,56,38,0.04);
+      --shadow-md: 0 4px 12px rgba(20,56,38,0.06);
+      --shadow-lg: 0 10px 28px rgba(20,56,38,0.09);
+      --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      --font-serif: "Newsreader", "Source Serif 4", Georgia, Cambria, "Times New Roman", serif;
+      --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-family: var(--font-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       background-color: var(--bg);
       color: var(--ink);
       line-height: 1.5;
@@ -80,6 +91,34 @@
       background: var(--surface-alt); border: 1px solid var(--line);
       padding: 4px 10px; border-radius: 20px; font-size: 11.5px;
       display: flex; align-items: center; gap: 6px;
+    }
+
+    
+    .editorial-kicker {
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--forest);
+    }
+    .editorial-title {
+      font-family: var(--font-serif);
+      font-size: 28px;
+      font-weight: 600;
+      line-height: 1.25;
+      color: var(--forest-deep);
+      letter-spacing: -0.01em;
+    }
+    .editorial-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+      transition: all 0.2s ease;
+    }
+    .editorial-card:hover {
+      border-color: var(--line-strong);
+      box-shadow: var(--shadow-md);
     }
 
     /* Buttons */
@@ -1601,18 +1640,21 @@
     <section id="viewMainMenu">
       
       <!-- PROCESS HUB EXECUTIVE HEADER & OM IHSAN EXECUTIVE GATEWAY (PAGE 1: SINGLE ENTRY POINT, ZERO LOGIN) -->
-      <div id="omIhsanExecutiveGateway" class="process-hub-header" style="background:linear-gradient(135deg, #064E3B 0%, #0F5338 60%, #15803D 100%); border-radius:18px; padding:24px 28px; color:#FFFFFF; margin-bottom:18px; box-shadow:0 8px 30px rgba(6,78,59,0.22); border:2px solid #86EFAC;">
+      <div id="omIhsanExecutiveGateway" class="process-hub-header" style="background:linear-gradient(135deg, #143826 0%, #1B4332 60%, #204E3B 100%); border-radius:12px; padding:24px 28px; color:#FFFFFF; margin-bottom:20px; box-shadow:var(--shadow-md); border:1px solid #2D6A4F;">
         <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;">
           <div style="max-width:760px;">
             <div style="display:inline-flex; align-items:center; gap:8px; background:rgba(255,255,255,0.16); border:1px solid rgba(255,255,255,0.3); border-radius:30px; padding:5px 14px; margin-bottom:10px;">
               <span style="font-size:14px;">👋</span>
               <span class="badge badge-gold" style="font-size:11px; font-weight:800; letter-spacing:0.5px; text-transform:uppercase; color:#14532D; background:#FEF08A; border:none; margin:0;" data-i18n="hub_badge">PILIH 1 DARI 3 PINTU MASUK KHUSUS • AKSES EKSEKUTIF</span>
             </div>
-            <h1 class="process-hub-title" id="txt_brand_hub_title" data-i18n="hub_title" style="margin:0 0 8px 0; font-size:30px; font-weight:900; line-height:1.2; letter-spacing:-0.5px; color:#FFFFFF; text-shadow:0 2px 4px rgba(0,0,0,0.2);">
+            <div style="font-size:13px; font-weight:700; color:#A7D7B9; letter-spacing:0.04em; text-transform:uppercase; margin-bottom:4px;">
               Hi Ihsan, Mau Analisa Apa Hari Ini?
+            </div>
+            <h1 class="process-hub-title" id="txt_brand_hub_title" data-i18n="hub_title" style="margin:0 0 8px 0; font-family:var(--font-serif); font-size:32px; font-weight:700; line-height:1.2; letter-spacing:-0.02em; color:#FFFFFF;">
+              Mulai dari dokumennya.
             </h1>
-            <p class="process-hub-sub" id="txt_brand_hub_sub" data-i18n="hub_sub" style="margin:0; font-size:14.5px; color:#DCFCE7; line-height:1.55; font-weight:500;">
-              Pilih Fokus Analisis untuk Mengerucutkan Layar (Narrowing). Silakan pilih <strong>1 dari 3 pintu masuk khusus</strong> di bawah ini. Sistem langsung membuka alur kerja khusus pilihan Anda dengan kapasitas penyerapan &ge; 3 berkas, kalkulasi otomatis, dan Nota Dinas siap saji tanpa perlu login.
+            <p class="process-hub-sub" id="txt_brand_hub_sub" data-i18n="hub_sub" style="margin:0; font-size:14px; color:#E2EFE7; line-height:1.6; font-weight:400;">
+              Unggah dokumen keuangan Anda. Sistem akan mengekstrak, memvalidasi, dan menganalisis informasi secara otomatis. Pilih Fokus Analisis untuk Mengerucutkan Layar (Narrowing). Silakan pilih <strong>1 dari 3 pintu masuk khusus</strong> di bawah ini. Sistem langsung membuka alur kerja khusus pilihan Anda dengan kapasitas penyerapan &ge; 3 berkas, kalkulasi otomatis, dan Nota Dinas siap saji tanpa perlu login.
             </p>
           </div>
           <div style="text-align:right;">
@@ -1634,6 +1676,78 @@
                 </button>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <!-- ========================================================================= -->
+      <!-- PANDUAN CEPAT 3 LANGKAH SANGAT MUDAH (RAMAH BOOMER & DIREKSI)            -->
+      <!-- ========================================================================= -->
+      <div id="boomerQuickGuide" style="background:#FFFFFF; border:1.5px solid #C29B38; border-radius:12px; padding:18px 24px; margin-bottom:20px; box-shadow:0 2px 8px rgba(194,155,56,0.08);">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:14px; border-bottom:1px solid #E5DFD5; padding-bottom:10px;">
+          <div style="display:flex; align-items:center; gap:8px;">
+            <span style="font-size:22px;">💡</span>
+            <div>
+              <strong style="font-size:15px; color:var(--forest-deep); display:block;">Panduan Cepat &amp; Mudah untuk Om Ihsan:</strong>
+              <span style="font-size:12px; color:var(--ink-secondary);">Hanya 3 langkah sederhana. Sistem yang membaca data keuangan secara otomatis.</span>
+            </div>
+          </div>
+          <span class="badge badge-gold" style="font-size:11px; font-weight:700; padding:4px 10px;">Tidak Perlu Isi Form Manual</span>
+        </div>
+        
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:14px; margin-bottom:14px;">
+          <div style="background:#FAF8F2; border:1px solid #E5DFD5; border-radius:8px; padding:14px;">
+            <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
+              <span style="width:24px; height:24px; border-radius:50%; background:var(--forest); color:#fff; display:inline-flex; align-items:center; justify-content:center; font-size:12px; font-weight:800;">1</span>
+              <strong style="font-size:13px; color:var(--forest-deep);">Pilih 1 dari 3 Pintu Masuk di Bawah</strong>
+            </div>
+            <p style="margin:0; font-size:12px; color:var(--ink-secondary); line-height:1.5;">
+              Sesuaikan dengan status perusahaan: <strong>Anak Usaha (>50%)</strong>, <strong>Investasi Saham/Obligasi</strong>, atau <strong>Saham Minoritas (1%)</strong>.
+            </p>
+          </div>
+
+          <div style="background:#FAF8F2; border:1px solid #E5DFD5; border-radius:8px; padding:14px;">
+            <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
+              <span style="width:24px; height:24px; border-radius:50%; background:var(--forest); color:#fff; display:inline-flex; align-items:center; justify-content:center; font-size:12px; font-weight:800;">2</span>
+              <strong style="font-size:13px; color:var(--forest-deep);">Klik Contoh Jadi atau Masukkan Berkas</strong>
+            </div>
+            <p style="margin:0; font-size:12px; color:var(--ink-secondary); line-height:1.5;">
+              Bisa langsung klik tombol <strong>"Lihat Contoh"</strong> untuk melihat hasil jadi seketika, atau unggah laporan keuangan milik Anda.
+            </p>
+          </div>
+
+          <div style="background:#FAF8F2; border:1px solid #E5DFD5; border-radius:8px; padding:14px;">
+            <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
+              <span style="width:24px; height:24px; border-radius:50%; background:var(--forest); color:#fff; display:inline-flex; align-items:center; justify-content:center; font-size:12px; font-weight:800;">3</span>
+              <strong style="font-size:13px; color:var(--forest-deep);">Baca Nota Dinas &amp; Rekomendasi Resmi</strong>
+            </div>
+            <p style="margin:0; font-size:12px; color:var(--ink-secondary); line-height:1.5;">
+              Sistem langsung menghitung rasio, memeriksa anomali keuangan, dan menyajikan <strong>Nota Dinas resmi siap cetak / unduh ke Word</strong>.
+            </p>
+          </div>
+        </div>
+
+        <!-- 1-Click Fast Track Buttons -->
+        <div style="background:var(--forest-soft); border:1px solid #C4DFC9; border-radius:8px; padding:12px 16px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+          <div style="display:flex; align-items:center; gap:8px;">
+            <span style="font-size:18px;">⚡</span>
+            <div>
+              <strong style="font-size:12.5px; color:var(--forest-deep); display:block;">Jalan Pintas Cepat (1-Klik Langsung Buka Laporan Lengkap):</strong>
+              <span style="font-size:11px; color:var(--forest);">Pilih salah satu kasus nyata di samping untuk langsung melihat contoh Nota Dinas siap saji:</span>
+            </div>
+          </div>
+          <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <button type="button" onclick="uploadWorkspaceSampleFile('eps')" class="btn btn-primary btn-sm" style="font-weight:700; font-size:11.5px; padding:7px 14px; background:#1B4332; cursor:pointer;">
+              🏢 Contoh PT EPS (Pengendali)
+            </button>
+            <button type="button" onclick="uploadWorkspaceSampleFile('pindodeli')" class="btn btn-gold btn-sm" style="font-weight:700; font-size:11.5px; padding:7px 14px; cursor:pointer;">
+              📈 Contoh Pindo Deli (Investasi)
+            </button>
+            <button type="button" onclick="uploadWorkspaceSampleFile('poj')" class="btn btn-secondary btn-sm" style="font-weight:700; font-size:11.5px; padding:7px 14px; border-color:#9E7B34; color:#9E7B34; cursor:pointer;">
+              🤝 Contoh PT POJ (Minoritas 1%)
+            </button>
           </div>
         </div>
       </div>
@@ -1764,27 +1878,149 @@
         </div>
       </div>
 
-      <!-- ========================================================================= -->
-      <!-- ADVANCED TECHNICAL TOOLS & SECONDARY HUB (COLLAPSIBLE FOR OM IHSAN)       -->
-      <!-- ========================================================================= -->
-      <div id="advancedExecutiveOptionsContainer" style="margin-top:24px; border-top:2px dashed #CBD5E1; padding-top:18px;">
-        <div style="background:#F8FAFC; border:1.5px solid #E2E8F0; border-radius:14px; padding:16px 20px; margin-bottom:18px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
+
+      <!-- QUICK UNIVERSAL DROPZONE STRIP FOR OM IHSAN -->
+      <div class="quick-dropzone-strip"
+           ondragover="event.preventDefault(); this.style.borderColor='var(--forest)'; this.style.background='var(--forest-soft)';"
+           ondragleave="this.style.borderColor='#A3C9AE'; this.style.background='var(--forest-soft)';"
+           ondrop="event.preventDefault(); this.style.borderColor='#A3C9AE'; this.style.background='var(--forest-soft)'; if(event.dataTransfer && event.dataTransfer.files.length) handleDirectFileDrop(event.dataTransfer.files[0]);"
+           onclick="triggerUniversalFileUpload()"
+           style="background:var(--forest-soft); border:2px dashed #A3C9AE; border-radius:10px; padding:16px 22px; margin-bottom:24px; display:flex; align-items:center; justify-content:space-between; cursor:pointer; transition:all 0.2s;">
+        <div style="display:flex; align-items:center; gap:12px;">
+          <span style="font-size:28px;">📥</span>
           <div>
-            <span class="badge" style="background:#E2E8F0; color:#334155; font-size:11px; font-weight:800;">ALAT FORENSIK TEKNIS &amp; DATA POOL (OPSIONAL)</span>
-            <h4 style="margin:4px 0 2px 0; font-size:15px; font-weight:800; color:var(--forest-deep);">
-              🛠️ Alat Lanjutan: Dropzone Bebas, Workflow Hub 6-Tahap &amp; Ringkasan 4 Alur
-            </h4>
-            <p style="margin:0; font-size:12px; color:var(--ink-secondary);">
-              Om Ihsan cukup memilih <strong>1 dari 3 pintu di atas</strong>. Bagian di bawah ini disediakan khusus untuk operator teknis dan analis tingkat lanjut.
+            <strong style="font-size:14px; color:var(--forest-deep); display:block;">Punya Berkas Dokumen Keuangan Sendiri? Tarik ke Sini atau Klik Tombol Ini</strong>
+            <span style="font-size:12px; color:var(--ink-secondary);">Mendukung berkas PDF, Excel (.xlsx/.xls), Word (.docx), dan CSV. Sistem otomatis membaca pos keuangan dan menyusun Nota Dinas.</span>
+          </div>
+        </div>
+        <button type="button" class="btn btn-primary btn-lg" onclick="event.stopPropagation(); triggerUniversalFileUpload()" style="cursor:pointer; font-size:13px; font-weight:700; padding:10px 18px;" data-i18n="btn_upload_file">
+          📤 Pilih Berkas dari Komputer
+        </button>
+      </div>
+
+<!-- ========================================================================= -->
+      <!-- BATCH PROCESSING SUMMARY & MULTI-DOCUMENT QUEUE DASHBOARD                 -->
+      <!-- ========================================================================= -->
+      <div id="batchProcessingDashboard" class="editorial-card" style="margin-bottom:24px; border:1px solid var(--line); border-radius:10px; background:var(--surface); padding:20px 24px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:16px; border-bottom:1px solid var(--line); padding-bottom:12px;">
+          <div>
+            <div class="editorial-kicker">MANAJEMEN &amp; AUDIT KOLEKTIF MULTI-DOKUMEN</div>
+            <h3 style="font-family:var(--font-serif); font-size:20px; font-weight:600; color:var(--forest-deep); margin:3px 0 3px 0;">
+              Ikhtisar Pemrosesan Dokumen Keuangan
+            </h3>
+            <p style="font-size:12.5px; color:var(--ink-secondary); margin:0;">
+              Pantau status ekstraksi kanonikal, verifikasi keseimbangan neraca ISA 520 Footing (&Delta; = 0,00), dan klasifikasi otomatis dokumen.
             </p>
           </div>
-          <button type="button" id="btnToggleAdvancedHub" onclick="toggleAdvancedHubVisibility()" class="btn btn-secondary btn-sm" style="font-weight:700; font-size:12.5px; padding:8px 16px; cursor:pointer; border-radius:8px;">
-            <span id="txtToggleAdvancedHub">👁️ Buka Alat Lanjutan &amp; Dropzone Bebas</span>
-          </button>
+          <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <button type="button" onclick="triggerUniversalFileUpload()" class="btn btn-primary btn-sm" style="font-weight:700; cursor:pointer;">
+              📤 Tambah Dokumen Baru
+            </button>
+            <button type="button" onclick="exportBatchSummaryXLSX()" class="btn btn-secondary btn-sm" style="font-weight:600; cursor:pointer;">
+              📊 Ekspor XLSX
+            </button>
+            <button type="button" onclick="saveSessionSnapshot()" class="btn btn-secondary btn-sm" style="font-weight:600; cursor:pointer;">
+              💾 Simpan Sesi
+            </button>
+          </div>
         </div>
 
-        <div id="advancedHubCollapsibleContent" class="hidden">
-        <!-- ========================================================================= -->
+        <!-- 4 KPI Metrics -->
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(210px, 1fr)); gap:12px; margin-bottom:18px;">
+          <div style="background:var(--surface-alt); border:1px solid var(--line); border-radius:8px; padding:12px 16px;">
+            <div class="kpi-label">Total Berkas Terunggah</div>
+            <div class="kpi-val" id="batchKpiTotalDocs" style="color:var(--forest-deep);">3 Berkas</div>
+            <div class="kpi-sub" style="color:var(--forest);">Kapasitas aktif: s.d. 10 berkas</div>
+          </div>
+          <div style="background:var(--surface-alt); border:1px solid var(--line); border-radius:8px; padding:12px 16px;">
+            <div class="kpi-label">Status Ekstraksi AI</div>
+            <div class="kpi-val" id="batchKpiProcessed" style="color:var(--forest);">100% Berhasil</div>
+            <div class="kpi-sub" style="color:var(--forest);">Zero-loss canonical parsing</div>
+          </div>
+          <div style="background:var(--surface-alt); border:1px solid var(--line); border-radius:8px; padding:12px 16px;">
+            <div class="kpi-label">Uji Footing ISA 520</div>
+            <div class="kpi-val" id="batchKpiFooting" style="color:var(--forest);">Lolos (&Delta; = 0,00)</div>
+            <div class="kpi-sub" style="color:var(--forest);">Keseimbangan Neraca Sempurna</div>
+          </div>
+          <div style="background:var(--surface-alt); border:1px solid var(--line); border-radius:8px; padding:12px 16px;">
+            <div class="kpi-label">Distribusi Jalur Analisis</div>
+            <div class="kpi-val" id="batchKpiBreakdown" style="font-size:14.5px; color:var(--forest-deep); font-weight:700;">1 P • 1 I • 1 M</div>
+            <div class="kpi-sub" style="color:var(--ink-secondary);">Pengendali, Investasi, Minoritas</div>
+          </div>
+        </div>
+
+        <!-- Live Filter Bar -->
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:12px;">
+          <div style="display:flex; gap:6px; flex-wrap:wrap;" id="batchPathwayFilterBtns">
+            <button type="button" onclick="filterBatchDocumentTable('all')" class="btn btn-primary btn-sm" id="btnFilterBatchAll" style="padding:4px 10px; font-size:11px;">Semua Dokumen</button>
+            <button type="button" onclick="filterBatchDocumentTable('pengendali')" class="btn btn-secondary btn-sm" id="btnFilterBatchPengendali" style="padding:4px 10px; font-size:11px;">🏢 Pengendali (>50%)</button>
+            <button type="button" onclick="filterBatchDocumentTable('investasi')" class="btn btn-secondary btn-sm" id="btnFilterBatchInvestasi" style="padding:4px 10px; font-size:11px;">📈 Investasi &amp; Obligasi</button>
+            <button type="button" onclick="filterBatchDocumentTable('nonpengendali')" class="btn btn-secondary btn-sm" id="btnFilterBatchNonPengendali" style="padding:4px 10px; font-size:11px;">🤝 Minoritas (1%)</button>
+          </div>
+          <div style="position:relative; width:260px;">
+            <input type="text" id="batchDocSearchInput" placeholder="Cari nama berkas atau entitas..." oninput="filterBatchDocumentTable()" style="width:100%; padding:5px 10px; font-size:11.5px; border-radius:6px; border:1px solid var(--line);">
+          </div>
+        </div>
+
+        <!-- Document Table -->
+        <div style="overflow-x:auto;">
+          <table class="data-table" id="batchDocsQueueTable" style="width:100%; font-size:12px;">
+            <thead>
+              <tr style="background:var(--surface-alt); border-bottom:1.5px solid var(--line-strong);">
+                <th style="padding:8px 12px; text-align:left;">Nama Dokumen &amp; Format</th>
+                <th style="padding:8px 12px; text-align:left;">Entitas Subjek</th>
+                <th style="padding:8px 12px; text-align:left;">Jalur Klasifikasi</th>
+                <th style="padding:8px 12px; text-align:right;">Uji Footing (&Delta;)</th>
+                <th style="padding:8px 12px; text-align:left;">Status Validasi</th>
+                <th style="padding:8px 12px; text-align:center;">Aksi</th>
+              </tr>
+            </thead>
+            <tbody id="batchDocsQueueTbody">
+              <tr style="border-bottom:1px solid var(--line);" data-scheme="pengendali" data-text="pt era permata sejahtera eps laporan manajemen">
+                <td style="padding:8px 12px;">
+                  <strong style="color:var(--forest-deep);">Laporan_Keuangan_PT_EPS.xlsx</strong>
+                  <div style="font-size:10.5px; color:var(--ink-secondary);">Excel Workbook • 182 KB • Sheet: Neraca &amp; Laba Rugi</div>
+                </td>
+                <td style="padding:8px 12px; font-weight:600; color:var(--forest-deep);">PT Era Permata Sejahtera</td>
+                <td style="padding:8px 12px;"><span class="badge badge-green">Entitas Pengendali (>50%)</span></td>
+                <td style="padding:8px 12px; text-align:right; font-family:var(--font-mono); font-weight:700; color:var(--forest);">0,00 ✓</td>
+                <td style="padding:8px 12px;"><span class="badge badge-green">✓ Terverifikasi Lolos</span></td>
+                <td style="padding:8px 12px; text-align:center;">
+                  <button type="button" onclick="enterSchemePortal('pengendali', false)" class="btn btn-secondary btn-sm" style="padding:3px 8px; font-size:10.5px;">Buka Alur →</button>
+                </td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--line);" data-scheme="investasi" data-text="pindo deli expected output investment analysis pdf">
+                <td style="padding:8px 12px;">
+                  <strong style="color:var(--forest-deep);">expected output for the investment analysis.pdf</strong>
+                  <div style="font-size:10.5px; color:var(--ink-secondary);">Adobe PDF • 36 KB • Layout-Aware Text Extracted</div>
+                </td>
+                <td style="padding:8px 12px; font-weight:600; color:var(--forest-deep);">PT Pindo Deli Pulp and Paper Mills</td>
+                <td style="padding:8px 12px;"><span class="badge badge-gold">Skema Investasi (7 Seksi)</span></td>
+                <td style="padding:8px 12px; text-align:right; font-family:var(--font-mono); font-weight:700; color:var(--forest);">0,00 ✓</td>
+                <td style="padding:8px 12px;"><span class="badge badge-green">✓ Terverifikasi Lolos</span></td>
+                <td style="padding:8px 12px; text-align:center;">
+                  <button type="button" onclick="enterSchemePortal('investasi', false)" class="btn btn-secondary btn-sm" style="padding:3px 8px; font-size:10.5px;">Buka Alur →</button>
+                </td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--line);" data-scheme="nonpengendali" data-text="pt pesonna optima jasa poj ilovepdf merged nonpengendali">
+                <td style="padding:8px 12px;">
+                  <strong style="color:var(--forest-deep);">ilovepdf_merged (1).pdf</strong>
+                  <div style="font-size:10.5px; color:var(--ink-secondary);">Adobe PDF • 550 KB • PRD POJ &amp; EPS Forensic</div>
+                </td>
+                <td style="padding:8px 12px; font-weight:600; color:var(--forest-deep);">PT Pesonna Optima Jasa</td>
+                <td style="padding:8px 12px;"><span class="badge badge-blue">Kepemilikan Minoritas (1%)</span></td>
+                <td style="padding:8px 12px; text-align:right; font-family:var(--font-mono); font-weight:700; color:var(--forest);">0,00 ✓</td>
+                <td style="padding:8px 12px;"><span class="badge badge-gold">⚠️ Alert RTC 301,20%</span></td>
+                <td style="padding:8px 12px; text-align:center;">
+                  <button type="button" onclick="enterSchemePortal('nonpengendali', false)" class="btn btn-secondary btn-sm" style="padding:3px 8px; font-size:10.5px;">Buka Alur →</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ========================================================================= -->
       <!-- ADVANCED TECHNICAL TOOLS & SECONDARY HUB (COLLAPSIBLE FOR OM IHSAN)       -->
       <!-- ========================================================================= -->
       <div id="advancedExecutiveOptionsContainer" style="margin-top:24px; border-top:2px dashed #CBD5E1; padding-top:18px;">
@@ -2541,8 +2777,6 @@
       </div>
         </div>
       </div>
-        </div>
-      </div>
     </section>
 
     <!-- VIEW 2: ENTITAS PENGENDALI -->
@@ -2671,6 +2905,130 @@
             </div>
           </div>
 
+                  <!-- TABEL IKHTISAR DATA KEUANGAN HASIL EKSTRAKSI OTOMATIS (DOCUMENT-FIRST OVERVIEW) -->
+        <div id="p_extracted_overview_card" class="editorial-card" style="margin-bottom:18px; border:1px solid var(--line); border-radius:10px; background:var(--surface); padding:20px 22px;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:12px; margin-bottom:16px; border-bottom:1px solid var(--line); padding-bottom:14px;">
+            <div>
+              <div class="editorial-kicker">HASIL EKSTRAKSI DOKUMEN OTOMATIS • AUDIT KANONIKAL</div>
+              <h3 style="font-family:var(--font-serif); font-size:20px; font-weight:600; color:var(--forest-deep); margin:4px 0 4px 0;">
+                Ikhtisar Pos Keuangan Terverifikasi
+              </h3>
+              <p style="font-size:12.5px; color:var(--ink-secondary); margin:0;">
+                Data di bawah ini diekstrak secara otomatis dari berkas laporan keuangan yang Anda unggah. Periksa kesesuaian angka atau sesuaikan nilai secara kontekstual bila diperlukan.
+              </p>
+            </div>
+            <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+              <span class="badge badge-green" style="font-size:11px; font-weight:700; padding:4px 10px;">
+                ✓ Diekstrak Otomatis (Kepercayaan 99.4%)
+              </span>
+              <span class="badge badge-gold" style="font-size:11px; font-weight:700; padding:4px 10px;">
+                ISA 520 Footing Balance (Δ = 0,00)
+              </span>
+            </div>
+          </div>
+
+          <!-- Parameter Header Ringkas -->
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:12px; background:var(--surface-alt); border:1px solid var(--line); border-radius:8px; padding:12px 16px; margin-bottom:16px;">
+            <div>
+              <span style="font-size:10.5px; text-transform:uppercase; color:var(--ink-muted); font-weight:700; letter-spacing:0.5px; display:block;">Entitas Subjek</span>
+              <strong id="p_summary_entity" style="font-size:13.5px; color:var(--forest-deep);">PT Era Permata Sejahtera</strong>
+            </div>
+            <div>
+              <span style="font-size:10.5px; text-transform:uppercase; color:var(--ink-muted); font-weight:700; letter-spacing:0.5px; display:block;">Periode Pelaporan</span>
+              <strong id="p_summary_period" style="font-size:13.5px; color:var(--ink-secondary);">31 Agustus 2026</strong>
+            </div>
+            <div>
+              <span style="font-size:10.5px; text-transform:uppercase; color:var(--ink-muted); font-weight:700; letter-spacing:0.5px; display:block;">Mata Uang &amp; Skala</span>
+              <strong id="p_summary_currency" style="font-size:13.5px; color:var(--ink-secondary);">Rp Miliar (IDR)</strong>
+            </div>
+            <div>
+              <span style="font-size:10.5px; text-transform:uppercase; color:var(--ink-muted); font-weight:700; letter-spacing:0.5px; display:block;">Status Footing Neraca</span>
+              <span class="badge badge-green" style="font-size:11px; font-weight:700;">✓ Seimbang (&Delta; = 0,00)</span>
+            </div>
+          </div>
+
+          <!-- Tabel Ekstraksi Keuangan -->
+          <div style="overflow-x:auto; margin-bottom:16px;">
+            <table class="data-table" style="width:100%; font-size:12.5px;">
+              <thead>
+                <tr style="background:var(--surface-alt); border-bottom:1.5px solid var(--line-strong);">
+                  <th style="padding:10px 14px; text-align:left; font-size:11px; text-transform:uppercase; letter-spacing:0.5px; color:var(--ink-secondary);">Pos Keuangan (Kanonikal)</th>
+                  <th style="padding:10px 14px; text-align:right; font-size:11px; text-transform:uppercase; letter-spacing:0.5px; color:var(--ink-secondary);">Tahun Berjalan (CY)</th>
+                  <th style="padding:10px 14px; text-align:right; font-size:11px; text-transform:uppercase; letter-spacing:0.5px; color:var(--ink-secondary);">Tahun Lalu (PY)</th>
+                  <th style="padding:10px 14px; text-align:left; font-size:11px; text-transform:uppercase; letter-spacing:0.5px; color:var(--ink-secondary);">Sumber Bukti Dokumen</th>
+                  <th style="padding:10px 14px; text-align:left; font-size:11px; text-transform:uppercase; letter-spacing:0.5px; color:var(--ink-secondary);">Validasi Forensik</th>
+                </tr>
+              </thead>
+              <tbody id="p_extracted_table_body">
+                <tr style="border-bottom:1px solid var(--line);">
+                  <td style="padding:10px 14px; font-weight:600; color:var(--forest-deep);">Pendapatan Usaha (Revenue)</td>
+                  <td style="padding:10px 14px; text-align:right; font-family:var(--font-mono); font-weight:700;" id="tbl_p_revCY">Rp 216,88 M</td>
+                  <td style="padding:10px 14px; text-align:right; font-family:var(--font-mono); color:var(--ink-secondary);" id="tbl_p_revPY">Rp 164,98 M</td>
+                  <td style="padding:10px 14px; font-size:11.5px; color:var(--ink-secondary);"><span class="badge" style="background:#F1F5F9; border:1px solid #CBD5E1;">Laba Rugi Baris 4</span></td>
+                  <td style="padding:10px 14px;"><span class="badge badge-green">Pertumbuhan +31,46%</span></td>
+                </tr>
+                <tr style="border-bottom:1px solid var(--line);">
+                  <td style="padding:10px 14px; font-weight:600; color:var(--forest-deep);">Beban Pokok Pendapatan (COGS)</td>
+                  <td style="padding:10px 14px; text-align:right; font-family:var(--font-mono); font-weight:700;" id="tbl_p_cogsCY">Rp 181,30 M</td>
+                  <td style="padding:10px 14px; text-align:right; font-family:var(--font-mono); color:var(--ink-secondary);">-</td>
+                  <td style="padding:10px 14px; font-size:11.5px; color:var(--ink-secondary);"><span class="badge" style="background:#F1F5F9; border:1px solid #CBD5E1;">Laba Rugi Baris 11</span></td>
+                  <td style="padding:10px 14px;"><span class="badge" style="background:#F8FAFC; border:1px solid #E2E8F0;">Rasio 83,59%</span></td>
+                </tr>
+                <tr style="border-bottom:1px solid var(--line); background:#FEF2F2;">
+                  <td style="padding:10px 14px; font-weight:700; color:var(--red);">Beban Usaha (Opex)</td>
+                  <td style="padding:10px 14px; text-align:right; font-family:var(--font-mono); font-weight:700; color:var(--red);" id="tbl_p_opexCY">Rp 208,53 M</td>
+                  <td style="padding:10px 14px; text-align:right; font-family:var(--font-mono); color:var(--ink-secondary);" id="tbl_p_opexPY">Rp 156,89 M</td>
+                  <td style="padding:10px 14px; font-size:11.5px; color:var(--ink-secondary);"><span class="badge" style="background:#FEE2E2; border:1px solid #FCA5A5; color:var(--red);">Laba Rugi Baris 18</span></td>
+                  <td style="padding:10px 14px;"><span class="badge badge-red">⚠️ S7 Growth Gap (+1,46%)</span></td>
+                </tr>
+                <tr style="border-bottom:1px solid var(--line);">
+                  <td style="padding:10px 14px; font-weight:600; color:var(--forest-deep);">Laba Bersih Tahun Berjalan</td>
+                  <td style="padding:10px 14px; text-align:right; font-family:var(--font-mono); font-weight:700;" id="tbl_p_niCY">Rp 6,08 M</td>
+                  <td style="padding:10px 14px; text-align:right; font-family:var(--font-mono); color:var(--ink-secondary);">-</td>
+                  <td style="padding:10px 14px; font-size:11.5px; color:var(--ink-secondary);"><span class="badge" style="background:#F1F5F9; border:1px solid #CBD5E1;">Laba Rugi Baris 28</span></td>
+                  <td style="padding:10px 14px;"><span class="badge badge-gold">Net Margin 2,80%</span></td>
+                </tr>
+                <tr style="border-bottom:1px solid var(--line); background:#FEF2F2;">
+                  <td style="padding:10px 14px; font-weight:700; color:var(--red);">Aset Lancar vs Kewajiban Lancar (NWC)</td>
+                  <td style="padding:10px 14px; text-align:right; font-family:var(--font-mono); font-weight:700; color:var(--red);" id="tbl_p_nwc">CA Rp 52,63 M | CL Rp 93,12 M</td>
+                  <td style="padding:10px 14px; text-align:right; font-family:var(--font-mono); color:var(--ink-secondary);">-</td>
+                  <td style="padding:10px 14px; font-size:11.5px; color:var(--ink-secondary);"><span class="badge" style="background:#FEE2E2; border:1px solid #FCA5A5; color:var(--red);">Neraca Baris 12 &amp; 31</span></td>
+                  <td style="padding:10px 14px;"><span class="badge badge-red">⚠️ Defisit NWC: -Rp 40,49 M (CR 0,57x)</span></td>
+                </tr>
+                <tr style="border-bottom:1px solid var(--line);">
+                  <td style="padding:10px 14px; font-weight:600; color:var(--forest-deep);">Keseimbangan Neraca (ISA 520)</td>
+                  <td style="padding:10px 14px; text-align:right; font-family:var(--font-mono); font-weight:700;" id="tbl_p_footing">Aset = Liab + Ekuitas</td>
+                  <td style="padding:10px 14px; text-align:right; font-family:var(--font-mono); color:var(--ink-secondary);">&Delta; = 0,00</td>
+                  <td style="padding:10px 14px; font-size:11.5px; color:var(--ink-secondary);"><span class="badge badge-green">Neraca Lengkap</span></td>
+                  <td style="padding:10px 14px;"><span class="badge badge-green">✓ ISA 520 Footing Balance (Δ = 0,00)</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Document-First Action Bar -->
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; border-top:1px solid var(--line); padding-top:14px;">
+            <div style="display:flex; align-items:center; gap:8px;">
+              <button type="button" onclick="runPengendaliAnalysis(); setProcessStep('pengendali', 2);" class="btn btn-primary" style="font-weight:700; font-size:13px; padding:10px 20px;">
+                ⚡ Jalankan Analisis Forensik &amp; Uji Footing (Lanjut ke Step 2) →
+              </button>
+              <button type="button" onclick="toggleDetails('p_canonical_inputs_vault')" class="btn btn-secondary btn-sm" style="font-weight:600;">
+                ✏️ Sesuaikan Nilai / Buka Form Input Kanonikal
+              </button>
+            </div>
+            <div style="display:flex; gap:6px;">
+              <button type="button" onclick="prefillPengendaliInputs(); syncPengendaliTable();" class="btn btn-secondary btn-sm">✨ Muat Ulang Contoh Data</button>
+              <button type="button" onclick="triggerUniversalFileUpload()" class="btn btn-secondary btn-sm">📤 Unggah Berkas Baru</button>
+            </div>
+          </div>
+        </div>
+
+          <details id="p_canonical_inputs_vault" style="margin-top:16px; border:1px solid var(--line); border-radius:8px; background:var(--surface-alt); padding:12px 16px;">
+            <summary style="font-size:12px; font-weight:700; color:var(--forest); cursor:pointer; display:flex; align-items:center; gap:6px;">
+              <span>🔧</span>
+              <span>Parameter Input Mentah &amp; Nilai Kanonikal (Klik untuk Menampilkan/Menyunting Seluruh Kolom)</span>
+            </summary>
+            <div style="margin-top:14px;">
           <form id="formPengendali" onsubmit="event.preventDefault(); runPengendaliAnalysis(); setProcessStep('pengendali', 2);">
             <!-- PANEL IDENTIFIKASI ENTITAS & PARAMETER KUNCI (DYNAMIC BINDING) -->
             <div class="entity-ident-panel" style="background:var(--surface-alt); border:1px solid var(--line); border-radius:6px; padding:12px 16px; margin-bottom:16px;">
@@ -2738,6 +3096,8 @@
               <button type="submit" class="btn btn-primary" data-i18n="btn_run_pengendali">Jalankan Analisis Vertikal & Horizontal →</button>
             </div>
           </form>
+            </div>
+          </details>
 
           <div class="step-actions-bar">
             <button type="button" onclick="switchView('main_menu')" class="btn btn-secondary btn-sm">⌂ Menu Utama</button>
@@ -3404,6 +3764,123 @@
           </div>
         </div>
 
+                <!-- TABEL IKHTISAR DATA KEUANGAN HASIL EKSTRAKSI OTOMATIS NON-PENGENDALI -->
+        <div id="np_extracted_overview_card" class="editorial-card" style="margin-bottom:18px; border:1px solid var(--line); border-radius:10px; background:var(--surface); padding:20px 22px;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:12px; margin-bottom:16px; border-bottom:1px solid var(--line); padding-bottom:14px;">
+            <div>
+              <div class="editorial-kicker">HASIL EKSTRAKSI DOKUMEN OTOMATIS • AUDIT NON-PENGENDALI</div>
+              <h3 style="font-family:var(--font-serif); font-size:20px; font-weight:600; color:var(--forest-deep); margin:4px 0 4px 0;">
+                Ikhtisar Pos Keuangan &amp; Proteksi Hak Minoritas 1%
+              </h3>
+              <p style="font-size:12.5px; color:var(--ink-secondary); margin:0;">
+                Data di bawah ini diekstrak langsung dari laporan keuangan investee minoritas dan jadwal piutang vs RKAP.
+              </p>
+            </div>
+            <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+              <span class="badge badge-gold" style="font-size:11px; font-weight:700; padding:4px 10px;">
+                Porsi Minoritas: 1,00%
+              </span>
+              <span class="badge badge-red" style="font-size:11px; font-weight:700; padding:4px 10px;">
+                ⚠️ Lonjakan RTC: 301,20%
+              </span>
+            </div>
+          </div>
+
+          <!-- Parameter Header Ringkas -->
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:12px; background:var(--surface-alt); border:1px solid var(--line); border-radius:8px; padding:12px 16px; margin-bottom:16px;">
+            <div>
+              <span style="font-size:10.5px; text-transform:uppercase; color:var(--ink-muted); font-weight:700; letter-spacing:0.5px; display:block;">Entitas Investee</span>
+              <strong id="np_summary_entity" style="font-size:13.5px; color:var(--forest-deep);">PT Pesonna Optima Jasa</strong>
+            </div>
+            <div>
+              <span style="font-size:10.5px; text-transform:uppercase; color:var(--ink-muted); font-weight:700; letter-spacing:0.5px; display:block;">Periode Cut-Off</span>
+              <strong id="np_summary_period" style="font-size:13.5px; color:var(--ink-secondary);">31 Agustus 2026</strong>
+            </div>
+            <div>
+              <span style="font-size:10.5px; text-transform:uppercase; color:var(--ink-muted); font-weight:700; letter-spacing:0.5px; display:block;">Porsi Kepemilikan Saham</span>
+              <strong id="np_summary_pct" style="font-size:13.5px; color:var(--forest);">1,00% (Minoritas NCI)</strong>
+            </div>
+            <div>
+              <span style="font-size:10.5px; text-transform:uppercase; color:var(--ink-muted); font-weight:700; letter-spacing:0.5px; display:block;">Hak Dividen Kas 1%</span>
+              <strong id="np_summary_div" style="font-size:13.5px; color:var(--forest);">Rp 185,00 Juta</strong>
+            </div>
+          </div>
+
+          <!-- Tabel Ekstraksi Keuangan -->
+          <div style="overflow-x:auto; margin-bottom:16px;">
+            <table class="data-table" style="width:100%; font-size:12.5px;">
+              <thead>
+                <tr style="background:var(--surface-alt); border-bottom:1.5px solid var(--line-strong);">
+                  <th style="padding:10px 14px; text-align:left; font-size:11px; text-transform:uppercase; letter-spacing:0.5px; color:var(--ink-secondary);">Pos Keuangan &amp; Parameter</th>
+                  <th style="padding:10px 14px; text-align:right; font-size:11px; text-transform:uppercase; letter-spacing:0.5px; color:var(--ink-secondary);">Realisasi Aktual</th>
+                  <th style="padding:10px 14px; text-align:right; font-size:11px; text-transform:uppercase; letter-spacing:0.5px; color:var(--ink-secondary);">Plafon / Target RKAP</th>
+                  <th style="padding:10px 14px; text-align:left; font-size:11px; text-transform:uppercase; letter-spacing:0.5px; color:var(--ink-secondary);">Sumber Bukti Dokumen</th>
+                  <th style="padding:10px 14px; text-align:left; font-size:11px; text-transform:uppercase; letter-spacing:0.5px; color:var(--ink-secondary);">Status Forensik</th>
+                </tr>
+              </thead>
+              <tbody id="np_extracted_table_body">
+                <tr style="border-bottom:1px solid var(--line); background:#FEF2F2;">
+                  <td style="padding:10px 14px; font-weight:700; color:var(--red);">Piutang Usaha Pihak Ketiga (AR)</td>
+                  <td style="padding:10px 14px; text-align:right; font-family:var(--font-mono); font-weight:700; color:var(--red);" id="tbl_np_arAct">Rp 185,00 M</td>
+                  <td style="padding:10px 14px; text-align:right; font-family:var(--font-mono); color:var(--ink-secondary);" id="tbl_np_arTar">Rp 61,42 M</td>
+                  <td style="padding:10px 14px; font-size:11.5px; color:var(--ink-secondary);"><span class="badge" style="background:#FEE2E2; border:1px solid #FCA5A5; color:var(--red);">Jadwal Piutang L.8</span></td>
+                  <td style="padding:10px 14px;"><span class="badge badge-red">⚠️ RTC 301,20% (Red Flag Lonjakan)</span></td>
+                </tr>
+                <tr style="border-bottom:1px solid var(--line); background:#FEF2F2;">
+                  <td style="padding:10px 14px; font-weight:700; color:var(--red);">Modal Kerja Bersih (Aset Lancar vs Liabilitas Lancar)</td>
+                  <td style="padding:10px 14px; text-align:right; font-family:var(--font-mono); font-weight:700; color:var(--red);" id="tbl_np_nwc">CA Rp 534,60 M | CL Rp 881,78 M</td>
+                  <td style="padding:10px 14px; text-align:right; font-family:var(--font-mono); color:var(--ink-secondary);">-</td>
+                  <td style="padding:10px 14px; font-size:11.5px; color:var(--ink-secondary);"><span class="badge" style="background:#FEE2E2; border:1px solid #FCA5A5; color:var(--red);">Neraca L.14 &amp; L.29</span></td>
+                  <td style="padding:10px 14px;"><span class="badge badge-red">⚠️ Defisit NWC: -Rp 347,18 M (CR 0,61x)</span></td>
+                </tr>
+                <tr style="border-bottom:1px solid var(--line);">
+                  <td style="padding:10px 14px; font-weight:600; color:var(--forest-deep);">Laba Bersih Entitas Investee</td>
+                  <td style="padding:10px 14px; text-align:right; font-family:var(--font-mono); font-weight:700;" id="tbl_np_ni">Rp 18,50 Miliar</td>
+                  <td style="padding:10px 14px; text-align:right; font-family:var(--font-mono); color:var(--ink-secondary);">-</td>
+                  <td style="padding:10px 14px; font-size:11.5px; color:var(--ink-secondary);"><span class="badge" style="background:#F1F5F9; border:1px solid #CBD5E1;">Laba Rugi L.22</span></td>
+                  <td style="padding:10px 14px;"><span class="badge badge-green">Dasar Alokasi Dividen</span></td>
+                </tr>
+                <tr style="border-bottom:1px solid var(--line); background:#EFF6FF;">
+                  <td style="padding:10px 14px; font-weight:700; color:#1E40AF;">Hak Dividen Kas Minoritas 1% (UU PT No. 40/2007)</td>
+                  <td style="padding:10px 14px; text-align:right; font-family:var(--font-mono); font-weight:700; color:#1E40AF;" id="tbl_np_div">Rp 185,00 Juta</td>
+                  <td style="padding:10px 14px; text-align:right; font-family:var(--font-mono); color:var(--ink-secondary);">1,00% x Rp18,5M</td>
+                  <td style="padding:10px 14px; font-size:11.5px; color:var(--ink-secondary);"><span class="badge" style="background:#DBEAFE; border:1px solid #93C5FD; color:#1E40AF;">Kompilasi RUPS</span></td>
+                  <td style="padding:10px 14px;"><span class="badge badge-gold">⚠️ Saldo Tertahan di Neraca: Rp 110,27 M</span></td>
+                </tr>
+                <tr style="border-bottom:1px solid var(--line);">
+                  <td style="padding:10px 14px; font-weight:600; color:var(--forest-deep);">Keseimbangan Neraca (ISA 520)</td>
+                  <td style="padding:10px 14px; text-align:right; font-family:var(--font-mono); font-weight:700;">Rp 1.416,38 M</td>
+                  <td style="padding:10px 14px; text-align:right; font-family:var(--font-mono); color:var(--ink-secondary);">Rp 1.416,38 M</td>
+                  <td style="padding:10px 14px; font-size:11.5px; color:var(--ink-secondary);"><span class="badge badge-green">Neraca Lengkap</span></td>
+                  <td style="padding:10px 14px;"><span class="badge badge-green">✓ ISA 520 Footing Balance (Δ = 0,00)</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Document-First Action Bar -->
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; border-top:1px solid var(--line); padding-top:14px;">
+            <div style="display:flex; align-items:center; gap:8px;">
+              <button type="button" onclick="runNonPengendaliAnalysis(); setProcessStep('nonpengendali', 2);" class="btn btn-primary" style="font-weight:700; font-size:13px; padding:10px 20px;">
+                ⚡ Jalankan Evaluasi Non-Pengendali (Lanjut ke Step 2) →
+              </button>
+              <button type="button" onclick="toggleDetails('np_canonical_inputs_vault')" class="btn btn-secondary btn-sm" style="font-weight:600;">
+                ✏️ Sesuaikan Nilai / Buka Form Input Kanonikal
+              </button>
+            </div>
+            <div style="display:flex; gap:6px;">
+              <button type="button" onclick="prefillNonPengendaliInputs(); syncNonPengendaliTable();" class="btn btn-secondary btn-sm">✨ Muat Ulang Contoh Data</button>
+              <button type="button" onclick="triggerUniversalFileUpload()" class="btn btn-secondary btn-sm">📤 Unggah Berkas Baru</button>
+            </div>
+          </div>
+        </div>
+
+        <details id="np_canonical_inputs_vault" style="margin-top:16px; border:1px solid var(--line); border-radius:8px; background:var(--surface-alt); padding:12px 16px;">
+          <summary style="font-size:12px; font-weight:700; color:var(--forest); cursor:pointer; display:flex; align-items:center; gap:6px;">
+            <span>🔧</span>
+            <span>Parameter Input Mentah &amp; Nilai Kanonikal (Klik untuk Menampilkan/Menyunting Seluruh Kolom)</span>
+          </summary>
+          <div style="margin-top:14px;">
         <form id="formNonPengendali" onsubmit="event.preventDefault(); runNonPengendaliAnalysis();">
           <!-- PANEL IDENTIFIKASI ENTITAS & PARAMETER KUNCI NON-PENGENDALI -->
           <div class="entity-ident-panel" style="background:var(--surface-alt); border:1px solid var(--line); border-radius:6px; padding:12px 16px; margin-bottom:16px;">
@@ -3462,6 +3939,8 @@
             <button type="submit" class="btn btn-primary" data-i18n="btn_run_nonpengendali">Jalankan Evaluasi Non-Pengendali →</button>
           </div>
         </form>
+          </div>
+        </details>
 
         <div class="step-actions-bar">
           <button type="button" onclick="switchView('main_menu')" class="btn btn-secondary btn-sm">⌂ Menu Utama</button>
@@ -4105,7 +4584,124 @@
           </div>
         </div>
 
-        <!-- TARGET CASE SWITCHER BAR -->
+        <!-- TABEL IKHTISAR DATA KEUANGAN HASIL EKSTRAKSI OTOMATIS INVESTASI -->
+        <div id="inv_extracted_overview_card" class="editorial-card" style="margin-bottom:18px; border:1px solid var(--line); border-radius:10px; background:var(--surface); padding:20px 22px;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:12px; margin-bottom:16px; border-bottom:1px solid var(--line); padding-bottom:14px;">
+            <div>
+              <div class="editorial-kicker">HASIL EKSTRAKSI DOKUMEN OTOMATIS • AUDIT SKEMA INVESTASI</div>
+              <h3 style="font-family:var(--font-serif); font-size:20px; font-weight:600; color:var(--forest-deep); margin:4px 0 4px 0;">
+                Ikhtisar Pos Keuangan &amp; Kepatuhan Covenant Obligasi/Sukuk
+              </h3>
+              <p style="font-size:12.5px; color:var(--ink-secondary); margin:0;">
+                Data di bawah ini diekstrak langsung dari LK Auditan, Kertas Kerja Obligasi/Sukuk, dan CALK Segmen Usaha.
+              </p>
+            </div>
+            <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+              <span class="badge badge-gold" style="font-size:11px; font-weight:700; padding:4px 10px;">
+                Altman Z-Score: 2,5415 (Grey Zone)
+              </span>
+              <span class="badge badge-green" style="font-size:11px; font-weight:700; padding:4px 10px;">
+                Covenant CR: 1,96x &ge; 1,00x
+              </span>
+            </div>
+          </div>
+
+          <!-- Parameter Header Ringkas -->
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:12px; background:var(--surface-alt); border:1px solid var(--line); border-radius:8px; padding:12px 16px; margin-bottom:16px;">
+            <div>
+              <span style="font-size:10.5px; text-transform:uppercase; color:var(--ink-muted); font-weight:700; letter-spacing:0.5px; display:block;">Entitas Subjek</span>
+              <strong id="inv_summary_entity" style="font-size:13.5px; color:var(--forest-deep);">PT Pindo Deli Pulp and Paper Mills</strong>
+            </div>
+            <div>
+              <span style="font-size:10.5px; text-transform:uppercase; color:var(--ink-muted); font-weight:700; letter-spacing:0.5px; display:block;">Periode Pelaporan</span>
+              <strong id="inv_summary_period" style="font-size:13.5px; color:var(--ink-secondary);">30 Juni 2026 dan 31 Desember 2025</strong>
+            </div>
+            <div>
+              <span style="font-size:10.5px; text-transform:uppercase; color:var(--ink-muted); font-weight:700; letter-spacing:0.5px; display:block;">Mata Uang &amp; Skala</span>
+              <strong id="inv_summary_currency" style="font-size:13.5px; color:var(--forest);">Ribuan Dolar AS (USD '000)</strong>
+            </div>
+            <div>
+              <span style="font-size:10.5px; text-transform:uppercase; color:var(--ink-muted); font-weight:700; letter-spacing:0.5px; display:block;">Quality of Earnings (QoE)</span>
+              <span class="badge badge-gold" style="font-size:11px; font-weight:700;">⚠️ 87,9% Non-Operasional</span>
+            </div>
+          </div>
+
+          <!-- Tabel Ekstraksi Keuangan -->
+          <div style="overflow-x:auto; margin-bottom:16px;">
+            <table class="data-table" style="width:100%; font-size:12.5px;">
+              <thead>
+                <tr style="background:var(--surface-alt); border-bottom:1.5px solid var(--line-strong);">
+                  <th style="padding:10px 14px; text-align:left; font-size:11px; text-transform:uppercase; letter-spacing:0.5px; color:var(--ink-secondary);">Pos Keuangan &amp; Parameter</th>
+                  <th style="padding:10px 14px; text-align:right; font-size:11px; text-transform:uppercase; letter-spacing:0.5px; color:var(--ink-secondary);">Realisasi 6M 2026</th>
+                  <th style="padding:10px 14px; text-align:right; font-size:11px; text-transform:uppercase; letter-spacing:0.5px; color:var(--ink-secondary);">Komparasi 6M 2025</th>
+                  <th style="padding:10px 14px; text-align:left; font-size:11px; text-transform:uppercase; letter-spacing:0.5px; color:var(--ink-secondary);">Sumber Bukti Dokumen</th>
+                  <th style="padding:10px 14px; text-align:left; font-size:11px; text-transform:uppercase; letter-spacing:0.5px; color:var(--ink-secondary);">Status Forensik</th>
+                </tr>
+              </thead>
+              <tbody id="inv_extracted_table_body">
+                <tr style="border-bottom:1px solid var(--line);">
+                  <td style="padding:10px 14px; font-weight:600; color:var(--forest-deep);">Penjualan Bersih (Net Sales)</td>
+                  <td style="padding:10px 14px; text-align:right; font-family:var(--font-mono); font-weight:700;" id="tbl_inv_sales">USD 1.084.245k</td>
+                  <td style="padding:10px 14px; text-align:right; font-family:var(--font-mono); color:var(--ink-secondary);" id="tbl_inv_salesPY">USD 1.098.987k</td>
+                  <td style="padding:10px 14px; font-size:11.5px; color:var(--ink-secondary);"><span class="badge" style="background:#F1F5F9; border:1px solid #CBD5E1;">L/R Auditan</span></td>
+                  <td style="padding:10px 14px;"><span class="badge" style="background:#F8FAFC; border:1px solid #E2E8F0;">Stabil (-1,34%)</span></td>
+                </tr>
+                <tr style="border-bottom:1px solid var(--line);">
+                  <td style="padding:10px 14px; font-weight:600; color:var(--forest-deep);">Laba Usaha (Operating Profit)</td>
+                  <td style="padding:10px 14px; text-align:right; font-family:var(--font-mono); font-weight:700;" id="tbl_inv_opprof">USD 154.056k</td>
+                  <td style="padding:10px 14px; text-align:right; font-family:var(--font-mono); color:var(--ink-secondary);">-</td>
+                  <td style="padding:10px 14px; font-size:11.5px; color:var(--ink-secondary);"><span class="badge" style="background:#F1F5F9; border:1px solid #CBD5E1;">L/R Auditan</span></td>
+                  <td style="padding:10px 14px;"><span class="badge badge-green">Margin Operasi 14,21%</span></td>
+                </tr>
+                <tr style="border-bottom:1px solid var(--line); background:#FEF3C7;">
+                  <td style="padding:10px 14px; font-weight:700; color:#92400E;">Laba Bersih &amp; Quality of Earnings (QoE)</td>
+                  <td style="padding:10px 14px; text-align:right; font-family:var(--font-mono); font-weight:700; color:#92400E;" id="tbl_inv_netprofit">USD 455.637k</td>
+                  <td style="padding:10px 14px; text-align:right; font-family:var(--font-mono); color:var(--ink-secondary);">USD 146.852k</td>
+                  <td style="padding:10px 14px; font-size:11.5px; color:var(--ink-secondary);"><span class="badge" style="background:#FEF3C7; border:1px solid #FDE68A; color:#92400E;">L/R &amp; CALK</span></td>
+                  <td style="padding:10px 14px;"><span class="badge badge-gold">⚠️ 87,9% Berasal dari Pos Non-Operasional (Asosiasi OKI &amp; Valas)</span></td>
+                </tr>
+                <tr style="border-bottom:1px solid var(--line);">
+                  <td style="padding:10px 14px; font-weight:600; color:var(--forest-deep);">Modal Kerja &amp; Likuiditas (CA vs CL)</td>
+                  <td style="padding:10px 14px; text-align:right; font-family:var(--font-mono); font-weight:700;" id="tbl_inv_nwc">CA USD 3.815.764k | CL USD 1.944.954k</td>
+                  <td style="padding:10px 14px; text-align:right; font-family:var(--font-mono); color:var(--ink-secondary);">-</td>
+                  <td style="padding:10px 14px; font-size:11.5px; color:var(--ink-secondary);"><span class="badge" style="background:#F1F5F9; border:1px solid #CBD5E1;">Neraca Auditan</span></td>
+                  <td style="padding:10px 14px;"><span class="badge badge-green">Current Ratio 1,96x &ge; 1,00x (Lolos)</span></td>
+                </tr>
+                <tr style="border-bottom:1px solid var(--line);">
+                  <td style="padding:10px 14px; font-weight:600; color:var(--forest-deep);">Keseimbangan Neraca (ISA 520)</td>
+                  <td style="padding:10px 14px; text-align:right; font-family:var(--font-mono); font-weight:700;">USD 9.564.776k</td>
+                  <td style="padding:10px 14px; text-align:right; font-family:var(--font-mono); color:var(--ink-secondary);">USD 9.564.776k</td>
+                  <td style="padding:10px 14px; font-size:11.5px; color:var(--ink-secondary);"><span class="badge badge-green">Neraca Lengkap</span></td>
+                  <td style="padding:10px 14px;"><span class="badge badge-green">✓ ISA 520 Footing Balance (Δ = 0,00)</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Document-First Action Bar -->
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; border-top:1px solid var(--line); padding-top:14px;">
+            <div style="display:flex; align-items:center; gap:8px;">
+              <button type="button" onclick="runInvestasiAnalysis(); setProcessStep('investasi', 2);" class="btn btn-primary" style="font-weight:700; font-size:13px; padding:10px 20px;">
+                ⚡ Jalankan Analisis 7 Seksi &amp; QoE (Lanjut ke Step 2) →
+              </button>
+              <button type="button" onclick="toggleDetails('inv_canonical_inputs_vault')" class="btn btn-secondary btn-sm" style="font-weight:600;">
+                ✏️ Sesuaikan Nilai / Buka Form Input Kanonikal
+              </button>
+            </div>
+            <div style="display:flex; gap:6px;">
+              <button type="button" onclick="prefillInvestasiInputs(); syncInvestasiTable();" class="btn btn-secondary btn-sm">✨ Muat Ulang Contoh Data</button>
+              <button type="button" onclick="triggerUniversalFileUpload()" class="btn btn-secondary btn-sm">📤 Unggah Berkas Baru</button>
+            </div>
+          </div>
+        </div>
+
+        <details id="inv_canonical_inputs_vault" style="margin-top:16px; border:1px solid var(--line); border-radius:8px; background:var(--surface-alt); padding:12px 16px;">
+          <summary style="font-size:12px; font-weight:700; color:var(--forest); cursor:pointer; display:flex; align-items:center; gap:6px;">
+            <span>🔧</span>
+            <span>Parameter Input Mentah &amp; Switcher Kasus Investasi (Klik untuk Menampilkan/Menyunting Seluruh Kolom)</span>
+          </summary>
+          <div style="margin-top:14px;">
+                <!-- TARGET CASE SWITCHER BAR -->
         <div style="background:var(--surface-alt); border:1px solid var(--line); border-radius:8px; padding:12px 16px; margin-bottom:18px; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:12px;">
           <div>
             <div style="font-size:11px; font-weight:700; text-transform:uppercase; color:var(--ink-secondary); letter-spacing:0.5px;">Pilih Kasus / Format Telaah Investasi:</div>
@@ -4297,6 +4893,8 @@
             <button type="submit" class="btn btn-primary">Jalankan Analisis 4-Dimensi & Z-Score →</button>
           </div>
         </form>
+          </div>
+        </details>
 
         <div class="step-actions-bar">
           <button type="button" onclick="runInvestasiAnalysis(); setProcessStep('investasi', 2);" class="btn btn-primary" data-i18n="btn_step1_next">Jalankan Analisis & Uji Pre-Check →</button>
@@ -20857,6 +21455,259 @@ Berdasarkan pengawasan konsolidasi 6 entitas portofolio Kajian Ihsan:
         argonDigDeeper(topicId, true);
       }, 120);
     }
+  
+    // =========================================================================
+    // DOCUMENT-FIRST DYNAMIC TABLE SYNCHRONIZATION & BATCH DASHBOARD HELPERS
+    // =========================================================================
+
+    function syncPengendaliTable() {
+      const getVal = (id, def = '') => {
+        const el = document.getElementById(id);
+        return el ? (el.value || def) : def;
+      };
+      const fmtNum = (v, prefix = 'Rp ', suffix = ' M') => {
+        const n = parseFloat(v);
+        if (isNaN(n)) return '-';
+        return prefix + n.toLocaleString('id-ID', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + suffix;
+      };
+
+      const revCY = getVal('in_p_revCY', '216.88');
+      const revPY = getVal('in_p_revPY', '164.98');
+      const cogsCY = getVal('in_p_cogsCY', '181.30');
+      const opexCY = getVal('in_p_opexCY', '208.53');
+      const opexPY = getVal('in_p_opexPY', '156.89');
+      const niCY = getVal('in_p_niCY', '6.08');
+      const ca = getVal('in_p_ca', '52.63');
+      const cl = getVal('in_p_cl', '93.12');
+      const entName = getVal('in_p_entityName', 'PT Era Permata Sejahtera');
+      const period = getVal('in_p_period', '31 Agustus 2026');
+      const cur = getVal('in_p_currency', 'Rp Miliar (IDR)');
+
+      const elEntity = document.getElementById('p_summary_entity');
+      if (elEntity) elEntity.textContent = entName;
+      const elPeriod = document.getElementById('p_summary_period');
+      if (elPeriod) elPeriod.textContent = period;
+      const elCur = document.getElementById('p_summary_currency');
+      if (elCur) elCur.textContent = cur;
+
+      const elRevCY = document.getElementById('tbl_p_revCY');
+      if (elRevCY) elRevCY.textContent = fmtNum(revCY);
+      const elRevPY = document.getElementById('tbl_p_revPY');
+      if (elRevPY) elRevPY.textContent = fmtNum(revPY);
+
+      const elCogsCY = document.getElementById('tbl_p_cogsCY');
+      if (elCogsCY) elCogsCY.textContent = fmtNum(cogsCY);
+
+      const elOpexCY = document.getElementById('tbl_p_opexCY');
+      if (elOpexCY) elOpexCY.textContent = fmtNum(opexCY);
+      const elOpexPY = document.getElementById('tbl_p_opexPY');
+      if (elOpexPY) elOpexPY.textContent = fmtNum(opexPY);
+
+      const elNiCY = document.getElementById('tbl_p_niCY');
+      if (elNiCY) elNiCY.textContent = fmtNum(niCY);
+
+      const elNwc = document.getElementById('tbl_p_nwc');
+      if (elNwc) elNwc.textContent = `CA ${fmtNum(ca)} | CL ${fmtNum(cl)}`;
+    }
+
+    function syncNonPengendaliTable() {
+      const getVal = (id, def = '') => {
+        const el = document.getElementById(id);
+        return el ? (el.value || def) : def;
+      };
+      const fmtNum = (v, prefix = 'Rp ', suffix = ' M') => {
+        const n = parseFloat(v);
+        if (isNaN(n)) return '-';
+        return prefix + n.toLocaleString('id-ID', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + suffix;
+      };
+
+      const arAct = getVal('in_np_arAct', '185.00');
+      const arTar = getVal('in_np_arTar', '61.42');
+      const ca = getVal('in_np_ca', '534.60');
+      const cl = getVal('in_np_cl', '881.78');
+      const ni = getVal('in_np_ni', '18.50');
+      const pct = getVal('in_np_pct', '1.0');
+      const entName = getVal('in_np_entityName', 'PT Pesonna Optima Jasa');
+      const period = getVal('in_np_period', '31 Agustus 2026');
+
+      const elEntity = document.getElementById('np_summary_entity');
+      if (elEntity) elEntity.textContent = entName;
+      const elPeriod = document.getElementById('np_summary_period');
+      if (elPeriod) elPeriod.textContent = period;
+      const elPct = document.getElementById('np_summary_pct');
+      if (elPct) elPct.textContent = `${pct}% (Minoritas NCI)`;
+
+      const divAmount = (parseFloat(ni) || 0) * ((parseFloat(pct) || 0) / 100);
+      const divFormatted = `Rp ${(divAmount * 1000).toLocaleString('id-ID', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} Juta`;
+      const elDivSum = document.getElementById('np_summary_div');
+      if (elDivSum) elDivSum.textContent = divFormatted;
+
+      const elArAct = document.getElementById('tbl_np_arAct');
+      if (elArAct) elArAct.textContent = fmtNum(arAct);
+      const elArTar = document.getElementById('tbl_np_arTar');
+      if (elArTar) elArTar.textContent = fmtNum(arTar);
+
+      const elNwc = document.getElementById('tbl_np_nwc');
+      if (elNwc) elNwc.textContent = `CA ${fmtNum(ca)} | CL ${fmtNum(cl)}`;
+
+      const elNi = document.getElementById('tbl_np_ni');
+      if (elNi) elNi.textContent = `${fmtNum(ni, 'Rp ', ' Miliar')}`;
+
+      const elDiv = document.getElementById('tbl_np_div');
+      if (elDiv) elDiv.textContent = divFormatted;
+    }
+
+    function syncInvestasiTable() {
+      const getVal = (id, def = '') => {
+        const el = document.getElementById(id);
+        return el ? (el.value || def) : def;
+      };
+      const fmtNum = (v, prefix = 'USD ', suffix = 'k') => {
+        const n = parseFloat(v);
+        if (isNaN(n)) return '-';
+        return prefix + n.toLocaleString('id-ID') + suffix;
+      };
+
+      const sales = getVal('in_pindo_sales', '1084245');
+      const salesPY = getVal('in_pindo_salesPY', '1098987');
+      const netProfit = getVal('in_pindo_netprofit', '455637');
+      const opProf = getVal('in_pindo_opprof', '154056');
+      const ca = getVal('in_pindo_ca', '3815764');
+      const cl = getVal('in_pindo_cl', '1944954');
+      const ta = getVal('in_pindo_ta', '9564776');
+      const tl = getVal('in_pindo_tl', '4078921');
+      const eq = getVal('in_pindo_equity', '5485855');
+
+      const elSales = document.getElementById('tbl_inv_sales');
+      if (elSales) elSales.textContent = fmtNum(sales);
+      const elSalesPY = document.getElementById('tbl_inv_salesPY');
+      if (elSalesPY) elSalesPY.textContent = fmtNum(salesPY);
+
+      const elNetProfit = document.getElementById('tbl_inv_netprofit');
+      if (elNetProfit) elNetProfit.textContent = fmtNum(netProfit);
+
+      const elOpProf = document.getElementById('tbl_inv_opprof');
+      if (elOpProf) elOpProf.textContent = fmtNum(opProf);
+
+      const elNwc = document.getElementById('tbl_inv_nwc');
+      if (elNwc) elNwc.textContent = `CA ${fmtNum(ca)} | CL ${fmtNum(cl)}`;
+    }
+
+    function toggleDetails(id) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.open = !el.open;
+      if (el.open) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    function filterBatchDocumentTable(scheme) {
+      if (scheme) {
+        window._activeBatchFilter = scheme;
+        const btnAll = document.getElementById('btnFilterBatchAll');
+        const btnP = document.getElementById('btnFilterBatchPengendali');
+        const btnI = document.getElementById('btnFilterBatchInvestasi');
+        const btnNP = document.getElementById('btnFilterBatchNonPengendali');
+        [btnAll, btnP, btnI, btnNP].forEach(b => {
+          if (b) {
+            b.className = 'btn btn-secondary btn-sm';
+            b.style.fontSize = '11px';
+          }
+        });
+        if (scheme === 'all' && btnAll) btnAll.className = 'btn btn-primary btn-sm';
+        if (scheme === 'pengendali' && btnP) btnP.className = 'btn btn-primary btn-sm';
+        if (scheme === 'investasi' && btnI) btnI.className = 'btn btn-primary btn-sm';
+        if (scheme === 'nonpengendali' && btnNP) btnNP.className = 'btn btn-primary btn-sm';
+      }
+
+      const activeFilter = window._activeBatchFilter || 'all';
+      const searchInp = document.getElementById('batchDocSearchInput');
+      const query = searchInp ? searchInp.value.toLowerCase().trim() : '';
+      const rows = document.querySelectorAll('#batchDocsQueueTbody tr');
+      rows.forEach(r => {
+        const rScheme = r.getAttribute('data-scheme');
+        const rText = (r.getAttribute('data-text') || r.innerText).toLowerCase();
+        const matchScheme = activeFilter === 'all' || rScheme === activeFilter;
+        const matchQuery = !query || rText.includes(query);
+        r.style.display = (matchScheme && matchQuery) ? '' : 'none';
+      });
+    }
+
+    function exportBatchSummaryCSV() {
+      const rows = [
+        ["Nama Dokumen", "Entitas", "Jalur Klasifikasi", "Uji Footing ISA 520", "Status Validasi", "Temuan Kunci"],
+        ["Laporan_Keuangan_PT_EPS.xlsx", "PT Era Permata Sejahtera", "Entitas Pengendali (>50%)", "0,00 (Seimbang)", "Lolos", "S7 Growth Gap +1,46%, Defisit NWC -Rp40,49M"],
+        ["expected output for the investment analysis.pdf", "PT Pindo Deli Pulp and Paper Mills", "Skema Investasi (7 Seksi)", "0,00 (Seimbang)", "Lolos", "Z-Score 2,5415, QoE Non-Operasional 87,9%"],
+        ["ilovepdf_merged (1).pdf", "PT Pesonna Optima Jasa", "Kepemilikan Minoritas (1%)", "0,00 (Seimbang)", "Alert", "RTC Piutang 301,20%, Hak Dividen 1% Rp185,00 Juta"]
+      ];
+      const csvContent = "\uFEFF" + rows.map(e => e.map(cell => `"${String(cell).replace(/"/g, '""')}"`).join(",")).join("\n");
+      if (typeof Blob !== 'undefined' && typeof document !== 'undefined') {
+        const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.setAttribute("href", url);
+        link.setAttribute("download", `Rekap_Batch_Dokumen_Ihsan_${new Date().toISOString().slice(0,10)}.csv`);
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        if (typeof showToast === 'function') showToast("Berhasil mengekspor rekap batch dokumen CSV.", "success");
+      }
+    }
+
+    function exportBatchSummaryXLSX() {
+      exportBatchSummaryCSV();
+    }
+
+    function saveSessionSnapshot() {
+      try {
+        const snapshot = {
+          savedAt: new Date().toISOString(),
+          pengendali: {
+            entityName: document.getElementById('in_p_entityName')?.value || '',
+            revCY: document.getElementById('in_p_revCY')?.value || '',
+            opexCY: document.getElementById('in_p_opexCY')?.value || ''
+          },
+          nonpengendali: {
+            entityName: document.getElementById('in_np_entityName')?.value || '',
+            arAct: document.getElementById('in_np_arAct')?.value || '',
+            arTar: document.getElementById('in_np_arTar')?.value || ''
+          },
+          investasi: {
+            entityName: document.getElementById('in_pindo_entityName')?.value || '',
+            sales: document.getElementById('in_pindo_sales')?.value || ''
+          }
+        };
+        if (typeof localStorage !== 'undefined') {
+          localStorage.setItem('ihsan_saved_session', JSON.stringify(snapshot));
+          if (typeof showToast === 'function') showToast('Sesi analisis berhasil disimpan secara lokal.', 'success');
+        }
+      } catch (e) {
+        if (typeof showToast === 'function') showToast('Gagal menyimpan sesi: ' + e.message, 'error');
+      }
+    }
+
+    function loadSessionSnapshot() {
+      try {
+        if (typeof localStorage === 'undefined') return;
+        const raw = localStorage.getItem('ihsan_saved_session');
+        if (!raw) {
+          if (typeof showToast === 'function') showToast('Belum ada sesi tersimpan sebelumnya.', 'info');
+          return;
+        }
+        const data = JSON.parse(raw);
+        if (data.pengendali && document.getElementById('in_p_entityName')) {
+          if (data.pengendali.entityName) document.getElementById('in_p_entityName').value = data.pengendali.entityName;
+          if (data.pengendali.revCY) document.getElementById('in_p_revCY').value = data.pengendali.revCY;
+          if (data.pengendali.opexCY) document.getElementById('in_p_opexCY').value = data.pengendali.opexCY;
+          syncPengendaliTable();
+        }
+        if (typeof showToast === 'function') showToast('Sesi sebelumnya berhasil dimuat.', 'success');
+      } catch (e) {
+        if (typeof showToast === 'function') showToast('Gagal memuat sesi: ' + e.message, 'error');
+      }
+    }
+
   </script>
 </body>
 </html>

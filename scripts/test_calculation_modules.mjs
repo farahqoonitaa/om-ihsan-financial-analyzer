@@ -68,7 +68,7 @@ const invRes = calculateInvestasi({
   collateralExposure: 0,
   stressLoss: 0
 });
-assert(Math.abs(invRes.summary.modZ - 2.541) < 0.05, `Modified Z must be ~2.54 (got ${invRes.summary.modZ})`);
+assert(Math.abs(invRes.summary.modZ - 2.541) < 0.05, );
 assert(invRes.summary.modZTier === "Hijau", "Modified Z tier must be Hijau");
 assert(invRes.yieldSchedule.length === 3, "Yield schedule must be 3 years");
 console.log("   -> Mode C: Skema Investasi OK! (Modified Z:", invRes.summary.modZ, "Tier:", invRes.summary.modZTier, "Total Return:", invRes.summary.totalReturn, ")");
