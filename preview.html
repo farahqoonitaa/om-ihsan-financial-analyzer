@@ -680,6 +680,14 @@
       border-color: #D97706;
     }
 
+    
+    /* Hide duplicate internal sub-navbar in narrowed scheme views for senior executive focus */
+    #viewPengendali .entity-nav-bar,
+    #viewNonPengendali .entity-nav-bar,
+    #viewInvestasi .entity-nav-bar {
+      display: none !important;
+    }
+
     /* Entity Nav Tabs */
     .entity-nav-bar {
       display: flex; align-items: center; gap: 6px; flex-wrap: wrap;
@@ -1584,32 +1592,32 @@
     <section id="viewMainMenu">
       
       <!-- PROCESS HUB EXECUTIVE HEADER & OM IHSAN EXECUTIVE GATEWAY (PAGE 1: SINGLE ENTRY POINT, ZERO LOGIN) -->
-      <div id="omIhsanExecutiveGateway" class="process-hub-header" style="background:linear-gradient(135deg, #064E3B 0%, #0F5338 60%, #15803D 100%); border-radius:18px; padding:28px 32px; color:#FFFFFF; margin-bottom:22px; box-shadow:0 8px 30px rgba(6,78,59,0.22); border:2px solid #86EFAC;">
+      <div id="omIhsanExecutiveGateway" class="process-hub-header" style="background:linear-gradient(135deg, #064E3B 0%, #0F5338 60%, #15803D 100%); border-radius:18px; padding:24px 28px; color:#FFFFFF; margin-bottom:18px; box-shadow:0 8px 30px rgba(6,78,59,0.22); border:2px solid #86EFAC;">
         <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;">
           <div style="max-width:760px;">
-            <div style="display:inline-flex; align-items:center; gap:8px; background:rgba(255,255,255,0.16); border:1px solid rgba(255,255,255,0.3); border-radius:30px; padding:6px 16px; margin-bottom:12px;">
-              <span style="font-size:15px;">👋</span>
-              <span class="badge badge-gold" style="font-size:11.5px; font-weight:800; letter-spacing:0.5px; text-transform:uppercase; color:#14532D; background:#FEF08A; border:none; margin:0;" data-i18n="hub_badge">SELAMAT DATANG DI KAJIAN IHSAN • AKSES EKSEKUTIF</span>
+            <div style="display:inline-flex; align-items:center; gap:8px; background:rgba(255,255,255,0.16); border:1px solid rgba(255,255,255,0.3); border-radius:30px; padding:5px 14px; margin-bottom:10px;">
+              <span style="font-size:14px;">👋</span>
+              <span class="badge badge-gold" style="font-size:11px; font-weight:800; letter-spacing:0.5px; text-transform:uppercase; color:#14532D; background:#FEF08A; border:none; margin:0;" data-i18n="hub_badge">PILIH 1 DARI 3 PINTU MASUK KHUSUS • AKSES EKSEKUTIF</span>
             </div>
-            <h1 class="process-hub-title" id="txt_brand_hub_title" data-i18n="hub_title" style="margin:0 0 10px 0; font-size:32px; font-weight:900; line-height:1.2; letter-spacing:-0.5px; color:#FFFFFF; text-shadow:0 2px 4px rgba(0,0,0,0.2);">
+            <h1 class="process-hub-title" id="txt_brand_hub_title" data-i18n="hub_title" style="margin:0 0 8px 0; font-size:30px; font-weight:900; line-height:1.2; letter-spacing:-0.5px; color:#FFFFFF; text-shadow:0 2px 4px rgba(0,0,0,0.2);">
               Hi Ihsan, Mau Analisa Apa Hari Ini?
             </h1>
-            <p class="process-hub-sub" id="txt_brand_hub_sub" data-i18n="hub_sub" style="margin:0; font-size:15.5px; color:#DCFCE7; line-height:1.6; font-weight:500;">
-              Silakan pilih <strong>1 dari 3 pintu fokus analisis</strong> di bawah ini. Sistem langsung mengerucutkan layar (narrowing) hanya untuk alur kerja yang Anda pilih, lengkap dengan kapasitas penyerapan &ge; 3 berkas, kalkulasi otomatis, dan Nota Dinas siap saji tanpa perlu login.
+            <p class="process-hub-sub" id="txt_brand_hub_sub" data-i18n="hub_sub" style="margin:0; font-size:14.5px; color:#DCFCE7; line-height:1.55; font-weight:500;">
+              Pilih Fokus Analisis untuk Mengerucutkan Layar (Narrowing). Silakan pilih <strong>1 dari 3 pintu masuk khusus</strong> di bawah ini. Sistem langsung membuka alur kerja khusus pilihan Anda dengan kapasitas penyerapan &ge; 3 berkas, kalkulasi otomatis, dan Nota Dinas siap saji tanpa perlu login.
             </p>
           </div>
           <div style="text-align:right;">
-            <div style="background:rgba(0,0,0,0.25); border:1px solid rgba(255,255,255,0.25); border-radius:14px; padding:14px 20px; display:inline-block; text-align:left; backdrop-filter:blur(6px);">
-              <div style="font-size:11px; font-weight:700; color:#86EFAC; text-transform:uppercase; letter-spacing:0.5px;">Status Akses</div>
-              <div style="font-size:14.5px; font-weight:800; color:#FFFFFF; display:flex; align-items:center; gap:8px; margin-top:3px;">
+            <div style="background:rgba(0,0,0,0.25); border:1px solid rgba(255,255,255,0.25); border-radius:14px; padding:12px 18px; display:inline-block; text-align:left; backdrop-filter:blur(6px);">
+              <div style="font-size:10.5px; font-weight:700; color:#86EFAC; text-transform:uppercase; letter-spacing:0.5px;">Status Akses</div>
+              <div style="font-size:13.5px; font-weight:800; color:#FFFFFF; display:flex; align-items:center; gap:8px; margin-top:2px;">
                 <span style="width:10px; height:10px; border-radius:50%; background:#22C55E; box-shadow:0 0 10px #22C55E; display:inline-block;"></span>
                 Langsung Terbuka (Tanpa Perlu Login)
               </div>
-              <div style="font-size:12px; color:#E2E8F0; margin-top:5px; font-weight:600;">
-                ⚡ Kapasitas Kolektif &ge; 3 Berkas per Skema
+              <div style="font-size:11.5px; color:#E2E8F0; margin-top:4px; font-weight:600;">
+                ⚡ Kapasitas Penyerapan: &ge; 3 Berkas Kolektif
               </div>
-              <div style="margin-top:10px; display:flex; gap:6px;">
-                <button type="button" onclick="switchView('datapool')" class="btn btn-gold btn-sm" style="font-weight:700; font-size:11.5px; padding:5px 12px; cursor:pointer;">
+              <div style="margin-top:8px; display:flex; gap:6px;">
+                <button type="button" onclick="switchView('datapool')" class="btn btn-gold btn-sm" style="font-weight:700; font-size:11px; padding:4px 10px; cursor:pointer;">
                   📚 <span data-i18n="btn_datapool_nav">Data Pool & Pola AI</span>
                 </button>
                 <button type="button" onclick="switchView('settings')" class="btn btn-secondary btn-sm" style="display:none; font-weight:700;">
@@ -1625,23 +1633,18 @@
       <!-- DEDICATED 3-SCHEME ENTRY GATEWAY (SEPARATE ENTRY POINTS & 3+ FILES CAPACITY) -->
       <!-- ========================================================================= -->
       <div id="threeDedicatedPortalsGrid" style="margin-bottom:28px;">
-        <div style="background:linear-gradient(135deg, #064E3B, #0F5338); border-radius:12px; padding:16px 22px; color:#FFFFFF; margin-bottom:16px; box-shadow:0 4px 16px rgba(6,78,59,0.15);">
-          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
-            <div>
-              <span class="badge" style="background:#DCFCE7; color:#14532D; font-size:11px; font-weight:800; text-transform:uppercase;">PILIH 1 DARI 3 PINTU MASUK KHUSUS (DEDICATED ENTRY POINTS)</span>
-              <h2 style="margin:4px 0 2px 0; font-size:21px; font-weight:900; color:#FFFFFF;">
-                Pilih Fokus Analisis untuk Mengerucutkan Layar (Narrowing)
-              </h2>
-              <p style="margin:0; font-size:12.5px; color:#E2E8F0; opacity:0.95;">
-                Setiap jalur memiliki pintu masuk tersendiri, kapasitas penyerapan <strong>3 berkas atau lebih</strong>, serta logika evaluasi dan naskah Nota Dinas yang 100% independen.
-              </p>
-            </div>
-            <div style="display:flex; align-items:center; gap:8px;">
-              <span style="font-size:12px; font-weight:700; background:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.3); border-radius:20px; padding:6px 14px; color:#FFFFFF;">
-                ⚡ Kapasitas Penyerapan: &ge; 3 Berkas Kolektif
-              </span>
-            </div>
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:14px;">
+          <div style="display:flex; align-items:center; gap:8px;">
+            <span style="font-size:12.5px; font-weight:800; color:#14532D; background:#DCFCE7; border:1px solid #86EFAC; border-radius:20px; padding:4px 12px;">
+              🎯 3 Pintu Fokus Analisis
+            </span>
+            <span style="font-size:12.5px; color:var(--ink-secondary);">
+              Klik salah satu kartu untuk langsung masuk ke alur kerja khusus (Narrowing):
+            </span>
           </div>
+          <span style="font-size:12px; font-weight:700; color:#15803D; background:#F0FDF4; border:1px solid #BBF7D0; border-radius:12px; padding:4px 12px;">
+            ⚡ Kapasitas Penyerapan: &ge; 3 Berkas Kolektif
+          </span>
         </div>
 
         <!-- 3 Dedicated Scheme Cards -->
@@ -8399,10 +8402,10 @@
 
       const labels = {
         id: {
-          'main_menu': 'Menu Utama',
-          'pengendali': 'Input Pengendali',
-          'nonpengendali': 'Input Non-Pengendali',
-          'investasi': 'Input Skema Investasi',
+          'main_menu': 'Beranda (Pusat Pilihan Analisis)',
+          'pengendali': 'Entitas Pengendali (Fokus Terkunci)',
+          'nonpengendali': 'Entitas Non-Pengendali (Fokus Terkunci)',
+          'investasi': 'Skema Investasi (Fokus Terkunci)',
           'konsolidasi': 'Konsolidasi Akhir Grup',
           'datapool': 'Forensic Data Pool & Pola AI',
           'settings': 'Pengaturan Mesin AI (Google vs Lokal)'
