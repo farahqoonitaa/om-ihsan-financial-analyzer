@@ -636,6 +636,12 @@
       50% { transform: translateY(-8px); }
     }
 
+    
+    /* Completely hide top entity nav strip to avoid duplicate choice buttons on Page 1 */
+    .entity-nav-strip {
+      display: none !important;
+    }
+
     /* Dedicated Scheme Portals (Separate Entry Points & 3+ Files Capacity) */
     .dedicated-portals-grid {
       display: grid;
@@ -1544,6 +1550,9 @@
         ⌂ Kembali ke Menu Utama
       </button>
 
+      <button type="button" id="btnHeaderArgonRag" onclick="openArgonDeepDiveExplorer('pindo_qoe')" class="btn btn-gold btn-sm" style="display:inline-flex; align-items:center; gap:6px; font-weight:800; cursor:pointer; padding:7px 14px; border-radius:8px;">
+        <span>🧠</span> <span>Tanya Argon RAG</span>
+      </button>
       <button id="btnHeaderReset" onclick="resetAllToBlankState()" class="btn btn-danger btn-sm" style="font-size:13px; padding:8px 14px; font-weight:700;" title="Mulai ulang dari awal">
         🔄 Mulai Ulang (Reset)
       </button>
@@ -1562,7 +1571,7 @@
   </div>
 
   <!-- PERSISTENT GLOBAL ENTITY NAVIGATION STRIP (LARGE, CLEAR BUTTONS FOR EXECUTIVES) -->
-  <nav class="entity-nav-strip" style="background:#F8FAFC; border-bottom:2px solid #D5E2D9; padding:10px 24px; display:flex; gap:10px; overflow-x:auto; align-items:center; z-index:30; position:relative;">
+  <nav class="entity-nav-strip" style="display:none !important;">
     <span style="font-size:12.5px; font-weight:800; color:#475569; text-transform:uppercase; letter-spacing:0.4px; margin-right:4px;">Pilih Halaman:</span>
     <button type="button" class="entity-nav-btn active" data-view="main_menu" onclick="switchView('main_menu')" style="display:flex; align-items:center; gap:6px; padding:8px 16px; border-radius:8px; border:1.5px solid #107C41; background:#F0FDF4; font-size:13.5px; font-weight:800; color:var(--forest-deep); cursor:pointer;">
       <span>⌂</span> <span>Menu Utama (Pilih & Unggah)</span>
@@ -1635,11 +1644,11 @@
       <div id="threeDedicatedPortalsGrid" style="margin-bottom:28px;">
         <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:14px;">
           <div style="display:flex; align-items:center; gap:8px;">
-            <span style="font-size:12.5px; font-weight:800; color:#14532D; background:#DCFCE7; border:1px solid #86EFAC; border-radius:20px; padding:4px 12px;">
-              🎯 3 Pintu Fokus Analisis
+            <span style="font-size:13px; font-weight:800; color:#14532D; background:#DCFCE7; border:1.5px solid #86EFAC; border-radius:20px; padding:5px 14px;">
+              🎯 3 Pilihan Fokus Analisis Om Ihsan
             </span>
-            <span style="font-size:12.5px; color:var(--ink-secondary);">
-              Klik salah satu kartu untuk langsung masuk ke alur kerja khusus (Narrowing):
+            <span style="font-size:13px; font-weight:600; color:var(--ink-secondary);">
+              Pilih 1 kartu di bawah untuk mengerucutkan layar (narrowing):
             </span>
           </div>
           <span style="font-size:12px; font-weight:700; color:#15803D; background:#F0FDF4; border:1px solid #BBF7D0; border-radius:12px; padding:4px 12px;">
