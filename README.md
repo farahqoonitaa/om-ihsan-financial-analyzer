@@ -127,3 +127,13 @@ npm test
 10. `test_boomer_finalization_and_category_shelf.mjs`: Modal finalisasi animasi, konfirmasi tersimpan, dan lemari arsip terkategori.
 
 **Status Akhir: 10/10 Test Suites PASS (100% Green).**
+
+---
+
+## 📚 8. Dokumentasi Lengkap & Arsitektur
+
+Dokumentasi komprehensif sistem telah disusun rapi di direktori `docs/`:
+* [📘 docs/WALKTHROUGH.md](docs/WALKTHROUGH.md): Ringkasan menyeluruh evolusi sistem, pembenahan UX, formula matematis kanonikal, dan matriks pengujian 10-suite.
+* [🏛️ docs/ARCHITECTURE.md](docs/ARCHITECTURE.md): Cetak biru arsitektur sistem, state machine peramban, engine perhitungan deterministik, dan prinsip tata kelola data.
+* [📖 docs/USER_MANUAL.md](docs/USER_MANUAL.md): Buku petunjuk operasional praktis untuk pengambil keputusan senior ("Om Ihsan"), dari pemilihan pintu hingga ekspor resmi Word/PDF dan lemari arsip.
+
