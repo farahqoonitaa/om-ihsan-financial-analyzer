@@ -1655,10 +1655,10 @@
             <div>
               <div style="display:grid; grid-template-columns:1fr; gap:8px;">
                 <button type="button" onclick="enterSchemePortal('investasi', false)" class="btn btn-primary btn-sm" style="font-weight:800; padding:9px 16px; font-size:12px; cursor:pointer; text-align:center;">
-                  🚪 Masuk ke Alur Investasi (Pintu Khusus) →
+                  🚪 Buka Halaman Investasi (Pintu Khusus) →
                 </button>
                 <button type="button" onclick="enterSchemePortal('investasi', true)" class="btn btn-secondary btn-sm" style="font-weight:700; background:#FFFFFF; border-color:#86EFAC; color:#14532D; font-size:11px; padding:7px 12px; cursor:pointer;">
-                  ⚡ 1-Klik Muat &amp; Serap 3 Berkas Investasi (Pindo Deli + DAAZ)
+                  ⚡ 1-Klik Buka Laporan 3 Berkas Investasi (Pindo Deli + DAAZ)
                 </button>
               </div>
             </div>
@@ -1689,10 +1689,10 @@
             <div>
               <div style="display:grid; grid-template-columns:1fr; gap:8px;">
                 <button type="button" onclick="enterSchemePortal('pengendali', false)" class="btn btn-primary btn-sm" style="font-weight:800; background:#2563EB; border-color:#1D4ED8; padding:9px 16px; font-size:12px; cursor:pointer; text-align:center;">
-                  🚪 Masuk ke Alur Pengendali (Pintu Khusus) →
+                  🚪 Buka Halaman Pengendali (Pintu Khusus) →
                 </button>
                 <button type="button" onclick="enterSchemePortal('pengendali', true)" class="btn btn-secondary btn-sm" style="font-weight:700; background:#FFFFFF; border-color:#93C5FD; color:#1E40AF; font-size:11px; padding:7px 12px; cursor:pointer;">
-                  ⚡ 1-Klik Muat &amp; Serap 3 Berkas Pengendali (PT EPS + RKAP)
+                  ⚡ 1-Klik Buka Laporan 3 Berkas Pengendali (PT EPS + RKAP)
                 </button>
               </div>
             </div>
@@ -1723,10 +1723,10 @@
             <div>
               <div style="display:grid; grid-template-columns:1fr; gap:8px;">
                 <button type="button" onclick="enterSchemePortal('nonpengendali', false)" class="btn btn-primary btn-sm" style="font-weight:800; background:#D97706; border-color:#B45309; padding:9px 16px; font-size:12px; cursor:pointer; text-align:center;">
-                  🚪 Masuk ke Alur Non-Pengendali (Pintu Khusus) →
+                  🚪 Buka Halaman Non-Pengendali (Pintu Khusus) →
                 </button>
                 <button type="button" onclick="enterSchemePortal('nonpengendali', true)" class="btn btn-secondary btn-sm" style="font-weight:700; background:#FFFFFF; border-color:#FDE68A; color:#92400E; font-size:11px; padding:7px 12px; cursor:pointer;">
-                  ⚡ 1-Klik Muat &amp; Serap 3 Berkas Non-Pengendali (PT POJ + RTC)
+                  ⚡ 1-Klik Buka Laporan 3 Berkas Non-Pengendali (PT POJ + RTC)
                 </button>
               </div>
             </div>
@@ -14424,23 +14424,54 @@ Conflict: ${escapeHtml(c.conflict)}</div>
     }
 
     // Direct Entry Point for Scheme Portals (Separate Entry Ways & 3+ Files Capacity)
+    // Direct Entry Point for Scheme Portals (Smooth Page Transition to Dedicated Next Page, No Jerky Scroll Down)
     function enterSchemePortal(schemeKey, autoLoad3Files = false) {
       if (!SCHEME_CONFIG[schemeKey]) schemeKey = 'investasi';
       selectWorkflowScheme(schemeKey, { silentReprocess: true });
+
       if (autoLoad3Files) {
+        let bundlePromise;
         if (schemeKey === 'investasi') {
-          return loadSchemeMultiFileBundle('investasi_multi');
+          bundlePromise = loadSchemeMultiFileBundle('investasi_multi');
+          if (typeof openDocumentAnalysis === 'function') openDocumentAnalysis('pindodeli');
         } else if (schemeKey === 'pengendali') {
-          return loadSchemeMultiFileBundle('pengendali_3files');
+          bundlePromise = loadSchemeMultiFileBundle('pengendali_3files');
+          if (typeof prefillPengendaliInputs === 'function') prefillPengendaliInputs();
+          if (typeof runPengendaliAnalysis === 'function') runPengendaliAnalysis();
         } else if (schemeKey === 'nonpengendali') {
-          return loadSchemeMultiFileBundle('nonpengendali_3files');
+          bundlePromise = loadSchemeMultiFileBundle('nonpengendali_3files');
+          if (typeof prefillNonPengendaliInputs === 'function') prefillNonPengendaliInputs();
+          if (typeof runNonPengendaliAnalysis === 'function') runNonPengendaliAnalysis();
         }
+
+        // Buka langsung ke halaman kerja selanjutnya secara mulus (Step 2: Uji Footing & Pre-Check)
+        switchView(schemeKey);
+        setProcessStep(schemeKey, 2);
+        if (typeof window !== 'undefined' && typeof window.scrollTo === 'function') {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        const toasts = {
+          investasi: '📈 Membuka Halaman Investasi dengan Kapasitas 3 Berkas Terkonsolidasi!',
+          pengendali: '🏢 Membuka Halaman Pengendali dengan Kapasitas 3 Berkas Terkonsolidasi!',
+          nonpengendali: '🤝 Membuka Halaman Non-Pengendali dengan Kapasitas 3 Berkas Terkonsolidasi!'
+        };
+        showToast(toasts[schemeKey] || 'Membuka halaman analisis...', 'success');
+        return bundlePromise;
       } else {
-        goToSchemeJourneyStep(2);
-        const targetEl = document.getElementById('dynamicSchemeWorkflowHub');
-        if (targetEl && typeof targetEl.scrollIntoView === 'function') {
-          targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        // Buka langsung ke halaman kerja selanjutnya secara mulus (Step 1: Input & Berkas) tanpa scroll down
+        switchView(schemeKey);
+        setProcessStep(schemeKey, 1);
+        if (typeof window !== 'undefined' && typeof window.scrollTo === 'function') {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
         }
+
+        const toasts = {
+          investasi: '📈 Masuk ke Halaman Khusus Skema Investasi (Langkah 1)',
+          pengendali: '🏢 Masuk ke Halaman Khusus Entitas Pengendali (Langkah 1)',
+          nonpengendali: '🤝 Masuk ke Halaman Khusus Entitas Non-Pengendali (Langkah 1)'
+        };
+        showToast(toasts[schemeKey] || 'Membuka halaman kerja...', 'info');
       }
     }
 

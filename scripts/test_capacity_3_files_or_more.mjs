@@ -171,6 +171,25 @@ const npPreviewHtml = getMockElement('schemeDynamicPreviewContainer').innerHTML;
 assert(npPreviewHtml.includes('schemeAbsorptionLedgerBox') || npPreviewHtml.includes('Kapasitas Penyerapan Multi-Berkas Aktif') || npPreviewHtml.includes('3 Berkas Berhasil Diserap'), 'Multi-File Absorption Ledger rendered in Non-Pengendali preview');
 assert(npPreviewHtml.includes('Non-Pengendali Preview') && npPreviewHtml.includes('RTC 301,20%') && npPreviewHtml.includes('PROTEKSI HAK DIVIDEN MINORITAS'), 'Non-Pengendali preview strictly executes Non-Pengendali logic (RTC 301% & Dividen 1%)');
 
+// TEST 4: Smooth Dedicated Next-Page Navigation (No Scroll Down) on Portal Entry Points
+console.log('\n--- TEST 4: Smooth Dedicated Next-Page Navigation (No Scroll Down) on Portal Entry Points ---');
+const processSteps = vm.runInContext('processSteps', sandbox);
+sandbox.enterSchemePortal('investasi', false);
+assert(appState.currentView === 'investasi', 'enterSchemePortal("investasi", false) opens viewInvestasi next page');
+assert(processSteps.investasi === 1, 'viewInvestasi starts cleanly at Step 1');
+
+sandbox.enterSchemePortal('pengendali', false);
+assert(appState.currentView === 'pengendali', 'enterSchemePortal("pengendali", false) opens viewPengendali next page');
+assert(processSteps.pengendali === 1, 'viewPengendali starts cleanly at Step 1');
+
+sandbox.enterSchemePortal('nonpengendali', false);
+assert(appState.currentView === 'nonpengendali', 'enterSchemePortal("nonpengendali", false) opens viewNonPengendali next page');
+assert(processSteps.nonpengendali === 1, 'viewNonPengendali starts cleanly at Step 1');
+
+await sandbox.enterSchemePortal('investasi', true);
+assert(appState.currentView === 'investasi', '1-Click 3-Files Investasi opens viewInvestasi next page');
+assert(processSteps.investasi === 2, 'viewInvestasi transitions to Step 2 with absorbed files');
+
 // ---------------------------------------------------------------------------
 // SECTION 4: 1:1 REPO SYNCHRONIZATION
 // ---------------------------------------------------------------------------
