@@ -843,71 +843,76 @@
       font-weight: 600; color: var(--ink-secondary);
     }
 
-    /* Executive Nota Dinas Official Styling */
+    /* Executive Nota Dinas Official Styling - Crisp White & Executive Navy/Blue */
     .nota-dinas-container {
       background: #FFFFFF;
-      border: 2px solid #C8C2B4;
-      border-radius: 8px;
-      padding: 24px 28px;
+      border: 1px solid #E2E8F0;
+      border-radius: 12px;
+      padding: 26px 30px;
       margin-top: 18px;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
-      font-family: var(--font-serif);
-      color: #1a1a1a;
+      box-shadow: 0 4px 24px rgba(10,37,64,0.06);
+      font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: #0F172A;
       line-height: 1.6;
     }
     .nota-dinas-header {
-      border-bottom: 3px double #1B4332;
-      padding-bottom: 12px;
-      margin-bottom: 16px;
+      border-bottom: 2.5px solid #0A2540;
+      padding-bottom: 14px;
+      margin-bottom: 18px;
       text-align: center;
     }
     .nota-dinas-header h3 {
-      font-size: 17px;
+      font-size: 18px;
       font-weight: 800;
-      letter-spacing: 1px;
-      color: #0D261A;
+      letter-spacing: 0.8px;
+      color: #0A2540;
       margin: 0;
       text-transform: uppercase;
     }
     .nota-dinas-header h4 {
       font-size: 14px;
       font-weight: 700;
-      color: #A17922;
+      color: #1D4ED8;
       margin: 4px 0 0;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.3px;
     }
     .nota-dinas-meta-table {
       width: 100%;
       border-collapse: collapse;
-      margin-bottom: 16px;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      margin-bottom: 18px;
+      font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, sans-serif;
       font-size: 12px;
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 8px;
+      overflow: hidden;
     }
     .nota-dinas-meta-table td {
-      padding: 4px 6px;
+      padding: 6px 12px;
       vertical-align: top;
-      border-bottom: 1px dashed #E2DDD3;
+      border-bottom: 1px solid #E2E8F0;
     }
     .nota-dinas-meta-label {
-      width: 130px;
+      width: 140px;
       font-weight: 700;
-      color: #57534E;
+      color: #475569;
     }
     .nota-dinas-body {
       font-size: 13px;
-      font-family: var(--font-serif);
-      color: #222;
+      font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, sans-serif;
+      color: #1E293B;
+      line-height: 1.65;
     }
     .nota-dinas-body h5 {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      font-size: 13px;
-      font-weight: 700;
-      color: #0D261A;
-      margin: 14px 0 6px;
+      font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, sans-serif;
+      font-size: 13.5px;
+      font-weight: 800;
+      color: #0A2540;
+      margin: 16px 0 8px;
       text-transform: uppercase;
       letter-spacing: 0.3px;
-      border-left: 3px solid #1B4332;
-      padding-left: 8px;
+      border-left: 3.5px solid #1D4ED8;
+      padding-left: 10px;
     }
     .nota-dinas-actions {
       display: flex;
@@ -916,14 +921,14 @@
       gap: 8px;
       margin-top: 16px;
       padding-top: 12px;
-      border-top: 1px solid #E2DDD3;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      border-top: 1px solid #E2E8F0;
+      font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, sans-serif;
       flex-wrap: wrap;
     }
     .nota-dinas-container.editing-mode {
-      border: 2px dashed #059669 !important;
-      background: #fcfdfa !important;
-      box-shadow: 0 0 0 4px rgba(5, 150, 105, 0.12) !important;
+      border: 2px dashed #1D4ED8 !important;
+      background: #F8FAFC !important;
+      box-shadow: 0 0 0 4px rgba(29, 78, 216, 0.12) !important;
       transition: all 0.25s ease;
     }
     .nota-dinas-container.editing-mode .nota-dinas-body[contenteditable="true"] {
@@ -931,16 +936,16 @@
       background: #ffffff;
       border-radius: 6px;
       padding: 14px;
-      border: 1.5px solid #a7f3d0;
+      border: 1.5px solid #BFDBFE;
       box-shadow: inset 0 1px 3px rgba(0,0,0,0.03);
     }
     .nota-dinas-container.editing-mode .nota-dinas-body[contenteditable="true"]:focus {
-      border-color: #059669;
-      box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.18);
+      border-color: #1D4ED8;
+      box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.18);
     }
     .nota-dinas-container.editing-mode .nota-dinas-meta-table td[contenteditable="true"] {
-      outline: 1px dashed #10b981;
-      background: #f0fdf4;
+      outline: 1px dashed #1D4ED8;
+      background: #EFF6FF;
       padding: 4px 8px;
       border-radius: 4px;
     }
@@ -950,20 +955,20 @@
       align-items: center;
       flex-wrap: wrap;
       gap: 8px;
-      background: #ecfdf5;
-      border: 1.5px dashed #059669;
-      color: #065f46;
+      background: #EFF6FF;
+      border: 1.5px dashed #1D4ED8;
+      color: #1E3A8A;
       padding: 10px 14px;
       border-radius: 8px;
       margin-bottom: 14px;
       font-size: 12px;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, sans-serif;
       animation: fadeIn 0.2s ease-in-out;
     }
     .nota-dinas-edited-badge {
-      background: #dcfce7;
+      background: #DCFCE7;
       color: #166534;
-      border: 1px solid #86efac;
+      border: 1px solid #86EFAC;
       font-size: 11px;
       font-weight: 600;
       padding: 4px 10px;
@@ -975,23 +980,25 @@
     }
     /* S1-S10 Complete Audit Breakdown inside Nota Dinas */
     .nd-s1-s10-audit-section {
-      margin: 18px 0;
-      border-top: 2px solid #1B4332;
-      padding-top: 14px;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      margin: 20px 0;
+      border-top: 2px solid #0A2540;
+      padding-top: 16px;
+      font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, sans-serif;
     }
     .nd-signal-card {
-      border: 1px solid #D5E2D8;
-      border-radius: 6px;
+      border: 1px solid #E2E8F0;
+      border-radius: 8px;
       margin-bottom: 14px;
       background: #FFFFFF;
       overflow: hidden;
+      box-shadow: 0 1px 4px rgba(10,37,64,0.04);
       page-break-inside: avoid;
+      break-inside: avoid;
     }
     .nd-signal-header {
-      background: #F2F7F4;
-      padding: 8px 12px;
-      border-bottom: 1px solid #D5E2D8;
+      background: #F8FAFC;
+      padding: 10px 14px;
+      border-bottom: 1px solid #E2E8F0;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -999,85 +1006,90 @@
       gap: 8px;
     }
     .nd-signal-code {
-      background: #0D261A;
-      color: #D4AF37;
+      background: #0A2540;
+      color: #FFFFFF;
       font-weight: 800;
       font-size: 11.5px;
-      padding: 2px 8px;
-      border-radius: 4px;
+      padding: 3px 9px;
+      border-radius: 5px;
       letter-spacing: 0.5px;
     }
     .nd-signal-title {
       font-weight: 700;
-      font-size: 12.5px;
-      color: #0D261A;
+      font-size: 13px;
+      color: #0A2540;
     }
     .nd-signal-badge {
       font-size: 10.5px;
       font-weight: 700;
-      padding: 2px 8px;
+      padding: 2.5px 8px;
       border-radius: 4px;
       text-transform: uppercase;
     }
-    .nd-badge-elevated { background: #FEE2E2; color: #991B1B; border: 1px solid #FCA5A5; }
-    .nd-badge-warning { background: #FEF3C7; color: #92400E; border: 1px solid #FCD34D; }
-    .nd-badge-compliant { background: #DCFCE7; color: #166534; border: 1px solid #86EFAC; }
-    .nd-badge-inconclusive { background: #E0E7FF; color: #1E40AF; border: 1px solid #A5B4FC; }
+    .nd-badge-elevated { background: #FEF2F2; color: #B91C1C; border: 1px solid #FECACA; }
+    .nd-badge-warning { background: #FFFBEB; color: #B45309; border: 1px solid #FDE68A; }
+    .nd-badge-compliant { background: #ECFDF5; color: #047857; border: 1px solid #A7F3D0; }
+    .nd-badge-inconclusive { background: #EFF6FF; color: #1D4ED8; border: 1px solid #BFDBFE; }
     .nd-signal-table {
       width: 100%;
       border-collapse: collapse;
       font-size: 11.5px;
       line-height: 1.5;
     }
+    .nd-signal-table tr {
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
     .nd-signal-table td {
-      padding: 6px 10px;
-      border-bottom: 1px solid #EDF2EE;
+      padding: 7px 12px;
+      border-bottom: 1px solid #F1F5F9;
       vertical-align: top;
     }
     .nd-signal-table tr:last-child td {
       border-bottom: none;
     }
     .nd-signal-label {
-      width: 195px;
+      width: 200px;
       font-weight: 700;
-      color: #1B4332;
-      background: #FAFDFB;
-      border-right: 1px solid #EDF2EE;
+      color: #0A2540;
+      background: #F8FAFC;
+      border-right: 1px solid #E2E8F0;
     }
     .nd-math-box {
       background: #F8FAFC;
       border: 1px solid #CBD5E1;
-      border-left: 3px solid #0D261A;
+      border-left: 3px solid #0A2540;
       border-radius: 4px;
-      padding: 6px 10px;
-      font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+      padding: 7px 12px;
+      font-family: 'JetBrains Mono', "SFMono-Regular", Consolas, Menlo, monospace;
       font-size: 11px;
       color: #0F172A;
       margin: 3px 0;
       white-space: pre-wrap;
     }
     .nd-reasoning-chain {
-      background: #FFFBEB;
-      border: 1px solid #FDE68A;
-      border-left: 3px solid #D97706;
-      border-radius: 4px;
-      padding: 7px 10px;
+      background: #EFF6FF;
+      border: 1px solid #BFDBFE;
+      border-left: 3px solid #1D4ED8;
+      border-radius: 6px;
+      padding: 9px 12px;
       font-size: 11px;
-      color: #451A03;
+      color: #1E3A8A;
       margin-top: 4px;
       line-height: 1.5;
     }
     .nd-cross-synthesis {
-      background: #F4FAF6;
-      border: 1.5px solid #A3C9AE;
-      border-radius: 6px;
-      padding: 12px 14px;
+      background: #F8FAFC;
+      border: 1.5px solid #CBD5E1;
+      border-left: 3.5px solid #1D4ED8;
+      border-radius: 8px;
+      padding: 14px 16px;
       margin-top: 14px;
       font-size: 12px;
-      line-height: 1.55;
-      color: #1A2E22;
+      line-height: 1.6;
+      color: #0F172A;
     }
-
+    
     /* Exact Pattern Calculation Container */
     .pattern-calc-container {
       background: #FAFCFA;
@@ -1382,10 +1394,12 @@
     }
 
     .eo-table th {
-      font-size: 13.5px !important;
-      padding: 10px 12px !important;
-      background: #EDF4F0 !important;
-      color: #0D3B26 !important;
+      font-size: 13px !important;
+      padding: 9px 12px !important;
+      background: #0A2540 !important;
+      color: #FFFFFF !important;
+      font-weight: 700 !important;
+      border: 1px solid #0A2540 !important;
     }
     .eo-table td {
       font-size: 14px !important;
@@ -1473,7 +1487,7 @@
     }
     .boomer-bar-fill-primary {
       height: 100%;
-      background: linear-gradient(90deg, #0F5338, #198754);
+      background: linear-gradient(90deg, #0A2540, #1D4ED8);
       border-radius: 7px;
     }
     .boomer-bar-fill-secondary {
@@ -1549,13 +1563,13 @@
       align-items: center;
       justify-content: center;
       gap: 10px;
-      box-shadow: 0 4px 12px rgba(15,83,56,0.18);
+      box-shadow: 0 4px 12px rgba(29,78,216,0.18);
       cursor: pointer;
       transition: all 0.2s ease;
     }
     .boomer-action-btn-primary:hover {
       transform: translateY(-2px);
-      box-shadow: 0 6px 16px rgba(15,83,56,0.25);
+      box-shadow: 0 6px 16px rgba(29,78,216,0.25);
     }
     .boomer-action-btn-secondary {
       padding: 14px 18px;
@@ -3043,7 +3057,7 @@
         </div>
 
           <details id="p_canonical_inputs_vault" style="margin-top:16px; border:1px solid var(--line); border-radius:8px; background:var(--surface-alt); padding:12px 16px;">
-            <summary style="font-size:12px; font-weight:700; color:var(--forest); cursor:pointer; display:flex; align-items:center; gap:6px;">
+            <summary style="font-size:12px; font-weight:700; color:#1D4ED8; cursor:pointer; display:flex; align-items:center; gap:6px;">
               <span>🔧</span>
               <span>Parameter Input Mentah &amp; Nilai Kanonikal (Klik untuk Menampilkan/Menyunting Seluruh Kolom)</span>
             </summary>
@@ -3522,7 +3536,7 @@
 
                 <!-- SEKSI IV: MATRIKS EKSEKUTIF SINYAL FORENSIK S1-S10 (REFINED SYNTHESIS MATRIX) -->
                 <div class="eo-section" id="eo_section_iv_pengendali" style="page-break-inside:avoid;">
-                  <h5 style="margin-top:14px; border-bottom:1px solid #1b3d2f; padding-bottom:3px; color:#1b3d2f; font-weight:bold;">IV. Matriks Eksekutif Sinyal Forensik S1–S10 (Refined Signal Synthesis Matrix)</h5>
+                  <h5 style="margin-top:14px; border-bottom:1.5px solid #1D4ED8; padding-bottom:3px; color:#0A2540; font-weight:bold;">IV. Matriks Eksekutif Sinyal Forensik S1–S10 (Refined Signal Synthesis Matrix)</h5>
                   <p style="margin-bottom:8px; font-size:12.5px; color:#374151;">
                     Ikhtisar sintesis forensik kesepuluh prosedur analitis (<strong>S1 s/d S10</strong>) pada <strong class="dyn-p-entity">PT Era Permata Sejahtera</strong>:
                   </p>
@@ -3532,7 +3546,7 @@
                 <!-- KERTAS KERJA DIAGNOSTIK RINCI S1-S10 (COLLAPSIBLE FOR AUDITORS) -->
                 <div id="nd_s1_s10_audit_pengendali" class="nd-s1-s10-audit-section">
                   <details class="no-print extended-audit-details" id="details_s1_s10_pengendali" style="margin-top:16px; background:#F8FAFC; border:1.5px solid #CBD5E1; border-radius:8px; padding:10px 14px;">
-                    <summary style="font-size:12.5px; font-weight:700; color:#0F5338; cursor:pointer; user-select:none;">
+                    <summary style="font-size:12.5px; font-weight:700; color:#0A2540; cursor:pointer; user-select:none;">
                       📑 Buka Rincian Lengkap Kertas Kerja Diagnostik S1–S10 (9 Komponen Standar Audit Forensik)
                     </summary>
                     <div style="margin-top:12px;">
@@ -3584,11 +3598,11 @@
               </div>
               <!-- EXPORT FORMAT SELECTOR (OFFICIAL EXPECTED OUTPUT VS EXTENDED) -->
               <div class="export-format-selector" style="background:#F1F5F9; border:1.5px solid #CBD5E1; border-radius:8px; padding:10px 14px; margin-bottom:12px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px;">
-                <div style="font-size:12.5px; font-weight:700; color:#0F5338; display:flex; align-items:center; gap:6px;">
+                <div style="font-size:12.5px; font-weight:700; color:#0A2540; display:flex; align-items:center; gap:6px;">
                   <span>⚙️ Pilihan Format Ekspor &amp; Cetak:</span>
                 </div>
                 <div style="display:flex; align-items:center; gap:16px; font-size:12px;">
-                  <label style="display:flex; align-items:center; gap:6px; cursor:pointer; font-weight:700; color:#0F5338;">
+                  <label style="display:flex; align-items:center; gap:6px; cursor:pointer; font-weight:700; color:#0A2540;">
                     <input type="radio" name="exportFormat_pengendali" value="executive" checked onchange="setExportFormat('pengendali', 'executive')">
                     🌟 Format Eksekutif Resmi (~2-3 Hal Sesuai Expected Output)
                   </label>
@@ -3609,7 +3623,7 @@
                   </div>
                 </button>
                 <!-- Big PDF/Print Button -->
-                <button type="button" onclick="printNotaDinas('pengendali')" class="btn btn-secondary boomer-action-btn-secondary" style="border:2px solid var(--forest); color:var(--forest);">
+                <button type="button" onclick="printNotaDinas('pengendali')" class="btn btn-secondary boomer-action-btn-secondary" style="border:2px solid #0A2540; color:#0A2540;">
                   <span style="font-size:22px;">🖨️</span>
                   <div style="text-align:left;">
                     <div>Cetak / Simpan PDF (A4)</div>
@@ -3927,7 +3941,7 @@
         </div>
 
         <details id="np_canonical_inputs_vault" style="margin-top:16px; border:1px solid var(--line); border-radius:8px; background:var(--surface-alt); padding:12px 16px;">
-          <summary style="font-size:12px; font-weight:700; color:var(--forest); cursor:pointer; display:flex; align-items:center; gap:6px;">
+          <summary style="font-size:12px; font-weight:700; color:#1D4ED8; cursor:pointer; display:flex; align-items:center; gap:6px;">
             <span>🔧</span>
             <span>Parameter Input Mentah &amp; Nilai Kanonikal (Klik untuk Menampilkan/Menyunting Seluruh Kolom)</span>
           </summary>
@@ -4375,7 +4389,7 @@
 
               <!-- SEKSI IV: MATRIKS EKSEKUTIF SINYAL FORENSIK S1-S10 (REFINED SYNTHESIS MATRIX) -->
               <div class="eo-section" id="eo_section_iv_nonpengendali" style="page-break-inside:avoid;">
-                <h5 style="margin-top:14px; border-bottom:1px solid #1b3d2f; padding-bottom:3px; color:#1b3d2f; font-weight:bold;">IV. Matriks Eksekutif Sinyal Forensik S1–S10 (Refined Signal Synthesis Matrix)</h5>
+                <h5 style="margin-top:14px; border-bottom:1.5px solid #1D4ED8; padding-bottom:3px; color:#0A2540; font-weight:bold;">IV. Matriks Eksekutif Sinyal Forensik S1–S10 (Refined Signal Synthesis Matrix)</h5>
                 <p style="margin-bottom:8px; font-size:12.5px; color:#374151;">
                   Ikhtisar sintesis forensik kesepuluh prosedur analitis (<strong>S1 s/d S10</strong>) pada <strong class="dyn-np-entity">PT Pesonna Optima Jasa</strong>:
                 </p>
@@ -4385,7 +4399,7 @@
               <!-- KERTAS KERJA DIAGNOSTIK RINCI S1-S10 (COLLAPSIBLE FOR AUDITORS) -->
               <div id="nd_s1_s10_audit_nonpengendali" class="nd-s1-s10-audit-section">
                 <details class="no-print extended-audit-details" id="details_s1_s10_nonpengendali" style="margin-top:16px; background:#F8FAFC; border:1.5px solid #CBD5E1; border-radius:8px; padding:10px 14px;">
-                  <summary style="font-size:12.5px; font-weight:700; color:#0F5338; cursor:pointer; user-select:none;">
+                  <summary style="font-size:12.5px; font-weight:700; color:#0A2540; cursor:pointer; user-select:none;">
                     📑 Buka Rincian Lengkap Kertas Kerja Diagnostik S1–S10 (9 Komponen Standar Audit Forensik)
                   </summary>
                   <div style="margin-top:12px;">
@@ -4437,11 +4451,11 @@
             </div>
             <!-- EXPORT FORMAT SELECTOR (OFFICIAL EXPECTED OUTPUT VS EXTENDED) -->
             <div class="export-format-selector" style="background:#F1F5F9; border:1.5px solid #CBD5E1; border-radius:8px; padding:10px 14px; margin-bottom:12px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px;">
-              <div style="font-size:12.5px; font-weight:700; color:#0F5338; display:flex; align-items:center; gap:6px;">
+              <div style="font-size:12.5px; font-weight:700; color:#0A2540; display:flex; align-items:center; gap:6px;">
                 <span>⚙️ Pilihan Format Ekspor &amp; Cetak:</span>
               </div>
               <div style="display:flex; align-items:center; gap:16px; font-size:12px;">
-                <label style="display:flex; align-items:center; gap:6px; cursor:pointer; font-weight:700; color:#0F5338;">
+                <label style="display:flex; align-items:center; gap:6px; cursor:pointer; font-weight:700; color:#0A2540;">
                   <input type="radio" name="exportFormat_non_pengendali" value="executive" checked onchange="setExportFormat('non_pengendali', 'executive')">
                   🌟 Format Eksekutif Resmi (~3-4 Hal Sesuai Expected Output)
                 </label>
@@ -4462,7 +4476,7 @@
                 </div>
               </button>
               <!-- Big PDF/Print Button -->
-              <button type="button" onclick="printNotaDinas('non_pengendali')" class="btn btn-secondary boomer-action-btn-secondary" style="border:2px solid var(--forest); color:var(--forest);">
+              <button type="button" onclick="printNotaDinas('non_pengendali')" class="btn btn-secondary boomer-action-btn-secondary" style="border:2px solid #0A2540; color:#0A2540;">
                 <span style="font-size:22px;">🖨️</span>
                 <div style="text-align:left;">
                   <div>Cetak / Simpan PDF (A4)</div>
@@ -4780,7 +4794,7 @@
         </div>
 
         <details id="inv_canonical_inputs_vault" style="margin-top:16px; border:1px solid var(--line); border-radius:8px; background:var(--surface-alt); padding:12px 16px;">
-          <summary style="font-size:12px; font-weight:700; color:var(--forest); cursor:pointer; display:flex; align-items:center; gap:6px;">
+          <summary style="font-size:12px; font-weight:700; color:#1D4ED8; cursor:pointer; display:flex; align-items:center; gap:6px;">
             <span>🔧</span>
             <span>Parameter Input Mentah &amp; Switcher Kasus Investasi (Klik untuk Menampilkan/Menyunting Seluruh Kolom)</span>
           </summary>
@@ -6246,7 +6260,7 @@
                 <!-- KERTAS KERJA DIAGNOSTIK RINCI S1-S10 (COLLAPSIBLE FOR AUDITORS) -->
                 <div id="nd_s1_s10_audit_investasi_pindo" class="nd-s1-s10-audit-section">
                   <details class="no-print extended-audit-details" id="details_s1_s10_investasi_pindo" style="margin-top:16px; background:#F8FAFC; border:1.5px solid #CBD5E1; border-radius:8px; padding:10px 14px;">
-                    <summary style="font-size:12.5px; font-weight:700; color:#0F5338; cursor:pointer; user-select:none;">
+                    <summary style="font-size:12.5px; font-weight:700; color:#0A2540; cursor:pointer; user-select:none;">
                       📑 Buka Rincian Lengkap Kertas Kerja Diagnostik S1–S10 (9 Komponen Standar Audit Forensik)
                     </summary>
                     <div style="margin-top:12px;">
@@ -6371,7 +6385,7 @@
 
                 <!-- SEKSI IV: MATRIKS EKSEKUTIF SINYAL FORENSIK S1-S10 (REFINED SYNTHESIS MATRIX) -->
                 <div class="eo-section" id="eo_section_iv_daaz" style="page-break-inside:avoid;">
-                  <h5 style="margin-top:14px; border-bottom:1px solid #1b3d2f; padding-bottom:3px; color:#1b3d2f; font-weight:bold;">IV. Matriks Eksekutif Sinyal Forensik S1–S10 (Refined Signal Synthesis Matrix)</h5>
+                  <h5 style="margin-top:14px; border-bottom:1.5px solid #1D4ED8; padding-bottom:3px; color:#0A2540; font-weight:bold;">IV. Matriks Eksekutif Sinyal Forensik S1–S10 (Refined Signal Synthesis Matrix)</h5>
                   <p style="margin-bottom:8px; font-size:12.5px; color:#374151;">
                     Ikhtisar sintesis forensik kesepuluh prosedur analitis (<strong>S1 s/d S10</strong>) pada <strong>PT DAAZ Bara Lestari Tbk</strong>:
                   </p>
@@ -6381,7 +6395,7 @@
                 <!-- KERTAS KERJA DIAGNOSTIK RINCI S1-S10 (COLLAPSIBLE FOR AUDITORS) -->
                 <div id="nd_s1_s10_audit_investasi_daaz" class="nd-s1-s10-audit-section">
                   <details class="no-print extended-audit-details" id="details_s1_s10_investasi_daaz" style="margin-top:16px; background:#F8FAFC; border:1.5px solid #CBD5E1; border-radius:8px; padding:10px 14px;">
-                    <summary style="font-size:12.5px; font-weight:700; color:#0F5338; cursor:pointer; user-select:none;">
+                    <summary style="font-size:12.5px; font-weight:700; color:#0A2540; cursor:pointer; user-select:none;">
                       📑 Buka Rincian Lengkap Kertas Kerja Diagnostik S1–S10 (9 Komponen Standar Audit Forensik)
                     </summary>
                     <div style="margin-top:12px;">
@@ -6434,11 +6448,11 @@
             </div>
             <!-- EXPORT FORMAT SELECTOR (OFFICIAL EXPECTED OUTPUT VS EXTENDED) -->
             <div class="export-format-selector" style="background:#F1F5F9; border:1.5px solid #CBD5E1; border-radius:8px; padding:10px 14px; margin-bottom:12px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px;">
-              <div style="font-size:12.5px; font-weight:700; color:#0F5338; display:flex; align-items:center; gap:6px;">
+              <div style="font-size:12.5px; font-weight:700; color:#0A2540; display:flex; align-items:center; gap:6px;">
                 <span>⚙️ Pilihan Format Ekspor &amp; Cetak:</span>
               </div>
               <div style="display:flex; align-items:center; gap:16px; font-size:12px;">
-                <label style="display:flex; align-items:center; gap:6px; cursor:pointer; font-weight:700; color:#0F5338;">
+                <label style="display:flex; align-items:center; gap:6px; cursor:pointer; font-weight:700; color:#0A2540;">
                   <input type="radio" name="exportFormat_investasi" value="executive" checked onchange="setExportFormat('investasi', 'executive')">
                   🌟 Format Eksekutif Resmi (~3-4 Hal Sesuai Expected Output)
                 </label>
@@ -6459,7 +6473,7 @@
                 </div>
               </button>
               <!-- Big PDF/Print Button -->
-              <button type="button" onclick="printNotaDinas('investasi')" class="btn btn-secondary boomer-action-btn-secondary" style="border:2px solid var(--forest); color:var(--forest);">
+              <button type="button" onclick="printNotaDinas('investasi')" class="btn btn-secondary boomer-action-btn-secondary" style="border:2px solid #0A2540; color:#0A2540;">
                 <span style="font-size:22px;">🖨️</span>
                 <div style="text-align:left;">
                   <div>Cetak / Simpan PDF (A4)</div>
@@ -7075,7 +7089,7 @@
 
             <!-- SEKSI IV: MATRIKS EKSEKUTIF SINYAL FORENSIK S1-S10 (REFINED SYNTHESIS MATRIX) -->
             <div class="eo-section" id="eo_section_iv_konsolidasi" style="page-break-inside:avoid;">
-              <h5 style="margin-top:14px; border-bottom:1px solid #1b3d2f; padding-bottom:3px; color:#1b3d2f; font-weight:bold;">IV. Matriks Eksekutif Sinyal Forensik S1–S10 (Refined Signal Synthesis Matrix)</h5>
+              <h5 style="margin-top:14px; border-bottom:1.5px solid #1D4ED8; padding-bottom:3px; color:#0A2540; font-weight:bold;">IV. Matriks Eksekutif Sinyal Forensik S1–S10 (Refined Signal Synthesis Matrix)</h5>
               <p style="margin-bottom:8px; font-size:12.5px; color:#374151;">
                 Ikhtisar sintesis forensik kesepuluh prosedur analitis (<strong>S1 s/d S10</strong>) pada <strong>Konsolidasi Finansial Grup 6 Entitas</strong>:
               </p>
@@ -7085,7 +7099,7 @@
             <!-- KERTAS KERJA DIAGNOSTIK RINCI S1-S10 (COLLAPSIBLE FOR AUDITORS) -->
             <div id="nd_s1_s10_audit_konsolidasi" class="nd-s1-s10-audit-section">
               <details class="no-print extended-audit-details" id="details_s1_s10_konsolidasi" style="margin-top:16px; background:#F8FAFC; border:1.5px solid #CBD5E1; border-radius:8px; padding:10px 14px;">
-                <summary style="font-size:12.5px; font-weight:700; color:#0F5338; cursor:pointer; user-select:none;">
+                <summary style="font-size:12.5px; font-weight:700; color:#0A2540; cursor:pointer; user-select:none;">
                   📑 Buka Rincian Lengkap Kertas Kerja Diagnostik S1–S10 (9 Komponen Standar Audit Forensik)
                 </summary>
                 <div style="margin-top:12px;">
@@ -7137,11 +7151,11 @@
           </div>
           <!-- EXPORT FORMAT SELECTOR (OFFICIAL EXPECTED OUTPUT VS EXTENDED) -->
           <div class="export-format-selector" style="background:#F1F5F9; border:1.5px solid #CBD5E1; border-radius:8px; padding:10px 14px; margin-bottom:12px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px;">
-            <div style="font-size:12.5px; font-weight:700; color:#0F5338; display:flex; align-items:center; gap:6px;">
+            <div style="font-size:12.5px; font-weight:700; color:#0A2540; display:flex; align-items:center; gap:6px;">
               <span>⚙️ Pilihan Format Ekspor &amp; Cetak:</span>
             </div>
             <div style="display:flex; align-items:center; gap:16px; font-size:12px;">
-              <label style="display:flex; align-items:center; gap:6px; cursor:pointer; font-weight:700; color:#0F5338;">
+              <label style="display:flex; align-items:center; gap:6px; cursor:pointer; font-weight:700; color:#0A2540;">
                 <input type="radio" name="exportFormat_konsolidasi" value="executive" checked onchange="setExportFormat('konsolidasi', 'executive')">
                 🌟 Format Eksekutif Resmi (~2-3 Hal Sesuai Expected Output)
               </label>
@@ -7162,7 +7176,7 @@
               </div>
             </button>
             <!-- Big PDF/Print Button -->
-            <button type="button" onclick="printNotaDinas('konsolidasi')" class="btn btn-secondary boomer-action-btn-secondary" style="border:2px solid var(--forest); color:var(--forest);">
+            <button type="button" onclick="printNotaDinas('konsolidasi')" class="btn btn-secondary boomer-action-btn-secondary" style="border:2px solid #0A2540; color:#0A2540;">
               <span style="font-size:22px;">🖨️</span>
               <div style="text-align:left;">
                 <div>Cetak / Simpan PDF (A4)</div>
@@ -7746,7 +7760,7 @@
       </form>
       <div style="display:flex; justify-content:space-between; align-items:center; margin-top:6px; font-size:10px; color:var(--ink-secondary);">
         <span id="txtChatAttachHint">📎 Lampirkan file Excel/PDF/JSON untuk auto-deteksi tipe</span>
-        <button type="button" onclick="openAuditTrailModal()" style="background:none; border:none; color:var(--forest); cursor:pointer; font-size:10.5px; font-weight:700; text-decoration:underline;">
+        <button type="button" onclick="openAuditTrailModal()" style="background:none; border:none; color:#1D4ED8; cursor:pointer; font-size:10.5px; font-weight:700; text-decoration:underline;">
           📋 Log Audit Sesi (<span id="txtAuditCount">0</span>)
         </button>
       </div>
@@ -12287,32 +12301,43 @@
         <head>
           <meta charset="utf-8">
           <title>${docTitle}</title>
+          <link rel="preconnect" href="https://fonts.googleapis.com">
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+          <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
           <style>
             @page {
               size: A4 portrait;
-              margin: 14mm 14mm 14mm 14mm;
+              margin: 14mm 16mm 14mm 16mm;
             }
             @media print {
               html, body {
                 margin: 0 !important;
                 padding: 0 !important;
                 background: #FFFFFF !important;
-                color: #1C1917 !important;
-                font-family: 'Times New Roman', Times, serif;
-                font-size: 10pt;
-                line-height: 1.42;
+                color: #0F172A !important;
+                font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+                font-size: 9pt !important;
+                line-height: 1.45 !important;
                 -webkit-print-color-adjust: exact !important;
                 print-color-adjust: exact !important;
               }
               .no-print { display: none !important; }
-              .eo-section, .nd-section, .boomer-chart-card, .recommendation-callout, .eo-header, .nota-dinas-header {
+              .print-topbar {
+                display: flex !important;
+                justify-content: space-between !important;
+                align-items: center !important;
+                border-bottom: 2px solid #0A2540 !important;
+                padding-bottom: 4pt !important;
+                margin-bottom: 10pt !important;
+              }
+              .eo-section, .nd-section, .boomer-chart-card, .recommendation-callout, .eo-header, .nota-dinas-header, .nota-dinas-meta-table, .nd-cross-synthesis, .nd-signal-card {
                 page-break-inside: avoid !important;
                 break-inside: avoid !important;
               }
               table {
                 border-collapse: collapse !important;
                 width: 100% !important;
-                margin: 6pt 0 10pt 0 !important;
+                margin: 5pt 0 8pt 0 !important;
                 page-break-inside: auto;
               }
               tr, td, th {
@@ -12325,41 +12350,79 @@
               tfoot {
                 display: table-footer-group !important;
               }
-              h2, h3, h4, h5, h6, .eo-section-header {
+              h2, h3, h4, h5, h6, .eo-section-header, .nd-signal-header {
                 page-break-after: avoid !important;
                 break-after: avoid !important;
               }
             }
             body {
-              font-family: 'Times New Roman', Times, serif;
-              font-size: 10pt;
-              line-height: 1.42;
-              color: #1c1917;
-              padding: 16px;
+              font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+              font-size: 9.5pt;
+              line-height: 1.45;
+              color: #0F172A;
+              padding: 20px;
+              background: #FFFFFF;
+              max-width: 820px;
+              margin: 0 auto;
             }
-            h3 { font-size: 14pt; font-weight: bold; text-align: center; margin: 0; color: #1b3d2f; letter-spacing: 0.5pt; }
-            h4 { font-size: 12pt; font-weight: bold; text-align: center; margin: 3pt 0; color: #1c1917; }
-            h5 { font-size: 10.5pt; font-weight: bold; margin: 10pt 0 4pt 0; color: #1b3d2f; border-bottom: 1px solid #1b3d2f; padding-bottom: 2pt; }
-            table { border-collapse: collapse; width: 100%; margin: 6pt 0 10pt 0; font-size: 9pt; }
-            td, th { padding: 4pt 6pt; vertical-align: top; border: 1px solid #d6d3d1; }
-            th { background: #f2f7f4; color: #1b3d2f; font-weight: bold; }
-            .nota-dinas-meta-table td { border: none; border-bottom: 1px solid #d6d3d1; }
-            .nota-dinas-meta-label { font-weight: bold; width: 15%; color: #44403c; }
-            .nd-signal-matrix-table th { background: #0F5338; color: #FFFFFF; font-weight: bold; }
-            .nd-signal-matrix-table td { font-size: 8.5pt; padding: 4pt 5pt; }
-            .nd-signal-card { border: 1px solid #b8c9be; border-radius: 4px; margin-bottom: 10pt; page-break-inside: avoid !important; }
-            .nd-signal-header { background: #eef5f0; padding: 5pt 7pt; border-bottom: 1px solid #b8c9be; font-weight: bold; }
-            .nd-signal-table td { border: 1px solid #dfe7e2; font-size: 8.5pt; padding: 3pt 5pt; }
-            .nd-math-box { background: #f1f5f9; border-left: 2.5pt solid #0d261a; padding: 4pt 6pt; font-family: monospace; font-size: 8pt; margin: 2pt 0; }
-            .nd-reasoning-chain { background: #fffbeb; border-left: 2.5pt solid #d97706; padding: 4pt 6pt; font-size: 8pt; margin-top: 2pt; }
-            p, li { text-align: justify; margin: 0 0 4pt 0; }
-            .badge { display: inline-block; padding: 1pt 4pt; border-radius: 3px; font-size: 7.5pt; font-weight: bold; }
-            .badge-green { background: #dcfce7; color: #166534; }
-            .badge-gold { background: #fef3c7; color: #92400e; }
-            .badge-red { background: #fee2e2; color: #991b1b; }
+            .print-topbar {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              border-bottom: 2px solid #0A2540;
+              padding-bottom: 6px;
+              margin-bottom: 14px;
+              font-size: 8.5pt;
+            }
+            .print-topbar-brand {
+              font-weight: 800;
+              color: #0A2540;
+              letter-spacing: 0.5px;
+            }
+            .print-topbar-meta {
+              font-weight: 600;
+              color: #1D4ED8;
+            }
+            h3 { font-size: 15pt; font-weight: 800; text-align: center; margin: 0; color: #0A2540; letter-spacing: 0.5pt; }
+            h4 { font-size: 11.5pt; font-weight: 700; text-align: center; margin: 2pt 0 4pt; color: #1D4ED8; }
+            h5 { font-size: 10.5pt; font-weight: 700; margin: 12pt 0 4pt 0; color: #0A2540; border-bottom: 1.5pt solid #1D4ED8; padding-bottom: 2.5pt; text-transform: uppercase; letter-spacing: 0.25px; }
+            table { border-collapse: collapse; width: 100%; margin: 6pt 0 10pt 0; font-size: 8.5pt; border: 1px solid #E2E8F0; }
+            td, th { padding: 4.5pt 7pt; vertical-align: top; border: 1px solid #E2E8F0; }
+            th { background: #0A2540; color: #FFFFFF; font-weight: 700; }
+            tr:nth-child(even) td { background: #F8FAFC; }
+            .nota-dinas-meta-table { border: 1px solid #E2E8F0; background: #F8FAFC; border-radius: 6px; }
+            .nota-dinas-meta-table td { border: none; border-bottom: 1px solid #E2E8F0; }
+            .nota-dinas-meta-label { font-weight: 700; width: 16%; color: #475569; }
+            .nd-signal-matrix-table th { background: #0A2540; color: #FFFFFF; font-weight: 700; }
+            .nd-signal-matrix-table td { font-size: 8pt; padding: 4.5pt 6pt; border: 1px solid #E2E8F0; }
+            .nd-signal-card { border: 1px solid #CBD5E1; border-radius: 6px; margin-bottom: 12pt; page-break-inside: avoid !important; break-inside: avoid !important; background: #FFFFFF; }
+            .nd-signal-header { background: #F8FAFC; padding: 6pt 8pt; border-bottom: 1px solid #CBD5E1; font-weight: 700; color: #0A2540; display: flex; justify-content: space-between; align-items: center; }
+            .nd-signal-code { background: #0A2540; color: #FFFFFF; font-weight: 800; padding: 1.5pt 6pt; border-radius: 3px; font-size: 8pt; }
+            .nd-signal-table td { border: 1px solid #E2E8F0; font-size: 8.5pt; padding: 4pt 6pt; }
+            .nd-signal-label { width: 24%; font-weight: 700; background: #F8FAFC; color: #0A2540; }
+            .nd-math-box { background: #F8FAFC; border: 1px solid #E2E8F0; border-left: 2.5pt solid #0A2540; padding: 4pt 6pt; font-family: 'JetBrains Mono', Consolas, monospace; font-size: 8pt; margin: 2pt 0; white-space: pre-wrap; color: #0F172A; }
+            .nd-reasoning-chain { background: #EFF6FF; border: 1px solid #BFDBFE; border-left: 2.5pt solid #1D4ED8; padding: 5pt 7pt; font-size: 8pt; margin-top: 2pt; color: #1E3A8A; }
+            .nd-cross-synthesis { background: #F8FAFC; border: 1px solid #CBD5E1; border-left: 3pt solid #1D4ED8; padding: 8pt 10pt; margin-top: 10pt; font-size: 8.5pt; color: #0F172A; page-break-inside: avoid !important; break-inside: avoid !important; }
+            p, li { text-align: justify; margin: 0 0 4pt 0; line-height: 1.45; }
+            .badge, .nd-signal-badge { display: inline-block; padding: 1.5pt 5pt; border-radius: 3px; font-size: 7pt; font-weight: 700; text-transform: uppercase; }
+            .badge-green, .nd-badge-compliant { background: #ECFDF5; color: #047857; border: 1px solid #A7F3D0; }
+            .badge-gold, .nd-badge-warning { background: #FFFBEB; color: #B45309; border: 1px solid #FDE68A; }
+            .badge-red, .nd-badge-elevated { background: #FEF2F2; color: #B91C1C; border: 1px solid #FECACA; }
+            .nd-badge-inconclusive { background: #EFF6FF; color: #1D4ED8; border: 1px solid #BFDBFE; }
+            .eo-table th { background: #0A2540 !important; color: #FFFFFF !important; font-size: 8.5pt !important; padding: 5pt 7pt !important; }
+            .eo-table td { font-size: 8.5pt !important; padding: 5pt 7pt !important; }
+            .boomer-chart-card { border: 1px solid #E2E8F0 !important; box-shadow: none !important; page-break-inside: avoid !important; break-inside: avoid !important; padding: 10pt 12pt !important; margin: 8pt 0 !important; }
+            .boomer-chart-title { color: #0A2540 !important; font-size: 10.5pt !important; }
+            .boomer-bar-fill-primary { background: #1D4ED8 !important; }
+            .boomer-bar-track { background: #E2E8F0 !important; height: 10px !important; }
+            .boomer-chart-takeaway { background: #EFF6FF !important; border-left: 3pt solid #1D4ED8 !important; color: #1E3A8A !important; font-size: 8pt !important; padding: 6pt 8pt !important; }
           </style>
         </head>
         <body>
+          <div class="print-topbar no-print">
+            <span class="print-topbar-brand">KAJIAN IHSAN FINANCIAL ANALYZER</span>
+            <span class="print-topbar-meta">DOKUMEN RESMI &bull; STANDAR AUDIT ISA 520</span>
+          </div>
           ${clone.innerHTML}
           <script>
             window.onload = function() { window.print(); };
@@ -18124,7 +18187,7 @@ Berdasarkan pengawasan konsolidasi 6 entitas portofolio Kajian Ihsan:
         let badgeText = (s.classificationBadge || '').split('(')[0].trim() || 'PERHATIAN';
         if (s.badgeType === 'compliant' || s.badgeType === 'safe' || (s.classificationBadge && (s.classificationBadge.includes('COMPLIANT') || s.classificationBadge.includes('AMAN') || s.classificationBadge.includes('VALID')))) {
           badgeClass = 'badge-green';
-        } else if (s.badgeType === 'danger' || (s.classificationBadge && (s.classificationBadge.includes('RED') || s.classificationBadge.includes('KRITIS') || s.classificationBadge.includes('DEFISIT')))) {
+        } else if (s.badgeType === 'danger' || (s.classificationBadge && (s.classificationBadge.includes('RED') || s.classificationBadge.includes('KRITIS') || s.classificationBadge.includes('DEFISIT') || s.classificationBadge.includes('ELEVATED')))) {
           badgeClass = 'badge-red';
         }
 
@@ -18141,10 +18204,10 @@ Berdasarkan pengawasan konsolidasi 6 entitas portofolio Kajian Ihsan:
         let subName = s.name.includes('/') ? s.name.split('/')[1].trim() : '';
 
         return `
-          <tr>
-            <td style="text-align:center; font-weight:700; color:#0F5338;">${s.code}</td>
-            <td><strong>${paramName}</strong>${subName ? `<br><span style="font-size:7.5pt; color:#57534E;">${subName}</span>` : ''}</td>
-            <td style="font-size:8pt;">${metricSummary}</td>
+          <tr style="page-break-inside:avoid; break-inside:avoid;">
+            <td style="text-align:center; font-weight:800; color:#0A2540;">${s.code}</td>
+            <td><strong>${paramName}</strong>${subName ? `<br><span style="font-size:7.5pt; color:#64748B;">${subName}</span>` : ''}</td>
+            <td style="font-size:8pt; font-feature-settings:'tnum' 1;">${metricSummary}</td>
             <td style="font-size:8pt;">${benchmarkSummary}</td>
             <td style="text-align:center;"><span class="badge ${badgeClass}" style="font-size:7.5pt;">${badgeText}</span></td>
             <td style="font-size:8pt;">${implicationSummary}</td>
@@ -18153,15 +18216,15 @@ Berdasarkan pengawasan konsolidasi 6 entitas portofolio Kajian Ihsan:
       }).join('');
 
       return `
-        <table class="eo-table nd-signal-matrix-table" style="width:100%; border-collapse:collapse; margin:8px 0; font-size:8.5pt;">
+        <table class="eo-table nd-signal-matrix-table" style="width:100%; border-collapse:collapse; margin:8px 0; font-size:8.5pt; border:1px solid #E2E8F0; page-break-inside:auto;">
           <thead>
-            <tr style="background:#0F5338; color:#FFFFFF; font-weight:700;">
-              <th style="padding:5px 6px; width:6%; text-align:center;">Kode</th>
-              <th style="padding:5px 8px; width:22%;">Parameter Sinyal Forensik (S1–S10)</th>
-              <th style="padding:5px 8px; width:22%;">Nilai &amp; Temuan Terkonfirmasi</th>
-              <th style="padding:5px 8px; width:16%;">Tolok Ukur / Standar</th>
-              <th style="padding:5px 6px; width:12%; text-align:center;">Status</th>
-              <th style="padding:5px 8px; width:22%;">Implikasi &amp; Mitigasi Risiko</th>
+            <tr style="background:#0A2540; color:#FFFFFF; font-weight:700;">
+              <th style="padding:6px 6px; width:6%; text-align:center; border:1px solid #0A2540;">Kode</th>
+              <th style="padding:6px 8px; width:22%; border:1px solid #0A2540;">Parameter Sinyal Forensik (S1–S10)</th>
+              <th style="padding:6px 8px; width:23%; border:1px solid #0A2540;">Nilai &amp; Temuan Terkonfirmasi</th>
+              <th style="padding:6px 8px; width:16%; border:1px solid #0A2540;">Tolok Ukur / Standar</th>
+              <th style="padding:6px 6px; width:11%; text-align:center; border:1px solid #0A2540;">Status</th>
+              <th style="padding:6px 8px; width:22%; border:1px solid #0A2540;">Implikasi &amp; Mitigasi Risiko</th>
             </tr>
           </thead>
           <tbody>
@@ -18181,8 +18244,39 @@ Berdasarkan pengawasan konsolidasi 6 entitas portofolio Kajian Ihsan:
         ? 'nd-badge-inconclusive'
         : 'nd-badge-compliant';
 
+      // Format Reasoning Chain Steps into clean visual ladder
+      let formattedReasoningChain = sig.reasoningChain;
+      try {
+        if (sig.reasoningChain && sig.reasoningChain.includes('→')) {
+          const rawSteps = sig.reasoningChain.split('→').map(s => s.trim()).filter(Boolean);
+          if (rawSteps.length > 1) {
+            formattedReasoningChain = `
+              <div class="nd-chain-flow" style="display:flex; flex-direction:column; gap:5px; margin-top:6px;">
+                ${rawSteps.map((step, idx) => {
+                  let colonIdx = step.indexOf('(');
+                  let title = step;
+                  let body = '';
+                  if (colonIdx > 0 && step.endsWith(')')) {
+                    title = step.substring(0, colonIdx).trim();
+                    body = step.substring(colonIdx + 1, step.length - 1).trim();
+                  }
+                  return `
+                    <div class="nd-chain-step" style="display:flex; align-items:flex-start; gap:8px; background:#FFFFFF; border:1px solid #BFDBFE; border-radius:6px; padding:5px 8px; font-size:8pt; line-height:1.4;">
+                      <span style="background:#1D4ED8; color:#FFFFFF; font-size:7pt; font-weight:800; border-radius:50%; width:16px; height:16px; display:inline-flex; align-items:center; justify-content:center; flex-shrink:0;">${idx + 1}</span>
+                      <div><strong style="color:#0A2540;">${title}${body ? ':' : ''}</strong> ${body ? `<span style="color:#1E293B;">${body}</span>` : ''}</div>
+                    </div>
+                  `;
+                }).join('')}
+              </div>
+            `;
+          }
+        }
+      } catch (e) {
+        formattedReasoningChain = sig.reasoningChain;
+      }
+
       return `
-        <div class="nd-signal-card" id="nd_card_${sig.mode}_${sig.code}">
+        <div class="nd-signal-card" id="nd_card_${sig.mode}_${sig.code}" style="page-break-inside:avoid !important; break-inside:avoid !important; margin-bottom:12pt;">
           <div class="nd-signal-header">
             <div style="display:flex; align-items:center; gap:8px;">
               <span class="nd-signal-code">${sig.code}</span>
@@ -18190,51 +18284,63 @@ Berdasarkan pengawasan konsolidasi 6 entitas portofolio Kajian Ihsan:
             </div>
             <span class="nd-signal-badge ${badgeClass}">${sig.classificationBadge}</span>
           </div>
-          <table class="nd-signal-table">
-            <tr>
-              <td class="nd-signal-label">1. Tujuan Analisis<br><span style="font-weight:400; font-size:10px; color:#57534E;">(Analysis Objective)</span></td>
+          <table class="nd-signal-table" style="page-break-inside:avoid !important; break-inside:avoid !important;">
+            <tr style="page-break-inside:avoid; break-inside:avoid;">
+              <td class="nd-signal-label">1. Tujuan Analisis<br><span style="font-weight:400; font-size:10px; color:#475569;">(Analysis Objective)</span></td>
               <td>${sig.objective}</td>
             </tr>
-            <tr>
-              <td class="nd-signal-label">2. Sumber Data<br><span style="font-weight:400; font-size:10px; color:#57534E;">(Source Data)</span></td>
+            <tr style="page-break-inside:avoid; break-inside:avoid;">
+              <td class="nd-signal-label">2. Sumber Data<br><span style="font-weight:400; font-size:10px; color:#475569;">(Source Data)</span></td>
               <td>${sig.sourceData}</td>
             </tr>
-            <tr>
-              <td class="nd-signal-label">3. Rumus Perhitungan<br><span style="font-weight:400; font-size:10px; color:#57534E;">(Calculation Formula)</span></td>
+            <tr style="page-break-inside:avoid; break-inside:avoid;">
+              <td class="nd-signal-label">3. Rumus Perhitungan<br><span style="font-weight:400; font-size:10px; color:#475569;">(Calculation Formula)</span></td>
               <td><div class="nd-math-box">${sig.formula}</div></td>
             </tr>
-            <tr>
-              <td class="nd-signal-label">4. Perhitungan Langkah demi Langkah<br><span style="font-weight:400; font-size:10px; color:#57534E;">(Step-by-Step Calculation)</span></td>
+            <tr style="page-break-inside:avoid; break-inside:avoid;">
+              <td class="nd-signal-label">4. Perhitungan Langkah demi Langkah<br><span style="font-weight:400; font-size:10px; color:#475569;">(Step-by-Step Calculation)</span></td>
               <td><div class="nd-math-box">${sig.stepByStep}</div></td>
             </tr>
-            <tr>
-              <td class="nd-signal-label">5. Tolok Ukur / Ambang Batas<br><span style="font-weight:400; font-size:10px; color:#57534E;">(Benchmark or Threshold)</span></td>
+            <tr style="page-break-inside:avoid; break-inside:avoid;">
+              <td class="nd-signal-label">5. Tolok Ukur / Ambang Batas<br><span style="font-weight:400; font-size:10px; color:#475569;">(Benchmark or Threshold)</span></td>
               <td>${sig.benchmark}</td>
             </tr>
-            <tr>
-              <td class="nd-signal-label">6. Klasifikasi Hasil<br><span style="font-weight:400; font-size:10px; color:#57534E;">(Result Classification)</span></td>
+            <tr style="page-break-inside:avoid; break-inside:avoid;">
+              <td class="nd-signal-label">6. Klasifikasi Hasil<br><span style="font-weight:400; font-size:10px; color:#475569;">(Result Classification)</span></td>
               <td><strong>${sig.classificationTitle}</strong> — ${sig.classificationCriteria}</td>
             </tr>
-            <tr>
-              <td class="nd-signal-label">7. Rasional Analitis &amp; Rantai Penalaran<br><span style="font-weight:400; font-size:10px; color:#57534E;">(Detailed Analytical Rationale &amp; Reasoning Chain)</span></td>
+            <tr style="page-break-inside:avoid; break-inside:avoid;">
+              <td class="nd-signal-label">7. Rasional Analitis &amp; Rantai Penalaran<br><span style="font-weight:400; font-size:10px; color:#475569;">(Detailed Analytical Rationale &amp; Reasoning Chain)</span></td>
               <td>
-                <div>${sig.rationale}</div>
+                <div style="margin-bottom:6px; line-height:1.5;">${sig.rationale}</div>
                 <div class="nd-reasoning-chain">
                   <strong>🔗 Rantai Penalaran Bukti (Evidence Reasoning Chain):</strong><br>
-                  ${sig.reasoningChain}
+                  ${formattedReasoningChain}
                 </div>
               </td>
             </tr>
-            <tr>
-              <td class="nd-signal-label">8. Implikasi Forensik<br><span style="font-weight:400; font-size:10px; color:#57534E;">(Forensic Implications)</span></td>
+            <tr style="page-break-inside:avoid; break-inside:avoid;">
+              <td class="nd-signal-label">8. Implikasi Forensik<br><span style="font-weight:400; font-size:10px; color:#475569;">(Forensic Implications)</span></td>
               <td>
-                <div><strong>• Temuan Terkonfirmasi (Confirmed Finding):</strong> ${sig.confirmedFinding}</div>
-                <div style="margin-top:3px;"><strong>• Risiko Potensial yang Memerlukan Verifikasi (Potential Risk):</strong> ${sig.potentialRisk}</div>
+                <div style="display:grid; grid-template-columns:1fr; gap:6px;">
+                  <div style="background:#ECFDF5; border:1px solid #A7F3D0; border-left:3px solid #059669; border-radius:5px; padding:6px 10px; font-size:8.5pt;">
+                    <strong style="color:#065F46;">• Temuan Terkonfirmasi (Confirmed Finding):</strong>
+                    <div style="color:#064E3B; margin-top:2px;">${sig.confirmedFinding}</div>
+                  </div>
+                  <div style="background:#FFFBEB; border:1px solid #FDE68A; border-left:3px solid #D97706; border-radius:5px; padding:6px 10px; font-size:8.5pt;">
+                    <strong style="color:#92400E;">• Risiko Potensial yang Memerlukan Verifikasi (Potential Risk):</strong>
+                    <div style="color:#78350F; margin-top:2px;">${sig.potentialRisk}</div>
+                  </div>
+                </div>
               </td>
             </tr>
-            <tr>
-              <td class="nd-signal-label">9. Keterbatasan &amp; Validasi<br><span style="font-weight:400; font-size:10px; color:#57534E;">(Limitations &amp; Validation)</span></td>
-              <td>${sig.limitations}</td>
+            <tr style="page-break-inside:avoid; break-inside:avoid;">
+              <td class="nd-signal-label">9. Keterbatasan &amp; Validasi<br><span style="font-weight:400; font-size:10px; color:#475569;">(Limitations &amp; Validation)</span></td>
+              <td>
+                <div style="background:#F8FAFC; border:1px solid #E2E8F0; border-left:3px solid #64748B; border-radius:5px; padding:6px 10px; font-size:8.5pt; color:#334155; line-height:1.45;">
+                  ${sig.limitations}
+                </div>
+              </td>
             </tr>
           </table>
         </div>
