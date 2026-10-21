@@ -3520,13 +3520,28 @@
                   </li>
                 </ul>
 
-                <!--SEKSI IV & V: KERTAS KERJA PERHITUNGAN LENGKAP S1-S10 (9 KOMPONEN) & SINTESIS KORELASI-->
-                <div id="nd_s1_s10_audit_pengendali" class="nd-s1-s10-audit-section">
-                  <h5>IV. Rincian Perhitungan Forensik Lengkap S1–S10 (9-Komponen Standar Audit)</h5>
-                  <p style="font-size:12px; color:#374151; margin-bottom:10px;">
-                    Bagian ini menyajikan transparansi matematis penuh atas kesepuluh prosedur analitis forensik (<strong>S1 hingga S10</strong>) yang dijalankan pada <strong class="dyn-p-entity">PT Era Permata Sejahtera</strong> periode <span class="dyn-p-period">31 Agustus 2026</span>. Setiap sinyal diuraikan ke dalam 9 komponen audit: (1) Tujuan Analisis, (2) Sumber Data, (3) Rumus Perhitungan, (4) Substitusi &amp; Langkah Matematis, (5) Tolok Ukur/Regulasi, (6) Klasifikasi Hasil, (7) Rasional Analitis &amp; Rantai Penalaran Bukti, (8) Implikasi Forensik (Temuan Terkonfirmasi vs. Risiko Potensial), serta (9) Keterbatasan &amp; Validasi.
+                <!-- SEKSI IV: MATRIKS EKSEKUTIF SINYAL FORENSIK S1-S10 (REFINED SYNTHESIS MATRIX) -->
+                <div class="eo-section" id="eo_section_iv_pengendali" style="page-break-inside:avoid;">
+                  <h5 style="margin-top:14px; border-bottom:1px solid #1b3d2f; padding-bottom:3px; color:#1b3d2f; font-weight:bold;">IV. Matriks Eksekutif Sinyal Forensik S1–S10 (Refined Signal Synthesis Matrix)</h5>
+                  <p style="margin-bottom:8px; font-size:12.5px; color:#374151;">
+                    Ikhtisar sintesis forensik kesepuluh prosedur analitis (<strong>S1 s/d S10</strong>) pada <strong class="dyn-p-entity">PT Era Permata Sejahtera</strong>:
                   </p>
-                  <div id="nd_s1_s10_cards_pengendali"></div>
+                  <div id="nd_matrix_pengendali"></div>
+                </div>
+
+                <!-- KERTAS KERJA DIAGNOSTIK RINCI S1-S10 (COLLAPSIBLE FOR AUDITORS) -->
+                <div id="nd_s1_s10_audit_pengendali" class="nd-s1-s10-audit-section">
+                  <details class="no-print extended-audit-details" id="details_s1_s10_pengendali" style="margin-top:16px; background:#F8FAFC; border:1.5px solid #CBD5E1; border-radius:8px; padding:10px 14px;">
+                    <summary style="font-size:12.5px; font-weight:700; color:#0F5338; cursor:pointer; user-select:none;">
+                      📑 Buka Rincian Lengkap Kertas Kerja Diagnostik S1–S10 (9 Komponen Standar Audit Forensik)
+                    </summary>
+                    <div style="margin-top:12px;">
+                      <p style="font-size:11.5px; color:#475569; margin-bottom:10px;">
+                        Bagian ini menyajikan transparansi matematis penuh atas kesepuluh prosedur analitis forensik (<strong>S1 hingga S10</strong>) yang dijalankan pada <strong class="dyn-p-entity">PT Era Permata Sejahtera</strong> periode <span class="dyn-p-period">31 Agustus 2026</span>. Setiap sinyal diuraikan ke dalam 9 komponen audit: (1) Tujuan Analisis, (2) Sumber Data, (3) Rumus Perhitungan, (4) Substitusi &amp; Langkah Matematis, (5) Tolok Ukur/Regulasi, (6) Klasifikasi Hasil, (7) Rasional Analitis &amp; Rantai Penalaran Bukti, (8) Implikasi Forensik (Temuan Terkonfirmasi vs. Risiko Potensial), serta (9) Keterbatasan &amp; Validasi.
+                      </p>
+                      <div id="nd_s1_s10_cards_pengendali"></div>
+                    </div>
+                  </details>
                 </div>
               </div>
 
@@ -3567,6 +3582,23 @@
                 <span>📥</span>
                 <span>Aksi Utama: Unduh atau Cetak Laporan Resmi</span>
               </div>
+              <!-- EXPORT FORMAT SELECTOR (OFFICIAL EXPECTED OUTPUT VS EXTENDED) -->
+              <div class="export-format-selector" style="background:#F1F5F9; border:1.5px solid #CBD5E1; border-radius:8px; padding:10px 14px; margin-bottom:12px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px;">
+                <div style="font-size:12.5px; font-weight:700; color:#0F5338; display:flex; align-items:center; gap:6px;">
+                  <span>⚙️ Pilihan Format Ekspor &amp; Cetak:</span>
+                </div>
+                <div style="display:flex; align-items:center; gap:16px; font-size:12px;">
+                  <label style="display:flex; align-items:center; gap:6px; cursor:pointer; font-weight:700; color:#0F5338;">
+                    <input type="radio" name="exportFormat_pengendali" value="executive" checked onchange="setExportFormat('pengendali', 'executive')">
+                    🌟 Format Eksekutif Resmi (~2-3 Hal Sesuai Expected Output)
+                  </label>
+                  <label style="display:flex; align-items:center; gap:6px; cursor:pointer; font-weight:500; color:#475569;">
+                    <input type="radio" name="exportFormat_pengendali" value="extended" onchange="setExportFormat('pengendali', 'extended')">
+                    📑 Kertas Kerja Lengkap + Audit Trail S1–S10
+                  </label>
+                </div>
+              </div>
+
               <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:12px; margin-bottom:14px;">
                 <!-- Big Word Button -->
                 <button type="button" onclick="downloadNotaDinasDoc('pengendali')" class="btn btn-primary boomer-action-btn-primary">
@@ -4341,12 +4373,28 @@
                 </li>
               </ul>
 
-              <div id="nd_s1_s10_audit_nonpengendali" class="nd-s1-s10-audit-section">
-                <h5>IV. Rincian Perhitungan Forensik Lengkap S1–S10 (9-Komponen Standar Audit)</h5>
-                <p style="font-size:12px; color:#374151; margin-bottom:10px;">
-                  Bagian ini menyajikan rincian perhitungan matematis langkah demi langkah, tolok ukur, klasifikasi, rantai penalaran bukti (<em>Source Evidence → Extracted Values → Calculation → Benchmark Comparison → Interpretation → Forensic Finding → Implication</em>), serta sintesis korelasi antar-indikator untuk <strong>S1 hingga S10</strong> pada <strong class="dyn-np-entity">PT Pesonna Optima Jasa</strong>.
+              <!-- SEKSI IV: MATRIKS EKSEKUTIF SINYAL FORENSIK S1-S10 (REFINED SYNTHESIS MATRIX) -->
+              <div class="eo-section" id="eo_section_iv_nonpengendali" style="page-break-inside:avoid;">
+                <h5 style="margin-top:14px; border-bottom:1px solid #1b3d2f; padding-bottom:3px; color:#1b3d2f; font-weight:bold;">IV. Matriks Eksekutif Sinyal Forensik S1–S10 (Refined Signal Synthesis Matrix)</h5>
+                <p style="margin-bottom:8px; font-size:12.5px; color:#374151;">
+                  Ikhtisar sintesis forensik kesepuluh prosedur analitis (<strong>S1 s/d S10</strong>) pada <strong class="dyn-np-entity">PT Pesonna Optima Jasa</strong>:
                 </p>
-                <div id="nd_s1_s10_cards_nonpengendali"></div>
+                <div id="nd_matrix_nonpengendali"></div>
+              </div>
+
+              <!-- KERTAS KERJA DIAGNOSTIK RINCI S1-S10 (COLLAPSIBLE FOR AUDITORS) -->
+              <div id="nd_s1_s10_audit_nonpengendali" class="nd-s1-s10-audit-section">
+                <details class="no-print extended-audit-details" id="details_s1_s10_nonpengendali" style="margin-top:16px; background:#F8FAFC; border:1.5px solid #CBD5E1; border-radius:8px; padding:10px 14px;">
+                  <summary style="font-size:12.5px; font-weight:700; color:#0F5338; cursor:pointer; user-select:none;">
+                    📑 Buka Rincian Lengkap Kertas Kerja Diagnostik S1–S10 (9 Komponen Standar Audit Forensik)
+                  </summary>
+                  <div style="margin-top:12px;">
+                    <p style="font-size:11.5px; color:#475569; margin-bottom:10px;">
+                      Bagian ini menyajikan rincian perhitungan matematis langkah demi langkah, tolok ukur, klasifikasi, rantai penalaran bukti (<em>Source Evidence → Extracted Values → Calculation → Benchmark Comparison → Interpretation → Forensic Finding → Implication</em>), serta sintesis korelasi antar-indikator untuk <strong>S1 hingga S10</strong> pada <strong class="dyn-np-entity">PT Pesonna Optima Jasa</strong>:
+                    </p>
+                    <div id="nd_s1_s10_cards_nonpengendali"></div>
+                  </div>
+                </details>
               </div>
             </div>
 
@@ -4387,6 +4435,23 @@
               <span>📥</span>
               <span>Aksi Utama: Unduh atau Cetak Laporan Resmi</span>
             </div>
+            <!-- EXPORT FORMAT SELECTOR (OFFICIAL EXPECTED OUTPUT VS EXTENDED) -->
+            <div class="export-format-selector" style="background:#F1F5F9; border:1.5px solid #CBD5E1; border-radius:8px; padding:10px 14px; margin-bottom:12px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px;">
+              <div style="font-size:12.5px; font-weight:700; color:#0F5338; display:flex; align-items:center; gap:6px;">
+                <span>⚙️ Pilihan Format Ekspor &amp; Cetak:</span>
+              </div>
+              <div style="display:flex; align-items:center; gap:16px; font-size:12px;">
+                <label style="display:flex; align-items:center; gap:6px; cursor:pointer; font-weight:700; color:#0F5338;">
+                  <input type="radio" name="exportFormat_non_pengendali" value="executive" checked onchange="setExportFormat('non_pengendali', 'executive')">
+                  🌟 Format Eksekutif Resmi (~3-4 Hal Sesuai Expected Output)
+                </label>
+                <label style="display:flex; align-items:center; gap:6px; cursor:pointer; font-weight:500; color:#475569;">
+                  <input type="radio" name="exportFormat_non_pengendali" value="extended" onchange="setExportFormat('non_pengendali', 'extended')">
+                  📑 Kertas Kerja Lengkap + Audit Trail S1–S10
+                </label>
+              </div>
+            </div>
+
             <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:12px; margin-bottom:14px;">
               <!-- Big Word Button -->
               <button type="button" onclick="downloadNotaDinasDoc('non_pengendali')" class="btn btn-primary boomer-action-btn-primary">
@@ -6105,7 +6170,7 @@
                 </div>
 
                 <!-- INTERACTIVE GEMINI ARGON-CLASS RAG DEEP-DIVE EXPLORER -->
-                <div id="argonRagDeepDiveWidget" class="boomer-chart-card" style="background:linear-gradient(180deg, #F4FAF6 0%, #FFFFFF 100%); border:2.5px solid #0F5338; padding:22px 24px; margin:20px 0;">
+                <div id="argonRagDeepDiveWidget" class="boomer-chart-card no-print" style="background:linear-gradient(180deg, #F4FAF6 0%, #FFFFFF 100%); border:2.5px solid #0F5338; padding:22px 24px; margin:20px 0;">
                   <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:12px; border-bottom:2px solid #C8DFD1; padding-bottom:14px; margin-bottom:16px;">
                     <div>
                       <div style="display:inline-flex; align-items:center; gap:6px; background:#0F5338; color:#FFFFFF; font-size:11.5px; font-weight:800; padding:4px 12px; border-radius:20px; margin-bottom:6px;">
@@ -6166,13 +6231,31 @@
                   </div>
                 </div>
 
-                <!-- SEKSI 8: RINCIAN PERHITUNGAN FORENSIK LENGKAP S1-S10 & RANTAI PENALARAN -->
-                <div id="nd_s1_s10_audit_investasi_pindo" class="nd-s1-s10-audit-section">
-                  <h5>8. Rincian Kertas Kerja Perhitungan Forensik Lengkap S1–S10 (9-Komponen Standar Audit)</h5>
-                  <p style="font-size:12px; color:#374151; margin-bottom:10px;">
-                    Rincian auditables atas 10 parameter sinyal forensik (<strong>S1–S10</strong>), substitusi matematis langkah demi langkah, rantai penalaran bukti (<em>Source Evidence → Extracted Values → Calculation → Benchmark Comparison → Interpretation → Forensic Finding → Implication</em>), serta sintesis interaksi indikator kredit untuk <strong class="dyn-inv-entity">PT Pindo Deli Pulp and Paper Mills dan Entitas Anak</strong>:
+                <!-- SEKSI 8: MATRIKS EKSEKUTIF SINYAL FORENSIK S1-S10 (REFINED SYNTHESIS MATRIX) -->
+                <div class="eo-section" id="eo_section_8_pindo" style="page-break-inside:avoid;">
+                  <div class="eo-section-header">
+                    <span class="eo-section-num">8</span>
+                    <h5 class="eo-section-title" style="border:none; padding:0; margin:0;">Matriks Eksekutif Sinyal Anomali S1–S10 (Refined Signal Synthesis Matrix)</h5>
+                  </div>
+                  <p style="margin-bottom:8px; font-size:12.5px; color:#374151;">
+                    Ikhtisar sintesis forensik atas kesepuluh sinyal anomali (<strong>S1 s/d S10</strong>) untuk mengevaluasi kelayakan investasi &amp; kredit secara komprehensif tanpa distorsi angka non-operasional:
                   </p>
-                  <div id="nd_s1_s10_cards_investasi_pindo"></div>
+                  <div id="nd_matrix_investasi_pindo"></div>
+                </div>
+
+                <!-- KERTAS KERJA DIAGNOSTIK RINCI S1-S10 (COLLAPSIBLE FOR AUDITORS) -->
+                <div id="nd_s1_s10_audit_investasi_pindo" class="nd-s1-s10-audit-section">
+                  <details class="no-print extended-audit-details" id="details_s1_s10_investasi_pindo" style="margin-top:16px; background:#F8FAFC; border:1.5px solid #CBD5E1; border-radius:8px; padding:10px 14px;">
+                    <summary style="font-size:12.5px; font-weight:700; color:#0F5338; cursor:pointer; user-select:none;">
+                      📑 Buka Rincian Lengkap Kertas Kerja Diagnostik S1–S10 (9 Komponen Standar Audit Forensik)
+                    </summary>
+                    <div style="margin-top:12px;">
+                      <p style="font-size:11.5px; color:#475569; margin-bottom:10px;">
+                        Rincian auditables atas 10 parameter sinyal forensik (<strong>S1–S10</strong>), substitusi matematis langkah demi langkah, rantai penalaran bukti (<em>Source Evidence → Extracted Values → Calculation → Benchmark Comparison → Interpretation → Forensic Finding → Implication</em>), serta sintesis interaksi indikator kredit untuk <strong class="dyn-inv-entity">PT Pindo Deli Pulp and Paper Mills dan Entitas Anak</strong>:
+                      </p>
+                      <div id="nd_s1_s10_cards_investasi_pindo"></div>
+                    </div>
+                  </details>
                 </div>
 
               </div>
@@ -6286,12 +6369,28 @@
                   <li>Melakukan pemantauan berkala tiap triwulan atas laporan keuangan emiten untuk memastikan Modified Z-Score tidak turun ke bawah batas 1,80.</li>
                 </ul>
 
-                <div id="nd_s1_s10_audit_investasi_daaz" class="nd-s1-s10-audit-section">
-                  <h5>IV. Rincian Perhitungan Forensik Lengkap S1–S10 (9-Komponen Standar Audit)</h5>
-                  <p style="font-size:12px; color:#374151; margin-bottom:10px;">
-                    Rincian perhitungan lengkap S1–S10, substitusi matematis, tolok ukur, rantai penalaran bukti, serta korelasi antar-indikator untuk evaluasi Sukuk/Obligasi <strong>PT DAAZ Bara Lestari Tbk</strong>:
+                <!-- SEKSI IV: MATRIKS EKSEKUTIF SINYAL FORENSIK S1-S10 (REFINED SYNTHESIS MATRIX) -->
+                <div class="eo-section" id="eo_section_iv_daaz" style="page-break-inside:avoid;">
+                  <h5 style="margin-top:14px; border-bottom:1px solid #1b3d2f; padding-bottom:3px; color:#1b3d2f; font-weight:bold;">IV. Matriks Eksekutif Sinyal Forensik S1–S10 (Refined Signal Synthesis Matrix)</h5>
+                  <p style="margin-bottom:8px; font-size:12.5px; color:#374151;">
+                    Ikhtisar sintesis forensik kesepuluh prosedur analitis (<strong>S1 s/d S10</strong>) pada <strong>PT DAAZ Bara Lestari Tbk</strong>:
                   </p>
-                  <div id="nd_s1_s10_cards_investasi_daaz"></div>
+                  <div id="nd_matrix_investasi_daaz"></div>
+                </div>
+
+                <!-- KERTAS KERJA DIAGNOSTIK RINCI S1-S10 (COLLAPSIBLE FOR AUDITORS) -->
+                <div id="nd_s1_s10_audit_investasi_daaz" class="nd-s1-s10-audit-section">
+                  <details class="no-print extended-audit-details" id="details_s1_s10_investasi_daaz" style="margin-top:16px; background:#F8FAFC; border:1.5px solid #CBD5E1; border-radius:8px; padding:10px 14px;">
+                    <summary style="font-size:12.5px; font-weight:700; color:#0F5338; cursor:pointer; user-select:none;">
+                      📑 Buka Rincian Lengkap Kertas Kerja Diagnostik S1–S10 (9 Komponen Standar Audit Forensik)
+                    </summary>
+                    <div style="margin-top:12px;">
+                      <p style="font-size:11.5px; color:#475569; margin-bottom:10px;">
+                        Rincian perhitungan lengkap S1–S10, substitusi matematis, tolok ukur, rantai penalaran bukti, serta korelasi antar-indikator untuk evaluasi Sukuk/Obligasi <strong>PT DAAZ Bara Lestari Tbk</strong>:
+                      </p>
+                      <div id="nd_s1_s10_cards_investasi_daaz"></div>
+                    </div>
+                  </details>
                 </div>
               </div>
 
@@ -6333,6 +6432,23 @@
               <span>📥</span>
               <span>Aksi Utama: Unduh atau Cetak Laporan Resmi</span>
             </div>
+            <!-- EXPORT FORMAT SELECTOR (OFFICIAL EXPECTED OUTPUT VS EXTENDED) -->
+            <div class="export-format-selector" style="background:#F1F5F9; border:1.5px solid #CBD5E1; border-radius:8px; padding:10px 14px; margin-bottom:12px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px;">
+              <div style="font-size:12.5px; font-weight:700; color:#0F5338; display:flex; align-items:center; gap:6px;">
+                <span>⚙️ Pilihan Format Ekspor &amp; Cetak:</span>
+              </div>
+              <div style="display:flex; align-items:center; gap:16px; font-size:12px;">
+                <label style="display:flex; align-items:center; gap:6px; cursor:pointer; font-weight:700; color:#0F5338;">
+                  <input type="radio" name="exportFormat_investasi" value="executive" checked onchange="setExportFormat('investasi', 'executive')">
+                  🌟 Format Eksekutif Resmi (~3-4 Hal Sesuai Expected Output)
+                </label>
+                <label style="display:flex; align-items:center; gap:6px; cursor:pointer; font-weight:500; color:#475569;">
+                  <input type="radio" name="exportFormat_investasi" value="extended" onchange="setExportFormat('investasi', 'extended')">
+                  📑 Kertas Kerja Lengkap + Audit Trail S1–S10
+                </label>
+              </div>
+            </div>
+
             <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:12px; margin-bottom:14px;">
               <!-- Big Word Button -->
               <button type="button" onclick="downloadNotaDinasDoc('investasi')" class="btn btn-primary boomer-action-btn-primary">
@@ -6957,12 +7073,28 @@
               <li>Menerapkan sistem pelaporan kas grup terpusat (Cash Pooling System) guna mengoptimalkan likuiditas antar-anak perusahaan.</li>
             </ul>
 
-            <div id="nd_s1_s10_audit_konsolidasi" class="nd-s1-s10-audit-section">
-              <h5>IV. Rincian Perhitungan Forensik Lengkap S1–S10 Konsolidasi Grup (9-Komponen Standar Audit)</h5>
-              <p style="font-size:12px; color:#374151; margin-bottom:10px;">
-                Rincian perhitungan lengkap S1–S10, substitusi matematis, tolok ukur, rantai penalaran bukti, serta sintesis korelasi indikator konsolidasi multi-entitas (6 Entitas Grup Kajian Ihsan):
+            <!-- SEKSI IV: MATRIKS EKSEKUTIF SINYAL FORENSIK S1-S10 (REFINED SYNTHESIS MATRIX) -->
+            <div class="eo-section" id="eo_section_iv_konsolidasi" style="page-break-inside:avoid;">
+              <h5 style="margin-top:14px; border-bottom:1px solid #1b3d2f; padding-bottom:3px; color:#1b3d2f; font-weight:bold;">IV. Matriks Eksekutif Sinyal Forensik S1–S10 (Refined Signal Synthesis Matrix)</h5>
+              <p style="margin-bottom:8px; font-size:12.5px; color:#374151;">
+                Ikhtisar sintesis forensik kesepuluh prosedur analitis (<strong>S1 s/d S10</strong>) pada <strong>Konsolidasi Finansial Grup 6 Entitas</strong>:
               </p>
-              <div id="nd_s1_s10_cards_konsolidasi"></div>
+              <div id="nd_matrix_konsolidasi"></div>
+            </div>
+
+            <!-- KERTAS KERJA DIAGNOSTIK RINCI S1-S10 (COLLAPSIBLE FOR AUDITORS) -->
+            <div id="nd_s1_s10_audit_konsolidasi" class="nd-s1-s10-audit-section">
+              <details class="no-print extended-audit-details" id="details_s1_s10_konsolidasi" style="margin-top:16px; background:#F8FAFC; border:1.5px solid #CBD5E1; border-radius:8px; padding:10px 14px;">
+                <summary style="font-size:12.5px; font-weight:700; color:#0F5338; cursor:pointer; user-select:none;">
+                  📑 Buka Rincian Lengkap Kertas Kerja Diagnostik S1–S10 (9 Komponen Standar Audit Forensik)
+                </summary>
+                <div style="margin-top:12px;">
+                  <p style="font-size:11.5px; color:#475569; margin-bottom:10px;">
+                    Rincian perhitungan lengkap S1–S10, substitusi matematis, tolok ukur, rantai penalaran bukti, serta sintesis korelasi indikator konsolidasi multi-entitas (6 Entitas Grup Kajian Ihsan):
+                  </p>
+                  <div id="nd_s1_s10_cards_konsolidasi"></div>
+                </div>
+              </details>
             </div>
           </div>
 
@@ -7003,6 +7135,23 @@
             <span>📥</span>
             <span>Aksi Utama: Unduh atau Cetak Laporan Resmi</span>
           </div>
+          <!-- EXPORT FORMAT SELECTOR (OFFICIAL EXPECTED OUTPUT VS EXTENDED) -->
+          <div class="export-format-selector" style="background:#F1F5F9; border:1.5px solid #CBD5E1; border-radius:8px; padding:10px 14px; margin-bottom:12px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px;">
+            <div style="font-size:12.5px; font-weight:700; color:#0F5338; display:flex; align-items:center; gap:6px;">
+              <span>⚙️ Pilihan Format Ekspor &amp; Cetak:</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:16px; font-size:12px;">
+              <label style="display:flex; align-items:center; gap:6px; cursor:pointer; font-weight:700; color:#0F5338;">
+                <input type="radio" name="exportFormat_konsolidasi" value="executive" checked onchange="setExportFormat('konsolidasi', 'executive')">
+                🌟 Format Eksekutif Resmi (~2-3 Hal Sesuai Expected Output)
+              </label>
+              <label style="display:flex; align-items:center; gap:6px; cursor:pointer; font-weight:500; color:#475569;">
+                <input type="radio" name="exportFormat_konsolidasi" value="extended" onchange="setExportFormat('konsolidasi', 'extended')">
+                📑 Kertas Kerja Lengkap + Audit Trail S1–S10
+              </label>
+            </div>
+          </div>
+
           <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:12px; margin-bottom:14px;">
             <!-- Big Word Button -->
             <button type="button" onclick="downloadNotaDinasDoc('konsolidasi')" class="btn btn-primary boomer-action-btn-primary">
@@ -11967,19 +12116,20 @@
       }
     }
 
-    function downloadNotaDinasDoc(mode) {
+    function downloadNotaDinasDoc(mode, forcedFormat) {
       const el = getNotaDinasElement(mode);
       if (!el) {
         showToast('Dokumen Nota Dinas belum tersedia', 'warning');
         return;
       }
+      const format = forcedFormat || (window.appState && window.appState.exportFormat) || 'executive';
 
       // Resolve dynamic entity name based on active mode
       let dynamicEntity = '';
       if (mode === 'pengendali') {
         const inp = document.getElementById('in_p_entityName');
         dynamicEntity = (inp && inp.value.trim()) || (appState.pengendali && appState.pengendali.entityName) || 'PT Era Permata Sejahtera';
-      } else if (mode === 'non_pengendali') {
+      } else if (mode === 'non_pengendali' || mode === 'nonpengendali') {
         const inp = document.getElementById('in_np_entityName');
         dynamicEntity = (inp && inp.value.trim()) || (appState.nonPengendali && appState.nonPengendali.entityName) || 'PT Pesonna Optima Jasa';
       } else if (mode === 'investasi') {
@@ -12007,6 +12157,10 @@
           file: dynamicEntity === 'PT Pesonna Optima Jasa' ? 'Nota_Dinas_PT_Pesonna_Optima_Jasa.doc' : dynamicFile,
           title: dynamicEntity === 'PT Pesonna Optima Jasa' ? 'Nota Dinas Monitoring PT Pesonna Optima Jasa' : dynamicTitle
         },
+        'nonpengendali': {
+          file: dynamicEntity === 'PT Pesonna Optima Jasa' ? 'Nota_Dinas_PT_Pesonna_Optima_Jasa.doc' : dynamicFile,
+          title: dynamicEntity === 'PT Pesonna Optima Jasa' ? 'Nota Dinas Monitoring PT Pesonna Optima Jasa' : dynamicTitle
+        },
         'investasi': (appState.investasiActivePreset === 'pindodeli'
           ? {
               file: dynamicEntity.includes('Pindo Deli') ? 'Nota_Dinas_Investasi_PT_Pindo_Deli.doc' : dynamicFile,
@@ -12021,15 +12175,17 @@
       const info = titles[mode] || { file: dynamicFile, title: dynamicTitle };
 
       const clone = el.cloneNode(true);
-      const actions = clone.querySelector('.nota-dinas-actions');
-      if (actions) actions.remove();
-      const banner = clone.querySelector('.nota-dinas-edit-banner');
-      if (banner) banner.remove();
-      const badge = clone.querySelector('.nota-dinas-edited-badge');
-      if (badge) badge.remove();
+      clone.querySelectorAll('.nota-dinas-actions, .nota-dinas-edit-banner, .nota-dinas-edited-badge, .step-actions-bar, .export-format-selector').forEach(c => c.remove());
       clone.removeAttribute('contenteditable');
       clone.querySelectorAll('[contenteditable]').forEach(c => c.removeAttribute('contenteditable'));
       clone.classList.remove('editing-mode');
+
+      // In Executive Mode, exclude 21-page 9-component diagnostic tables & interactive chat
+      if (format === 'executive') {
+        const deepDive = clone.querySelector('#argonRagDeepDiveWidget');
+        if (deepDive) deepDive.remove();
+        clone.querySelectorAll('.extended-audit-details, .no-print').forEach(c => c.remove());
+      }
 
       const docHtml = `
 <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
@@ -12037,94 +12193,30 @@
 <meta charset='utf-8'>
 <title>${info.title}</title>
 <style>
-  @page Section1 { size: 595.3pt 841.9pt; margin: 45pt 45pt 45pt 45pt; }
+  @page Section1 { size: 595.3pt 841.9pt; margin: 40pt 40pt 40pt 40pt; }
   div.Section1 { page: Section1; }
-  body { font-family: 'Calibri', 'Times New Roman', serif; font-size: 10.5pt; line-height: 1.48; color: #1c1917; }
-  h3 { font-size: 15pt; font-weight: bold; text-align: center; margin: 0; color: #1b3d2f; letter-spacing: 0.5pt; }
-  h4 { font-size: 13pt; font-weight: bold; text-align: center; margin: 3pt 0; color: #1c1917; }
-  h5 { font-size: 11pt; font-weight: bold; margin: 12pt 0 4pt 0; color: #1b3d2f; border-bottom: 1px solid #1b3d2f; padding-bottom: 2pt; }
-  table { border-collapse: collapse; width: 100%; margin: 6pt 0 10pt 0; font-size: 9.5pt; }
-  td, th { padding: 4pt 6pt; vertical-align: top; }
-  .nota-dinas-meta-table td { border-bottom: 1px solid #d6d3d1; }
+  body { font-family: 'Times New Roman', serif; font-size: 10pt; line-height: 1.42; color: #1c1917; }
+  h3 { font-size: 14pt; font-weight: bold; text-align: center; margin: 0; color: #1b3d2f; letter-spacing: 0.5pt; }
+  h4 { font-size: 12pt; font-weight: bold; text-align: center; margin: 3pt 0; color: #1c1917; }
+  h5 { font-size: 10.5pt; font-weight: bold; margin: 10pt 0 4pt 0; color: #1b3d2f; border-bottom: 1px solid #1b3d2f; padding-bottom: 2pt; }
+  table { border-collapse: collapse; width: 100%; margin: 6pt 0 10pt 0; font-size: 9pt; }
+  td, th { padding: 4pt 6pt; vertical-align: top; border: 1px solid #d6d3d1; }
+  th { background: #f2f7f4; font-weight: bold; color: #1b3d2f; }
+  .nota-dinas-meta-table td { border: none; border-bottom: 1px solid #d6d3d1; }
   .nota-dinas-meta-label { font-weight: bold; width: 15%; color: #44403c; }
+  .nd-signal-matrix-table th { background: #0F5338; color: #FFFFFF; font-weight: bold; }
+  .nd-signal-matrix-table td { font-size: 8.5pt; padding: 4pt 5pt; }
   .nd-signal-card { border: 1px solid #b8c9be; margin-bottom: 10pt; page-break-inside: avoid; }
-  .nd-signal-header { background: #eef5f0; padding: 6pt 8pt; border-bottom: 1px solid #b8c9be; font-weight: bold; }
-  .nd-signal-table td { border: 1px solid #dfe7e2; padding: 4pt 6pt; }
+  .nd-signal-header { background: #eef5f0; padding: 5pt 7pt; border-bottom: 1px solid #b8c9be; font-weight: bold; }
+  .nd-signal-table td { border: 1px solid #dfe7e2; padding: 3pt 5pt; font-size: 8.5pt; }
   .nd-signal-label { width: 24%; font-weight: bold; background: #f8fbf9; color: #1b3d2f; }
-  .nd-math-box { background: #f1f5f9; border-left: 3pt solid #0d261a; padding: 5pt 8pt; font-family: 'Consolas', 'Courier New', monospace; font-size: 9pt; margin: 3pt 0; white-space: pre-wrap; }
-  .nd-reasoning-chain { background: #fffbeb; border-left: 3pt solid #d97706; padding: 5pt 8pt; font-size: 9pt; margin-top: 3pt; }
-  .nd-cross-synthesis { background: #f4faf6; border: 1px solid #a3c9ae; padding: 8pt 10pt; margin-top: 10pt; font-size: 9.5pt; }
-  p, li { text-align: justify; margin: 0 0 5pt 0; line-height: 1.48; }
-  ol, ul { margin: 4pt 0 8pt 18pt; }
+  .nd-math-box { background: #f1f5f9; border-left: 2.5pt solid #0d261a; padding: 4pt 6pt; font-family: monospace; font-size: 8pt; margin: 2pt 0; white-space: pre-wrap; }
+  .nd-reasoning-chain { background: #fffbeb; border-left: 2.5pt solid #d97706; padding: 4pt 6pt; font-size: 8pt; margin-top: 2pt; }
+  .nd-cross-synthesis { background: #f4faf6; border: 1px solid #a3c9ae; padding: 6pt 8pt; margin-top: 8pt; font-size: 9pt; }
+  p, li { text-align: justify; margin: 0 0 4pt 0; line-height: 1.42; }
+  ol, ul { margin: 4pt 0 8pt 16pt; }
   strong { color: #000; }
-
-    /* --- BOOMER FINALIZATION & NICE CATEGORY SHELF STYLING --- */
-    @keyframes spinSlowFinalize { 
-      from { transform: rotate(0deg); } 
-      to { transform: rotate(360deg); } 
-    }
-    .shelf-tab-btn {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 10px 16px;
-      border-radius: 10px;
-      font-size: 13px;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      font-family: inherit;
-    }
-    .shelf-tab-btn:hover {
-      transform: translateY(-1px);
-    }
-    .shelf-item-card {
-      background: #FFFFFF;
-      border-radius: 10px;
-      padding: 14px 18px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 12px;
-      transition: all 0.2s ease;
-    }
-    .shelf-item-card:hover {
-      box-shadow: 0 4px 14px rgba(0,0,0,0.06);
-    }
-    .boomer-action-btn-primary {
-      padding: 14px 18px;
-      font-size: 15px;
-      font-weight: 800;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      box-shadow: 0 4px 12px rgba(15,83,56,0.18);
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-    .boomer-action-btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 16px rgba(15,83,56,0.25);
-    }
-    .boomer-action-btn-secondary {
-      padding: 14px 18px;
-      font-size: 15px;
-      font-weight: 800;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-    .boomer-action-btn-secondary:hover {
-      transform: translateY(-2px);
-    }
-
-  </style>
+</style>
 </head>
 <body>
   <div class="Section1">
@@ -12146,120 +12238,126 @@
       showToast(`📄 Mengunduh ${info.file}...`, 'success');
     }
 
-    function printNotaDinas(mode) {
+    function setExportFormat(mode, format) {
+      if (!window.appState) window.appState = {};
+      window.appState.exportFormat = format;
+      const radios = document.querySelectorAll(`input[name="exportFormat_${mode}"]`);
+      radios.forEach(r => { if (r.value === format) r.checked = true; });
+      showToast(`Format ekspor diatur ke: ${format === 'executive' ? 'Format Eksekutif Resmi (~3 Hal)' : 'Kertas Kerja Lengkap S1-S10'}`, 'info');
+    }
+
+    function printNotaDinas(mode, forcedFormat) {
       const el = getNotaDinasElement(mode);
       if (!el) {
         showToast('Dokumen Nota Dinas belum tersedia', 'warning');
         return;
       }
+      const format = forcedFormat || (window.appState && window.appState.exportFormat) || 'executive';
       const clone = el.cloneNode(true);
-      const actions = clone.querySelector('.nota-dinas-actions');
-      if (actions) actions.remove();
-      const banner = clone.querySelector('.nota-dinas-edit-banner');
-      if (banner) banner.remove();
-      const badge = clone.querySelector('.nota-dinas-edited-badge');
-      if (badge) badge.remove();
+
+      // Remove UI actions and interactive widgets
+      clone.querySelectorAll('.nota-dinas-actions, .nota-dinas-edit-banner, .nota-dinas-edited-badge, .step-actions-bar, .export-format-selector').forEach(c => c.remove());
       clone.removeAttribute('contenteditable');
       clone.querySelectorAll('[contenteditable]').forEach(c => c.removeAttribute('contenteditable'));
       clone.classList.remove('editing-mode');
 
-      const printWin = window.open('', '_blank', 'width=800,height=900');
+      // In Executive Mode (matching official Expected Output), exclude raw 21-page 9-component diagnostic tables & interactive chat
+      if (format === 'executive') {
+        const deepDive = clone.querySelector('#argonRagDeepDiveWidget');
+        if (deepDive) deepDive.remove();
+        clone.querySelectorAll('.extended-audit-details, .no-print').forEach(c => c.remove());
+      }
+
+      // Resolve entity name for print window title
+      let docTitle = 'Cetak Nota Dinas - Kajian Ihsan';
+      const entityEl = clone.querySelector('.dyn-inv-entity, .dyn-p-entity, .dyn-np-entity');
+      if (entityEl && entityEl.textContent.trim()) {
+        docTitle = `Kajian Ihsan - ${entityEl.textContent.trim()}`;
+      }
+
+      const printWin = window.open('', '_blank', 'width=850,height=950');
       if (!printWin) {
         showToast('Popup diblokir peramban. Harap izinkan popup untuk mencetak.', 'warning');
         return;
       }
+
       printWin.document.write(`
         <!DOCTYPE html>
         <html>
         <head>
-          <title>Cetak Nota Dinas - Kajian Ihsan</title>
+          <meta charset="utf-8">
+          <title>${docTitle}</title>
           <style>
-            @media print { body { margin: 12mm; } .no-print { display: none; } }
-            body { font-family: 'Times New Roman', serif; font-size: 10.5pt; line-height: 1.48; color: #1c1917; padding: 16px; }
-            h3 { font-size: 15pt; font-weight: bold; text-align: center; margin: 0; color: #1b3d2f; }
-            h4 { font-size: 13pt; font-weight: bold; text-align: center; margin: 4pt 0; }
-            h5 { font-size: 11pt; font-weight: bold; margin: 12pt 0 4pt 0; color: #1b3d2f; border-bottom: 1px solid #1b3d2f; padding-bottom: 2pt; }
-            table { border-collapse: collapse; width: 100%; margin: 6pt 0 10pt 0; font-size: 9.5pt; }
-            td, th { padding: 4pt 6pt; vertical-align: top; border-bottom: 1px solid #d6d3d1; }
-            .nota-dinas-meta-label { font-weight: bold; width: 15%; }
-            .nd-signal-card { border: 1px solid #b8c9be; border-radius: 4px; margin-bottom: 10pt; page-break-inside: avoid; }
-            .nd-signal-header { background: #eef5f0; padding: 6pt 8pt; border-bottom: 1px solid #b8c9be; display: flex; justify-content: space-between; font-family: Arial, sans-serif; font-size: 10pt; }
-            .nd-signal-code { background: #0d261a; color: #d4af37; font-weight: bold; padding: 1pt 6pt; border-radius: 3px; }
-            .nd-signal-badge { font-size: 8.5pt; font-weight: bold; padding: 1pt 6pt; border-radius: 3px; border: 1px solid #999; }
-            .nd-signal-table td { border: 1px solid #dfe7e2; font-family: Arial, sans-serif; font-size: 9pt; }
-            .nd-signal-label { width: 24%; font-weight: bold; background: #f8fbf9; color: #1b3d2f; }
-            .nd-math-box { background: #f1f5f9; border-left: 3pt solid #0d261a; padding: 5pt 8pt; font-family: 'Consolas', 'Courier New', monospace; font-size: 8.5pt; margin: 3pt 0; white-space: pre-wrap; }
-            .nd-reasoning-chain { background: #fffbeb; border-left: 3pt solid #d97706; padding: 5pt 8pt; font-size: 8.5pt; margin-top: 3pt; }
-            .nd-cross-synthesis { background: #f4faf6; border: 1px solid #a3c9ae; padding: 8pt 10pt; margin-top: 10pt; font-family: Arial, sans-serif; font-size: 9.5pt; }
-            p, li { text-align: justify; margin-bottom: 5pt; }
-          
-    /* --- BOOMER FINALIZATION & NICE CATEGORY SHELF STYLING --- */
-    @keyframes spinSlowFinalize { 
-      from { transform: rotate(0deg); } 
-      to { transform: rotate(360deg); } 
-    }
-    .shelf-tab-btn {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 10px 16px;
-      border-radius: 10px;
-      font-size: 13px;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      font-family: inherit;
-    }
-    .shelf-tab-btn:hover {
-      transform: translateY(-1px);
-    }
-    .shelf-item-card {
-      background: #FFFFFF;
-      border-radius: 10px;
-      padding: 14px 18px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 12px;
-      transition: all 0.2s ease;
-    }
-    .shelf-item-card:hover {
-      box-shadow: 0 4px 14px rgba(0,0,0,0.06);
-    }
-    .boomer-action-btn-primary {
-      padding: 14px 18px;
-      font-size: 15px;
-      font-weight: 800;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      box-shadow: 0 4px 12px rgba(15,83,56,0.18);
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-    .boomer-action-btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 16px rgba(15,83,56,0.25);
-    }
-    .boomer-action-btn-secondary {
-      padding: 14px 18px;
-      font-size: 15px;
-      font-weight: 800;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-    .boomer-action-btn-secondary:hover {
-      transform: translateY(-2px);
-    }
-
-  </style>
+            @page {
+              size: A4 portrait;
+              margin: 14mm 14mm 14mm 14mm;
+            }
+            @media print {
+              html, body {
+                margin: 0 !important;
+                padding: 0 !important;
+                background: #FFFFFF !important;
+                color: #1C1917 !important;
+                font-family: 'Times New Roman', Times, serif;
+                font-size: 10pt;
+                line-height: 1.42;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+              }
+              .no-print { display: none !important; }
+              .eo-section, .nd-section, .boomer-chart-card, .recommendation-callout, .eo-header, .nota-dinas-header {
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+              }
+              table {
+                border-collapse: collapse !important;
+                width: 100% !important;
+                margin: 6pt 0 10pt 0 !important;
+                page-break-inside: auto;
+              }
+              tr, td, th {
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+              }
+              thead {
+                display: table-header-group !important;
+              }
+              tfoot {
+                display: table-footer-group !important;
+              }
+              h2, h3, h4, h5, h6, .eo-section-header {
+                page-break-after: avoid !important;
+                break-after: avoid !important;
+              }
+            }
+            body {
+              font-family: 'Times New Roman', Times, serif;
+              font-size: 10pt;
+              line-height: 1.42;
+              color: #1c1917;
+              padding: 16px;
+            }
+            h3 { font-size: 14pt; font-weight: bold; text-align: center; margin: 0; color: #1b3d2f; letter-spacing: 0.5pt; }
+            h4 { font-size: 12pt; font-weight: bold; text-align: center; margin: 3pt 0; color: #1c1917; }
+            h5 { font-size: 10.5pt; font-weight: bold; margin: 10pt 0 4pt 0; color: #1b3d2f; border-bottom: 1px solid #1b3d2f; padding-bottom: 2pt; }
+            table { border-collapse: collapse; width: 100%; margin: 6pt 0 10pt 0; font-size: 9pt; }
+            td, th { padding: 4pt 6pt; vertical-align: top; border: 1px solid #d6d3d1; }
+            th { background: #f2f7f4; color: #1b3d2f; font-weight: bold; }
+            .nota-dinas-meta-table td { border: none; border-bottom: 1px solid #d6d3d1; }
+            .nota-dinas-meta-label { font-weight: bold; width: 15%; color: #44403c; }
+            .nd-signal-matrix-table th { background: #0F5338; color: #FFFFFF; font-weight: bold; }
+            .nd-signal-matrix-table td { font-size: 8.5pt; padding: 4pt 5pt; }
+            .nd-signal-card { border: 1px solid #b8c9be; border-radius: 4px; margin-bottom: 10pt; page-break-inside: avoid !important; }
+            .nd-signal-header { background: #eef5f0; padding: 5pt 7pt; border-bottom: 1px solid #b8c9be; font-weight: bold; }
+            .nd-signal-table td { border: 1px solid #dfe7e2; font-size: 8.5pt; padding: 3pt 5pt; }
+            .nd-math-box { background: #f1f5f9; border-left: 2.5pt solid #0d261a; padding: 4pt 6pt; font-family: monospace; font-size: 8pt; margin: 2pt 0; }
+            .nd-reasoning-chain { background: #fffbeb; border-left: 2.5pt solid #d97706; padding: 4pt 6pt; font-size: 8pt; margin-top: 2pt; }
+            p, li { text-align: justify; margin: 0 0 4pt 0; }
+            .badge { display: inline-block; padding: 1pt 4pt; border-radius: 3px; font-size: 7.5pt; font-weight: bold; }
+            .badge-green { background: #dcfce7; color: #166534; }
+            .badge-gold { background: #fef3c7; color: #92400e; }
+            .badge-red { background: #fee2e2; color: #991b1b; }
+          </style>
         </head>
         <body>
           ${clone.innerHTML}
@@ -18019,6 +18117,60 @@ Berdasarkan pengawasan konsolidasi 6 entitas portofolio Kajian Ihsan:
     // =========================================================================
     // COMPLETE S1-S10 CALCULATION BREAKDOWN, 7-STEP REASONING CHAIN &
     // CROSS-INDICATOR SYNTHESIS GENERATOR FOR NOTA DINAS
+    function renderExecutiveSignalMatrix(signals, mode) {
+      if (!signals || !signals.length) return '';
+      let rows = signals.map(s => {
+        let badgeClass = 'badge-gold';
+        let badgeText = (s.classificationBadge || '').split('(')[0].trim() || 'PERHATIAN';
+        if (s.badgeType === 'compliant' || s.badgeType === 'safe' || (s.classificationBadge && (s.classificationBadge.includes('COMPLIANT') || s.classificationBadge.includes('AMAN') || s.classificationBadge.includes('VALID')))) {
+          badgeClass = 'badge-green';
+        } else if (s.badgeType === 'danger' || (s.classificationBadge && (s.classificationBadge.includes('RED') || s.classificationBadge.includes('KRITIS') || s.classificationBadge.includes('DEFISIT')))) {
+          badgeClass = 'badge-red';
+        }
+
+        let metricSummary = s.confirmedFinding || (s.stepByStep ? s.stepByStep.split('\n')[0] : '');
+        if (metricSummary.length > 130) metricSummary = metricSummary.substring(0, 127) + '...';
+
+        let benchmarkSummary = s.benchmark || '-';
+        if (benchmarkSummary.length > 100) benchmarkSummary = benchmarkSummary.substring(0, 97) + '...';
+
+        let implicationSummary = s.potentialRisk || s.rationale || '-';
+        if (implicationSummary.length > 140) implicationSummary = implicationSummary.substring(0, 137) + '...';
+
+        let paramName = s.name.split('/')[0].trim();
+        let subName = s.name.includes('/') ? s.name.split('/')[1].trim() : '';
+
+        return `
+          <tr>
+            <td style="text-align:center; font-weight:700; color:#0F5338;">${s.code}</td>
+            <td><strong>${paramName}</strong>${subName ? `<br><span style="font-size:7.5pt; color:#57534E;">${subName}</span>` : ''}</td>
+            <td style="font-size:8pt;">${metricSummary}</td>
+            <td style="font-size:8pt;">${benchmarkSummary}</td>
+            <td style="text-align:center;"><span class="badge ${badgeClass}" style="font-size:7.5pt;">${badgeText}</span></td>
+            <td style="font-size:8pt;">${implicationSummary}</td>
+          </tr>
+        `;
+      }).join('');
+
+      return `
+        <table class="eo-table nd-signal-matrix-table" style="width:100%; border-collapse:collapse; margin:8px 0; font-size:8.5pt;">
+          <thead>
+            <tr style="background:#0F5338; color:#FFFFFF; font-weight:700;">
+              <th style="padding:5px 6px; width:6%; text-align:center;">Kode</th>
+              <th style="padding:5px 8px; width:22%;">Parameter Sinyal Forensik (S1–S10)</th>
+              <th style="padding:5px 8px; width:22%;">Nilai &amp; Temuan Terkonfirmasi</th>
+              <th style="padding:5px 8px; width:16%;">Tolok Ukur / Standar</th>
+              <th style="padding:5px 6px; width:12%; text-align:center;">Status</th>
+              <th style="padding:5px 8px; width:22%;">Implikasi &amp; Mitigasi Risiko</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${rows}
+          </tbody>
+        </table>
+      `;
+    }
+
     // =========================================================================
     function renderSignal9PointCard(sig) {
       const badgeClass = sig.badgeType === 'elevated'
@@ -18090,6 +18242,8 @@ Berdasarkan pengawasan konsolidasi 6 entitas portofolio Kajian Ihsan:
     }
 
     function buildS1toS10PengendaliHTML() {
+      // populate matrix helper
+
       const p = (window.appState && appState.pengendali) || {};
       const entity = p.entityName || 'PT Era Permata Sejahtera';
       const period = p.period || '31 Agustus 2026';
@@ -18318,6 +18472,12 @@ Berdasarkan pengawasan konsolidasi 6 entitas portofolio Kajian Ihsan:
           </p>
         </div>
       `;
+      try {
+        const mEl = document.getElementById('nd_matrix_pengendali');
+        if (mEl && typeof renderExecutiveSignalMatrix === 'function') {
+          mEl.innerHTML = renderExecutiveSignalMatrix(signals, 'pengendali');
+        }
+      } catch (e) {}
       return cardsHtml + synthesisHtml;
     }
 
@@ -18538,6 +18698,12 @@ Berdasarkan pengawasan konsolidasi 6 entitas portofolio Kajian Ihsan:
           </p>
         </div>
       `;
+      try {
+        const mEl = document.getElementById('nd_matrix_nonpengendali');
+        if (mEl && typeof renderExecutiveSignalMatrix === 'function') {
+          mEl.innerHTML = renderExecutiveSignalMatrix(signals, 'nonpengendali');
+        }
+      } catch (e) {}
       return cardsHtml + synthesisHtml;
     }
 
@@ -18776,6 +18942,12 @@ Berdasarkan pengawasan konsolidasi 6 entitas portofolio Kajian Ihsan:
           </p>
         </div>
       `;
+      try {
+        const mEl = document.getElementById('nd_matrix_investasi_pindo');
+        if (mEl && typeof renderExecutiveSignalMatrix === 'function') {
+          mEl.innerHTML = renderExecutiveSignalMatrix(signals, 'inv_pindo');
+        }
+      } catch (e) {}
       return cardsHtml + synthesisHtml;
     }
 
@@ -18999,6 +19171,12 @@ Berdasarkan pengawasan konsolidasi 6 entitas portofolio Kajian Ihsan:
           </p>
         </div>
       `;
+      try {
+        const mEl = document.getElementById('nd_matrix_investasi_daaz');
+        if (mEl && typeof renderExecutiveSignalMatrix === 'function') {
+          mEl.innerHTML = renderExecutiveSignalMatrix(signals, 'inv_daaz');
+        }
+      } catch (e) {}
       return cardsHtml + synthesisHtml;
     }
 
@@ -19201,6 +19379,12 @@ Berdasarkan pengawasan konsolidasi 6 entitas portofolio Kajian Ihsan:
           </p>
         </div>
       `;
+      try {
+        const mEl = document.getElementById('nd_matrix_konsolidasi');
+        if (mEl && typeof renderExecutiveSignalMatrix === 'function') {
+          mEl.innerHTML = renderExecutiveSignalMatrix(signals, 'konsolidasi');
+        }
+      } catch (e) {}
       return cardsHtml + synthesisHtml;
     }
 

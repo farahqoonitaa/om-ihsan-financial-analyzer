@@ -163,6 +163,27 @@ Semua fungsionalitas diverifikasi menggunakan pengujian regresi otomatis:
 ## 🔗 8. Sinkronisasi Berkas & Deployment
 
 - **Repositori Git:** `https://github.com/farahqoonitaa/om-ihsan-financial-analyzer.git`
-- **Branch:** `main` (Up to date with commit `a1f31c0`)
+- **Branch:** `main` (Production baseline) & `feat/refined-neat-executive-output` (Feature Branch)
 - **Penyelarasan Berkas:** `public/index.html` dan `preview.html` 100% identik (0 byte delta).
 - **Daemon Server:** Berjalan normal di port `3005` (`http://localhost:3005`).
+
+---
+
+## 📄 9. Penyempurnaan Output Eksekutif: Dari Dump 24 Halaman Menjadi ~3 Halaman Rapi (Neat & Refined)
+
+Berdasarkan tinjauan dokumen target (*Expected Output* 3 halaman pada `expected output for the investment analysis.pdf`), sistem ekspor PDF dan Word telah disempurnakan:
+
+1. **Eliminasi Dump Mentah 1:1 Sinyal Anomali (Type-2 Signal Processing):**
+   - Sebelumnya, ekspor mencetak 10 kartu audit teknis dengan masing-masing 9 baris tabel secara mentah, menghasilkan dokumen setebal 24 halaman dengan potongan tabel terbelah di tengah halaman.
+   - Kini, kesepuluh sinyal anomali (S1–S10) disintesis menjadi **Matriks Eksekutif Sinyal Forensik (1 Halaman Ringkas)** yang menyajikan kode sinyal, nilai terhitung, ambang batas, status risiko, dan rekomendasi mitigasi secara terpadu.
+
+2. **Kertas Kerja Diagnostik Rinci Dapat Dilipat (*Collapsible Details*):**
+   - Rincian matematis 9-komponen audit forensik tetap tersedia penuh bagi auditor melalui elemen lipat:
+     `📑 Buka Rincian Lengkap Kertas Kerja Diagnostik S1–S10 (9 Komponen Standar Audit Forensik)`.
+   - Secara *default*, elemen ini tidak mencemari cetakan eksekutif resmi.
+
+3. **Format Selector & Strict Page-Break CSS:**
+   - **Format Eksekutif Resmi (~3-4 Hal Sesuai Standar Expected Output):** Menghasilkan dokumen publikasi yang bersih, terstruktur, dan elegan.
+   - **Format Kertas Kerja Lengkap + Audit Trail S1–S10:** Untuk kebutuhan audit forensik mendalam.
+   - **CSS Cetak Presisi:** Menerapkan `@page { size: A4 portrait; margin: 14mm; }` dan `tr, td, th { page-break-inside: avoid !important; }` sehingga tidak ada baris tabel yang terpotong di batas halaman.
+
