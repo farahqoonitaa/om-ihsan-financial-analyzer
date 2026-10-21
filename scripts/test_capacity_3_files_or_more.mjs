@@ -191,9 +191,42 @@ assert(appState.currentView === 'investasi', '1-Click 3-Files Investasi opens vi
 assert(processSteps.investasi === 2, 'viewInvestasi transitions to Step 2 with absorbed files');
 
 // ---------------------------------------------------------------------------
-// SECTION 4: 1:1 REPO SYNCHRONIZATION
+// SECTION 4: OM IHSAN EXECUTIVE SINGLE-DOOR & NARROWING JOURNEY VERIFICATION
 // ---------------------------------------------------------------------------
-console.log('\n--- SECTION 4: File Synchronization Check ---');
+console.log('\n--- SECTION 4: Om Ihsan Executive Single-Door & Narrowing Journey ---');
+
+// 1. Executive Greeting on Page 1
+assert(html.includes('id="omIhsanExecutiveGateway"'), '#omIhsanExecutiveGateway executive container exists');
+assert(html.includes('Hi Ihsan, Mau Analisa Apa Hari Ini?'), 'Greeting "Hi Ihsan, Mau Analisa Apa Hari Ini?" is rendered in HTML');
+assert(html.includes('Langsung Terbuka (Tanpa Perlu Login)'), 'Zero-login status "Langsung Terbuka (Tanpa Perlu Login)" is rendered');
+
+// 2. 1-out-of-3 Choice Cards with Narrowing Direct Actions
+assert(html.includes('PILIH 1 DARI 3 PINTU MASUK KHUSUS') || html.includes('PILIHAN 1 DARI 3 PINTU MASUK KHUSUS'), 'Headline "PILIH 1 DARI 3 PINTU MASUK KHUSUS" exists');
+assert(html.includes('Pilih Fokus Analisis untuk Mengerucutkan Layar (Narrowing)'), 'Subheading mentions Narrowing concept');
+assert(html.includes('PILIHAN 1 • JALUR A'), 'Pilihan 1 badge exists');
+assert(html.includes('PILIHAN 2 • JALUR B'), 'Pilihan 2 badge exists');
+assert(html.includes('PILIHAN 3 • JALUR C'), 'Pilihan 3 badge exists');
+assert(html.includes('Pilih &amp; Mulai Analisis Investasi (Narrowing)'), 'Primary CTA for Investasi narrowing exists');
+assert(html.includes('Pilih &amp; Mulai Analisis Pengendali (Narrowing)'), 'Primary CTA for Pengendali narrowing exists');
+assert(html.includes('Pilih &amp; Mulai Analisis Non-Pengendali (Narrowing)'), 'Primary CTA for Non-Pengendali narrowing exists');
+
+// 3. Narrowing Context Headers in all 3 dedicated views
+assert(html.includes('🔒 FOKUS TERKUNCI (NARROWED): SKEMA INVESTASI'), 'viewInvestasi has narrowing context banner');
+assert(html.includes('🔒 FOKUS TERKUNCI (NARROWED): ENTITAS PENGENDALI'), 'viewPengendali has narrowing context banner');
+assert(html.includes('🔒 FOKUS TERKUNCI (NARROWED): NON-PENGENDALI'), 'viewNonPengendali has narrowing context banner');
+
+const returnButtonMatches = html.match(/Ganti Pilihan Analisis \/ Kembali ke Beranda Om Ihsan/g) || [];
+assert(returnButtonMatches.length >= 3, `All 3 views have return button "Ganti Pilihan Analisis / Kembali ke Beranda Om Ihsan" (found ${returnButtonMatches.length})`);
+
+// 4. Collapsible Advanced Tools
+assert(html.includes('id="advancedExecutiveOptionsContainer"'), '#advancedExecutiveOptionsContainer exists');
+assert(html.includes('id="advancedHubCollapsibleContent" class="hidden"'), '#advancedHubCollapsibleContent is hidden by default');
+assert(html.includes('toggleAdvancedHubVisibility'), 'toggleAdvancedHubVisibility() exists in JavaScript');
+
+// ---------------------------------------------------------------------------
+// SECTION 5: 1:1 REPO SYNCHRONIZATION
+// ---------------------------------------------------------------------------
+console.log('\n--- SECTION 5: File Synchronization Check ---');
 assert(html === previewHtml, 'preview.html is 100% identical to public/index.html');
 
 console.log('\n======================================================================');
