@@ -7,6 +7,7 @@ const http = require("http");
 const fs = require("fs");
 const path = require("path");
 const { URL } = require("url");
+const nodeCrypto = require("node:crypto");
 const cluster = require("cluster");
 const os = require("os");
 
@@ -276,10 +277,10 @@ const server = http.createServer(async (req, res) => {
         
         // High-Performance Full Content SHA-256 Content Hash Caching Check (Zero Collision)
         const fileContentHash = body.fileBase64 
-          ? crypto.createHash("sha256").update(body.fileBase64).digest("hex") 
+          ? nodeCrypto.createHash("sha256").update(body.fileBase64).digest("hex") 
           : null;
         const textContentHash = body.textContent
-          ? crypto.createHash("sha256").update(body.textContent).digest("hex")
+          ? nodeCrypto.createHash("sha256").update(body.textContent).digest("hex")
           : null;
 
         const cachePayload = {

@@ -142,6 +142,7 @@ function getMockElement(id) {
         return cl;
       },
       removeAttribute() {},
+      setAttribute() {},
       remove() {},
       scrollIntoView() {},
       click() {}

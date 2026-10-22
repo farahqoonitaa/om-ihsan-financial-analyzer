@@ -252,8 +252,8 @@ async function main() {
     // Poll for completion
     let completed = false;
     let jobData = null;
-    for (let i = 0; i < 30; i++) {
-      await new Promise((r) => setTimeout(r, 50));
+    for (let i = 0; i < 60; i++) {
+      await new Promise((r) => setTimeout(r, 60));
       const pollRes = await invokeServer('GET', `/api/jobs/${firstJobId}`);
       jobData = pollRes.json();
       if (jobData && (jobData.status === 'completed' || jobData.status === 'failed')) {
