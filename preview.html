@@ -2722,7 +2722,7 @@
       <div id="blankStateHero" class="empty-state-box" style="position:relative; cursor:pointer;"
            ondragover="event.preventDefault(); this.classList.add('dragover');"
            ondragleave="this.classList.remove('dragover');"
-           ondragover="event.preventDefault(); this.classList.add('is-dragover'); this.classList.add('dragover');" ondragleave="this.classList.remove('is-dragover'); this.classList.remove('dragover');" ondrop="event.preventDefault(); this.classList.remove('is-dragover'); this.classList.remove('dragover'); if(event.dataTransfer && event.dataTransfer.files.length) handleDirectFileDrop(Array.from(event.dataTransfer.files));"
+           ondrop="event.preventDefault(); this.classList.remove('dragover'); if(event.dataTransfer && event.dataTransfer.files.length) handleDirectFileDrop(event.dataTransfer.files[0]);"
            onclick="if(!event.target.closest('button, a, input')) triggerUniversalFileUpload()">
         <input type="file" id="heroDirectFileInput" multiple accept=".xlsx, .xls, .pdf, .json, .csv, .txt" style="display:none;" onchange="handleDirectFileUpload(this)">
         
@@ -9424,7 +9424,9 @@
       setTimeout(() => {
         toast.classList.remove('toast-visible');
         toast.classList.add('toast-exit');
-        setTimeout(() => toast.remove(), 180);
+        setTimeout(() => {
+          if (toast && typeof toast.remove === 'function') toast.remove();
+        }, 180);
       }, 3500);
     }
 
