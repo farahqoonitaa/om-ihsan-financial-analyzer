@@ -272,16 +272,24 @@ const server = http.createServer(async (req, res) => {
       // 1a. AI Document Parsing & Thinking Logic Extraction (Action Item: Key Parameter & Entity Disambiguation)
       if (pathname === "/api/parse-document" && method === "POST") {
         const body = await parseBody(req);
+        const forceRefresh = body.forceRefresh === true || body.bypassCache === true || req.headers["x-force-refresh"] === "true";
         
-        // High-Performance SHA-256 Content Hash Caching Check
+        // High-Performance Full Content SHA-256 Content Hash Caching Check (Zero Collision)
+        const fileContentHash = body.fileBase64 
+          ? crypto.createHash("sha256").update(body.fileBase64).digest("hex") 
+          : null;
+        const textContentHash = body.textContent
+          ? crypto.createHash("sha256").update(body.textContent).digest("hex")
+          : null;
+
         const cachePayload = {
-          fileBase64: body.fileBase64 ? body.fileBase64.substring(0, 500) + body.fileBase64.length : null,
+          fileHash: fileContentHash,
           fileName: body.fileName || "unknown",
-          textContent: body.textContent ? body.textContent.substring(0, 4000) : null,
+          textHash: textContentHash,
           entityOverride: body.entityName || null
         };
         const cacheKey = "doc_" + cacheManager.hashPayload(cachePayload);
-        const cached = cacheManager.get(cacheKey);
+        const cached = !forceRefresh ? cacheManager.get(cacheKey) : null;
 
         if (cached) {
           return sendJson(res, 200, cached, { "X-Cache": "HIT" });
@@ -326,6 +334,24 @@ const server = http.createServer(async (req, res) => {
           // Cache verified parsed result for sub-millisecond future hits
           cacheManager.set(cacheKey, parseResult);
           metricsCollector.recordDocumentParse();
+
+          // Immediately train RAG engine on this fresh document to prevent consuming old memory
+          if (parseResult && parseResult.success) {
+            try {
+              ragEngine.trainOnDocument({
+                id: `PARSED-DOC-${Date.now()}-${(body.fileName || 'file').replace(/[^a-zA-Z0-9]/g, '_')}`,
+                entityName: parseResult.entityName || "Entitas Baru",
+                scheme: parseResult.targetView || "pengendali",
+                section: `Hasil Ekstraksi Dokumen Baru (${parseResult.fileName || body.fileName})`,
+                page: `Halaman 1 - ${parseResult.allDetectedEntities ? parseResult.allDetectedEntities.length : 1}`,
+                financials: parseResult.financials || {},
+                metrics: parseResult.financials || {},
+                text: `Dokumen Baru Terunggah: ${parseResult.fileName || body.fileName} | Entitas Terverifikasi: ${parseResult.entityName} | Periode: ${parseResult.period} | Mata Uang: ${parseResult.currency} | Pos Finansial: ${JSON.stringify(parseResult.financials || {})} | Ringkasan: ${parseResult.summary || ''}`
+              });
+            } catch (trainErr) {
+              console.warn("Auto-training RAG on new document error:", trainErr.message);
+            }
+          }
         } finally {
           // Zero-Persistence Security: Immediately purge temporary upload buffer
           if (tempFilePath && fs.existsSync(tempFilePath)) {
@@ -334,6 +360,15 @@ const server = http.createServer(async (req, res) => {
         }
 
         return sendJson(res, 200, parseResult, { "X-Cache": "MISS" });
+      }
+
+      // Memory Reset / Cache Invalidation Endpoint
+      if ((pathname === "/api/cache/clear" || pathname === "/api/memory/reset") && (method === "POST" || method === "GET")) {
+        cacheManager.clear();
+        return sendJson(res, 200, {
+          success: true,
+          message: "All document parse caches and stale session memory successfully cleared."
+        });
       }
 
       // 1b. Knowledge Base Document List (RAG Hub & Document Selector)
