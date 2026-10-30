@@ -3250,17 +3250,17 @@
               <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:12px;">
                 <div class="form-group" style="margin:0;">
                   <label style="font-size:11.5px; font-weight:600;"><span data-i18n="lbl_entity_name">Nama Perusahaan / PT</span> <span style="color:var(--red);">*</span></label>
-                  <input type="text" id="in_p_entityName" value="PT Era Permata Sejahtera" placeholder="Contoh: PT A atau PT Era Permata Sejahtera" oninput="handleEntityNameChange('pengendali', this.value)" style="font-weight:600; color:var(--forest-deep);">
+                  <input type="text" id="in_p_entityName" value="" placeholder="Contoh: PT A atau PT Era Permata Sejahtera" oninput="handleEntityNameChange('pengendali', this.value)" style="font-weight:600; color:var(--forest-deep);">
                   <span class="hint" style="font-size:10.5px;" data-i18n="hint_entity_sync">Otomatis disinkronkan ke seluruh Nota Dinas, perihal, & rekomendasi.</span>
                 </div>
                 <div class="form-group" style="margin:0;">
                   <label style="font-size:11.5px; font-weight:600;"><span data-i18n="lbl_period">Periode Pelaporan / Cut-off</span> <span style="color:var(--red);">*</span></label>
-                  <input type="text" id="in_p_period" value="31 Agustus 2026" placeholder="Contoh: 31 Agustus 2026 atau FY 2025" oninput="handlePeriodChange('pengendali', this.value)">
+                  <input type="text" id="in_p_period" value="" placeholder="Contoh: 31 Agustus 2026 atau FY 2025" oninput="handlePeriodChange('pengendali', this.value)">
                   <span class="hint" style="font-size:10.5px;" data-i18n="hint_period">Tanggal posisi neraca & laba rugi.</span>
                 </div>
                 <div class="form-group" style="margin:0;">
                   <label style="font-size:11.5px; font-weight:600;" data-i18n="lbl_currency">Mata Uang & Skala Angka</label>
-                  <input type="text" id="in_p_currency" value="Rp Miliar (IDR)" placeholder="Contoh: Rp Miliar (IDR)">
+                  <input type="text" id="in_p_currency" value="" placeholder="Contoh: Rp Miliar (IDR)">
                   <span class="hint" style="font-size:10.5px;" data-i18n="hint_currency">Satuan pelaporan angka moneter.</span>
                 </div>
               </div>
@@ -4154,17 +4154,17 @@
             <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:12px;">
               <div class="form-group" style="margin:0;">
                 <label style="font-size:11.5px; font-weight:600;">Nama Perusahaan / PT <span style="color:var(--red);">*</span></label>
-                <input type="text" id="in_np_entityName" value="PT Pesonna Optima Jasa" placeholder="Contoh: PT Pesonna Optima Jasa atau PT A" oninput="handleEntityNameChange('nonpengendali', this.value)" style="font-weight:600; color:var(--forest-deep);">
+                <input type="text" id="in_np_entityName" value="" placeholder="Contoh: PT Pesonna Optima Jasa atau PT A" oninput="handleEntityNameChange('nonpengendali', this.value)" style="font-weight:600; color:var(--forest-deep);">
                 <span class="hint" style="font-size:10.5px;">Otomatis disinkronkan ke seluruh Nota Dinas & RUPS.</span>
               </div>
               <div class="form-group" style="margin:0;">
                 <label style="font-size:11.5px; font-weight:600;">Periode Pelaporan / Cut-off <span style="color:var(--red);">*</span></label>
-                <input type="text" id="in_np_period" value="31 Agustus 2026" placeholder="Contoh: 31 Agustus 2026 atau FY 2025" oninput="handlePeriodChange('nonpengendali', this.value)">
+                <input type="text" id="in_np_period" value="" placeholder="Contoh: 31 Agustus 2026 atau FY 2025" oninput="handlePeriodChange('nonpengendali', this.value)">
                 <span class="hint" style="font-size:10.5px;">Tanggal posisi neraca & laba rugi.</span>
               </div>
               <div class="form-group" style="margin:0;">
                 <label style="font-size:11.5px; font-weight:600;">Mata Uang & Skala Angka</label>
-                <input type="text" id="in_np_currency" value="Rp Miliar (IDR)" placeholder="Contoh: Rp Miliar (IDR)">
+                <input type="text" id="in_np_currency" value="" placeholder="Contoh: Rp Miliar (IDR)">
                 <span class="hint" style="font-size:10.5px;">Satuan pelaporan angka moneter.</span>
               </div>
             </div>
@@ -5049,17 +5049,17 @@
             <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:12px;">
               <div class="form-group" style="margin:0;">
                 <label style="font-size:11.5px; font-weight:600;">Nama Perusahaan / PT <span style="color:var(--red);">*</span></label>
-                <input type="text" id="in_pindo_entityName" value="PT Pindo Deli Pulp and Paper Mills dan Entitas Anak" placeholder="PT Pindo Deli" oninput="handleEntityNameChange('investasi', this.value)" style="font-weight:600; color:var(--forest-deep);">
+                <input type="text" id="in_pindo_entityName" value="" placeholder="Contoh: PT Pindo Deli atau PT A" oninput="handleEntityNameChange('investasi', this.value)" style="font-weight:600; color:var(--forest-deep);">
                 <span class="hint" style="font-size:10.5px;">Otomatis disinkronkan ke seluruh 7-seksi telaah investasi.</span>
               </div>
               <div class="form-group" style="margin:0;">
                 <label style="font-size:11.5px; font-weight:600;">Periode Pelaporan / Cut-off <span style="color:var(--red);">*</span></label>
-                <input type="text" id="in_pindo_period" value="30 Juni 2026 dan 31 Desember 2025" placeholder="30 Juni 2026" oninput="handlePeriodChange('investasi', this.value)">
+                <input type="text" id="in_pindo_period" value="" placeholder="Contoh: 30 Juni 2026 atau FY 2025" oninput="handlePeriodChange('investasi', this.value)">
                 <span class="hint" style="font-size:10.5px;">Posisi neraca & laba rugi 6M.</span>
               </div>
               <div class="form-group" style="margin:0;">
                 <label style="font-size:11.5px; font-weight:600;">Mata Uang & Skala Angka</label>
-                <input type="text" id="in_pindo_currency" value="Ribuan Dolar AS (USD '000)" placeholder="USD '000">
+                <input type="text" id="in_pindo_currency" value="" placeholder="Contoh: USD '000 atau Rp Miliar">
                 <span class="hint" style="font-size:10.5px;">Satuan pelaporan angka moneter.</span>
               </div>
             </div>
@@ -5071,59 +5071,59 @@
           <div class="form-grid">
             <div class="form-group">
               <label>Penjualan Neto 6M 2026 (USD '000)</label>
-              <input type="number" id="in_pindo_sales" step="1" value="1084245" placeholder="1084245" class="font-mono-num">
+              <input type="number" id="in_pindo_sales" step="1" placeholder="1084245" class="font-mono-num">
             </div>
             <div class="form-group">
               <label>Penjualan Neto 6M 2025 (USD '000)</label>
-              <input type="number" id="in_pindo_salesPY" step="1" value="1098987" placeholder="1098987" class="font-mono-num">
+              <input type="number" id="in_pindo_salesPY" step="1" placeholder="1098987" class="font-mono-num">
             </div>
             <div class="form-group">
               <label>Beban Pokok Penjualan HPP (USD '000)</label>
-              <input type="number" id="in_pindo_cogs" step="1" value="791935" placeholder="791935" class="font-mono-num">
+              <input type="number" id="in_pindo_cogs" step="1" placeholder="791935" class="font-mono-num">
             </div>
             <div class="form-group">
               <label>Laba Usaha Operasional (USD '000)</label>
-              <input type="number" id="in_pindo_opprof" step="1" value="154056" placeholder="154056" class="font-mono-num">
+              <input type="number" id="in_pindo_opprof" step="1" placeholder="154056" class="font-mono-num">
             </div>
             <div class="form-group">
               <label>Bagian Laba Entitas Asosiasi (USD '000)</label>
-              <input type="number" id="in_pindo_assoc" step="1" value="212518" placeholder="212518" class="font-mono-num">
+              <input type="number" id="in_pindo_assoc" step="1" placeholder="212518" class="font-mono-num">
             </div>
             <div class="form-group">
               <label>Keuntungan Selisih Kurs Neto (USD '000)</label>
-              <input type="number" id="in_pindo_forex" step="1" value="140198" placeholder="140198" class="font-mono-num">
+              <input type="number" id="in_pindo_forex" step="1" placeholder="140198" class="font-mono-num">
             </div>
             <div class="form-group">
               <label>Beban Pendanaan / Bunga (USD '000)</label>
-              <input type="number" id="in_pindo_interest" step="1" value="89033" placeholder="89033" class="font-mono-num">
+              <input type="number" id="in_pindo_interest" step="1" placeholder="89033" class="font-mono-num">
             </div>
             <div class="form-group">
               <label>Laba Sebelum Pajak EBT (USD '000)</label>
-              <input type="number" id="in_pindo_ebt" step="1" value="474569" placeholder="474569" class="font-mono-num">
+              <input type="number" id="in_pindo_ebt" step="1" placeholder="474569" class="font-mono-num">
             </div>
             <div class="form-group">
               <label>Laba Neto Periode Berjalan (USD '000)</label>
-              <input type="number" id="in_pindo_netprofit" step="1" value="455637" placeholder="455637" class="font-mono-num">
+              <input type="number" id="in_pindo_netprofit" step="1" placeholder="455637" class="font-mono-num">
             </div>
             <div class="form-group">
               <label>Aset Lancar (USD '000)</label>
-              <input type="number" id="in_pindo_ca" step="1" value="3815764" placeholder="3815764" class="font-mono-num">
+              <input type="number" id="in_pindo_ca" step="1" placeholder="3815764" class="font-mono-num">
             </div>
             <div class="form-group">
               <label>Total Aset Konsolidasian (USD '000)</label>
-              <input type="number" id="in_pindo_ta" step="1" value="9564776" placeholder="9564776" class="font-mono-num">
+              <input type="number" id="in_pindo_ta" step="1" placeholder="9564776" class="font-mono-num">
             </div>
             <div class="form-group">
               <label>Liabilitas Jangka Pendek (USD '000)</label>
-              <input type="number" id="in_pindo_cl" step="1" value="1944954" placeholder="1944954" class="font-mono-num">
+              <input type="number" id="in_pindo_cl" step="1" placeholder="1944954" class="font-mono-num">
             </div>
             <div class="form-group">
               <label>Total Liabilitas (USD '000)</label>
-              <input type="number" id="in_pindo_tl" step="1" value="4078921" placeholder="4078921" class="font-mono-num">
+              <input type="number" id="in_pindo_tl" step="1" placeholder="4078921" class="font-mono-num">
             </div>
             <div class="form-group">
               <label>Ekuitas Neto Konsolidasian (USD '000)</label>
-              <input type="number" id="in_pindo_equity" step="1" value="5485855" placeholder="5485855" class="font-mono-num">
+              <input type="number" id="in_pindo_equity" step="1" placeholder="5485855" class="font-mono-num">
             </div>
           </div>
           <div style="display:flex; justify-content:flex-end; gap:8px;">
@@ -5143,17 +5143,17 @@
             <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:12px;">
               <div class="form-group" style="margin:0;">
                 <label style="font-size:11.5px; font-weight:600;">Nama Perusahaan / PT <span style="color:var(--red);">*</span></label>
-                <input type="text" id="in_daaz_entityName" value="PT DAAZ (PT Daaz Bara Lestari Tbk)" placeholder="PT DAAZ" oninput="handleEntityNameChange('investasi', this.value)" style="font-weight:600; color:var(--forest-deep);">
+                <input type="text" id="in_daaz_entityName" value="" placeholder="Contoh: PT DAAZ Bara Lestari Tbk" oninput="handleEntityNameChange('investasi', this.value)" style="font-weight:600; color:var(--forest-deep);">
                 <span class="hint" style="font-size:10.5px;">Otomatis disinkronkan ke seluruh lembar telaah investasi.</span>
               </div>
               <div class="form-group" style="margin:0;">
                 <label style="font-size:11.5px; font-weight:600;">Periode Pelaporan / Cut-off <span style="color:var(--red);">*</span></label>
-                <input type="text" id="in_daaz_period" value="FY 2024 (Interim)" placeholder="FY 2024" oninput="handlePeriodChange('investasi', this.value)">
+                <input type="text" id="in_daaz_period" value="" placeholder="Contoh: FY 2024 (Interim)" oninput="handlePeriodChange('investasi', this.value)">
                 <span class="hint" style="font-size:10.5px;">Posisi data komparasi.</span>
               </div>
               <div class="form-group" style="margin:0;">
                 <label style="font-size:11.5px; font-weight:600;">Mata Uang & Skala Angka</label>
-                <input type="text" id="in_daaz_currency" value="Rp Miliar (IDR)" placeholder="Rp Miliar">
+                <input type="text" id="in_daaz_currency" value="" placeholder="Contoh: Rp Miliar (IDR)">
                 <span class="hint" style="font-size:10.5px;">Satuan pelaporan angka moneter.</span>
               </div>
             </div>
@@ -18525,6 +18525,7 @@ Berdasarkan pengawasan konsolidasi 6 entitas portofolio Kajian Ihsan:
         sessionStorage.clear();
         localStorage.removeItem('om_ihsan_last_analysis');
         localStorage.removeItem('om_ihsan_staged_payload');
+        localStorage.removeItem('ihsan_saved_session');
       } catch (_) {}
 
       // Show Blank State Hero and Hide Active Banner
@@ -18558,10 +18559,18 @@ Berdasarkan pengawasan konsolidasi 6 entitas portofolio Kajian Ihsan:
       clearPengendaliInputs();
       clearNonPengendaliInputs();
       clearInvestasiInputs();
-      ['in_p_entityName', 'in_np_entityName', 'in_pindo_entityName', 'in_daaz_entityName'].forEach(id => {
+      [
+        'in_p_entityName', 'in_p_period', 'in_p_currency',
+        'in_np_entityName', 'in_np_period', 'in_np_currency',
+        'in_pindo_entityName', 'in_pindo_period', 'in_pindo_currency',
+        'in_daaz_entityName', 'in_daaz_period', 'in_daaz_currency'
+      ].forEach(id => {
         const el = document.getElementById(id);
         if (el) el.value = '';
       });
+      document.querySelectorAll('.dyn-p-entity').forEach(el => el.textContent = '—');
+      document.querySelectorAll('.dyn-np-entity').forEach(el => el.textContent = '—');
+      document.querySelectorAll('.dyn-inv-entity').forEach(el => el.textContent = '—');
       clearSelectedFile();
       clearSchemeUploadedFiles();
       goToSchemeJourneyStep(1);
@@ -19122,17 +19131,10 @@ Berdasarkan pengawasan konsolidasi 6 entitas portofolio Kajian Ihsan:
     }
 
     function clearInvestasiInputs() {
-      if (appState.investasiActivePreset === 'pindodeli') {
-        ['in_pindo_sales', 'in_pindo_salesPY', 'in_pindo_cogs', 'in_pindo_opprof', 'in_pindo_assoc', 'in_pindo_forex', 'in_pindo_interest', 'in_pindo_ebt', 'in_pindo_netprofit', 'in_pindo_ca', 'in_pindo_ta', 'in_pindo_cl', 'in_pindo_tl', 'in_pindo_equity'].forEach(id => {
-          const el = document.getElementById(id);
-          if (el) el.value = '';
-        });
-      } else {
-        ['in_inv_sales', 'in_inv_salesPY', 'in_inv_salesPM', 'in_inv_salesRKAP', 'in_inv_nwc', 'in_inv_ni', 'in_inv_depr', 'in_inv_opProf', 'in_inv_ta', 'in_inv_tl'].forEach(id => {
-          const el = document.getElementById(id);
-          if (el) el.value = '';
-        });
-      }
+      ['in_pindo_sales', 'in_pindo_salesPY', 'in_pindo_cogs', 'in_pindo_opprof', 'in_pindo_assoc', 'in_pindo_forex', 'in_pindo_interest', 'in_pindo_ebt', 'in_pindo_netprofit', 'in_pindo_ca', 'in_pindo_ta', 'in_pindo_cl', 'in_pindo_tl', 'in_pindo_equity', 'in_inv_sales', 'in_inv_salesPY', 'in_inv_salesPM', 'in_inv_salesRKAP', 'in_inv_nwc', 'in_inv_ni', 'in_inv_depr', 'in_inv_opProf', 'in_inv_ta', 'in_inv_tl'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.value = '';
+      });
       document.getElementById('outInvestasi').classList.add('hidden');
       appState.investasi = null;
     }
@@ -22473,12 +22475,16 @@ Berdasarkan pengawasan konsolidasi 6 entitas portofolio Kajian Ihsan:
 
     // Drag and Drop & App Initialization
     window.addEventListener('DOMContentLoaded', () => {
-      // Enforce Codebase-Only AI Configuration & Zero-Persistence (purge any legacy browser-stored API keys)
+      // Enforce Codebase-Only AI Configuration & Zero-Persistence (purge any legacy browser-stored API keys & sessions)
       try {
         localStorage.removeItem('om_ihsan_gemini_api_key');
         sessionStorage.removeItem('om_ihsan_gemini_api_key');
         localStorage.removeItem('om_ihsan_openai_api_key');
         sessionStorage.removeItem('om_ihsan_openai_api_key');
+        localStorage.removeItem('ihsan_saved_session');
+        localStorage.removeItem('om_ihsan_last_analysis');
+        localStorage.removeItem('om_ihsan_staged_payload');
+        sessionStorage.clear();
         appState.geminiApiKey = CODEBASE_AI_CONFIG.geminiApiKey || '';
         appState.geminiModel = CODEBASE_AI_CONFIG.geminiModel || 'gemini-2.0-flash';
         appState.openAiApiKey = CODEBASE_AI_CONFIG.openAiApiKey || '';
