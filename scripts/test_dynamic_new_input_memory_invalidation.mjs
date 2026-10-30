@@ -150,6 +150,62 @@ test('preview.html is 100% synchronized with public/index.html', () => {
   assert.strictEqual(indexHtml, previewHtml, 'preview.html must match public/index.html byte-for-byte');
 });
 
+
+// ----------------------------------------------------
+// SECTION 4: Note-Skipping & Robust Line-Item Precision
+// ----------------------------------------------------
+console.log("\n--- SECTION 4: Note-Skipping & Header Lookahead Protection ---");
+
+const multiColReport = `
+PT BINTANG SAMUDERA TBK
+LAPORAN POSISI KEUANGAN DAN LABA RUGI
+Per 31 Desember 2026
+
+ASET LANCAR
+Kas dan setara kas 4 52.300 41.200
+Piutang usaha 5 120.500 98.000
+Persediaan 6 58.000 45.800
+Jumlah Aset Lancar 230.800 185.000
+
+Jumlah Liabilitas Jangka Pendek 93.120 85.000
+Total Aset: 450.000
+Total Liabilitas: 150.000
+Total Ekuitas: 300.000
+
+PENDAPATAN USAHA 21 850.500 720.000
+BEBAN POKOK PENDAPATAN 22 (612.300) (510.000)
+BEBAN USAHA 23 (208.530) (156.890)
+LABA TAHUN BERJALAN 24 6.080 4.620
+`;
+
+test("Note column skipping: extracts real revenue (850.5) instead of Note number (21)", () => {
+  const res = documentParser.parseDocumentNode({
+    fileName: "LK_Bintang_Samudera_2026.pdf",
+    textContent: multiColReport
+  });
+  assert.strictEqual(res.success, true);
+  assert.strictEqual(res.financials.revCY, 850.5);
+  assert.strictEqual(res.financials.revPY, 720);
+  assert.strictEqual(res.financials.cogsCY, 612.3);
+  assert.strictEqual(res.financials.opexCY, 208.53);
+  assert.strictEqual(res.financials.niCY, 6.08);
+});
+
+test("Header lookahead protection: ca extracts Jumlah Aset Lancar (230.8), not Kas Note (4)", () => {
+  const res = documentParser.parseDocumentNode({
+    fileName: "LK_Bintang_Samudera_2026.pdf",
+    textContent: multiColReport
+  });
+  assert.strictEqual(res.financials.ca, 230.8);
+  assert.strictEqual(res.financials.cl, 93.12);
+  assert.strictEqual(res.financials.nwc, 137.68);
+});
+
+test("startAnalysisPipeline clears inputs for dynamic upload instead of prefilling defaults", () => {
+  assert(indexHtml.includes("if (!isSample) {\n              clearPengendaliInputs();"));
+  assert(indexHtml.includes("if (!isSample) {\n              clearNonPengendaliInputs();"));
+});
+
 console.log('\n======================================================================');
 console.log(`🏁 SUMMARY: ${passCount} Passed, ${failCount} Failed`);
 console.log('======================================================================');
