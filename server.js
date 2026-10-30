@@ -858,6 +858,22 @@ if (require.main === module) {
       console.log(`==================================================================`);
     });
     registerGracefulShutdown(server);
+
+    // Convenience port alias: automatically redirect port 3000 to port 3005 if port 3000 is free
+    if (PORT !== 3000) {
+      try {
+        const port3000Redirect = http.createServer((req, res) => {
+          res.writeHead(302, { Location: `http://localhost:${PORT}${req.url}` });
+          res.end();
+        });
+        port3000Redirect.on("error", () => {
+          // Port 3000 in use or restricted, silently continue
+        });
+        port3000Redirect.listen(3000, () => {
+          console.log(`🔗 Port 3000 convenience redirect enabled -> http://localhost:${PORT}`);
+        });
+      } catch (_) {}
+    }
   }
 }
 
