@@ -12,10 +12,10 @@ const MASTER = require("../data/masterParameters");
 
 // 1. Analisis Vertikal (Common-Size Analysis)
 function computeVerticalAnalysis(items, baseTotal) {
-  if (!baseTotal || baseTotal === 0) return null;
+  if (!items || typeof items !== "object" || !baseTotal || baseTotal === 0) return null;
   const result = {};
   for (const [key, val] of Object.entries(items)) {
-    if (typeof val === "number") {
+    if (typeof val === "number" && !isNaN(val)) {
       result[key] = {
         amount: val,
         percentage: Number(((val / baseTotal) * 100).toFixed(2))
@@ -74,6 +74,7 @@ function computeHorizontalAnalysis(cyVal, pyVal, rkapVal, pmVal) {
 
 // 3. Modified Z-Score (Anualisasi)
 function calculateModifiedZScore(params) {
+  if (!params || typeof params !== "object") return null;
   const {
     currentAssets, currentLiab, totalAssets,
     netProfit, depreciation = 0, equity, totalLiab,
@@ -81,11 +82,18 @@ function calculateModifiedZScore(params) {
   } = params;
 
   if (!totalAssets || totalAssets === 0 || !totalLiab || totalLiab === 0) return null;
+  if (typeof currentAssets !== "number" || isNaN(currentAssets) ||
+      typeof currentLiab !== "number" || isNaN(currentLiab) ||
+      typeof netProfit !== "number" || isNaN(netProfit) ||
+      typeof operatingProfit !== "number" || isNaN(operatingProfit) ||
+      typeof revenue !== "number" || isNaN(revenue)) {
+    return null;
+  }
 
   const multiplier = isSemiAnnual ? 2 : 1;
   const nwc = currentAssets - currentLiab;
   const wk_ta = nwc / totalAssets;
-  const cashprof_ta = ((netProfit + depreciation) * multiplier) / totalAssets;
+  const cashprof_ta = ((netProfit + (typeof depreciation === "number" && !isNaN(depreciation) ? depreciation : 0)) * multiplier) / totalAssets;
   const solvr = totalAssets / totalLiab; // Total Aset / Total Liabilitas (Sesuai Blueprint hlm. 15)
   const opprof_ta = (operatingProfit * multiplier) / totalAssets;
   const sales_ta = (revenue * multiplier) / totalAssets;
@@ -97,6 +105,8 @@ function calculateModifiedZScore(params) {
     (w.solvr * solvr) +
     (w.opprof_ta * opprof_ta) +
     (w.sales_ta * sales_ta);
+
+  if (isNaN(zScore)) return null;
 
   const rounded = Number(zScore.toFixed(3));
   let assessment = "Tidak Aman (Default Risk Tinggi)";
@@ -128,16 +138,26 @@ function calculateModifiedZScore(params) {
 
 // 4. Altman Z-Score
 function calculateAltmanZScore(params) {
+  if (!params || typeof params !== "object") return null;
   const { currentAssets, currentLiab, totalAssets, retainedEarnings = 0, ebit, equity, totalLiab, revenue } = params;
   if (!totalAssets || totalAssets === 0 || !totalLiab || totalLiab === 0) return null;
+  if (typeof currentAssets !== "number" || isNaN(currentAssets) ||
+      typeof currentLiab !== "number" || isNaN(currentLiab) ||
+      typeof ebit !== "number" || isNaN(ebit) ||
+      typeof equity !== "number" || isNaN(equity) ||
+      typeof revenue !== "number" || isNaN(revenue)) {
+    return null;
+  }
 
   const x1 = (currentAssets - currentLiab) / totalAssets;
-  const x2 = retainedEarnings / totalAssets;
+  const x2 = (typeof retainedEarnings === "number" && !isNaN(retainedEarnings) ? retainedEarnings : 0) / totalAssets;
   const x3 = ebit / totalAssets;
   const x4 = equity / totalLiab;
   const x5 = revenue / totalAssets;
 
   const z = 1.2 * x1 + 1.4 * x2 + 3.3 * x3 + 0.6 * x4 + 0.999 * x5;
+  if (isNaN(z)) return null;
+
   const rounded = Number(z.toFixed(2));
   let tier = "Merah";
   let label = "Kemungkinan Gagal Bayar Tinggi";
@@ -154,42 +174,43 @@ function calculateAltmanZScore(params) {
 
 // 5. Perhitungan 33 Rasio Baku Lengkap
 function calculateComprehensiveRatios(f) {
+  if (!f || typeof f !== "object") return {};
   const r = {};
 
   // Likuiditas
-  r.currentRatio = f.currentLiabCY ? Number((f.currentAssetsCY / f.currentLiabCY).toFixed(2)) : null;
-  r.quickRatio = f.currentLiabCY ? Number(((f.cashCY + (f.tradeReceivablesCY || 0)) / f.currentLiabCY).toFixed(2)) : null;
-  r.netWorkingCapital = (f.currentAssetsCY != null && f.currentLiabCY != null) ? Number((f.currentAssetsCY - f.currentLiabCY).toFixed(2)) : null;
-  r.ocfCurrentLiab = (f.ocfCY != null && f.currentLiabCY) ? Number((f.ocfCY / f.currentLiabCY).toFixed(2)) : null;
+  r.currentRatio = (f.currentLiabCY && f.currentLiabCY > 0 && typeof f.currentAssetsCY === "number") ? Number((f.currentAssetsCY / f.currentLiabCY).toFixed(2)) : null;
+  r.quickRatio = (f.currentLiabCY && f.currentLiabCY > 0) ? Number((((f.cashCY || 0) + (f.tradeReceivablesCY || 0)) / f.currentLiabCY).toFixed(2)) : null;
+  r.netWorkingCapital = (typeof f.currentAssetsCY === "number" && typeof f.currentLiabCY === "number") ? Number((f.currentAssetsCY - f.currentLiabCY).toFixed(2)) : null;
+  r.ocfCurrentLiab = (typeof f.ocfCY === "number" && f.currentLiabCY && f.currentLiabCY > 0) ? Number((f.ocfCY / f.currentLiabCY).toFixed(2)) : null;
 
-  // Solvabilitas & Leverage
-  r.der = f.equityCY ? Number((f.totalLiabCY / f.equityCY).toFixed(2)) : null;
-  r.debtRatio = f.totalAssetsCY ? Number(((f.totalLiabCY / f.totalAssetsCY) * 100).toFixed(2)) : null;
-  r.ltdEquity = (f.ltDebtCY != null && f.equityCY) ? Number((f.ltDebtCY / f.equityCY).toFixed(2)) : null;
-  r.ltdAssets = (f.ltDebtCY != null && f.totalAssetsCY) ? Number((f.ltDebtCY / f.totalAssetsCY).toFixed(2)) : null;
-  r.netGearing = f.equityCY ? Number(((( (f.stDebtCY || 0) + (f.ltDebtCY || 0) ) - (f.cashCY || 0)) / f.equityCY).toFixed(2)) : null;
+  // Solvabilitas & Leverage (Disclose/Null on negative equity per Honesty Rules)
+  r.der = (typeof f.equityCY === "number" && f.equityCY > 0 && typeof f.totalLiabCY === "number") ? Number((f.totalLiabCY / f.equityCY).toFixed(2)) : null;
+  r.debtRatio = (typeof f.totalAssetsCY === "number" && f.totalAssetsCY > 0 && typeof f.totalLiabCY === "number") ? Number(((f.totalLiabCY / f.totalAssetsCY) * 100).toFixed(2)) : null;
+  r.ltdEquity = (typeof f.ltDebtCY === "number" && typeof f.equityCY === "number" && f.equityCY > 0) ? Number((f.ltDebtCY / f.equityCY).toFixed(2)) : null;
+  r.ltdAssets = (typeof f.ltDebtCY === "number" && typeof f.totalAssetsCY === "number" && f.totalAssetsCY > 0) ? Number((f.ltDebtCY / f.totalAssetsCY).toFixed(2)) : null;
+  r.netGearing = (typeof f.equityCY === "number" && f.equityCY > 0) ? Number(((( (f.stDebtCY || 0) + (f.ltDebtCY || 0) ) - (f.cashCY || 0)) / f.equityCY).toFixed(2)) : null;
 
-  // Profitabilitas
-  r.grossProfitMargin = f.revenueCY ? Number(((f.grossProfitCY / f.revenueCY) * 100).toFixed(2)) : null;
-  r.operatingProfitMargin = f.revenueCY ? Number(((f.operatingProfitCY / f.revenueCY) * 100).toFixed(2)) : null;
-  r.netProfitMargin = f.revenueCY ? Number(((f.netProfitCY / f.revenueCY) * 100).toFixed(2)) : null;
-  r.ebitdaMargin = (f.ebitdaCY && f.revenueCY) ? Number(((f.ebitdaCY / f.revenueCY) * 100).toFixed(2)) : null;
-  r.roa = f.totalAssetsCY ? Number((( (f.netProfitCY * (f.annualMultiplier || 2)) / f.totalAssetsCY) * 100).toFixed(2)) : null;
-  r.roe = f.equityCY ? Number((( (f.netProfitCY * (f.annualMultiplier || 2)) / f.equityCY) * 100).toFixed(2)) : null;
-  r.ebitdaAssets = (f.ebitdaCY && f.totalAssetsCY) ? Number((( (f.ebitdaCY * (f.annualMultiplier || 2)) / f.totalAssetsCY) * 100).toFixed(2)) : null;
+  // Profitabilitas (ROE is null on negative equity)
+  r.grossProfitMargin = (typeof f.grossProfitCY === "number" && f.revenueCY && f.revenueCY > 0) ? Number(((f.grossProfitCY / f.revenueCY) * 100).toFixed(2)) : null;
+  r.operatingProfitMargin = (typeof f.operatingProfitCY === "number" && f.revenueCY && f.revenueCY > 0) ? Number(((f.operatingProfitCY / f.revenueCY) * 100).toFixed(2)) : null;
+  r.netProfitMargin = (typeof f.netProfitCY === "number" && f.revenueCY && f.revenueCY > 0) ? Number(((f.netProfitCY / f.revenueCY) * 100).toFixed(2)) : null;
+  r.ebitdaMargin = (typeof f.ebitdaCY === "number" && f.revenueCY && f.revenueCY > 0) ? Number(((f.ebitdaCY / f.revenueCY) * 100).toFixed(2)) : null;
+  r.roa = (typeof f.netProfitCY === "number" && f.totalAssetsCY && f.totalAssetsCY > 0) ? Number((( (f.netProfitCY * (f.annualMultiplier || 2)) / f.totalAssetsCY) * 100).toFixed(2)) : null;
+  r.roe = (typeof f.netProfitCY === "number" && f.equityCY && f.equityCY > 0) ? Number((( (f.netProfitCY * (f.annualMultiplier || 2)) / f.equityCY) * 100).toFixed(2)) : null;
+  r.ebitdaAssets = (typeof f.ebitdaCY === "number" && f.totalAssetsCY && f.totalAssetsCY > 0) ? Number((( (f.ebitdaCY * (f.annualMultiplier || 2)) / f.totalAssetsCY) * 100).toFixed(2)) : null;
 
   // Coverage & Cash Flow
-  r.interestCoverage = (f.operatingProfitCY && f.interestExpenseCY) ? Number((f.operatingProfitCY / f.interestExpenseCY).toFixed(2)) : null;
-  r.ebitdaInterest = (f.ebitdaCY && f.interestExpenseCY) ? Number((f.ebitdaCY / f.interestExpenseCY).toFixed(2)) : null;
-  r.cfcr = (f.ocfCY != null && f.interestExpenseCY) ? Number((f.ocfCY / f.interestExpenseCY).toFixed(2)) : null;
-  r.dscr = (f.ebitdaCY && f.interestExpenseCY && f.stDebtCY) ? Number(((f.ebitdaCY - (f.taxExpenseCY || 0)) / (f.interestExpenseCY + f.stDebtCY)).toFixed(2)) : null;
-  r.ocfNetIncome = (f.ocfCY != null && f.netProfitCY) ? Number((f.ocfCY / f.netProfitCY).toFixed(2)) : null;
+  r.interestCoverage = (typeof f.operatingProfitCY === "number" && f.interestExpenseCY && f.interestExpenseCY > 0) ? Number((f.operatingProfitCY / f.interestExpenseCY).toFixed(2)) : null;
+  r.ebitdaInterest = (typeof f.ebitdaCY === "number" && f.interestExpenseCY && f.interestExpenseCY > 0) ? Number((f.ebitdaCY / f.interestExpenseCY).toFixed(2)) : null;
+  r.cfcr = (typeof f.ocfCY === "number" && f.interestExpenseCY && f.interestExpenseCY > 0) ? Number((f.ocfCY / f.interestExpenseCY).toFixed(2)) : null;
+  r.dscr = (typeof f.ebitdaCY === "number" && (f.interestExpenseCY || f.stDebtCY)) ? Number(((f.ebitdaCY - (f.taxExpenseCY || 0)) / ((f.interestExpenseCY || 0) + (f.stDebtCY || 0))).toFixed(2)) : null;
+  r.ocfNetIncome = (typeof f.ocfCY === "number" && typeof f.netProfitCY === "number" && f.netProfitCY !== 0) ? Number((f.ocfCY / f.netProfitCY).toFixed(2)) : null;
 
   // Kualitas Aset & Pertumbuhan
-  r.arCurrentAssets = (f.tradeReceivablesCY && f.currentAssetsCY) ? Number(((f.tradeReceivablesCY / f.currentAssetsCY) * 100).toFixed(2)) : null;
-  r.salesGrowth = (f.revenueCY && f.revenuePY) ? Number((((f.revenueCY - f.revenuePY) / Math.abs(f.revenuePY)) * 100).toFixed(2)) : null;
-  r.opGrowth = (f.operatingProfitCY && f.operatingProfitPY) ? Number((((f.operatingProfitCY - f.operatingProfitPY) / Math.abs(f.operatingProfitPY)) * 100).toFixed(2)) : null;
-  r.niGrowth = (f.netProfitCY && f.netProfitPY) ? Number((((f.netProfitCY - f.netProfitPY) / Math.abs(f.netProfitPY)) * 100).toFixed(2)) : null;
+  r.arCurrentAssets = (typeof f.tradeReceivablesCY === "number" && f.currentAssetsCY && f.currentAssetsCY > 0) ? Number(((f.tradeReceivablesCY / f.currentAssetsCY) * 100).toFixed(2)) : null;
+  r.salesGrowth = (typeof f.revenueCY === "number" && typeof f.revenuePY === "number" && f.revenuePY !== 0) ? Number((((f.revenueCY - f.revenuePY) / Math.abs(f.revenuePY)) * 100).toFixed(2)) : null;
+  r.opGrowth = (typeof f.operatingProfitCY === "number" && typeof f.operatingProfitPY === "number" && f.operatingProfitPY !== 0) ? Number((((f.operatingProfitCY - f.operatingProfitPY) / Math.abs(f.operatingProfitPY)) * 100).toFixed(2)) : null;
+  r.niGrowth = (typeof f.netProfitCY === "number" && typeof f.netProfitPY === "number" && f.netProfitPY !== 0) ? Number((((f.netProfitCY - f.netProfitPY) / Math.abs(f.netProfitPY)) * 100).toFixed(2)) : null;
 
   return r;
 }
