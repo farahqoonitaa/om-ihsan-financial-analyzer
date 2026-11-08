@@ -3393,6 +3393,26 @@
         <!-- ========================================== -->
         <div id="p_step_pane_3" class="hidden">
           <div class="panel-card">
+            <!-- STEP 3 HEADER & QUICK EXPORT ACTIONS -->
+            <div class="no-print" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:14px; padding-bottom:10px; border-bottom:1px solid #E2E8F0;">
+              <div>
+                <h3 style="margin:0; font-size:15.5px; font-weight:800; color:var(--forest-deep); display:flex; align-items:center; gap:8px;">
+                  <span>🔬</span> <span>Langkah 3: Lembar Kerja Analisis Forensik &amp; Rasio Detail</span>
+                </h3>
+                <p style="margin:2px 0 0 0; font-size:12px; color:var(--ink-secondary);">
+                  Uji Keseimbangan Neraca ISA 520, Deteksi S7 Growth Gap (+1,46%), Defisit Modal Kerja &amp; 10 Sinyal Forensik.
+                </p>
+              </div>
+              <div style="display:flex; gap:8px; align-items:center;">
+                <button type="button" onclick="printDetailedAnalysis('pengendali')" class="btn btn-secondary btn-sm" style="font-weight:700; background:#FFFFFF; border:1.5px solid #0A2540; color:#0A2540; display:flex; align-items:center; gap:6px; cursor:pointer; box-shadow:0 2px 4px rgba(0,0,0,0.04);">
+                  <span>🖨️</span> <span>Cetak / Ekspor PDF Analisis Detail</span>
+                </button>
+                <button type="button" onclick="setProcessStep('pengendali', 4)" class="btn btn-primary btn-sm" style="font-weight:700; cursor:pointer;">
+                  Lanjut ke Langkah 4: Draf Nota Dinas →
+                </button>
+              </div>
+            </div>
+
             <!-- PENJELASAN UNTUK ORANG AWAM (PENGENDALI STEP 3) -->
             <div class="panel-card layperson-summary-box" style="background:#FFFBEB; border:1px solid #FDE68A; border-left:5px solid #D97706; padding:12px 16px; margin-bottom:14px;">
               <div style="display:flex; align-items:flex-start; gap:10px;">
@@ -3592,9 +3612,14 @@
               </div>
             </div>
 
-            <div class="step-actions-bar">
+            <div class="step-actions-bar" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
               <button type="button" onclick="setProcessStep('pengendali', 2)" class="btn btn-secondary btn-sm">← Langkah 2: Uji Footing</button>
-              <button type="button" onclick="setProcessStep('pengendali', 4)" class="btn btn-primary" data-i18n="btn_step3_next">Lanjut ke Langkah 4: Draf Nota Dinas →</button>
+              <div style="display:flex; gap:8px;">
+                <button type="button" onclick="printDetailedAnalysis('pengendali')" class="btn btn-secondary btn-sm" style="font-weight:700; border:1.5px solid #0A2540; color:#0A2540; cursor:pointer;">
+                  🖨️ Cetak / Ekspor PDF Analisis Detail
+                </button>
+                <button type="button" onclick="setProcessStep('pengendali', 4)" class="btn btn-primary" data-i18n="btn_step3_next">Lanjut ke Langkah 4: Draf Nota Dinas →</button>
+              </div>
             </div>
           </div>
         </div>
@@ -3759,7 +3784,8 @@
                 <button type="button" onclick="toggleEditNotaDinas('pengendali')" class="btn btn-secondary btn-sm btn-edit-nota-dinas" id="btnEditNd_pengendali" style="border-color:#d97706; color:#92400e; font-weight:600; background:#fef3c7;">✏️ Edit Nota Dinas</button>
                 <button type="button" onclick="copyNotaDinasText('pengendali')" class="btn btn-secondary btn-sm">📋 Salin Teks Nota Dinas</button>
                 <button type="button" onclick="downloadNotaDinasDoc('pengendali')" class="btn btn-primary btn-sm">📄 Unduh Dokumen (.doc)</button>
-                <button type="button" onclick="printNotaDinas('pengendali')" class="btn btn-secondary btn-sm">🖨️ Cetak / PDF</button>
+                <button type="button" onclick="printNotaDinas('pengendali')" class="btn btn-secondary btn-sm">🖨️ Cetak / PDF Nota Dinas</button>
+                <button type="button" onclick="printDetailedAnalysis('pengendali')" class="btn btn-secondary btn-sm" style="font-weight:700; border-color:#0A2540; color:#0A2540;">📊 Cetak / PDF Analisis Detail</button>
               </div>
             </div>
 
@@ -3822,8 +3848,16 @@
                 <button type="button" onclick="printNotaDinas('pengendali')" class="btn btn-secondary boomer-action-btn-secondary" style="border:2px solid #0A2540; color:#0A2540;">
                   <span style="font-size:22px;">🖨️</span>
                   <div style="text-align:left;">
-                    <div>Cetak / Simpan PDF (A4)</div>
-                    <div style="font-size:11px; font-weight:400; opacity:0.8; color:var(--ink);">Buka dialog cetak browser langsung ke lembar A4</div>
+                    <div>Cetak / Simpan PDF Nota Dinas</div>
+                    <div style="font-size:11px; font-weight:400; opacity:0.8; color:var(--ink);">Format resmi Nota Dinas (~3 Hal)</div>
+                  </div>
+                </button>
+                <!-- Big Detailed Analysis PDF Button -->
+                <button type="button" onclick="printDetailedAnalysis('pengendali')" class="btn btn-secondary boomer-action-btn-secondary" style="border:2px solid #1D4ED8; color:#1D4ED8; background:#EFF6FF; cursor:pointer;">
+                  <span style="font-size:22px;">📊</span>
+                  <div style="text-align:left;">
+                    <div>Cetak / PDF Analisis Detail</div>
+                    <div style="font-size:11px; font-weight:400; opacity:0.85; color:#1E40AF;">Ekspor Lembar Kerja S7 Growth Gap, Footing &amp; Forensik</div>
                   </div>
                 </button>
               </div>
@@ -4288,6 +4322,26 @@
       <!-- ========================================== -->
       <div id="np_step_pane_3" class="hidden">
         <div class="panel-card">
+          <!-- STEP 3 HEADER & QUICK EXPORT ACTIONS -->
+          <div class="no-print" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:14px; padding-bottom:10px; border-bottom:1px solid #E2E8F0;">
+            <div>
+              <h3 style="margin:0; font-size:15.5px; font-weight:800; color:var(--forest-deep); display:flex; align-items:center; gap:8px;">
+                <span>🔬</span> <span>Langkah 3: Lembar Kerja Analisis Forensik &amp; Rasio Detail</span>
+              </h3>
+              <p style="margin:2px 0 0 0; font-size:12px; color:var(--ink-secondary);">
+                Pengujian RTC Cadangan Piutang (301,20% Red Flag), Kepastian Hak Dividen Kas 1% &amp; Mitigasi Capital Call.
+              </p>
+            </div>
+            <div style="display:flex; gap:8px; align-items:center;">
+              <button type="button" onclick="printDetailedAnalysis('nonpengendali')" class="btn btn-secondary btn-sm" style="font-weight:700; background:#FFFFFF; border:1.5px solid #0A2540; color:#0A2540; display:flex; align-items:center; gap:6px; cursor:pointer; box-shadow:0 2px 4px rgba(0,0,0,0.04);">
+                <span>🖨️</span> <span>Cetak / Ekspor PDF Analisis Detail</span>
+              </button>
+              <button type="button" onclick="setProcessStep('nonpengendali', 4)" class="btn btn-primary btn-sm" style="font-weight:700; cursor:pointer;">
+                Lanjut ke Langkah 4: Draf Nota Dinas →
+              </button>
+            </div>
+          </div>
+
           <!-- PENJELASAN UNTUK ORANG AWAM (NON-PENGENDALI STEP 3) -->
           <div class="panel-card layperson-summary-box" style="background:#FEF2F2; border:1px solid #FECACA; border-left:5px solid #DC2626; padding:12px 16px; margin-bottom:14px;">
             <div style="display:flex; align-items:flex-start; gap:10px;">
@@ -4472,9 +4526,14 @@
             </div>
           </div>
 
-          <div class="step-actions-bar">
+          <div class="step-actions-bar" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
             <button type="button" onclick="setProcessStep('nonpengendali', 2)" class="btn btn-secondary btn-sm">← Langkah 2: Uji Footing</button>
-            <button type="button" onclick="setProcessStep('nonpengendali', 4)" class="btn btn-primary" data-i18n="btn_step3_next">Lanjut ke Langkah 4: Draf Nota Dinas →</button>
+            <div style="display:flex; gap:8px;">
+              <button type="button" onclick="printDetailedAnalysis('nonpengendali')" class="btn btn-secondary btn-sm" style="font-weight:700; border:1.5px solid #0A2540; color:#0A2540; cursor:pointer;">
+                🖨️ Cetak / Ekspor PDF Analisis Detail
+              </button>
+              <button type="button" onclick="setProcessStep('nonpengendali', 4)" class="btn btn-primary" data-i18n="btn_step3_next">Lanjut ke Langkah 4: Draf Nota Dinas →</button>
+            </div>
           </div>
         </div>
       </div>
@@ -4632,7 +4691,8 @@
               <button type="button" onclick="toggleEditNotaDinas('non_pengendali')" class="btn btn-secondary btn-sm btn-edit-nota-dinas" id="btnEditNd_non_pengendali" style="border-color:#d97706; color:#92400e; font-weight:600; background:#fef3c7;">✏️ Edit Nota Dinas</button>
               <button type="button" onclick="copyNotaDinasText('non_pengendali')" class="btn btn-secondary btn-sm">📋 Salin Teks Nota Dinas</button>
               <button type="button" onclick="downloadNotaDinasDoc('non_pengendali')" class="btn btn-primary btn-sm">📄 Unduh Dokumen (.doc)</button>
-              <button type="button" onclick="printNotaDinas('non_pengendali')" class="btn btn-secondary btn-sm">🖨️ Cetak / PDF</button>
+              <button type="button" onclick="printNotaDinas('non_pengendali')" class="btn btn-secondary btn-sm">🖨️ Cetak / PDF Nota Dinas</button>
+              <button type="button" onclick="printDetailedAnalysis('nonpengendali')" class="btn btn-secondary btn-sm" style="font-weight:700; border-color:#0A2540; color:#0A2540;">📊 Cetak / PDF Analisis Detail</button>
             </div>
           </div>
 
@@ -4695,8 +4755,16 @@
               <button type="button" onclick="printNotaDinas('non_pengendali')" class="btn btn-secondary boomer-action-btn-secondary" style="border:2px solid #0A2540; color:#0A2540;">
                 <span style="font-size:22px;">🖨️</span>
                 <div style="text-align:left;">
-                  <div>Cetak / Simpan PDF (A4)</div>
-                  <div style="font-size:11px; font-weight:400; opacity:0.8; color:var(--ink);">Buka dialog cetak browser langsung ke lembar A4</div>
+                  <div>Cetak / Simpan PDF Nota Dinas</div>
+                  <div style="font-size:11px; font-weight:400; opacity:0.8; color:var(--ink);">Format resmi Nota Dinas (~3 Hal)</div>
+                </div>
+              </button>
+              <!-- Big Detailed Analysis PDF Button -->
+              <button type="button" onclick="printDetailedAnalysis('nonpengendali')" class="btn btn-secondary boomer-action-btn-secondary" style="border:2px solid #1D4ED8; color:#1D4ED8; background:#EFF6FF; cursor:pointer;">
+                <span style="font-size:22px;">📊</span>
+                <div style="text-align:left;">
+                  <div>Cetak / PDF Analisis Detail</div>
+                  <div style="font-size:11px; font-weight:400; opacity:0.85; color:#1E40AF;">Ekspor Lembar Kerja RTC 301% &amp; Dividen 1% Minoritas</div>
                 </div>
               </button>
             </div>
@@ -5321,6 +5389,26 @@
       <!-- ========================================== -->
       <div id="inv_step_pane_3" class="hidden">
         <div class="panel-card">
+          <!-- STEP 3 HEADER & QUICK EXPORT ACTIONS -->
+          <div class="no-print" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:14px; padding-bottom:10px; border-bottom:1px solid #E2E8F0;">
+            <div>
+              <h3 style="margin:0; font-size:15.5px; font-weight:800; color:var(--forest-deep); display:flex; align-items:center; gap:8px;">
+                <span>🔬</span> <span>Langkah 3: Lembar Kerja Analisis Forensik &amp; Rasio Detail</span>
+              </h3>
+              <p style="margin:2px 0 0 0; font-size:12px; color:var(--ink-secondary);">
+                Telaah mendalam kelayakan investasi, 33 rasio keuangan, Altman Z-Score, QoE Waterfall &amp; rekomendasi covenant.
+              </p>
+            </div>
+            <div style="display:flex; gap:8px; align-items:center;">
+              <button type="button" onclick="printDetailedAnalysis('investasi')" class="btn btn-secondary btn-sm" style="font-weight:700; background:#FFFFFF; border:1.5px solid #0A2540; color:#0A2540; display:flex; align-items:center; gap:6px; cursor:pointer; box-shadow:0 2px 4px rgba(0,0,0,0.04);">
+                <span>🖨️</span> <span>Cetak / Ekspor PDF Analisis Detail</span>
+              </button>
+              <button type="button" onclick="setProcessStep('investasi', 4)" class="btn btn-primary btn-sm" style="font-weight:700; cursor:pointer;">
+                Lanjut ke Langkah 4: Draf Nota Dinas →
+              </button>
+            </div>
+          </div>
+
           <!-- PINDO DELI FORENSIC CONTENT (SUB-VIEW A) -->
           <div id="outInvestasiPindo" class="inv-pindo-content">
 
@@ -5764,9 +5852,14 @@
             </div>
           </div>
 
-          <div class="step-actions-bar">
+          <div class="step-actions-bar" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
             <button type="button" onclick="setProcessStep('investasi', 2)" class="btn btn-secondary btn-sm">← Langkah 2: Uji Pre-Check</button>
-            <button type="button" onclick="setProcessStep('investasi', 4)" class="btn btn-primary" data-i18n="btn_step3_next">Lanjut ke Langkah 4: Draf Nota Dinas →</button>
+            <div style="display:flex; gap:8px;">
+              <button type="button" onclick="printDetailedAnalysis('investasi')" class="btn btn-secondary btn-sm" style="font-weight:700; border:1.5px solid #0A2540; color:#0A2540; cursor:pointer;">
+                🖨️ Cetak / Ekspor PDF Analisis Detail
+              </button>
+              <button type="button" onclick="setProcessStep('investasi', 4)" class="btn btn-primary" data-i18n="btn_step3_next">Lanjut ke Langkah 4: Draf Nota Dinas →</button>
+            </div>
           </div>
         </div>
       </div>
@@ -6519,7 +6612,8 @@
                 <button type="button" onclick="toggleEditNotaDinas('investasi')" class="btn btn-secondary btn-sm btn-edit-nota-dinas" id="btnEditNd_investasi" style="border-color:#d97706; color:#92400e; font-weight:600; background:#fef3c7;">✏️ Edit Dokumen</button>
                 <button type="button" onclick="copyNotaDinasText('investasi')" class="btn btn-secondary btn-sm">📋 Salin Teks Lengkap 7 Seksi</button>
                 <button type="button" onclick="downloadNotaDinasDoc('investasi')" class="btn btn-primary btn-sm">📄 Unduh Dokumen (.doc)</button>
-                <button type="button" onclick="printNotaDinas('investasi')" class="btn btn-secondary btn-sm">🖨️ Cetak / PDF</button>
+                <button type="button" onclick="printNotaDinas('investasi')" class="btn btn-secondary btn-sm">🖨️ Cetak / PDF Telaah</button>
+                <button type="button" onclick="printDetailedAnalysis('investasi')" class="btn btn-secondary btn-sm" style="font-weight:700; border-color:#0A2540; color:#0A2540;">📊 Cetak / PDF Analisis Detail</button>
               </div>
             </div>
           </div>
@@ -6670,7 +6764,8 @@
                 <button type="button" onclick="toggleEditNotaDinas('investasi')" class="btn btn-secondary btn-sm btn-edit-nota-dinas" id="btnEditNd_investasi_daaz" style="border-color:#d97706; color:#92400e; font-weight:600; background:#fef3c7;">✏️ Edit Nota Dinas</button>
                 <button type="button" onclick="copyNotaDinasText('investasi')" class="btn btn-secondary btn-sm">📋 Salin Teks Nota Dinas</button>
                 <button type="button" onclick="downloadNotaDinasDoc('investasi')" class="btn btn-primary btn-sm">📄 Unduh Dokumen (.doc)</button>
-                <button type="button" onclick="printNotaDinas('investasi')" class="btn btn-secondary btn-sm">🖨️ Cetak / PDF</button>
+                <button type="button" onclick="printNotaDinas('investasi')" class="btn btn-secondary btn-sm">🖨️ Cetak / PDF Nota Dinas</button>
+                <button type="button" onclick="printDetailedAnalysis('investasi')" class="btn btn-secondary btn-sm" style="font-weight:700; border-color:#0A2540; color:#0A2540;">📊 Cetak / PDF Analisis Detail</button>
               </div>
             </div>
           </div>
@@ -6734,8 +6829,16 @@
               <button type="button" onclick="printNotaDinas('investasi')" class="btn btn-secondary boomer-action-btn-secondary" style="border:2px solid #0A2540; color:#0A2540;">
                 <span style="font-size:22px;">🖨️</span>
                 <div style="text-align:left;">
-                  <div>Cetak / Simpan PDF (A4)</div>
-                  <div style="font-size:11px; font-weight:400; opacity:0.8; color:var(--ink);">Buka dialog cetak browser langsung ke lembar A4</div>
+                  <div>Cetak / Simpan PDF Telaah</div>
+                  <div style="font-size:11px; font-weight:400; opacity:0.8; color:var(--ink);">Format resmi Telaah Investasi (~3 Hal)</div>
+                </div>
+              </button>
+              <!-- Big Detailed Analysis PDF Button -->
+              <button type="button" onclick="printDetailedAnalysis('investasi')" class="btn btn-secondary boomer-action-btn-secondary" style="border:2px solid #1D4ED8; color:#1D4ED8; background:#EFF6FF; cursor:pointer;">
+                <span style="font-size:22px;">📊</span>
+                <div style="text-align:left;">
+                  <div>Cetak / PDF Analisis Detail</div>
+                  <div style="font-size:11px; font-weight:400; opacity:0.85; color:#1E40AF;">Ekspor Lembar Kerja 33 Rasio, Z-Score &amp; QoE Waterfall</div>
                 </div>
               </button>
             </div>
@@ -6995,6 +7098,26 @@
       <!-- ========================================== -->
       <div id="kons_step_pane_3" class="hidden">
         <div class="panel-card">
+          <!-- STEP 3 HEADER & QUICK EXPORT ACTIONS -->
+          <div class="no-print" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:14px; padding-bottom:10px; border-bottom:1px solid #E2E8F0;">
+            <div>
+              <h3 style="margin:0; font-size:15.5px; font-weight:800; color:var(--forest-deep); display:flex; align-items:center; gap:8px;">
+                <span>🔬</span> <span>Langkah 3: Lembar Kerja Analisis Forensik &amp; Rasio Detail</span>
+              </h3>
+              <p style="margin:2px 0 0 0; font-size:12px; color:var(--ink-secondary);">
+                Pengawasan Konsolidasian Multi-Entitas, Batasan POJK DER ≤ 5,0x &amp; Eliminasi Saldo Antar-Entitas.
+              </p>
+            </div>
+            <div style="display:flex; gap:8px; align-items:center;">
+              <button type="button" onclick="printDetailedAnalysis('konsolidasi')" class="btn btn-secondary btn-sm" style="font-weight:700; background:#FFFFFF; border:1.5px solid #0A2540; color:#0A2540; display:flex; align-items:center; gap:6px; cursor:pointer; box-shadow:0 2px 4px rgba(0,0,0,0.04);">
+                <span>🖨️</span> <span>Cetak / Ekspor PDF Analisis Detail</span>
+              </button>
+              <button type="button" onclick="setProcessStep('konsolidasi', 4)" class="btn btn-primary btn-sm" style="font-weight:700; cursor:pointer;">
+                Lanjut ke Langkah 4: Draf Nota Dinas →
+              </button>
+            </div>
+          </div>
+
           <!-- PENJELASAN UNTUK ORANG AWAM (KONSOLIDASI STEP 3) -->
           <div class="panel-card layperson-summary-box" style="background:#FAF5FF; border:1px solid #E9D5FF; border-left:5px solid #9333EA; padding:12px 16px; margin-bottom:14px;">
             <div style="display:flex; align-items:flex-start; gap:10px;">
@@ -7270,9 +7393,14 @@
           </div>
         </div>
 
-        <div class="step-actions-bar">
+        <div class="step-actions-bar" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
           <button type="button" onclick="setProcessStep('konsolidasi', 2)" class="btn btn-secondary btn-sm">← Langkah 2: Uji Eliminasi</button>
-          <button type="button" onclick="setProcessStep('konsolidasi', 4)" class="btn btn-primary" data-i18n="btn_step3_next">Lanjut ke Langkah 4: Draf Nota Dinas →</button>
+          <div style="display:flex; gap:8px;">
+            <button type="button" onclick="printDetailedAnalysis('konsolidasi')" class="btn btn-secondary btn-sm" style="font-weight:700; border:1.5px solid #0A2540; color:#0A2540; cursor:pointer;">
+              🖨️ Cetak / Ekspor PDF Analisis Detail
+            </button>
+            <button type="button" onclick="setProcessStep('konsolidasi', 4)" class="btn btn-primary" data-i18n="btn_step3_next">Lanjut ke Langkah 4: Draf Nota Dinas →</button>
+          </div>
         </div>
       </div>
     </div>
@@ -7392,7 +7520,8 @@
             <button type="button" onclick="toggleEditNotaDinas('konsolidasi')" class="btn btn-secondary btn-sm btn-edit-nota-dinas" id="btnEditNd_konsolidasi" style="border-color:#d97706; color:#92400e; font-weight:600; background:#fef3c7;">✏️ Edit Nota Dinas</button>
             <button type="button" onclick="copyNotaDinasText('konsolidasi')" class="btn btn-secondary btn-sm">📋 Salin Teks Nota Dinas</button>
             <button type="button" onclick="downloadNotaDinasDoc('konsolidasi')" class="btn btn-primary btn-sm">📄 Unduh Dokumen (.doc)</button>
-            <button type="button" onclick="printNotaDinas('konsolidasi')" class="btn btn-secondary btn-sm">🖨️ Cetak / PDF</button>
+            <button type="button" onclick="printNotaDinas('konsolidasi')" class="btn btn-secondary btn-sm">🖨️ Cetak / PDF Nota Dinas</button>
+            <button type="button" onclick="printDetailedAnalysis('konsolidasi')" class="btn btn-secondary btn-sm" style="font-weight:700; border-color:#0A2540; color:#0A2540;">📊 Cetak / PDF Analisis Detail</button>
           </div>
         </div>
 
@@ -7455,8 +7584,16 @@
             <button type="button" onclick="printNotaDinas('konsolidasi')" class="btn btn-secondary boomer-action-btn-secondary" style="border:2px solid #0A2540; color:#0A2540;">
               <span style="font-size:22px;">🖨️</span>
               <div style="text-align:left;">
-                <div>Cetak / Simpan PDF (A4)</div>
-                <div style="font-size:11px; font-weight:400; opacity:0.8; color:var(--ink);">Buka dialog cetak browser langsung ke lembar A4</div>
+                <div>Cetak / Simpan PDF Nota Dinas</div>
+                <div style="font-size:11px; font-weight:400; opacity:0.8; color:var(--ink);">Format resmi Nota Dinas Konsolidasi (~3 Hal)</div>
+              </div>
+            </button>
+            <!-- Big Detailed Analysis PDF Button -->
+            <button type="button" onclick="printDetailedAnalysis('konsolidasi')" class="btn btn-secondary boomer-action-btn-secondary" style="border:2px solid #1D4ED8; color:#1D4ED8; background:#EFF6FF; cursor:pointer;">
+              <span style="font-size:22px;">📊</span>
+              <div style="text-align:left;">
+                <div>Cetak / PDF Analisis Detail</div>
+                <div style="font-size:11px; font-weight:400; opacity:0.85; color:#1E40AF;">Ekspor Lembar Kerja POJK DER &amp; Eliminasi Saldo Grup</div>
               </div>
             </button>
           </div>
@@ -12603,7 +12740,15 @@
       if (format === 'executive') {
         clone.querySelectorAll('#argonRagDeepDiveWidget, .interactive-rag-widget, .boomer-chart-card, .nd-s1-s10-audit-section, .extended-audit-details, .nd-signal-card, .no-print').forEach(c => c.remove());
       } else {
-        clone.querySelectorAll('#argonRagDeepDiveWidget, .no-print').forEach(c => c.remove());
+        // In Extended Mode: ensure all detailed diagnostic cards (S1-S10) and details tags are visible and open
+        clone.querySelectorAll('.extended-audit-details').forEach(el => {
+          el.classList.remove('no-print');
+          el.setAttribute('open', '');
+        });
+        clone.querySelectorAll('.nd-s1-s10-audit-section').forEach(el => {
+          el.classList.remove('no-print');
+        });
+        clone.querySelectorAll('#argonRagDeepDiveWidget, .interactive-rag-widget, .no-print').forEach(c => c.remove());
       }
 
       // Resolve entity name for print window title
@@ -12761,7 +12906,353 @@
       printWin.document.close();
     }
 
-    // PINTU MASUK TUNGGAL: ANALISIS DARI DOKUMEN HANDLER
+
+    // =========================================================================
+    // EXPORT PDF: LEMBAR KERJA ANALISIS FORENSIK & RASIO DETAIL (LANGKAH 3)
+    // =========================================================================
+    function printDetailedAnalysis(mode) {
+      if (!mode) {
+        mode = (window.appState && (window.appState.currentView || window.appState.selectedScheme)) || 'investasi';
+      }
+      if (mode === 'non_pengendali') mode = 'nonpengendali';
+
+      const paneMap = {
+        pengendali: document.getElementById('p_step_pane_3'),
+        nonpengendali: document.getElementById('np_step_pane_3'),
+        investasi: document.getElementById('inv_step_pane_3'),
+        konsolidasi: document.getElementById('kons_step_pane_3')
+      };
+
+      const pane = paneMap[mode];
+      if (!pane) {
+        showToast('Lembar analisis detail belum tersedia', 'warning');
+        return;
+      }
+
+      const clone = pane.cloneNode(true);
+      clone.classList.remove('hidden');
+
+      // Remove UI-only and interactive action elements
+      clone.querySelectorAll('.step-actions-bar, .no-print, button, input, textarea, select, #inlineFeedbackFeed_pengendali, #inlineFeedbackFeed_non_pengendali, #inlineFeedbackFeed_investasi, #inlineFeedbackFeed_konsolidasi, #argonRagDeepDiveWidget, .interactive-rag-widget').forEach(el => el.remove());
+
+      // If Investasi, display active preset content (Pindo or Daaz)
+      if (mode === 'investasi') {
+        const activePreset = (window.appState && window.appState.investasiActivePreset) || 'pindodeli';
+        if (activePreset === 'daaz') {
+          const pindoEl = clone.querySelector('#outInvestasiPindo');
+          if (pindoEl) pindoEl.remove();
+          const daazEl = clone.querySelector('#outInvestasiDaaz');
+          if (daazEl) daazEl.classList.remove('hidden');
+        } else {
+          const daazEl = clone.querySelector('#outInvestasiDaaz');
+          if (daazEl) daazEl.remove();
+          const pindoEl = clone.querySelector('#outInvestasiPindo');
+          if (pindoEl) pindoEl.classList.remove('hidden');
+        }
+      }
+
+      // Resolve metadata
+      let entityName = 'Kajian Ihsan Portfolio Entity';
+      let period = 'Periode Pelaporan Terkini';
+      let docNo = 'LK-DET-042/KI-FORENSIK/X/2026';
+      let schemeTitle = 'LEMBAR KERJA ANALISIS FORENSIK & RASIO KEUANGAN DETAIL';
+
+      if (mode === 'investasi') {
+        entityName = document.getElementById('in_pindo_entityName')?.value?.trim() || 'PT Pindo Deli Pulp and Paper Mills dan Entitas Anak';
+        period = '30 Juni 2026 (6M 2026 vs 6M 2025)';
+        docNo = 'LK-INV-042/KI-DETAIL/X/2026';
+        schemeTitle = 'LEMBAR KERJA ANALISIS INVESTASI, SUKUK & 33 RASIO KEUANGAN DETAIL';
+      } else if (mode === 'pengendali') {
+        entityName = document.getElementById('in_p_entityName')?.value?.trim() || 'PT Era Permata Sejahtera';
+        period = '31 Agustus 2026 (8M 2026 vs RKAP 2026)';
+        docNo = 'LK-PENG-028/KI-DETAIL/X/2026';
+        schemeTitle = 'LEMBAR KERJA UJI FOOTING ISA 520, S7 GROWTH GAP & ANALISIS PENGENDALI DETAIL';
+      } else if (mode === 'nonpengendali') {
+        entityName = document.getElementById('in_np_entityName')?.value?.trim() || 'PT Pesonna Optima Jasa';
+        period = '31 Agustus 2026 (Realisasi Piutang vs Target RKAP)';
+        docNo = 'LK-NP-015/KI-DETAIL/X/2026';
+        schemeTitle = 'LEMBAR KERJA PROTEKSI HAK MINORITAS (NCI 1%) & RTC CADANGAN PIUTANG DETAIL';
+      } else if (mode === 'konsolidasi') {
+        entityName = 'Grup Kajian Ihsan Terkonsolidasi (6 Entitas)';
+        period = 'Semester I 2026';
+        docNo = 'LK-KONS-009/KI-DETAIL/X/2026';
+        schemeTitle = 'LEMBAR KERJA KONSOLIDASI GRUP, BATASAN POJK DER & ELIMINASI SALDO DETAIL';
+      }
+
+      let printWin = window.open('', '_blank', 'width=950,height=1000');
+      let isIframe = false;
+      if (!printWin) {
+        let iframe = document.getElementById('printDetailedAnalysisIframe');
+        if (!iframe) {
+          iframe = document.createElement('iframe');
+          iframe.id = 'printDetailedAnalysisIframe';
+          iframe.style.position = 'fixed';
+          iframe.style.right = '0';
+          iframe.style.bottom = '0';
+          iframe.style.width = '0';
+          iframe.style.height = '0';
+          iframe.style.border = '0';
+          document.body.appendChild(iframe);
+        }
+        printWin = iframe.contentWindow;
+        isIframe = true;
+      }
+
+      const printHtml = `<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <title>Analisis Detail - ${entityName}</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 12mm 14mm 12mm 14mm;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: #FFFFFF !important;
+      color: #0F172A !important;
+      font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+      font-size: 8.5pt !important;
+      line-height: 1.4 !important;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+    body { padding: 16px; max-width: 860px; margin: 0 auto; }
+    .no-print { display: none !important; }
+    
+    .detail-print-header {
+      border-bottom: 2.5px solid #0A2540;
+      padding-bottom: 8pt;
+      margin-bottom: 10pt;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+    .detail-print-brand h2 {
+      font-size: 13.5pt;
+      font-weight: 800;
+      color: #0A2540;
+      margin: 0 0 2pt 0;
+      letter-spacing: -0.01em;
+    }
+    .detail-print-brand .doc-type {
+      font-size: 9pt;
+      font-weight: 700;
+      color: #1D4ED8;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .detail-print-badge {
+      background: #EFF6FF;
+      border: 1.5px solid #BFDBFE;
+      border-radius: 6px;
+      padding: 6pt 10pt;
+      text-align: right;
+    }
+    .detail-print-badge .badge-title {
+      font-weight: 800;
+      font-size: 8pt;
+      color: #1E40AF;
+      text-transform: uppercase;
+    }
+    .detail-print-badge .badge-sub {
+      font-size: 7pt;
+      color: #64748B;
+    }
+
+    .detail-meta-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 12pt;
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 6px;
+      font-size: 8pt;
+    }
+    .detail-meta-table td {
+      padding: 4.5pt 8pt;
+      border: none;
+      border-bottom: 1px solid #E2E8F0;
+    }
+    .detail-meta-label {
+      font-weight: 700;
+      color: #475569;
+      width: 18%;
+    }
+
+    .panel-card, .boomer-chart-card, .qoe-bar-container, .high-level-spot-banner, .layperson-summary-box {
+      border: 1px solid #CBD5E1 !important;
+      border-radius: 6px !important;
+      padding: 8pt 10pt !important;
+      margin-bottom: 10pt !important;
+      background: #FFFFFF !important;
+      page-break-inside: avoid !important;
+      break-inside: avoid !important;
+      box-shadow: none !important;
+    }
+    .layperson-summary-box {
+      background: #FFFBEB !important;
+      border-left: 4pt solid #D97706 !important;
+    }
+    .high-level-spot-banner {
+      background: #F8FAFC !important;
+      border-left: 4pt solid #1D4ED8 !important;
+    }
+    .high-level-spot-banner.warning {
+      background: #FFFBEB !important;
+      border-left: 4pt solid #D97706 !important;
+    }
+    .high-level-spot-banner.safe {
+      background: #F0FDF4 !important;
+      border-left: 4pt solid #16A34A !important;
+    }
+
+    table {
+      width: 100% !important;
+      border-collapse: collapse !important;
+      margin: 6pt 0 8pt 0 !important;
+      font-size: 8pt !important;
+      page-break-inside: auto;
+    }
+    th {
+      background: #0A2540 !important;
+      color: #FFFFFF !important;
+      font-weight: 700 !important;
+      padding: 5pt 7pt !important;
+      text-align: left !important;
+    }
+    td {
+      padding: 4pt 6pt !important;
+      border: 1px solid #E2E8F0 !important;
+      vertical-align: top !important;
+    }
+    tr:nth-child(even) td { background: #F8FAFC !important; }
+    tr, td, th {
+      page-break-inside: avoid !important;
+      break-inside: avoid !important;
+    }
+
+    .badge, .spot-tag {
+      display: inline-block;
+      padding: 2pt 5pt;
+      border-radius: 3px;
+      font-size: 7.5pt;
+      font-weight: 700;
+      margin: 2pt 2pt 2pt 0;
+    }
+    .badge-green { background: #DCFCE7 !important; color: #15803D !important; border: 1px solid #86EFAC !important; }
+    .badge-gold { background: #FEF3C7 !important; color: #92400E !important; border: 1px solid #FDE68A !important; }
+    .badge-red { background: #FEE2E2 !important; color: #991B1B !important; border: 1px solid #FCA5A5 !important; }
+    .badge-blue { background: #DBEAFE !important; color: #1D4ED8 !important; border: 1px solid #93C5FD !important; }
+    .spot-tag-list { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4pt; }
+
+    .qoe-stacked-bar {
+      display: flex;
+      height: 18px;
+      border-radius: 4px;
+      overflow: hidden;
+      margin: 6pt 0;
+    }
+    .qoe-segment { display: flex; align-items: center; justify-content: center; font-size: 7pt; font-weight: 700; color: #FFFFFF; }
+    .qoe-seg-core { background: #16A34A !important; }
+    .qoe-seg-assoc { background: #2563EB !important; }
+    .qoe-seg-forex { background: #D97706 !important; }
+    .qoe-seg-other { background: #475569 !important; }
+
+    h3, h4, h5 { page-break-after: avoid !important; break-after: avoid !important; }
+    h4 { color: #0A2540; font-size: 10.5pt; margin: 8pt 0 4pt 0; }
+
+    .print-dialog-bar {
+      background: #0A2540;
+      color: #FFFFFF;
+      padding: 8px 14px;
+      border-radius: 6px;
+      margin-bottom: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 8.5pt;
+    }
+    .print-dialog-bar button {
+      background: #22C55E;
+      color: #FFFFFF;
+      border: none;
+      padding: 6px 14px;
+      border-radius: 4px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="print-dialog-bar no-print">
+    <span>💡 <strong>Pratinjau Cetak / PDF Analisis Detail:</strong> Klik tombol di samping atau gunakan shortcut <code>Cmd+P</code> / <code>Ctrl+P</code> lalu pilih "Save as PDF".</span>
+    <button type="button" onclick="window.print()">🖨️ Cetak / Simpan PDF Sekarang</button>
+  </div>
+
+  <div class="detail-print-header">
+    <div class="detail-print-brand">
+      <div style="font-size:8pt; font-weight:700; color:#64748B; letter-spacing:0.06em; text-transform:uppercase;">KAJIAN IHSAN • FINANCIAL FORENSIC INTELLIGENCE</div>
+      <h2>${schemeTitle}</h2>
+      <div class="doc-type">Standar Penelaahan Komprehensif • Metrik Keuangan, Altman Modified Z-Score &amp; Rantai Penalaran</div>
+    </div>
+    <div class="detail-print-badge">
+      <div class="badge-title">KLASIFIKASI: TERBATAS</div>
+      <div class="badge-sub">Kertas Kerja Analisis Detail</div>
+      <div class="badge-sub">Status: Tervalidasi ISA 520</div>
+    </div>
+  </div>
+
+  <table class="detail-meta-table">
+    <tr>
+      <td class="detail-meta-label">Nomor Dokumen</td>
+      <td>: <strong>${docNo}</strong></td>
+      <td class="detail-meta-label">Klasifikasi</td>
+      <td>: <span style="color:#0A2540; font-weight:700;">Rahasia / Kertas Kerja Detail &amp; Forensik</span></td>
+    </tr>
+    <tr>
+      <td class="detail-meta-label">Nama Entitas</td>
+      <td>: <strong>${entityName}</strong></td>
+      <td class="detail-meta-label">Tanggal Cetak</td>
+      <td>: <span>${new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}</span></td>
+    </tr>
+    <tr>
+      <td class="detail-meta-label">Periode Laporan</td>
+      <td>: <strong>${period}</strong></td>
+      <td class="detail-meta-label">Metode Evaluasi</td>
+      <td>: <span>33 Rasio Keuangan, QoE Waterfall &amp; Deteksi Anomali</span></td>
+    </tr>
+  </table>
+
+  <div class="detail-content-area">
+    ${clone.innerHTML}
+  </div>
+
+  <div style="margin-top:20pt; border-top:1.5px solid #CBD5E1; padding-top:8pt; font-size:7.5pt; color:#64748B; display:flex; justify-content:space-between; align-items:center;">
+    <span>Kajian Ihsan Financial Intelligence Platform • Dokumen Kertas Kerja Resmi</span>
+    <span>Hal. 1 &bull; Divalidasi Otomatis ISA 520</span>
+  </div>
+
+  <script>
+    window.onload = function() {
+      setTimeout(function() {
+        window.print();
+      }, 350);
+    };
+  <\/script>
+</body>
+</html>`;
+
+      printWin.document.open();
+      printWin.document.write(printHtml);
+      printWin.document.close();
+      showToast('📄 Menyiapkan dialog cetak / ekspor PDF Analisis Detail...', 'info');
+    }
+
+        // PINTU MASUK TUNGGAL: ANALISIS DARI DOKUMEN HANDLER
     function openDocumentAnalysis(entityKey) {
       if (entityKey === 'pindodeli') {
         selectWorkflowScheme('investasi', { silentReprocess: true });

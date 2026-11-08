@@ -42,6 +42,7 @@ async function run() {
   const chromeProcess = spawn('/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', [
     '--headless=new',
     `--remote-debugging-port=${chromePort}`,
+    '--user-data-dir=/tmp/chrome-cdp-profile-test',
     '--disable-gpu',
     '--no-sandbox',
     '--window-size=1440,900',
